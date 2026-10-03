@@ -1,0 +1,745 @@
+"use client";
+
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import Markdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react";
+import { reviewCard, setWordStatus } from "@/lib/actions/srs";
+import type { FlashcardReviewExercise } from "@/lib/content/types";
+import { useAudio } from "@/hooks/use-audio";
+import { ReplayButton } from "@/components/replay-button";
+import { AudioSpinner } from "@/components/audio-spinner";
+import { X, Check, Award, Volume2, ArrowLeft, ArrowUp, ArrowRight } from "lucide-react";
+
+function cleanTextForTTS(raw: string, isTargetLanguageNonLatin: boolean): string {
+  if (!raw) return "";
+  let text = raw.replace(/\\n/g, "\n");
+
+  if (text.includes("\n")) {
+    const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+    const nonLatinLines = lines.filter((l) =>
+      /[\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af]/u.test(l)
+    );
+    if (nonLatinLines.length > 0) {
+      text = nonLatinLines.join(" ");
+    } else {
+      text = lines[0];
+    }
+  }
+
+  // Strip brackets, parentheses, and brace contents
+  text = text.replace(/\([^)]*\)/g, "");
+  text = text.replace(/\[[^\]]*\]/g, "");
+  text = text.replace(/\{[^}]*\}/g, "");
+
+  // Strip leading definition/meaning/translation label words so TTS only pronounces the pure content
+  text = text.replace(/^(?:definition|meaning|def|含义|意思|解释|释义|中文|翻译|translation)[:：\-–—\s]+/gi, "");
+  text = text.replace(/^(?:definition|meaning|def)\b[:：\-–—\s]*/gi, "");
+
+  if (
+    isTargetLanguageNonLatin &&
+    /[\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff\u0600-\u06ff\u0900-\u097f]/u.test(text)
+  ) {
+    text = text.replace(/[a-zA-Záéíóúāēīōūǎěǐǒǔàèìòù]/g, "");
+  }
+
+  return text
+    .replace(/[#*_`~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const nonLatinLanguages = new Set([
+  "mandarin",
+  "chinese",
+  "zh",
+  "japanese",
+  "japanese-kanji",
+  "japanese-hiragana",
+  "japanese-katakana",
+  "ja",
+  "korean",
+  "ko",
+  "arabic",
+  "ar",
+  "hindi",
+  "hi",
+  "russian",
+  "ru",
+]);
+
+function parseFlashcardContent(exercise: FlashcardReviewExercise): {
+  meaning: string;
+  translation: string;
+} {
+  if (!exercise) return { meaning: "", translation: "" };
+  let meaning = exercise.meaning?.trim() || "";
+  let translation = exercise.translation?.trim() || "";
+
+  if (!meaning && !translation && exercise.back) {
+    const rawBack = String(exercise.back).replace(/\\n/g, "\n").trim();
+    const lines = rawBack.split("\n").map((l) => l.trim()).filter(Boolean);
+
+    let parsedMeaning = "";
+    let parsedTranslation = "";
+
+    for (const line of lines) {
+      if (/^(meaning|definition|含义|意思)[:：]\s*/i.test(line)) {
+        parsedMeaning = line.replace(/^(meaning|definition|含义|意思)[:：]\s*/i, "");
+      } else if (/^(translation|chinese|中文|翻译)[:：]\s*/i.test(line)) {
+        parsedTranslation = line.replace(/^(translation|chinese|中文|翻译)[:：]\s*/i, "");
+      }
+    }
+
+    if (!parsedMeaning && !parsedTranslation) {
+      if (lines.length >= 2) {
+        if (/[\u4e00-\u9fa5]/.test(lines[0]) && !/[\u4e00-\u9fa5]/.test(lines[1])) {
+          parsedTranslation = lines[0];
+          parsedMeaning = lines[1];
+        } else {
+          parsedMeaning = lines[0];
+          parsedTranslation = lines[1];
+        }
+      } else if (lines.length === 1) {
+        const single = lines[0];
+        if (/[\u4e00-\u9fa5]/.test(single)) {
+          parsedTranslation = single;
+        } else {
+          parsedMeaning = single;
+        }
+      }
+    }
+
+    meaning = parsedMeaning || meaning;
+    translation = parsedTranslation || translation;
+
+    if (!meaning && !translation && rawBack) {
+      meaning = rawBack;
+    }
+  }
+
+  return { meaning, translation };
+}
+
+function extractTargetWords(exercise: FlashcardReviewExercise): string[] {
+  const rawWords = Array.isArray(exercise?.srsWords)
+    ? exercise.srsWords
+    : exercise?.srsWords
+      ? [exercise.srsWords]
+      : [];
+
+  const fallbackWord = exercise?.front
+    ? exercise.front
+        .replace(/[#*_`~]/g, "")
+        .replace(/\([^)]*\)/g, "")
+        .replace(/\[[^\]]*\]/g, "")
+        .split("\n")[0]
+        .trim()
+    : "";
+
+  return Array.from(
+    new Set(
+      [...rawWords, fallbackWord]
+        .map((w) =>
+          w
+            .toLowerCase()
+            .replace(/^[^\w\s\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af]+|[^\w\s\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af]+$/g, "")
+            .trim()
+        )
+        .filter(Boolean)
+    )
+  );
+}
+
+function updateLocalStorageCard(
+  word: string,
+  status: "new" | "learning" | "learned",
+  language: string,
+  translation?: string
+) {
+  if (typeof window === "undefined") return;
+  try {
+    const norm = word.toLowerCase().trim();
+    const stored = localStorage.getItem("openlingo_srs_cards_v1");
+    const cards: Array<{
+      word: string;
+      language: string;
+      translation: string;
+      status: string;
+      cefrLevel?: string;
+      pos?: string;
+      easeFactor?: number;
+      interval?: number;
+      repetitions?: number;
+      nextReviewAt?: string | null;
+      lastReviewedAt?: string | null;
+      createdAt?: string;
+    }> = stored ? JSON.parse(stored) : [];
+
+    const idx = cards.findIndex((c) => c.word.toLowerCase().trim() === norm);
+    if (idx >= 0) {
+      cards[idx] = {
+        ...cards[idx],
+        status,
+        lastReviewedAt: status === "learned" ? new Date().toISOString() : cards[idx].lastReviewedAt,
+        nextReviewAt: status === "learning" ? new Date().toISOString() : null,
+      };
+    } else {
+      cards.push({
+        word: norm,
+        language,
+        translation: translation || norm,
+        cefrLevel: "A1",
+        pos: "noun",
+        status,
+        easeFactor: 2.5,
+        interval: status === "learned" ? 36500 : 0,
+        repetitions: status === "learned" ? 10 : (status === "learning" ? 1 : 0),
+        nextReviewAt: status === "learning" ? new Date().toISOString() : null,
+        lastReviewedAt: status === "learned" ? new Date().toISOString() : null,
+        createdAt: new Date().toISOString(),
+      });
+    }
+    localStorage.setItem("openlingo_srs_cards_v1", JSON.stringify(cards));
+  } catch {}
+}
+
+
+const POS_LABELS: Record<string, string> = {
+  noun: "Noun",
+  verb: "Verb",
+  adj: "Adj",
+  adjective: "Adj",
+  adv: "Adv",
+  adverb: "Adv",
+  pronoun: "Pron",
+  conjunction: "Conj",
+  prep: "Prep",
+  preposition: "Prep",
+  determiner: "Det",
+  interjection: "Intj",
+  num: "Num",
+  number: "Num",
+  numeral: "Num",
+};
+
+const LEVEL_BADGES: Record<string, string> = {
+  A1: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800",
+  A2: "bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300 border-teal-300 dark:border-teal-800",
+  B1: "bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border-blue-300 dark:border-blue-800",
+  B2: "bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300 border-indigo-300 dark:border-indigo-800",
+  C1: "bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 border-purple-300 dark:border-purple-800",
+  C2: "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border-rose-300 dark:border-rose-800",
+};
+
+export function FlashcardReview({
+  exercise,
+  language,
+  onResult,
+  onContinue,
+  autoplayAudio = true,
+}: {
+  exercise: FlashcardReviewExercise;
+  language: string;
+  onResult: (correct: boolean, answer: string) => void;
+  onContinue: () => void;
+  autoplayAudio?: boolean;
+}) {
+  const [rated, setRated] = useState(false);
+  const [actionFeedback, setActionFeedback] = useState<"no" | "yes" | "learned" | null>(null);
+  const [isExited, setIsExited] = useState(false);
+  const isHandlingRef = useRef(false);
+
+  // Dynamic enrichment for word info (pos, ipa, level, meaning, translation)
+  const [wordMeta, setWordMeta] = useState<{
+    pos?: string;
+    ipa?: string;
+    level?: string;
+    meaning?: string;
+    translation?: string;
+  }>({});
+
+  const targetWords = useMemo(() => extractTargetWords(exercise), [exercise]);
+  const primaryWord = targetWords[0] || (exercise?.front || "").replace(/[#*_`~]/g, "").trim();
+
+  // Reset local state when a new exercise arrives
+  const currentKey = exercise?.front || "";
+  useEffect(() => {
+    setRated(false);
+    setActionFeedback(null);
+    setIsExited(false);
+    isHandlingRef.current = false;
+  }, [currentKey]);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!primaryWord) return;
+
+    if (exercise.pos && exercise.ipa && exercise.translation && exercise.meaning) {
+      setWordMeta({
+        pos: exercise.pos,
+        ipa: exercise.ipa,
+        level: exercise.cefrLevel || exercise.level,
+        meaning: exercise.meaning,
+        translation: exercise.translation,
+      });
+      return;
+    }
+
+    try {
+      const stored = localStorage.getItem("openlingo_srs_cards_v1");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const match = parsed.find(
+            (c: any) => c.word?.toLowerCase().trim() === primaryWord.toLowerCase().trim()
+          );
+          if (match) {
+            setWordMeta((prev) => ({
+              pos: match.pos || exercise.pos || prev.pos,
+              level: match.cefrLevel || exercise.cefrLevel || exercise.level || prev.level,
+              translation: match.translation || exercise.translation || prev.translation,
+              ipa: exercise.ipa || prev.ipa,
+              meaning: exercise.meaning || prev.meaning,
+            }));
+          }
+        }
+      }
+    } catch {}
+
+    fetch(`/api/words?lang=${encodeURIComponent(language || "en")}&q=${encodeURIComponent(primaryWord)}&limit=5`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data || !Array.isArray(data.words)) return;
+        const norm = primaryWord.toLowerCase().trim();
+        const exact = data.words.find((w: any) => w.word?.toLowerCase().trim() === norm) || data.words[0];
+        if (exact) {
+          setWordMeta((prev) => ({
+            pos: exercise.pos || exact.pos || prev.pos,
+            ipa: exercise.ipa || exact.ipa || prev.ipa,
+            level: exercise.cefrLevel || exercise.level || exact.cefr_level || prev.level,
+            meaning: exercise.meaning || exact.english_translation || prev.meaning,
+            translation: exercise.translation || exact.definition_zh || prev.translation,
+          }));
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+  }, [primaryWord, exercise, language]);
+
+  const { play, stop, prefetch, loading: audioLoading } = useAudio();
+  const { meaning: parsedMeaning, translation: parsedTranslation } = parseFlashcardContent(exercise);
+
+  const activeMeaning = parsedMeaning || wordMeta.meaning || "";
+  const activeTranslation = parsedTranslation || wordMeta.translation || "";
+  const activePos = exercise.pos || wordMeta.pos || "";
+  const activeIpa = exercise.ipa || wordMeta.ipa || "";
+  const activeLevel = (exercise.cefrLevel || exercise.level || wordMeta.level || "").toUpperCase();
+  const levelBadge = activeLevel ? (LEVEL_BADGES[activeLevel] || LEVEL_BADGES["A1"]) : "";
+
+  const isNonLatin = nonLatinLanguages.has(language?.toLowerCase());
+  const frontTTS = cleanTextForTTS(exercise?.front || "", isNonLatin);
+  const backTTS = cleanTextForTTS(activeMeaning || exercise?.back || "", false);
+  const translationTTS = cleanTextForTTS(activeTranslation || "", true);
+
+  // Motion values for swipe gestures
+  const dragX = useMotionValue(0);
+  const dragY = useMotionValue(0);
+
+  // Opacity indicators based on drag direction
+  const noOpacity = useTransform(dragX, [-80, -20, 0], [1, 0.4, 0]);
+  const yesOpacity = useTransform(dragX, [0, 20, 80], [0, 0.4, 1]);
+  const learnedOpacity = useTransform(dragY, [-80, -20, 0], [1, 0.4, 0]);
+
+  // Card rotation during drag
+  const cardRotate = useTransform(dragX, [-150, 0, 150], [-10, 0, 10]);
+
+  // Prefetch audio
+  useEffect(() => {
+    const toFetch: { text: string; lang: string }[] = [];
+    if (frontTTS && !exercise?.noAudio?.includes("front")) {
+      toFetch.push({ text: frontTTS, lang: language });
+    }
+    if (backTTS && !exercise?.noAudio?.includes("back")) {
+      toFetch.push({ text: backTTS, lang: "en" });
+    }
+    if (translationTTS && !exercise?.noAudio?.includes("translation")) {
+      toFetch.push({ text: translationTTS, lang: "zh" });
+    }
+    toFetch.forEach(({ text, lang }) => {
+      prefetch([text], lang);
+    });
+  }, [frontTTS, backTTS, translationTTS, exercise?.noAudio, language, prefetch]);
+
+  // Autoplay front audio
+  useEffect(() => {
+    if (autoplayAudio && frontTTS && !exercise?.noAudio?.includes("front")) {
+      play(frontTTS, language);
+    }
+    return stop;
+  }, [exercise, autoplayAudio, frontTTS, language, play, stop]);
+
+  const handlePlayFront = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      if (frontTTS) {
+        play(frontTTS, language);
+      }
+    },
+    [frontTTS, language, play]
+  );
+
+  const handlePlayBack = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      if (backTTS) {
+        play(backTTS, "en");
+      }
+    },
+    [backTTS, play]
+  );
+
+  const handlePlayTranslation = useCallback(
+    (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      if (translationTTS) {
+        play(translationTTS, "zh");
+      }
+    },
+    [translationTTS, play]
+  );
+
+  // 1. NO (Left Button / Swipe Left) -> Quality = 1
+  const handleNo = useCallback(async () => {
+    if (isHandlingRef.current || rated) return;
+    isHandlingRef.current = true;
+    setRated(true);
+    setActionFeedback("no");
+
+    const words = extractTargetWords(exercise);
+    words.forEach((w) => updateLocalStorageCard(w, "new", language, activeTranslation || activeMeaning || w));
+
+    try {
+      await Promise.all(words.map((w) => reviewCard(w, language, 1)));
+    } catch (err) {
+      console.error("Failed to record review:", err);
+    }
+
+    onResult(false, "No");
+    setTimeout(() => {
+      setIsExited(true);
+    }, 150);
+    setTimeout(() => {
+      onContinue();
+    }, 320);
+  }, [exercise, language, activeTranslation, activeMeaning, onResult, onContinue, rated]);
+
+  // 2. LEARNED (Middle Button / Swipe Up) -> Quality = 5
+  const handleLearned = useCallback(async () => {
+    if (isHandlingRef.current || rated) return;
+    isHandlingRef.current = true;
+    setRated(true);
+    setActionFeedback("learned");
+
+    const words = extractTargetWords(exercise);
+    words.forEach((w) => updateLocalStorageCard(w, "learned", language, activeTranslation || activeMeaning || w));
+
+    try {
+      await Promise.all(
+        words.map(async (w) => {
+          await setWordStatus(w, language, "learned", {
+            cefrLevel: activeLevel || "A1",
+            translation: activeTranslation || activeMeaning,
+            pos: activePos,
+          });
+          await reviewCard(w, language, 5);
+        })
+      );
+    } catch (err) {
+      console.error("Failed to mark card learned:", err);
+    }
+
+    onResult(true, "Learned");
+    setTimeout(() => {
+      setIsExited(true);
+    }, 150);
+    setTimeout(() => {
+      onContinue();
+    }, 320);
+  }, [exercise, language, activeTranslation, activeMeaning, activeLevel, activePos, onResult, onContinue, rated]);
+
+  // 3. YES (Right Button / Swipe Right) -> Quality = 4
+  const handleYes = useCallback(async () => {
+    if (isHandlingRef.current || rated) return;
+    isHandlingRef.current = true;
+    setRated(true);
+    setActionFeedback("yes");
+
+    const words = extractTargetWords(exercise);
+    words.forEach((w) => updateLocalStorageCard(w, "learning", language, activeTranslation || activeMeaning || w));
+
+    try {
+      await Promise.all(words.map((w) => reviewCard(w, language, 4)));
+    } catch (err) {
+      console.error("Failed to record review:", err);
+    }
+
+    onResult(true, "Yes");
+    setTimeout(() => {
+      setIsExited(true);
+    }, 150);
+    setTimeout(() => {
+      onContinue();
+    }, 320);
+  }, [exercise, language, activeTranslation, activeMeaning, onResult, onContinue, rated]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+      if (e.key === "ArrowLeft" || e.key === "1" || e.key === "n" || e.key === "N") {
+        e.preventDefault();
+        handleNo();
+      } else if (e.key === "ArrowUp" || e.key === "2" || e.key === "m" || e.key === "M" || e.key === "l" || e.key === "L") {
+        e.preventDefault();
+        handleLearned();
+      } else if (e.key === "ArrowRight" || e.key === "3" || e.key === "y" || e.key === "Y") {
+        e.preventDefault();
+        handleYes();
+      } else if (e.key === "r" || e.key === "R" || e.key === "a" || e.key === "A") {
+        e.preventDefault();
+        handlePlayFront();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleNo, handleLearned, handleYes, handlePlayFront]);
+
+  // Handle Drag / Swipe Release
+  function handleDragEnd(_: unknown, info: { offset: { x: number; y: number } }) {
+    if (isHandlingRef.current || rated) return;
+    const { x, y } = info.offset;
+    const SWIPE_THRESHOLD = 60;
+
+    if (y < -SWIPE_THRESHOLD && Math.abs(y) > Math.abs(x)) {
+      handleLearned();
+    } else if (x > SWIPE_THRESHOLD) {
+      handleYes();
+    } else if (x < -SWIPE_THRESHOLD) {
+      handleNo();
+    }
+  }
+
+  return (
+    <div className="w-full max-w-xl mx-auto select-none">
+      {/* Card Slot Area with AnimatePresence */}
+      <div className="relative min-h-[300px] sm:min-h-[340px] flex items-center justify-center">
+        <AnimatePresence mode="wait">
+          {!isExited ? (
+            <motion.div
+              key={currentKey}
+              initial={{ opacity: 0, scale: 0.92, y: 15 }}
+              animate={
+                actionFeedback === "no"
+                  ? { x: -350, opacity: 0, rotate: -15, scale: 0.85 }
+                  : actionFeedback === "yes"
+                  ? { x: 350, opacity: 0, rotate: 15, scale: 0.85 }
+                  : actionFeedback === "learned"
+                  ? { y: -250, opacity: 0, scale: 0.85 }
+                  : { opacity: 1, scale: 1, y: 0, x: 0 }
+              }
+              exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.15 } }}
+              transition={{ type: "spring", stiffness: 350, damping: 26 }}
+              drag={!rated}
+              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              dragElastic={0.6}
+              onDragEnd={handleDragEnd}
+              style={{ x: dragX, y: dragY, rotate: cardRotate }}
+              className={`w-full relative rounded-2xl border-2 border-b-4 p-5 sm:p-7 text-center transition-colors shadow-sm bg-white touch-pan-y ${
+                actionFeedback === "no"
+                  ? "border-rose-500 bg-rose-50/50 dark:bg-rose-950/20"
+                  : actionFeedback === "yes"
+                  ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20"
+                  : actionFeedback === "learned"
+                  ? "border-lingo-blue bg-blue-50/50 dark:bg-blue-950/20"
+                  : "border-lingo-border"
+              }`}
+            >
+              {/* Swipe Overlays / Badges */}
+              <motion.div
+                style={{ opacity: noOpacity }}
+                className="absolute top-4 left-4 z-20 pointer-events-none rounded-xl bg-rose-500 text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
+              >
+                <X className="w-4 h-4" /> NO
+              </motion.div>
+
+              <motion.div
+                style={{ opacity: yesOpacity }}
+                className="absolute top-4 right-4 z-20 pointer-events-none rounded-xl bg-emerald-500 text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
+              >
+                <Check className="w-4 h-4" /> YES
+              </motion.div>
+
+              <motion.div
+                style={{ opacity: learnedOpacity }}
+                className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none rounded-xl bg-lingo-blue text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
+              >
+                <Award className="w-4 h-4" /> MASTERED
+              </motion.div>
+
+              {/* Top bar with audio replay button and mobile swipe guide */}
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <span className="text-xs font-black uppercase tracking-wider text-lingo-text-light/70 flex items-center gap-1">
+                  🎴 Flashcard
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold text-lingo-text-light hidden sm:inline">
+                    Swipe: ← No | ↑ Mastered | Yes →
+                  </span>
+                  <ReplayButton onPlay={handlePlayFront} />
+                </div>
+              </div>
+
+              {/* ── 1. ROW 1: Word + POS + Level + IPA (Inline on the Right Side) ── */}
+              <div className="my-3 sm:my-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+                <span className="text-2xl sm:text-3xl font-black text-lingo-text tracking-tight">
+                  {exercise?.front || ""}
+                </span>
+
+                {/* POS, Level & IPA placed inline on the right side of the word */}
+                {(activeLevel || activePos || activeIpa) && (
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                    {/* Part of Speech (POS) */}
+                    {activePos && (
+                      <span className="text-xs font-extrabold text-lingo-blue bg-lingo-blue/10 px-2.5 py-1 rounded-lg border border-lingo-blue/20">
+                        {POS_LABELS[activePos.toLowerCase()] || activePos}
+                      </span>
+                    )}
+
+                    {/* Level Badge */}
+                    {activeLevel && (
+                      <span className={`rounded-lg px-2 py-0.5 text-xs font-black border ${levelBadge}`}>
+                        {activeLevel}
+                      </span>
+                    )}
+
+                    {/* IPA Phonetic */}
+                    {activeIpa && (
+                      <span className="text-xs font-mono text-lingo-text-light/90 bg-lingo-gray/20 px-2 py-0.5 rounded-lg border border-lingo-border/60">
+                        /{activeIpa.replace(/^\/+|\/+$/g, "")}/
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* ── 2. ROW 2: Meaning / Definition (Direct text without header label) ── */}
+              {activeMeaning && (
+                <div
+                  onClick={handlePlayBack}
+                  className="relative mt-3 rounded-2xl bg-lingo-bg/70 dark:bg-lingo-gray/20 p-3.5 sm:p-4 border border-lingo-border/80 cursor-pointer hover:border-lingo-blue/40 transition-all select-none text-left shadow-2xs group"
+                >
+                  {backTTS && (
+                    <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
+                      <ReplayButton onPlay={handlePlayBack} />
+                    </div>
+                  )}
+                  <div className="prose prose-sm font-bold text-lingo-text text-base leading-relaxed pr-8 [&>p]:m-0">
+                    <Markdown remarkPlugins={[remarkBreaks]}>{activeMeaning}</Markdown>
+                  </div>
+                </div>
+              )}
+
+              {/* ── 3. ROW 3: Translation (Chinese) (Direct text without header label) ── */}
+              {activeTranslation && (
+                <div
+                  onClick={handlePlayTranslation}
+                  className="relative mt-2.5 sm:mt-3 rounded-2xl bg-lingo-card p-3.5 sm:p-4 border border-lingo-border/80 cursor-pointer hover:border-emerald-500/40 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/10 transition-all select-none text-left shadow-2xs group"
+                >
+                  {translationTTS && (
+                    <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
+                      <ReplayButton onPlay={handlePlayTranslation} />
+                    </div>
+                  )}
+                  <div className="prose prose-sm font-bold text-lingo-text text-base leading-relaxed pr-8 [&>p]:m-0">
+                    <Markdown remarkPlugins={[remarkBreaks]}>{activeTranslation}</Markdown>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          ) : (
+            /* Empty placeholder state during card swap */
+            <motion.div
+              key="empty-transition"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="w-full h-[280px] sm:h-[320px] rounded-2xl border-2 border-dashed border-lingo-border/60 bg-lingo-gray/10 flex flex-col items-center justify-center gap-2 text-lingo-text-light"
+            >
+              <div className="w-8 h-8 rounded-full border-2 border-lingo-blue border-t-transparent animate-spin" />
+              <span className="text-xs font-bold text-lingo-text-light/80">Next card...</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Audio loading spinner */}
+      <div className="min-h-[16px] flex items-center justify-center">
+        <AudioSpinner loading={audioLoading} />
+      </div>
+
+      {/* ── 3 Bottom Response Buttons (Border-free, translucent arrow under No / Mastered / Yes) ── */}
+      <div className="grid grid-cols-3 gap-2 sm:gap-3.5 mt-1">
+        {/* 1. NO (Rose Red / Left) */}
+        <button
+          type="button"
+          onClick={handleNo}
+          disabled={rated}
+          className="group flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 sm:px-4 rounded-2xl bg-rose-50 hover:bg-rose-100/80 active:scale-95 text-rose-600 dark:bg-rose-950/30 dark:text-rose-300 dark:hover:bg-rose-900/40 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
+          title="Don't remember this word (Swipe Left)"
+        >
+          <div className="flex items-center gap-1.5 text-sm sm:text-base font-black">
+            <X className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+            <span>No</span>
+          </div>
+          <ArrowLeft className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+        </button>
+
+        {/* 2. MASTERED (Lingo Blue / Middle) */}
+        <button
+          type="button"
+          onClick={handleLearned}
+          disabled={rated}
+          className="group flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 sm:px-4 rounded-2xl bg-lingo-blue/10 hover:bg-lingo-blue/20 active:scale-95 text-lingo-blue dark:bg-lingo-blue/20 dark:text-blue-300 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
+          title="Mark as Mastered (Swipe Up)"
+        >
+          <div className="flex items-center gap-1.5 text-sm sm:text-base font-black">
+            <Award className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+            <span>Mastered</span>
+          </div>
+          <ArrowUp className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+        </button>
+
+        {/* 3. YES (Emerald Green / Right) */}
+        <button
+          type="button"
+          onClick={handleYes}
+          disabled={rated}
+          className="group flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 sm:px-4 rounded-2xl bg-emerald-50 hover:bg-emerald-100/80 active:scale-95 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-300 dark:hover:bg-emerald-900/40 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
+          title="Remember this word (Swipe Right)"
+        >
+          <div className="flex items-center gap-1.5 text-sm sm:text-base font-black">
+            <Check className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+            <span>Yes</span>
+          </div>
+          <ArrowRight className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+        </button>
+      </div>
+    </div>
+  );
+}
