@@ -89,6 +89,17 @@ export async function getLocalCourseEnrollments(userId: string): Promise<string[
   return store[userId] || [];
 }
 
+export async function removeLocalCourseEnrollment(userId: string, courseId: string): Promise<void> {
+  const store = await ensureEnrollmentStore();
+  if (store[userId]) {
+    store[userId] = store[userId].filter((id) => id !== courseId);
+    try {
+      await fs.mkdir(DATA_DIR, { recursive: true });
+      await fs.writeFile(ENROLLMENT_FILE, JSON.stringify(store, null, 2), "utf-8");
+    } catch {}
+  }
+}
+
 export async function getLocalCards(
   userId?: string,
   languageAliases?: string[]

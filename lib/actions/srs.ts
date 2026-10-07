@@ -1134,35 +1134,6 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
       const localEnrollments = await getLocalCourseEnrollments(userId);
       localEnrollments.forEach((id) => enrolledCourseIds.add(id));
 
-      let userEmail = overrideEmail || "";
-      if (!userEmail) {
-        try {
-          const session = await getSession();
-          if (session?.user?.id === userId) {
-            userEmail = session.user.email || "";
-          }
-        } catch {}
-      }
-      if (!userEmail && dbUp) {
-        try {
-          const [usr] = await db.select({ email: user.email }).from(user).where(eq(user.id, userId)).limit(1);
-          userEmail = usr?.email || "";
-        } catch {}
-      }
-
-      if (userEmail.toLowerCase() === "alan.pung@gmail.com" || isAdminEmail(userEmail)) {
-        enrolledCourseIds.add("a1-flashcard-course");
-        enrolledCourseIds.add("a2-flashcard-course");
-        await addLocalCourseEnrollment(userId, "a1-flashcard-course");
-        await addLocalCourseEnrollment(userId, "a2-flashcard-course");
-        if (dbUp) {
-          try {
-            await db.insert(userCourseEnrollment).values({ userId, courseId: "a1-flashcard-course" }).onConflictDoNothing();
-            await db.insert(userCourseEnrollment).values({ userId, courseId: "a2-flashcard-course" }).onConflictDoNothing();
-          } catch {}
-        }
-      }
-
       const standaloneUnitIds = new Set<string>();
       if (dbUp) {
         try {
@@ -1178,7 +1149,20 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
         } catch {}
       }
 
-      if (enrolledCourseIds.size === 0 && standaloneUnitIds.size === 0) return;
+      if (enrolledCourseIds.size === 0 && standaloneUnitIds.size === 0) {
+        if (dbUp) {
+          try {
+            await db.delete(srsCard).where(
+              and(
+                eq(srsCard.userId, userId),
+                eq(srsCard.status, "new"),
+                eq(srsCard.repetitions, 0)
+              )
+            );
+          } catch {}
+        }
+        return;
+      }
 
       // 2. Fetch all units for enrolled courses or standalone library units from DB and filesystem
       const unitConditions = [];
@@ -1259,6 +1243,7 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
       const localCards = await getLocalCards(userId);
       localCards.forEach((c) => existingSet.add(c.word.toLowerCase().trim()));
 
+      const activeLibraryWords = new Set<string>();
       const now = new Date();
       const recordsToInsert: {
         word: string;
@@ -1290,30 +1275,60 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
 
             for (const w of targetWords) {
               const normWord = w.toLowerCase().trim();
-              if (normWord && !existingSet.has(normWord)) {
-                existingSet.add(normWord);
-                const translationStr = typeof exAny.translation === "string" ? exAny.translation : typeof exAny.meaning === "string" ? exAny.meaning : normWord;
-                const rawCefrLevel = typeof exAny.cefrLevel === "string" ? exAny.cefrLevel.toUpperCase().trim() : unitLvl;
-                const cefrLevelStr = dictLevelMap[normWord] || rawCefrLevel;
-                const posStr = typeof exAny.pos === "string" ? exAny.pos : "noun";
+              if (normWord) {
+                activeLibraryWords.add(normWord);
+                if (!existingSet.has(normWord)) {
+                  existingSet.add(normWord);
+                  const translationStr = typeof exAny.translation === "string" ? exAny.translation : typeof exAny.meaning === "string" ? exAny.meaning : normWord;
+                  const rawCefrLevel = typeof exAny.cefrLevel === "string" ? exAny.cefrLevel.toUpperCase().trim() : unitLvl;
+                  const cefrLevelStr = dictLevelMap[normWord] || rawCefrLevel;
+                  const posStr = typeof exAny.pos === "string" ? exAny.pos : "noun";
 
-                recordsToInsert.push({
-                  word: normWord,
-                  language: lang,
-                  userId,
-                  translation: translationStr,
-                  cefrLevel: cefrLevelStr,
-                  pos: posStr,
-                  status: "new",
-                  easeFactor: 2.5,
-                  interval: 0,
-                  repetitions: 0,
-                  nextReviewAt: null,
-                  createdAt: now,
-                });
+                  recordsToInsert.push({
+                    word: normWord,
+                    language: lang,
+                    userId,
+                    translation: translationStr,
+                    cefrLevel: cefrLevelStr,
+                    pos: posStr,
+                    status: "new",
+                    easeFactor: 2.5,
+                    interval: 0,
+                    repetitions: 0,
+                    nextReviewAt: null,
+                    createdAt: now,
+                  });
+                }
               }
             }
           }
+        }
+      }
+
+      // Clean up any stale "new" cards that are NOT in activeLibraryWords (e.g. from removed courses or previous full-dictionary imports)
+      if (dbUp) {
+        try {
+          const activeWordsArr = Array.from(activeLibraryWords);
+          if (activeWordsArr.length > 0) {
+            await db.delete(srsCard).where(
+              and(
+                eq(srsCard.userId, userId),
+                eq(srsCard.status, "new"),
+                eq(srsCard.repetitions, 0),
+                notInArray(srsCard.word, activeWordsArr)
+              )
+            );
+          } else {
+            await db.delete(srsCard).where(
+              and(
+                eq(srsCard.userId, userId),
+                eq(srsCard.status, "new"),
+                eq(srsCard.repetitions, 0)
+              )
+            );
+          }
+        } catch (err) {
+          console.warn("Cleanup stale new words warning:", err);
         }
       }
 
@@ -1357,70 +1372,7 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
 
 export async function cleanupUnstudiedCourseWordsFromSrs(userId: string): Promise<void> {
   if (!userId || userId === "default_user") return;
-  if (!(await isDbAvailable())) return;
-
-  try {
-    const enrollments = await db
-      .select({ courseId: userCourseEnrollment.courseId })
-      .from(userCourseEnrollment)
-      .where(eq(userCourseEnrollment.userId, userId));
-    const activeCourseIds = new Set(enrollments.map((e) => e.courseId));
-
-    const libraryUnits = await db
-      .select({ courseId: unit.courseId })
-      .from(userUnitLibrary)
-      .innerJoin(unit, eq(unit.id, userUnitLibrary.unitId))
-      .where(eq(userUnitLibrary.userId, userId));
-    for (const u of libraryUnits) {
-      if (u.courseId) activeCourseIds.add(u.courseId);
-    }
-
-    let activeLevels = new Set<string>();
-    if (activeCourseIds.size > 0) {
-      const activeCourses = await db
-        .select({ id: course.id, level: course.level, title: course.title })
-        .from(course)
-        .where(
-          or(
-            inArray(course.id, Array.from(activeCourseIds)),
-            eq(course.createdBy, userId)
-          )
-        );
-
-      for (const c of activeCourses) {
-        if (c.level) activeLevels.add(c.level.toUpperCase().trim());
-        const t = (c.title || "").toLowerCase();
-        if (t.includes("a1")) activeLevels.add("A1");
-        if (t.includes("a2")) activeLevels.add("A2");
-        if (t.includes("b1")) activeLevels.add("B1");
-        if (t.includes("b2")) activeLevels.add("B2");
-        if (t.includes("c1")) activeLevels.add("C1");
-        if (t.includes("c2")) activeLevels.add("C2");
-      }
-    }
-
-    const activeLevelArray = Array.from(activeLevels);
-    if (activeLevelArray.length > 0) {
-      await db.delete(srsCard).where(
-        and(
-          eq(srsCard.userId, userId),
-          eq(srsCard.status, "new"),
-          eq(srsCard.repetitions, 0),
-          notInArray(srsCard.cefrLevel, activeLevelArray)
-        )
-      );
-    } else {
-      await db.delete(srsCard).where(
-        and(
-          eq(srsCard.userId, userId),
-          eq(srsCard.status, "new"),
-          eq(srsCard.repetitions, 0)
-        )
-      );
-    }
-    userSyncMap.delete(userId);
-  } catch (err) {
-    console.error("cleanupUnstudiedCourseWordsFromSrs error:", err);
-  }
+  userSyncMap.delete(userId);
+  await syncUserCourseWordsToSrs(userId, true);
 }
 

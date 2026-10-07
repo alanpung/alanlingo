@@ -75,6 +75,8 @@ export async function addUnitToLibrary(
     .values({ userId, unitId })
     .onConflictDoNothing();
 
+  await syncUserCourseWordsToSrs(userId, true);
+
   revalidatePath("/library", "page");
   revalidatePath("/library/browse", "page");
   revalidatePath("/units", "page");
@@ -101,6 +103,8 @@ export async function removeUnitFromLibrary(
         eq(userUnitLibrary.unitId, unitId)
       )
     );
+
+  await cleanupUnstudiedCourseWordsFromSrs(userId);
 
   revalidatePath("/library", "page");
   revalidatePath("/units", "page");
@@ -214,6 +218,9 @@ export async function removeCourseFromLibrary(
 ): Promise<{ success: true } | { success: false; error: string }> {
   const session = await requireSession();
   const userId = session.user.id;
+
+  const { removeLocalCourseEnrollment } = await import("@/lib/srs-store");
+  await removeLocalCourseEnrollment(userId, courseId);
 
   // 1. Remove enrollment
   await db
