@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { StudentInspector } from "@/components/words/student-inspector";
+import { WordStatusFlow } from "@/components/words/word-status-flow";
 
 interface SrsCard {
   word: string;
@@ -364,28 +365,8 @@ export function ProgressView({
             </div>
           </div>
 
-          {/* Student Help Note */}
-          <div className="rounded-xl border border-lingo-border bg-lingo-bg p-3.5 text-xs text-lingo-text-light space-y-1">
-            <p className="font-bold text-lingo-text mb-1 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              Progress Column Definitions
-            </p>
-            <p>
-              • <strong>My Words:</strong> Total vocabulary in your SRS deck (Mastered + Learning + New).
-            </p>
-            <p>
-              • <strong>Mastered:</strong> Words you have correctly answered 3 or more times, or marked as mastered during review.
-            </p>
-            <p>
-              • <strong>Learning:</strong> Words in active practice that you have encountered in lessons, units, or exercises.
-            </p>
-            <p>
-              • <strong>New:</strong> Words added to your library ready to be studied.
-            </p>
-            <p>
-              • <strong>Word Count:</strong> Total words available in the system dictionary.
-            </p>
-          </div>
+          {/* Word Status Process Flow Chart */}
+          <WordStatusFlow />
         </div>
       )}
     </div>
