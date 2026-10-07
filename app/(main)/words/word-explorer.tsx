@@ -58,7 +58,7 @@ interface SrsStats {
   easy: number;
 }
 
-type SrsFilter = "all" | "learned" | "learning" | "new";
+type SrsFilter = "all" | "learned" | "learning" | "new" | "NA";
 
 const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 
@@ -428,8 +428,25 @@ function WordLookupSection({
 
             if (statusFilter === "new") {
               fetchedWords = fetchedWords.filter((w) => {
-                const card = srsMap.get(w.word.toLowerCase().trim());
-                return !card || card.status === "new";
+                const norm = w.word.toLowerCase().trim();
+                const card = srsMap.get(norm);
+                const isLib = libraryWordSet.has(norm);
+                if (!isLib) return false;
+                if (card && (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3) || card.status === "learning")) {
+                  return false;
+                }
+                return true;
+              });
+            } else if (statusFilter === "NA") {
+              fetchedWords = fetchedWords.filter((w) => {
+                const norm = w.word.toLowerCase().trim();
+                const card = srsMap.get(norm);
+                const isLib = libraryWordSet.has(norm);
+                if (isLib) return false;
+                if (card && (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3) || card.status === "learning")) {
+                  return false;
+                }
+                return true;
               });
             }
 
@@ -591,15 +608,16 @@ function WordLookupSection({
           </div>
         </div>
 
-        {/* Status Filter (All, Learned, Learning, New) */}
+        {/* Status Filter (All, Learned, Learning, New, NA) */}
         <div className="w-full rounded-2xl border-2 border-lingo-border bg-lingo-card p-1 sm:p-1.5 shadow-xs">
           <div className="flex items-center justify-between gap-1 w-full">
             {(
               [
                 { key: "all", label: "All" },
-                { key: "learned", label: "Mastered (M)" },
-                { key: "learning", label: "Learning (L)" },
-                { key: "new", label: "New (N)" },
+                { key: "learned", label: "Mastered" },
+                { key: "learning", label: "Learning" },
+                { key: "new", label: "New" },
+                { key: "NA", label: "NA" },
               ] as const
             ).map((f) => {
               const active = statusFilter === f.key;
@@ -619,6 +637,11 @@ function WordLookupSection({
             })}
           </div>
         </div>
+      </div>
+
+      {/* Status Note for NA / New / Learning / Mastered */}
+      <div className="rounded-xl border border-lingo-border bg-lingo-card/60 px-3 py-2 text-[11px] sm:text-xs font-semibold text-lingo-text-light">
+        <span className="font-black text-lingo-text">Note:</span> <strong>NA</strong> means dictionary words yet added to study course/units or mastered. Once added to course/units, it will be either assigned <strong>New</strong>, <strong>Learning</strong>, or <strong>Mastered</strong>.
       </div>
 
       {/* ── Search Input (Spans full width) ── */}
@@ -745,9 +768,9 @@ function WordLookupCard({
       ? "learned"
       : card?.status === "learning"
       ? "learning"
-      : card?.status === "NA" || card?.status === "na"
-      ? "NA"
-      : "new";
+      : isLibraryWord
+      ? "new"
+      : "NA";
   const [currentStatus, setCurrentStatus] = useState<string>(resolvedStatus);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -757,11 +780,11 @@ function WordLookupCard({
         ? "learned"
         : card?.status === "learning"
         ? "learning"
-        : card?.status === "NA" || card?.status === "na"
-        ? "NA"
-        : "new"
+        : isLibraryWord
+        ? "new"
+        : "NA"
     );
-  }, [card?.status, card?.repetitions]);
+  }, [card?.status, card?.repetitions, isLibraryWord]);
 
   // Helper to distinguish English and Chinese definitions
   const isChineseStr = (text?: string | null) => {
@@ -905,8 +928,34 @@ function WordLookupCard({
           </p>
         </div>
 
-        {/* Right: Mastered Toggle Button + Chevron */}
+        {/* Right: Current Status Badge + Mastered Toggle Button + Chevron */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Current Status Badge: NA / New / Learning / Mastered */}
+          <span
+            className={`px-2 py-0.5 rounded-lg text-[10px] sm:text-xs font-black border ${
+              isMastered
+                ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800"
+                : currentStatus === "learning"
+                ? "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800"
+                : currentStatus === "new"
+                ? "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800"
+                : "bg-gray-100 text-gray-600 border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700"
+            }`}
+            title={
+              currentStatus === "NA"
+                ? "NA: Dictionary word not yet added to study course/units or mastered"
+                : `Current status: ${isMastered ? "Mastered" : currentStatus === "learning" ? "Learning" : "New"}`
+            }
+          >
+            {isMastered
+              ? "Mastered"
+              : currentStatus === "learning"
+              ? "Learning"
+              : currentStatus === "new"
+              ? "New"
+              : "NA"}
+          </span>
+
           <button
             type="button"
             disabled={isUpdating}
@@ -914,7 +963,7 @@ function WordLookupCard({
               e.stopPropagation();
               handleToggleMastered();
             }}
-            className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs ${
+            className={`px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs ${
               isMastered
                 ? "bg-emerald-500 text-white hover:bg-emerald-600 ring-2 ring-emerald-300"
                 : "bg-white text-lingo-text-light border-2 border-lingo-border hover:border-lingo-green hover:text-lingo-green"
@@ -951,18 +1000,15 @@ function WordLookupCard({
         >
           {/* Chinese Meaning */}
           <div className="text-xs font-semibold text-lingo-text">
-            中文: {cleanZhSummary(zhDef) || "暂无中文释义"}
+            <span className="font-black text-lingo-blue">中文:</span> {cleanZhSummary(zhDef) || "暂无中文释义"}
           </div>
 
           {/* Example Sentence Box */}
           <div className="rounded-xl bg-lingo-blue/5 dark:bg-lingo-blue/10 border border-lingo-blue/20 p-3 space-y-1.5">
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1 min-w-0">
-                <span className="text-[10px] font-black uppercase tracking-wider text-lingo-blue flex items-center gap-1">
-                  <span>Example Sentence</span>
-                </span>
                 <p className="font-bold text-lingo-text text-xs sm:text-sm leading-relaxed">
-                  Example: {w.example_sentence_native || `This is an example using the word "${w.word}".`}
+                  <span className="font-black text-lingo-blue">Example:</span> {w.example_sentence_native || `This is an example using the word "${w.word}".`}
                 </p>
               </div>
               <button

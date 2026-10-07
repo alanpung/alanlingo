@@ -432,7 +432,7 @@ export function ProgressView({
               • <strong>Word Count:</strong> Total words available in the system dictionary.
             </p>
             <p>
-              • <strong>NA:</strong> Words in the dictionary yet unmastered or added to course/units for learning.
+              • <strong>NA:</strong> Dictionary words yet added to study course/units or mastered. Once added to course/units, it will be either assigned New, Learning, or Mastered.
             </p>
           </div>
         </div>
