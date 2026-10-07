@@ -131,7 +131,38 @@ const POS_LABELS: Record<string, string> = {
   numeral: "Num",
 };
 
-function playAudio(text: string, lang: string = "en") {
+let currentAudioInstance: HTMLAudioElement | null = null;
+
+function playAudio(text: string, lang: string = "en", accent: "us" | "uk" = "us") {
+  if (typeof window === "undefined") return;
+
+  if (currentAudioInstance) {
+    try {
+      currentAudioInstance.pause();
+      currentAudioInstance.currentTime = 0;
+    } catch {}
+    currentAudioInstance = null;
+  }
+
+  const clean = text.trim().toLowerCase();
+  const isEnglish = !lang || lang === "en" || lang === "english";
+
+  // For single words or hyphenated words, use the high-quality human MP3 audio from ismartcoding/endict
+  if (isEnglish && /^[a-z]+(?:-[a-z]+)*$/i.test(clean)) {
+    const audioUrl = `https://raw.githubusercontent.com/ismartcoding/endict/main/audio/${accent}/${encodeURIComponent(clean)}.mp3`;
+    const audio = new Audio(audioUrl);
+    currentAudioInstance = audio;
+
+    audio.play().catch(() => {
+      fallbackSpeechSynthesis(text, lang);
+    });
+    return;
+  }
+
+  fallbackSpeechSynthesis(text, lang);
+}
+
+function fallbackSpeechSynthesis(text: string, lang: string = "en") {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
@@ -992,11 +1023,14 @@ function WordLookupCard({
       {expanded && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="mx-2.5 sm:mx-3 mb-2.5 sm:mb-3 border-t border-lingo-border pt-2.5 space-y-2.5 text-xs cursor-default"
+          className="mx-2.5 sm:mx-3 mb-2.5 sm:mb-3 border-t border-lingo-border pt-2.5 space-y-2 text-xs cursor-default"
         >
-          {/* Chinese Meaning */}
-          <div className="text-xs font-semibold text-lingo-text">
-            <span className="font-black text-lingo-blue">中文:</span> {cleanZhSummary(zhDef) || "暂无中文释义"}
+          {/* Chinese Meaning Box */}
+          <div className="rounded-xl bg-lingo-blue/5 dark:bg-lingo-blue/10 border border-lingo-blue/20 p-3">
+            <p className="font-bold text-lingo-text text-xs sm:text-sm leading-relaxed">
+              <span className="font-black text-lingo-blue">中文:</span>{" "}
+              {cleanZhSummary(zhDef) || "暂无中文释义"}
+            </p>
           </div>
 
           {/* Example Sentence Box */}
@@ -1004,7 +1038,8 @@ function WordLookupCard({
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1 min-w-0">
                 <p className="font-bold text-lingo-text text-xs sm:text-sm leading-relaxed">
-                  <span className="font-black text-lingo-blue">Example:</span> {w.example_sentence_native || `This is an example using the word "${w.word}".`}
+                  <span className="font-black text-lingo-blue">Example:</span>{" "}
+                  {w.example_sentence_native || `This is an example using the word "${w.word}".`}
                 </p>
               </div>
               <button

@@ -34,7 +34,38 @@ const LEVEL_BADGES: Record<string, string> = {
   C2: "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border-rose-300",
 };
 
-function playAudio(text: string, lang: string = "en") {
+let currentAudioInstance: HTMLAudioElement | null = null;
+
+function playAudio(text: string, lang: string = "en", accent: "us" | "uk" = "us") {
+  if (typeof window === "undefined") return;
+
+  if (currentAudioInstance) {
+    try {
+      currentAudioInstance.pause();
+      currentAudioInstance.currentTime = 0;
+    } catch {}
+    currentAudioInstance = null;
+  }
+
+  const clean = text.trim().toLowerCase();
+  const isEnglish = !lang || lang === "en" || lang === "english";
+
+  // For single words or hyphenated words, use the high-quality human MP3 audio from ismartcoding/endict
+  if (isEnglish && /^[a-z]+(?:-[a-z]+)*$/i.test(clean)) {
+    const audioUrl = `https://raw.githubusercontent.com/ismartcoding/endict/main/audio/${accent}/${encodeURIComponent(clean)}.mp3`;
+    const audio = new Audio(audioUrl);
+    currentAudioInstance = audio;
+
+    audio.play().catch(() => {
+      fallbackSpeechSynthesis(text, lang);
+    });
+    return;
+  }
+
+  fallbackSpeechSynthesis(text, lang);
+}
+
+function fallbackSpeechSynthesis(text: string, lang: string = "en") {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
