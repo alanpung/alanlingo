@@ -58,7 +58,7 @@ interface SrsStats {
   easy: number;
 }
 
-type SrsFilter = "all" | "learned" | "learning" | "new" | "NA";
+type SrsFilter = "all" | "learned" | "learning" | "new";
 
 const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 
@@ -141,7 +141,6 @@ function playAudio(text: string, lang: string = "en") {
 export function WordExplorer({
   srsCards = [],
   language = "en",
-  libraryWords = [],
 }: {
   isAdmin?: boolean;
   words?: Word[];
@@ -149,15 +148,10 @@ export function WordExplorer({
   srsStats?: SrsStats;
   language?: string;
   levelDictionaryCounts?: Record<string, number>;
-  libraryWords?: string[];
 }) {
   const router = useRouter();
   const [selectedLevel, setSelectedLevel] = useState<string>("");
   const [cards, setCards] = useState<SrsCard[]>(srsCards);
-
-  const libraryWordSet = useMemo(() => {
-    return new Set((libraryWords || []).map((w) => w.toLowerCase().trim()));
-  }, [libraryWords]);
 
   // Sync state when props change without heavy synchronous localStorage operations
   useEffect(() => {
@@ -199,11 +193,14 @@ export function WordExplorer({
   const handleCardStatusChange = useCallback(
     (
       targetWord: string,
-      newStatus: "new" | "learning" | "learned" | "NA",
+      newStatus: "new" | "learning" | "learned" | "remove",
       meta?: { cefrLevel?: string; translation?: string; pos?: string }
     ) => {
       const norm = targetWord.toLowerCase().trim();
       setCards((prev) => {
+        if (newStatus === "remove") {
+          return prev.filter((c) => c.word.toLowerCase().trim() !== norm);
+        }
         const idx = prev.findIndex((c) => c.word.toLowerCase().trim() === norm);
         const reps = newStatus === "learned" ? 10 : newStatus === "learning" ? 1 : 0;
         const interval = newStatus === "learned" ? 36500 : newStatus === "learning" ? 1 : 0;
@@ -262,7 +259,6 @@ export function WordExplorer({
         language={language}
         srsMap={srsMap}
         srsCards={cards}
-        libraryWordSet={libraryWordSet}
         onCardStatusChange={handleCardStatusChange}
       />
     </div>
@@ -279,7 +275,6 @@ function WordLookupSection({
   language,
   srsMap,
   srsCards,
-  libraryWordSet,
   onCardStatusChange,
 }: {
   selectedLevel: string;
@@ -287,10 +282,9 @@ function WordLookupSection({
   language: string;
   srsMap: Map<string, SrsCard>;
   srsCards: SrsCard[];
-  libraryWordSet: Set<string>;
   onCardStatusChange?: (
     word: string,
-    status: "new" | "learning" | "learned" | "NA",
+    status: "new" | "learning" | "learned" | "remove",
     meta?: { cefrLevel?: string; translation?: string; pos?: string }
   ) => void;
 }) {
@@ -314,7 +308,7 @@ function WordLookupSection({
   }, [search]);
 
   const isSrsSpecificFilter =
-    statusFilter === "learning" || statusFilter === "learned";
+    statusFilter === "learning" || statusFilter === "learned" || statusFilter === "new";
 
   useEffect(() => {
     let cancelled = false;
@@ -356,6 +350,10 @@ function WordLookupSection({
             c.status === "learned" ||
             c.status === "review" ||
             (c.repetitions && c.repetitions >= 3)
+        );
+      } else if (statusFilter === "new") {
+        cards = cards.filter(
+          (c) => c.status === "new" && (!c.repetitions || c.repetitions < 3)
         );
       }
 
@@ -424,31 +422,7 @@ function WordLookupSection({
         if (res.ok) {
           const data = await res.json();
           if (!cancelled) {
-            let fetchedWords: Word[] = data.words || [];
-
-            if (statusFilter === "new") {
-              fetchedWords = fetchedWords.filter((w) => {
-                const norm = w.word.toLowerCase().trim();
-                const card = srsMap.get(norm);
-                const isLib = libraryWordSet.has(norm);
-                if (!isLib) return false;
-                if (card && (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3) || card.status === "learning")) {
-                  return false;
-                }
-                return true;
-              });
-            } else if (statusFilter === "NA") {
-              fetchedWords = fetchedWords.filter((w) => {
-                const norm = w.word.toLowerCase().trim();
-                const card = srsMap.get(norm);
-                const isLib = libraryWordSet.has(norm);
-                if (isLib) return false;
-                if (card && (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3) || card.status === "learning")) {
-                  return false;
-                }
-                return true;
-              });
-            }
+            const fetchedWords: Word[] = data.words || [];
 
             if (page === 1) {
               setWords(fetchedWords);
@@ -608,7 +582,7 @@ function WordLookupSection({
           </div>
         </div>
 
-        {/* Status Filter (All, Learned, Learning, New, NA) */}
+        {/* Status Filter (All, Learned, Learning, New) */}
         <div className="w-full rounded-2xl border-2 border-lingo-border bg-lingo-card p-1 sm:p-1.5 shadow-xs">
           <div className="flex items-center justify-between gap-1 w-full">
             {(
@@ -617,7 +591,6 @@ function WordLookupSection({
                 { key: "learned", label: "Mastered" },
                 { key: "learning", label: "Learning" },
                 { key: "new", label: "New" },
-                { key: "NA", label: "NA" },
               ] as const
             ).map((f) => {
               const active = statusFilter === f.key;
@@ -637,11 +610,6 @@ function WordLookupSection({
             })}
           </div>
         </div>
-      </div>
-
-      {/* Status Note for NA / New / Learning / Mastered */}
-      <div className="rounded-xl border border-lingo-border bg-lingo-card/60 px-3 py-2 text-[11px] sm:text-xs font-semibold text-lingo-text-light">
-        <span className="font-black text-lingo-text">Note:</span> <strong>NA</strong> means dictionary words yet added to study course/units or mastered. Once added to course/units, it will be either assigned <strong>New</strong>, <strong>Learning</strong>, or <strong>Mastered</strong>.
       </div>
 
       {/* ── Search Input (Spans full width) ── */}
@@ -709,7 +677,6 @@ function WordLookupSection({
                   word={w}
                   card={card}
                   language={language}
-                  isLibraryWord={libraryWordSet.has(w.word.toLowerCase().trim())}
                   onStatusChange={onCardStatusChange}
                 />
               );
@@ -749,16 +716,14 @@ function WordLookupCard({
   word: w,
   card,
   language,
-  isLibraryWord,
   onStatusChange,
 }: {
   word: Word;
   card?: SrsCard;
   language: string;
-  isLibraryWord: boolean;
   onStatusChange?: (
     word: string,
-    status: "new" | "learning" | "learned" | "NA",
+    status: "new" | "learning" | "learned" | "remove",
     meta?: { cefrLevel?: string; translation?: string; pos?: string }
   ) => void;
 }) {
@@ -768,9 +733,9 @@ function WordLookupCard({
       ? "learned"
       : card?.status === "learning"
       ? "learning"
-      : isLibraryWord
+      : card?.status === "new"
       ? "new"
-      : "NA";
+      : "";
   const [currentStatus, setCurrentStatus] = useState<string>(resolvedStatus);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -780,11 +745,11 @@ function WordLookupCard({
         ? "learned"
         : card?.status === "learning"
         ? "learning"
-        : isLibraryWord
+        : card?.status === "new"
         ? "new"
-        : "NA"
+        : ""
     );
-  }, [card?.status, card?.repetitions, isLibraryWord]);
+  }, [card?.status, card?.repetitions]);
 
   // Helper to distinguish English and Chinese definitions
   const isChineseStr = (text?: string | null) => {
@@ -817,9 +782,10 @@ function WordLookupCard({
   const isMastered = currentStatus === "learned" || currentStatus === "review";
 
   async function handleToggleMastered() {
-    const newStatus = isMastered ? (isLibraryWord ? "new" : "NA") : "learned";
-    setCurrentStatus(newStatus);
-    onStatusChange?.(w.word, newStatus as any, {
+    const wasInDeck = Boolean(card && (card.status === "new" || card.status === "learning"));
+    const nextAction = isMastered ? (wasInDeck ? "new" : "remove") : "learned";
+    setCurrentStatus(nextAction === "remove" ? "" : nextAction);
+    onStatusChange?.(w.word, nextAction, {
       cefrLevel: w.cefr_level,
       translation: w.definition_zh || w.english_translation,
       pos: w.pos,
@@ -831,31 +797,36 @@ function WordLookupCard({
         const parsed = JSON.parse(local);
         if (Array.isArray(parsed)) {
           const norm = w.word.toLowerCase().trim();
-          const idx = parsed.findIndex((c: any) => c.word?.toLowerCase().trim() === norm);
-          const reps = newStatus === "learned" ? 10 : 0;
-          if (idx >= 0) {
-            parsed[idx].status = newStatus;
-            parsed[idx].repetitions = reps;
-            parsed[idx].interval = newStatus === "learned" ? 36500 : 0;
+          if (nextAction === "remove") {
+            const filtered = parsed.filter((c: any) => c.word?.toLowerCase().trim() !== norm);
+            localStorage.setItem("openlingo_srs_cards_v1", JSON.stringify(filtered));
           } else {
-            parsed.push({
-              word: norm,
-              status: newStatus,
-              repetitions: reps,
-              language,
-              cefrLevel: w.cefr_level,
-              translation: w.definition_zh || w.english_translation,
-              pos: w.pos,
-            });
+            const idx = parsed.findIndex((c: any) => c.word?.toLowerCase().trim() === norm);
+            const reps = nextAction === "learned" ? 10 : 0;
+            if (idx >= 0) {
+              parsed[idx].status = nextAction;
+              parsed[idx].repetitions = reps;
+              parsed[idx].interval = nextAction === "learned" ? 36500 : 0;
+            } else {
+              parsed.push({
+                word: norm,
+                status: nextAction,
+                repetitions: reps,
+                language,
+                cefrLevel: w.cefr_level,
+                translation: w.definition_zh || w.english_translation,
+                pos: w.pos,
+              });
+            }
+            localStorage.setItem("openlingo_srs_cards_v1", JSON.stringify(parsed));
           }
-          localStorage.setItem("openlingo_srs_cards_v1", JSON.stringify(parsed));
         }
       }
     } catch {}
 
     setIsUpdating(true);
     try {
-      await setWordStatus(w.word, language, newStatus as any, {
+      await setWordStatus(w.word, language, nextAction, {
         cefrLevel: w.cefr_level,
         translation: w.definition_zh || w.english_translation,
         pos: w.pos,
@@ -928,33 +899,24 @@ function WordLookupCard({
           </p>
         </div>
 
-        {/* Right: Current Status Badge + Mastered Toggle Button + Chevron */}
+        {/* Right: Current Status Badge (only if in SRS deck) + Mastered Toggle Button + Chevron */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Current Status Badge: NA / New / Learning / Mastered */}
-          <span
-            className={`px-2 py-0.5 rounded-lg text-[10px] sm:text-xs font-black border ${
-              isMastered
-                ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800"
-                : currentStatus === "learning"
-                ? "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800"
-                : currentStatus === "new"
-                ? "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800"
-                : "bg-gray-100 text-gray-600 border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700"
-            }`}
-            title={
-              currentStatus === "NA"
-                ? "NA: Dictionary word not yet added to study course/units or mastered"
-                : `Current status: ${isMastered ? "Mastered" : currentStatus === "learning" ? "Learning" : "New"}`
-            }
-          >
-            {isMastered
-              ? "Mastered"
-              : currentStatus === "learning"
-              ? "Learning"
-              : currentStatus === "new"
-              ? "New"
-              : "NA"}
-          </span>
+          {(isMastered || currentStatus === "learning" || currentStatus === "new") && (
+            <span
+              className={`px-2 py-0.5 rounded-lg text-[10px] sm:text-xs font-black border ${
+                isMastered
+                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800"
+                  : currentStatus === "learning"
+                  ? "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800"
+                  : "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800"
+              }`}
+              title={`Current SRS status: ${
+                isMastered ? "Mastered" : currentStatus === "learning" ? "Learning" : "New"
+              }`}
+            >
+              {isMastered ? "Mastered" : currentStatus === "learning" ? "Learning" : "New"}
+            </span>
+          )}
 
           <button
             type="button"

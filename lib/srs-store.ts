@@ -261,3 +261,25 @@ export async function upsertLocalCard(
   await persistStore(cards);
   return updatedRecord;
 }
+
+export async function deleteLocalCard(
+  word: string,
+  languageAliases?: string[],
+  userId?: string
+): Promise<void> {
+  const cards = await ensureStore();
+  const normWord = word.toLowerCase().trim();
+  const aliasSet = new Set((languageAliases || []).map((a) => a.toLowerCase().trim()));
+
+  const filtered = cards.filter((c) => {
+    const matchWord = c.word.toLowerCase().trim() === normWord;
+    const matchLang = aliasSet.size === 0 || aliasSet.has(c.language.toLowerCase().trim());
+    const matchUser = !userId || (c.userId || "default_user") === userId;
+    return !(matchWord && matchLang && matchUser);
+  });
+
+  if (filtered.length !== cards.length) {
+    await persistStore(filtered);
+  }
+}
+

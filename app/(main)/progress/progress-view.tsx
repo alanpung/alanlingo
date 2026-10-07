@@ -42,14 +42,12 @@ export function ProgressView({
   srsCards = [],
   language = "en",
   levelDictionaryCounts = { A1: 941, A2: 1614, B1: 4610, B2: 8760, C1: 5127, C2: 1275 },
-  libraryWords = [],
 }: {
   isAdmin?: boolean;
   isAuthorAllWords?: boolean;
   srsCards?: SrsCard[];
   language?: string;
   levelDictionaryCounts?: Record<string, number>;
-  libraryWords?: string[];
 }) {
   const [activeTab, setActiveTab] = useState<"author" | "inspector">("author");
   const [selectedLevel, setSelectedLevel] = useState<string>("");
@@ -109,38 +107,17 @@ export function ProgressView({
       };
     });
 
-    const cardMap = new Map<string, SrsCard>();
-    cards.forEach((c) => {
-      if (c.word) cardMap.set(c.word.toLowerCase().trim(), c);
-    });
-
-    const libSet = new Set((libraryWords || []).map((w) => w.toLowerCase().trim()));
-
-    // Process library words for New / Learning / Mastered
-    libSet.forEach((w) => {
-      const card = cardMap.get(w);
-      const lvl = (card?.cefrLevel || "A1").toUpperCase().trim();
+    cards.forEach((card) => {
+      if (!card.word) return;
+      const lvl = (card.cefrLevel || "A1").toUpperCase().trim();
       const targetLvl = CEFR_LEVELS.includes(lvl as (typeof CEFR_LEVELS)[number]) ? lvl : "A1";
 
-      if (card && (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3))) {
+      if (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3)) {
         stats[targetLvl].learned++;
-      } else if (card && card.status === "learning") {
+      } else if (card.status === "learning") {
         stats[targetLvl].learning++;
-      } else {
+      } else if (card.status === "new") {
         stats[targetLvl].new++;
-      }
-    });
-
-    // Also account for any cards marked as learning or learned that might not be in libraryWords explicitly
-    cardMap.forEach((card, w) => {
-      if (!libSet.has(w)) {
-        const lvl = (card.cefrLevel || "A1").toUpperCase().trim();
-        const targetLvl = CEFR_LEVELS.includes(lvl as (typeof CEFR_LEVELS)[number]) ? lvl : "A1";
-        if (card.status === "learned" || card.status === "review" || (card.repetitions && card.repetitions >= 3)) {
-          stats[targetLvl].learned++;
-        } else if (card.status === "learning") {
-          stats[targetLvl].learning++;
-        }
       }
     });
 
@@ -149,7 +126,7 @@ export function ProgressView({
     });
 
     return stats;
-  }, [cards, levelDictionaryCounts, libraryWords, isAuthorAllWords]);
+  }, [cards, levelDictionaryCounts, isAuthorAllWords]);
 
   const totalLearning = useMemo(() => {
     return Object.values(levelStats).reduce((acc, curr) => acc + curr.learning, 0);
@@ -228,7 +205,7 @@ export function ProgressView({
                 {totalMyWords.toLocaleString()}
               </p>
               <span className="text-[10px] text-lingo-text-light font-bold block mt-0.5">
-                Mastered + Learning
+                Mastered + Learning + New
               </span>
             </div>
 
@@ -417,22 +394,19 @@ export function ProgressView({
               Progress Column Definitions
             </p>
             <p>
-              • <strong>My Words:</strong> Total vocabulary actively in your study queue (Mastered + Learning).
+              • <strong>My Words:</strong> Total vocabulary in your SRS deck (Mastered + Learning + New).
             </p>
             <p>
-              • <strong>Mastered:</strong> Words you have correctly answered 3 or more times, or marked as mastered (M) during review.
+              • <strong>Mastered:</strong> Words you have correctly answered 3 or more times, or marked as mastered during review.
             </p>
             <p>
               • <strong>Learning:</strong> Words in active practice that you have encountered in lessons, units, or exercises.
             </p>
             <p>
-              • <strong>New:</strong> Words from courses and units in your library that you have added but not yet encountered or practiced.
+              • <strong>New:</strong> Words added to your library ready to be studied.
             </p>
             <p>
               • <strong>Word Count:</strong> Total words available in the system dictionary.
-            </p>
-            <p>
-              • <strong>NA:</strong> Dictionary words yet added to study course/units or mastered. Once added to course/units, it will be either assigned New, Learning, or Mastered.
             </p>
           </div>
         </div>

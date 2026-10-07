@@ -1,4 +1,4 @@
-import { getAllCards, getSrsStats, getLibraryWordSet } from "@/lib/actions/srs";
+import { getAllCards, getSrsStats } from "@/lib/actions/srs";
 import { getTargetLanguage } from "@/lib/actions/preferences";
 import { getEnLevelCounts } from "@/lib/words";
 import { getSession } from "@/lib/auth-server";
@@ -12,9 +12,8 @@ export default async function WordsPage() {
   const session = await getSession();
   const isAdmin = isAdminEmail(session?.user?.email);
   const language = (await getTargetLanguage()) || "en";
-  const userId = session?.user?.id || "default_user";
 
-  const [srsCards, stats, libraryWordSet] = await Promise.all([
+  const [srsCards, stats] = await Promise.all([
     getAllCards(language).catch(() => []),
     getSrsStats(language).catch(() => ({
       total: 0,
@@ -27,7 +26,6 @@ export default async function WordsPage() {
       ok: 0,
       easy: 0,
     })),
-    getLibraryWordSet(userId, language).catch(() => new Set<string>()),
   ]);
 
   const levelCounts = getEnLevelCounts();
@@ -40,7 +38,6 @@ export default async function WordsPage() {
         srsStats={stats}
         language={language}
         levelDictionaryCounts={levelCounts}
-        libraryWords={Array.from(libraryWordSet)}
       />
     </div>
   );

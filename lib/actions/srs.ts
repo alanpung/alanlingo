@@ -14,6 +14,7 @@ import {
   getLocalCards,
   getLocalCard,
   upsertLocalCard,
+  deleteLocalCard,
 } from "@/lib/srs-store";
 
 export async function migrateDefaultUserCards(userId: string) {
@@ -291,11 +292,7 @@ export interface SrsCardItem {
 
 export async function getAllCards(language?: string): Promise<SrsCardItem[]> {
   const userId = await getSafeUserId();
-  try {
-    const { seedContentFromFilesystem } = await import("@/lib/db/seed-content");
-    await seedContentFromFilesystem();
-  } catch {}
-  await syncUserCourseWordsToSrs(userId, true);
+  await syncUserCourseWordsToSrs(userId, false);
   const aliases = language ? getLanguageAliases(language) : [];
   const dbUp = await isDbAvailable();
 
@@ -569,7 +566,7 @@ export async function getSrsStats(language?: string) {
 export async function setWordStatus(
   word: string,
   language: string,
-  status: "new" | "learning" | "learned",
+  status: "new" | "learning" | "learned" | "remove",
   metadata?: { translation?: string; cefrLevel?: string; pos?: string }
 ) {
   const userId = await getSafeUserId();
@@ -577,6 +574,30 @@ export async function setWordStatus(
   const langKey = (language || "en").toLowerCase().trim();
   const aliases = getLanguageAliases(langKey);
   const dbUp = await isDbAvailable();
+
+  if (status === "remove") {
+    await deleteLocalCard(normalizedWord, aliases, userId);
+    if (dbUp) {
+      try {
+        await db
+          .delete(srsCard)
+          .where(
+            and(
+              eq(srsCard.word, normalizedWord),
+              inArray(srsCard.language, aliases),
+              eq(srsCard.userId, userId)
+            )
+          );
+      } catch (err) {
+        console.error("setWordStatus remove DB error:", err);
+      }
+    }
+    try {
+      revalidatePath("/progress");
+      revalidatePath("/words");
+    } catch {}
+    return { success: true, word: normalizedWord, status: "remove" };
+  }
 
   const translation = metadata?.translation || word;
   let cefrLevel = metadata?.cefrLevel || null;
@@ -1401,107 +1422,5 @@ export async function cleanupUnstudiedCourseWordsFromSrs(userId: string): Promis
   } catch (err) {
     console.error("cleanupUnstudiedCourseWordsFromSrs error:", err);
   }
-}
-
-export async function getLibraryWordSet(userId: string, language: string = "en"): Promise<Set<string>> {
-  const wordSet = new Set<string>();
-  if (!userId) return wordSet;
-  const dbUp = await isDbAvailable();
-
-  const enrolledCourseIds = new Set<string>();
-  if (dbUp) {
-    try {
-      const enrollments = await db
-        .select({ courseId: userCourseEnrollment.courseId })
-        .from(userCourseEnrollment)
-        .where(eq(userCourseEnrollment.userId, userId));
-      enrollments.forEach((e) => enrolledCourseIds.add(e.courseId));
-    } catch {}
-  }
-  if (dbUp) {
-    try {
-      const created = await db
-        .select({ id: course.id })
-        .from(course)
-        .where(eq(course.createdBy, userId));
-      created.forEach((c) => enrolledCourseIds.add(c.id));
-    } catch {}
-  }
-
-  const standaloneUnitIds = new Set<string>();
-  if (dbUp) {
-    try {
-      const libraryUnitRows = await db
-        .select({ unitId: userUnitLibrary.unitId, courseId: unit.courseId })
-        .from(userUnitLibrary)
-        .innerJoin(unit, eq(unit.id, userUnitLibrary.unitId))
-        .where(eq(userUnitLibrary.userId, userId));
-      for (const u of libraryUnitRows) {
-        if (u.courseId) enrolledCourseIds.add(u.courseId);
-        else standaloneUnitIds.add(u.unitId);
-      }
-    } catch {}
-  }
-
-  if (enrolledCourseIds.size === 0 && standaloneUnitIds.size === 0) {
-    enrolledCourseIds.add("a1-flashcard-course");
-    enrolledCourseIds.add("a2-flashcard-course");
-  }
-
-  const unitConditions = [];
-  if (enrolledCourseIds.size > 0) {
-    unitConditions.push(inArray(unit.courseId, Array.from(enrolledCourseIds)));
-  }
-  if (standaloneUnitIds.size > 0) {
-    unitConditions.push(inArray(unit.id, Array.from(standaloneUnitIds)));
-  }
-
-  let activeUnits: { markdown: string | null }[] = [];
-  if (dbUp && unitConditions.length > 0) {
-    try {
-      activeUnits = await db
-        .select({ markdown: unit.markdown })
-        .from(unit)
-        .where(or(...unitConditions));
-    } catch {}
-  }
-
-  const { loadContentDir, getUnitLessonsSafe } = await import("@/lib/content/loader");
-  const { units: fsUnits } = loadContentDir();
-
-  for (const u of activeUnits) {
-    if (u.markdown) {
-      const { lessons } = getUnitLessonsSafe(u.markdown);
-      for (const l of lessons) {
-        for (const ex of l.exercises) {
-          const ws = extractSrsWords(ex);
-          ws.forEach((w) => wordSet.add(w.toLowerCase().trim()));
-          const exAny = ex as any;
-          if (typeof exAny.front === "string") {
-            wordSet.add(exAny.front.toLowerCase().trim());
-          }
-        }
-      }
-    }
-  }
-
-  for (const fsu of fsUnits) {
-    const cId = fsu.parsed.courseId;
-    if (cId && enrolledCourseIds.has(cId)) {
-      const { lessons } = getUnitLessonsSafe(fsu.markdown);
-      for (const l of lessons) {
-        for (const ex of l.exercises) {
-          const ws = extractSrsWords(ex);
-          ws.forEach((w) => wordSet.add(w.toLowerCase().trim()));
-          const exAny = ex as any;
-          if (typeof exAny.front === "string") {
-            wordSet.add(exAny.front.toLowerCase().trim());
-          }
-        }
-      }
-    }
-  }
-
-  return wordSet;
 }
 
