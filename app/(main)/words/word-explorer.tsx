@@ -172,12 +172,14 @@ function fallbackSpeechSynthesis(text: string, lang: string = "en") {
 
 export function WordExplorer({
   srsCards = [],
+  libraryWords = [],
   language = "en",
 }: {
   isAdmin?: boolean;
   words?: Word[];
   srsCards?: SrsCard[];
   srsStats?: SrsStats;
+  libraryWords?: string[];
   language?: string;
   levelDictionaryCounts?: Record<string, number>;
 }) {
@@ -189,6 +191,10 @@ export function WordExplorer({
   useEffect(() => {
     setCards(srsCards || []);
   }, [srsCards]);
+
+  const libraryWordSet = useMemo(() => {
+    return new Set((libraryWords || []).map((w) => w.toLowerCase().trim()));
+  }, [libraryWords]);
 
   // Map user cards by normalized word
   const srsMap = useMemo(() => {
@@ -268,6 +274,7 @@ export function WordExplorer({
         language={language}
         srsMap={srsMap}
         srsCards={cards}
+        libraryWordSet={libraryWordSet}
         onCardStatusChange={handleCardStatusChange}
       />
     </div>
@@ -284,6 +291,7 @@ function WordLookupSection({
   language,
   srsMap,
   srsCards,
+  libraryWordSet,
   onCardStatusChange,
 }: {
   selectedLevel: string;
@@ -291,6 +299,7 @@ function WordLookupSection({
   language: string;
   srsMap: Map<string, SrsCard>;
   srsCards: SrsCard[];
+  libraryWordSet?: Set<string>;
   onCardStatusChange?: (
     word: string,
     status: "new" | "learning" | "learned" | "remove",
@@ -738,6 +747,7 @@ function WordLookupSection({
                   word={w}
                   card={card}
                   language={language}
+                  libraryWordSet={libraryWordSet}
                   onStatusChange={onCardStatusChange}
                 />
               );
@@ -777,11 +787,13 @@ function WordLookupCard({
   word: w,
   card,
   language,
+  libraryWordSet,
   onStatusChange,
 }: {
   word: Word;
   card?: SrsCard;
   language: string;
+  libraryWordSet?: Set<string>;
   onStatusChange?: (
     word: string,
     status: "new" | "learning" | "learned" | "remove",
@@ -841,10 +853,13 @@ function WordLookupCard({
   const levelBadge = LEVEL_BADGES[level] || LEVEL_BADGES["A1"];
 
   const isMastered = currentStatus === "learned" || currentStatus === "review";
+  const isInLibrary = Boolean(libraryWordSet && libraryWordSet.has(w.word.toLowerCase().trim()));
 
   async function handleClearStatus() {
-    setCurrentStatus("");
-    onStatusChange?.(w.word, "remove", {
+    // If in library, clicking status badge when learning or mastered sets to "new"; if already "new" or not in library, removes to none
+    const nextAction = isInLibrary && currentStatus !== "new" ? "new" : "remove";
+    setCurrentStatus(nextAction === "remove" ? "" : nextAction);
+    onStatusChange?.(w.word, nextAction, {
       cefrLevel: w.cefr_level,
       translation: w.definition_zh || w.english_translation,
       pos: w.pos,
@@ -852,20 +867,21 @@ function WordLookupCard({
 
     setIsUpdating(true);
     try {
-      await setWordStatus(w.word, language, "remove", {
+      await setWordStatus(w.word, language, nextAction, {
         cefrLevel: w.cefr_level,
         translation: w.definition_zh || w.english_translation,
         pos: w.pos,
       });
     } catch (err) {
-      console.error("Failed to remove word status:", err);
+      console.error("Failed to reset word status:", err);
     } finally {
       setIsUpdating(false);
     }
   }
 
   async function handleToggleMastered() {
-    const nextAction = isMastered ? "remove" : "learned";
+    // If currently mastered, unmastering ("xmaster") sets to "new" if word is in user's library course/unit, or "remove" (none) if not in library
+    const nextAction = isMastered ? (isInLibrary ? "new" : "remove") : "learned";
     setCurrentStatus(nextAction === "remove" ? "" : nextAction);
     onStatusChange?.(w.word, nextAction, {
       cefrLevel: w.cefr_level,

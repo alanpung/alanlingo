@@ -563,10 +563,138 @@ export async function getSrsStats(language?: string) {
   };
 }
 
+const userLibraryWordsCache = new Map<string, { timestamp: number; words: string[] }>();
+
+export function invalidateUserLibraryWordsCache(userId?: string) {
+  if (userId) userLibraryWordsCache.delete(userId);
+  else userLibraryWordsCache.clear();
+}
+
+export async function getUserLibraryWords(userIdParam?: string): Promise<string[]> {
+  const userId = userIdParam || (await getSafeUserId());
+  if (!userId || userId === "default_user") return [];
+
+  const cached = userLibraryWordsCache.get(userId);
+  if (cached && Date.now() - cached.timestamp < 60000) {
+    return cached.words;
+  }
+
+  const dbUp = await isDbAvailable();
+  const enrolledCourseIds = new Set<string>();
+
+  if (dbUp) {
+    try {
+      const enrollments = await db
+        .select({ courseId: userCourseEnrollment.courseId })
+        .from(userCourseEnrollment)
+        .where(eq(userCourseEnrollment.userId, userId));
+      enrollments.forEach((e) => enrolledCourseIds.add(e.courseId));
+
+      const createdCourses = await db
+        .select({ id: course.id })
+        .from(course)
+        .where(eq(course.createdBy, userId));
+      createdCourses.forEach((c) => enrolledCourseIds.add(c.id));
+    } catch {}
+  }
+
+  const { getLocalCourseEnrollments } = await import("@/lib/srs-store");
+  const localEnrollments = await getLocalCourseEnrollments(userId);
+  localEnrollments.forEach((id) => enrolledCourseIds.add(id));
+
+  const standaloneUnitIds = new Set<string>();
+  if (dbUp) {
+    try {
+      const libraryUnitRows = await db
+        .select({ unitId: userUnitLibrary.unitId, courseId: unit.courseId })
+        .from(userUnitLibrary)
+        .innerJoin(unit, eq(unit.id, userUnitLibrary.unitId))
+        .where(eq(userUnitLibrary.userId, userId));
+      for (const u of libraryUnitRows) {
+        if (u.courseId) enrolledCourseIds.add(u.courseId);
+        else standaloneUnitIds.add(u.unitId);
+      }
+    } catch {}
+  }
+
+  if (enrolledCourseIds.size === 0 && standaloneUnitIds.size === 0) {
+    userLibraryWordsCache.set(userId, { timestamp: Date.now(), words: [] });
+    return [];
+  }
+
+  const unitConditions = [];
+  if (enrolledCourseIds.size > 0) {
+    unitConditions.push(inArray(unit.courseId, Array.from(enrolledCourseIds)));
+  }
+  if (standaloneUnitIds.size > 0) {
+    unitConditions.push(inArray(unit.id, Array.from(standaloneUnitIds)));
+  }
+
+  let activeUnits: { id: string; markdown: string; level: string | null; targetLanguage: string | null }[] = [];
+  if (dbUp && unitConditions.length > 0) {
+    try {
+      activeUnits = await db
+        .select({
+          id: unit.id,
+          markdown: unit.markdown,
+          level: unit.level,
+          targetLanguage: unit.targetLanguage,
+        })
+        .from(unit)
+        .where(or(...unitConditions));
+    } catch (err) {
+      console.warn("Error fetching units from DB in getUserLibraryWords:", err);
+    }
+  }
+
+  const { loadContentDir, getUnitLessonsSafe } = await import("@/lib/content/loader");
+  const { units: fsUnits } = loadContentDir();
+
+  const unitMap = new Map<string, { id: string; markdown: string }>();
+  for (const u of activeUnits) {
+    if (u.id && u.markdown) {
+      unitMap.set(u.id, { id: u.id, markdown: u.markdown });
+    }
+  }
+  for (const fsu of fsUnits) {
+    const cId = fsu.parsed.courseId;
+    if (cId && enrolledCourseIds.has(cId)) {
+      const match = fsu.parsed.title.match(/Unit\s+(\d+)/i);
+      const unitNum = match ? parseInt(match[1], 10) : null;
+      const uId = unitNum ? `${cId}-unit-${unitNum}` : `${cId}-${fsu.parsed.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+      if (!unitMap.has(uId)) {
+        unitMap.set(uId, { id: uId, markdown: fsu.markdown });
+      }
+    }
+  }
+
+  const wordSet = new Set<string>();
+  for (const u of unitMap.values()) {
+    if (!u.markdown) continue;
+    const { lessons } = getUnitLessonsSafe(u.markdown);
+    for (const lesson of lessons) {
+      for (const ex of lesson.exercises) {
+        const exAny = ex as unknown as Record<string, unknown>;
+        const words = extractSrsWords(ex);
+        const frontWord = typeof exAny.front === "string" ? exAny.front.toLowerCase().trim() : null;
+        const targetWords = words.length > 0 ? words : frontWord ? [frontWord] : [];
+        for (const w of targetWords) {
+          const norm = w.toLowerCase().trim();
+          if (norm) wordSet.add(norm);
+        }
+      }
+    }
+  }
+
+  const result = Array.from(wordSet);
+  userLibraryWordsCache.set(userId, { timestamp: Date.now(), words: result });
+  return result;
+}
+
 export async function setWordStatus(
   word: string,
   language: string,
-  status: "new" | "learning" | "learned" | "remove",
+  status: "new" | "learning" | "learned" | "remove" | "unmaster",
   metadata?: { translation?: string; cefrLevel?: string; pos?: string }
 ) {
   const userId = await getSafeUserId();
@@ -575,7 +703,15 @@ export async function setWordStatus(
   const aliases = getLanguageAliases(langKey);
   const dbUp = await isDbAvailable();
 
-  if (status === "remove") {
+  // If status is "unmaster", check if the word is in the user's active library courses/units
+  let effectiveStatus = status;
+  if (status === "unmaster") {
+    const libraryWords = await getUserLibraryWords(userId);
+    const inLibrary = libraryWords.some((w) => w.toLowerCase().trim() === normalizedWord);
+    effectiveStatus = inLibrary ? "new" : "remove";
+  }
+
+  if (effectiveStatus === "remove") {
     await deleteLocalCard(normalizedWord, aliases, userId);
     if (dbUp) {
       try {
@@ -612,8 +748,8 @@ export async function setWordStatus(
     }
   }
 
-  const reps = status === "learned" ? 10 : status === "learning" ? 1 : 0;
-  const interval = status === "learned" ? 36500 : status === "learning" ? 1 : 0;
+  const reps = effectiveStatus === "learned" ? 10 : effectiveStatus === "learning" ? 1 : 0;
+  const interval = effectiveStatus === "learned" ? 36500 : effectiveStatus === "learning" ? 1 : 0;
   const now = new Date();
 
   // 1. Always save locally first for instant file persistence
@@ -621,12 +757,12 @@ export async function setWordStatus(
     word: normalizedWord,
     language: aliases[0] || langKey,
     userId,
-    status,
+    status: effectiveStatus,
     translation,
     cefrLevel,
     pos,
-    nextReviewAt: status === "learning" ? now.toISOString() : null,
-    lastReviewedAt: status === "learned" ? now.toISOString() : null,
+    nextReviewAt: effectiveStatus === "learning" ? now.toISOString() : null,
+    lastReviewedAt: effectiveStatus === "learned" ? now.toISOString() : null,
     interval,
     repetitions: reps,
   });
@@ -649,12 +785,12 @@ export async function setWordStatus(
         await db
           .update(srsCard)
           .set({
-            status,
+            status: effectiveStatus,
             translation: metadata?.translation || existing.translation,
             cefrLevel: cefrLevel || existing.cefrLevel,
             pos: pos || existing.pos,
-            nextReviewAt: status === "learning" ? now : null,
-            lastReviewedAt: status === "learned" ? now : existing.lastReviewedAt,
+            nextReviewAt: effectiveStatus === "learning" ? now : null,
+            lastReviewedAt: effectiveStatus === "learned" ? now : null,
             interval,
             repetitions: reps,
           })
@@ -675,21 +811,21 @@ export async function setWordStatus(
             translation,
             cefrLevel,
             pos,
-            status,
-            nextReviewAt: status === "learning" ? now : null,
-            lastReviewedAt: status === "learned" ? now : null,
+            status: effectiveStatus,
+            nextReviewAt: effectiveStatus === "learning" ? now : null,
+            lastReviewedAt: effectiveStatus === "learned" ? now : null,
             interval,
             repetitions: reps,
           })
           .onConflictDoUpdate({
             target: [srsCard.word, srsCard.language, srsCard.userId],
             set: {
-              status,
+              status: effectiveStatus,
               translation,
               cefrLevel: cefrLevel || sql`COALESCE(${srsCard.cefrLevel}, ${cefrLevel})`,
               pos: pos || sql`COALESCE(${srsCard.pos}, ${pos})`,
-              nextReviewAt: status === "learning" ? now : null,
-              lastReviewedAt: status === "learned" ? now : sql`${srsCard.lastReviewedAt}`,
+              nextReviewAt: effectiveStatus === "learning" ? now : null,
+              lastReviewedAt: effectiveStatus === "learned" ? now : null,
               interval,
               repetitions: reps,
             },
@@ -705,7 +841,7 @@ export async function setWordStatus(
     revalidatePath("/words");
   } catch {}
 
-  return { success: true, word: normalizedWord, status };
+  return { success: true, word: normalizedWord, status: effectiveStatus };
 }
 
 export async function getNewCards(language: string, limit = 20) {
