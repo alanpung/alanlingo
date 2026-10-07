@@ -185,33 +185,10 @@ export function WordExplorer({
   const [selectedLevel, setSelectedLevel] = useState<string>("");
   const [cards, setCards] = useState<SrsCard[]>(srsCards);
 
-  // Sync state when props change without heavy synchronous localStorage operations
+  // Sync state when props change
   useEffect(() => {
     setCards(srsCards || []);
   }, [srsCards]);
-
-  // Sync localStorage cards on mount so srsMap always includes local cards
-  useEffect(() => {
-    try {
-      const local = localStorage.getItem("openlingo_srs_cards_v1");
-      if (local) {
-        const parsed = JSON.parse(local);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setCards((prev) => {
-            const map = new Map<string, SrsCard>();
-            prev.forEach((c) => map.set(c.word.toLowerCase().trim(), c));
-            parsed.forEach((c: SrsCard) => {
-              const norm = c.word.toLowerCase().trim();
-              if (!map.has(norm)) {
-                map.set(norm, c);
-              }
-            });
-            return Array.from(map.values());
-          });
-        }
-      }
-    } catch {}
-  }, []);
 
   // Map user cards by normalized word
   const srsMap = useMemo(() => {
@@ -342,29 +319,33 @@ function WordLookupSection({
   const isSrsSpecificFilter =
     statusFilter === "learning" || statusFilter === "learned" || statusFilter === "new";
 
+  const liveLearnedCount = useMemo(() => {
+    return srsCards.filter(
+      (c) =>
+        c.status === "learned" ||
+        c.status === "review" ||
+        (c.repetitions && c.repetitions >= 3)
+    ).length;
+  }, [srsCards]);
+
+  const liveLearningCount = useMemo(() => {
+    return srsCards.filter(
+      (c) => c.status === "learning" && (!c.repetitions || c.repetitions < 3)
+    ).length;
+  }, [srsCards]);
+
+  const liveNewCount = useMemo(() => {
+    return srsCards.filter(
+      (c) => c.status === "new" && (!c.repetitions || c.repetitions < 3)
+    ).length;
+  }, [srsCards]);
+
   useEffect(() => {
     let cancelled = false;
 
     if (isSrsSpecificFilter) {
       setLoading(true);
       let cards = srsCards;
-      try {
-        const local = localStorage.getItem("openlingo_srs_cards_v1");
-        if (local) {
-          const parsed = JSON.parse(local);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            const map = new Map<string, SrsCard>();
-            srsCards.forEach(c => map.set(c.word.toLowerCase().trim(), c));
-            parsed.forEach(c => {
-              const norm = c.word.toLowerCase().trim();
-              if (!map.has(norm)) {
-                map.set(norm, c);
-              }
-            });
-            cards = Array.from(map.values());
-          }
-        }
-      } catch {}
 
       if (selectedLevel) {
         cards = cards.filter(
@@ -647,15 +628,15 @@ function WordLookupSection({
           </div>
         </div>
 
-        {/* Status Filter (All, Learned, Learning, New) */}
+        {/* Status Filter (All, Mastered, Learning, New) */}
         <div className="w-full rounded-2xl border-2 border-lingo-border bg-lingo-card p-1 sm:p-1.5 shadow-xs">
           <div className="flex items-center justify-between gap-1 w-full">
             {(
               [
-                { key: "all", label: "All" },
-                { key: "learned", label: "Mastered" },
-                { key: "learning", label: "Learning" },
-                { key: "new", label: "New" },
+                { key: "all", label: "All", count: null, short: "" },
+                { key: "learned", label: "Mastered", count: liveLearnedCount, short: "M" },
+                { key: "learning", label: "Learning", count: liveLearningCount, short: "L" },
+                { key: "new", label: "New", count: liveNewCount, short: "N" },
               ] as const
             ).map((f) => {
               const active = statusFilter === f.key;
@@ -663,13 +644,28 @@ function WordLookupSection({
                 <button
                   key={f.key}
                   onClick={() => handleStatusChange(f.key)}
-                  className={`flex-1 h-6 sm:h-7 rounded text-[10px] sm:text-xs font-bold transition-all text-center flex items-center justify-center min-w-0 ${
+                  className={`flex-1 h-7 sm:h-8 rounded text-[10px] sm:text-xs font-bold transition-all text-center flex items-center justify-center gap-1 min-w-0 px-1 ${
                     active
                       ? "bg-lingo-blue text-white shadow-xs font-black"
                       : "text-lingo-text-light hover:text-lingo-text hover:bg-lingo-gray/30"
                   }`}
                 >
-                  {f.label}
+                  <span className="truncate">{f.label}</span>
+                  {f.count !== null && (
+                    <span
+                      className={`px-1.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black shrink-0 ${
+                        active
+                          ? "bg-white/25 text-white"
+                          : f.short === "M"
+                          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300"
+                          : f.short === "L"
+                          ? "bg-amber-100 text-amber-900 dark:bg-amber-950/80 dark:text-amber-300"
+                          : "bg-blue-100 text-blue-800 dark:bg-blue-950/80 dark:text-blue-300"
+                      }`}
+                    >
+                      {f.count}
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -846,48 +842,36 @@ function WordLookupCard({
 
   const isMastered = currentStatus === "learned" || currentStatus === "review";
 
+  async function handleClearStatus() {
+    setCurrentStatus("");
+    onStatusChange?.(w.word, "remove", {
+      cefrLevel: w.cefr_level,
+      translation: w.definition_zh || w.english_translation,
+      pos: w.pos,
+    });
+
+    setIsUpdating(true);
+    try {
+      await setWordStatus(w.word, language, "remove", {
+        cefrLevel: w.cefr_level,
+        translation: w.definition_zh || w.english_translation,
+        pos: w.pos,
+      });
+    } catch (err) {
+      console.error("Failed to remove word status:", err);
+    } finally {
+      setIsUpdating(false);
+    }
+  }
+
   async function handleToggleMastered() {
-    const wasInDeck = Boolean(card && (card.status === "new" || card.status === "learning"));
-    const nextAction = isMastered ? (wasInDeck ? "new" : "remove") : "learned";
+    const nextAction = isMastered ? "remove" : "learned";
     setCurrentStatus(nextAction === "remove" ? "" : nextAction);
     onStatusChange?.(w.word, nextAction, {
       cefrLevel: w.cefr_level,
       translation: w.definition_zh || w.english_translation,
       pos: w.pos,
     });
-
-    try {
-      const local = localStorage.getItem("openlingo_srs_cards_v1");
-      if (local) {
-        const parsed = JSON.parse(local);
-        if (Array.isArray(parsed)) {
-          const norm = w.word.toLowerCase().trim();
-          if (nextAction === "remove") {
-            const filtered = parsed.filter((c: any) => c.word?.toLowerCase().trim() !== norm);
-            localStorage.setItem("openlingo_srs_cards_v1", JSON.stringify(filtered));
-          } else {
-            const idx = parsed.findIndex((c: any) => c.word?.toLowerCase().trim() === norm);
-            const reps = nextAction === "learned" ? 10 : 0;
-            if (idx >= 0) {
-              parsed[idx].status = nextAction;
-              parsed[idx].repetitions = reps;
-              parsed[idx].interval = nextAction === "learned" ? 36500 : 0;
-            } else {
-              parsed.push({
-                word: norm,
-                status: nextAction,
-                repetitions: reps,
-                language,
-                cefrLevel: w.cefr_level,
-                translation: w.definition_zh || w.english_translation,
-                pos: w.pos,
-              });
-            }
-            localStorage.setItem("openlingo_srs_cards_v1", JSON.stringify(parsed));
-          }
-        }
-      }
-    } catch {}
 
     setIsUpdating(true);
     try {
@@ -967,20 +951,26 @@ function WordLookupCard({
         {/* Right: Rounded Status Icon (N / L / M) + Tick Button for Mastered + Chevron */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {(isMastered || currentStatus === "learning" || currentStatus === "new") && (
-            <span
-              className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-[11px] font-black shadow-xs shrink-0 ${
+            <button
+              type="button"
+              disabled={isUpdating}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClearStatus();
+              }}
+              className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-[11px] font-black shadow-xs shrink-0 cursor-pointer hover:scale-110 hover:opacity-80 transition-all ${
                 isMastered
                   ? "bg-emerald-500 text-white"
                   : currentStatus === "learning"
                   ? "bg-amber-400 text-amber-950"
                   : "bg-blue-500 text-white"
               }`}
-              title={`Current status: ${
+              title={`Status: ${
                 isMastered ? "Mastered (M)" : currentStatus === "learning" ? "Learning (L)" : "New (N)"
-              }`}
+              } — Click to clear status`}
             >
               {isMastered ? "M" : currentStatus === "learning" ? "L" : "N"}
-            </span>
+            </button>
           )}
 
           <button
@@ -995,7 +985,7 @@ function WordLookupCard({
                 ? "bg-emerald-500 text-white hover:bg-emerald-600 ring-2 ring-emerald-300"
                 : "bg-white text-lingo-text-light border-2 border-lingo-border hover:border-emerald-500 hover:text-emerald-600"
             }`}
-            title={isMastered ? "Mastered — click to unmaster" : "Mark as Mastered"}
+            title={isMastered ? "Mastered (M) — click to unmaster" : "Mark as Mastered"}
           >
             <Check className="w-3.5 h-3.5 stroke-[3]" />
           </button>

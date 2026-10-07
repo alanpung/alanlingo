@@ -53,32 +53,9 @@ export function ProgressView({
   const [selectedLevel, setSelectedLevel] = useState<string>("");
   const [cards, setCards] = useState<SrsCard[]>(srsCards);
 
-  // Sync with server cards and client localStorage for real-time updates when words are set to learned in dictionary
+  // Sync with server cards
   useEffect(() => {
-    try {
-      const local = localStorage.getItem("openlingo_srs_cards_v1");
-      if (local) {
-        const parsed = JSON.parse(local);
-        if (Array.isArray(parsed)) {
-          const mergedMap = new Map<string, SrsCard>();
-          srsCards.forEach((c) => mergedMap.set(c.word.toLowerCase().trim(), c));
-          parsed.forEach((c: SrsCard) => {
-            if (c.word) {
-              const key = c.word.toLowerCase().trim();
-              const existing = mergedMap.get(key);
-              if (!existing) {
-                mergedMap.set(key, c);
-              } else if (c.status !== "new" || c.repetitions > (existing.repetitions || 0)) {
-                mergedMap.set(key, { ...existing, ...c });
-              }
-            }
-          });
-          setCards(Array.from(mergedMap.values()));
-          return;
-        }
-      }
-    } catch {}
-    setCards(srsCards);
+    setCards(srsCards || []);
   }, [srsCards]);
 
   // Compute level statistics live based on libraryWords and cards

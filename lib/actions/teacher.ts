@@ -133,8 +133,7 @@ export async function getStudentsList(): Promise<StudentSummary[]> {
             const localCards = allLocalCards.filter(
               (c) =>
                 c.userId === r.id ||
-                (r.email && c.userId?.toLowerCase() === r.email.toLowerCase()) ||
-                c.userId === "default_user"
+                (r.email && c.userId?.toLowerCase() === r.email.toLowerCase())
             );
             learned = localCards.filter(
               (c) => c.status === "learned" || c.status === "review" || (c.repetitions && c.repetitions >= 3)
