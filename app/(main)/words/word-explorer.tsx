@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ChevronUp,
   Search,
+  Check,
   CheckCircle2,
   Clock,
   RotateCcw,
@@ -387,22 +388,55 @@ function WordLookupSection({
         );
       }
 
-      const mappedWords: Word[] = cards.map((c) => ({
-        word: c.word,
-        cefr_level: c.cefrLevel || "A1",
-        english_translation: c.translation,
-        definition_zh: c.translation,
-        pos: c.pos || "noun",
-        example_sentence_native: "",
-        example_sentence_english: "",
-        _card: c,
-      }));
+      const totalCount = cards.length;
+      const slicedCards = cards.slice(0, page * 50);
 
-      setTotal(mappedWords.length);
-      setWords(mappedWords.slice(0, page * 50));
-      setHasMore(page * 50 < mappedWords.length);
-      setLoading(false);
-      return;
+      async function enrichAndSetCards() {
+        const dictMap = new Map<string, Word>();
+        if (slicedCards.length > 0) {
+          try {
+            const wordListParam = slicedCards.map((c) => c.word.toLowerCase().trim()).join(",");
+            const res = await fetch(
+              `/api/words?lang=${encodeURIComponent(language)}&words=${encodeURIComponent(wordListParam)}&limit=100`
+            );
+            if (res.ok) {
+              const data = await res.json();
+              (data.words || []).forEach((dw: Word) => {
+                dictMap.set(dw.word.toLowerCase().trim(), dw);
+              });
+            }
+          } catch {}
+        }
+
+        if (cancelled) return;
+
+        const mappedWords: Word[] = slicedCards.map((c) => {
+          const dictEntry = dictMap.get(c.word.toLowerCase().trim());
+          return {
+            word: c.word,
+            cefr_level: dictEntry?.cefr_level || c.cefrLevel || "A1",
+            english_translation: dictEntry?.english_translation || c.translation,
+            definition_zh: dictEntry?.definition_zh || c.translation,
+            pos: dictEntry?.pos || c.pos || "noun",
+            example_sentence_native: dictEntry?.example_sentence_native || "",
+            example_sentence_english: dictEntry?.example_sentence_english || "",
+            example_zh: dictEntry?.example_zh,
+            ipa: dictEntry?.ipa,
+            domain_tags: dictEntry?.domain_tags,
+            _card: c,
+          };
+        });
+
+        setTotal(totalCount);
+        setWords(mappedWords);
+        setHasMore(page * 50 < totalCount);
+        setLoading(false);
+      }
+
+      enrichAndSetCards();
+      return () => {
+        cancelled = true;
+      };
     }
 
     // When status is "all" or "new", fetch from the full dictionary API
@@ -899,22 +933,22 @@ function WordLookupCard({
           </p>
         </div>
 
-        {/* Right: Current Status Badge (only if in SRS deck) + Mastered Toggle Button + Chevron */}
+        {/* Right: Rounded Status Icon (N / L / M) + Tick Button for Mastered + Chevron */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {(isMastered || currentStatus === "learning" || currentStatus === "new") && (
             <span
-              className={`px-2 py-0.5 rounded-lg text-[10px] sm:text-xs font-black border ${
+              className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-[11px] font-black shadow-xs shrink-0 ${
                 isMastered
-                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800"
+                  ? "bg-emerald-500 text-white"
                   : currentStatus === "learning"
-                  ? "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800"
-                  : "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800"
+                  ? "bg-amber-400 text-amber-950"
+                  : "bg-blue-500 text-white"
               }`}
-              title={`Current SRS status: ${
-                isMastered ? "Mastered" : currentStatus === "learning" ? "Learning" : "New"
+              title={`Current status: ${
+                isMastered ? "Mastered (M)" : currentStatus === "learning" ? "Learning (L)" : "New (N)"
               }`}
             >
-              {isMastered ? "Mastered" : currentStatus === "learning" ? "Learning" : "New"}
+              {isMastered ? "M" : currentStatus === "learning" ? "L" : "N"}
             </span>
           )}
 
@@ -925,14 +959,14 @@ function WordLookupCard({
               e.stopPropagation();
               handleToggleMastered();
             }}
-            className={`px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs ${
+            className={`w-7 h-7 rounded-full transition-all cursor-pointer flex items-center justify-center shadow-xs shrink-0 ${
               isMastered
                 ? "bg-emerald-500 text-white hover:bg-emerald-600 ring-2 ring-emerald-300"
-                : "bg-white text-lingo-text-light border-2 border-lingo-border hover:border-lingo-green hover:text-lingo-green"
+                : "bg-white text-lingo-text-light border-2 border-lingo-border hover:border-emerald-500 hover:text-emerald-600"
             }`}
-            title={isMastered ? "Mastered — click to unmaster" : "Mark as mastered"}
+            title={isMastered ? "Mastered — click to unmaster" : "Mark as Mastered"}
           >
-            {isMastered ? "✓ Mastered" : "Mastered"}
+            <Check className="w-3.5 h-3.5 stroke-[3]" />
           </button>
 
           {/* Chevron Dropdown Toggle */}
