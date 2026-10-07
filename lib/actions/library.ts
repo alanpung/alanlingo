@@ -79,7 +79,7 @@ export async function addUnitToLibrary(
     .values({ userId, unitId })
     .onConflictDoNothing();
 
-  invalidateUserLibraryWordsCache(userId);
+  await invalidateUserLibraryWordsCache(userId);
   await syncUserCourseWordsToSrs(userId, true);
 
   revalidatePath("/library", "page");
@@ -109,7 +109,7 @@ export async function removeUnitFromLibrary(
       )
     );
 
-  invalidateUserLibraryWordsCache(userId);
+  await invalidateUserLibraryWordsCache(userId);
   await cleanupUnstudiedCourseWordsFromSrs(userId);
 
   revalidatePath("/library", "page");
@@ -208,7 +208,7 @@ export async function addCourseToLibrary(
       .onConflictDoNothing();
   }
 
-  invalidateUserLibraryWordsCache(userId);
+  await invalidateUserLibraryWordsCache(userId);
   await syncUserCourseWordsToSrs(userId, true);
 
   revalidatePath("/library", "page");
@@ -264,7 +264,7 @@ export async function removeCourseFromLibrary(
     .where(and(eq(course.id, courseId), eq(course.createdBy, userId)));
 
   // 4. Clean up unstudied 'new' SRS cards for levels no longer active in user's library
-  invalidateUserLibraryWordsCache(userId);
+  await invalidateUserLibraryWordsCache(userId);
   await cleanupUnstudiedCourseWordsFromSrs(userId);
 
   revalidatePath("/", "layout");

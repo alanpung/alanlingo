@@ -565,7 +565,7 @@ export async function getSrsStats(language?: string) {
 
 const userLibraryWordsCache = new Map<string, { timestamp: number; words: string[] }>();
 
-export function invalidateUserLibraryWordsCache(userId?: string) {
+export async function invalidateUserLibraryWordsCache(userId?: string) {
   if (userId) userLibraryWordsCache.delete(userId);
   else userLibraryWordsCache.clear();
 }
