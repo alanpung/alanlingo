@@ -95,7 +95,57 @@ function getEndictMp3Url(text: string, resolvedLang: string, accent: "us" | "uk"
 }
 
 /**
- * Fast, zero-latency browser Web Speech API synthesis.
+ * Selects the highest quality, most natural human voice available on the system.
+ */
+function getBestNaturalVoice(
+  voices: SpeechSynthesisVoice[],
+  targetLocale: string,
+  resolvedLang: string
+): SpeechSynthesisVoice | null {
+  if (!voices || voices.length === 0) return null;
+  const langPrefix = resolvedLang.toLowerCase().slice(0, 2);
+  const localeLower = targetLocale.toLowerCase();
+
+  const candidates = voices.filter((v) => {
+    const l = v.lang.toLowerCase();
+    return l === localeLower || l.startsWith(langPrefix) || l.replace("_", "-").startsWith(langPrefix);
+  });
+
+  if (candidates.length === 0) return null;
+
+  const scoreVoice = (v: SpeechSynthesisVoice): number => {
+    let score = 0;
+    const name = v.name.toLowerCase();
+
+    // Natural / Neural / Premium / Enhanced cloud voices get top priority
+    if (name.includes("natural") || name.includes("online (natural)")) score += 100;
+    if (name.includes("google")) score += 80;
+    if (name.includes("premium") || name.includes("enhanced") || name.includes("siri")) score += 70;
+    if (
+      name.includes("samantha") ||
+      name.includes("ava") ||
+      name.includes("andrew") ||
+      name.includes("emma") ||
+      name.includes("serena") ||
+      name.includes("daniel") ||
+      name.includes("karen")
+    )
+      score += 60;
+    if (v.localService === false) score += 40;
+    if (v.lang.toLowerCase() === localeLower) score += 20;
+
+    // Penalize robotic legacy engines
+    if (name.includes("espeak") || name.includes("compact")) score -= 50;
+
+    return score;
+  };
+
+  candidates.sort((a, b) => scoreVoice(b) - scoreVoice(a));
+  return candidates[0];
+}
+
+/**
+ * Fast, high-quality browser Web Speech API synthesis using natural voices.
  */
 function speakWithBrowserSynth(text: string, language: string): boolean {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -108,23 +158,13 @@ function speakWithBrowserSynth(text: string, language: string): boolean {
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = targetLocale;
-    utterance.rate = 1.08;
+    utterance.rate = 0.95; // Natural human cadence
+    utterance.pitch = 1.0;
 
     const voices = window.speechSynthesis.getVoices();
-    if (voices.length > 0) {
-      const exactVoice = voices.find(
-        (v) => v.lang.toLowerCase() === targetLocale.toLowerCase()
-      );
-      const prefixVoice = voices.find(
-        (v) =>
-          v.lang.toLowerCase().startsWith(resolvedLang.toLowerCase()) ||
-          v.lang.toLowerCase().startsWith(targetLocale.slice(0, 2).toLowerCase())
-      );
-      if (exactVoice) {
-        utterance.voice = exactVoice;
-      } else if (prefixVoice) {
-        utterance.voice = prefixVoice;
-      }
+    const bestVoice = getBestNaturalVoice(voices, targetLocale, resolvedLang);
+    if (bestVoice) {
+      utterance.voice = bestVoice;
     }
 
     window.speechSynthesis.speak(utterance);

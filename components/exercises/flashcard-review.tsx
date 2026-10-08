@@ -41,6 +41,19 @@ function cleanTextForTTS(raw: string, isTargetLanguageNonLatin: boolean): string
     /(?:^|(?<=[;；,，]\s*))(?:n|v|vt|vi|a|s|r|adj|adv|prep|conj|pron|det|art|num|int|intj|interj|abbr|aux|modal|pl|sing|noun|verb|adjective|adverb|preposition|conjunction|pronoun|determiner|interjection)\.(?:\s*&\s*(?:n|v|vt|vi|a|adj|adv)\.)?\s*/gi;
   text = text.replace(posRegex, "");
 
+  // Expand shorthand dictionary abbreviations into fluent natural English
+  text = text
+    .replace(/\bsb\b|\bsb\./gi, "somebody")
+    .replace(/\bsth\b|\bsth\./gi, "something")
+    .replace(/\be\.g\.,?\s*/gi, "for example, ")
+    .replace(/\bi\.e\.,?\s*/gi, "that is, ")
+    .replace(/\betc\.\b|\betc\b/gi, "and so on")
+    .replace(/\bw\/\b/gi, "with ")
+    .replace(/\bw\/o\b/gi, "without ")
+    .replace(/\besp\.\b|\besp\b/gi, "especially ")
+    .replace(/\bsyn:\s*|\bsyn\.\s*/gi, "synonym: ")
+    .replace(/\bant:\s*|\bant\.\s*/gi, "antonym: ");
+
   if (
     isTargetLanguageNonLatin &&
     /[\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff\u0600-\u06ff\u0900-\u097f]/u.test(text)
