@@ -8,17 +8,14 @@ import { turnstilePlugin } from "./turnstile-plugin";
 import { sendEmail } from "./email";
 
 const getBaseURL = () => {
-  // If we are running on Vercel, always default to the production custom domain
-  // to avoid cookie domain mismatch issues between unique deployment URLs and the custom domain.
-  if (process.env.VERCEL) {
-    return "https://alingopro.vercel.app";
-  }
-
   const raw =
     process.env.BETTER_AUTH_URL ||
     process.env.BETTER_AUTH_BASE_URL ||
     process.env.NEXT_PUBLIC_APP_URL ||
     process.env.APP_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : undefined) ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
     "http://localhost:3000";
   return raw.replace(/\/+$/, "");

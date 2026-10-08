@@ -40,8 +40,8 @@ let dbStatusCached: boolean | null = null;
 let dbStatusCheckedAt = 0;
 
 export async function isDbAvailable(): Promise<boolean> {
-  // If no DB URL is provided in production / Vercel, skip immediately to prevent hanging
-  if (!hasDbConfig && (process.env.NODE_ENV === "production" || process.env.VERCEL)) {
+  // If no DB URL is provided in environment, skip immediately to prevent hanging
+  if (!hasDbConfig) {
     return false;
   }
 
@@ -55,7 +55,7 @@ export async function isDbAvailable(): Promise<boolean> {
   try {
     const checkPromise = client`SELECT 1`;
     const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error("DB probe timeout")), 3000)
+      setTimeout(() => reject(new Error("DB probe timeout")), 600)
     );
     await Promise.race([checkPromise, timeoutPromise]);
     dbStatusCached = true;
