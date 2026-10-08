@@ -520,17 +520,18 @@ export async function getStandaloneUnits(
       const { getAllUnits } = await import("@/lib/content/registry");
       const fsUnits = getAllUnits().filter((u) => !u.parsed.courseId);
       for (const fu of fsUnits) {
-        if (libraryUnitIds.has(fu.id)) {
+        const uId = fu.parsed.id ?? fu.parsed.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        if (libraryUnitIds.has(uId)) {
           rows.push({
-            id: fu.id,
+            id: uId,
             title: fu.parsed.title,
             description: fu.parsed.description,
             icon: fu.parsed.icon,
             color: fu.parsed.color,
-            targetLanguage: fu.parsed.targetLanguage,
-            sourceLanguage: fu.parsed.sourceLanguage,
-            level: fu.parsed.level,
-            markdown: fu.content,
+            targetLanguage: fu.parsed.targetLanguage ?? "zh",
+            sourceLanguage: fu.parsed.sourceLanguage ?? "en",
+            level: fu.parsed.level ?? "A1",
+            markdown: fu.markdown,
             visibility: "public",
             createdBy: null,
             creatorName: "Alan P",
@@ -766,9 +767,9 @@ export async function getUnitWithContent(
         description: p.description,
         icon: p.icon,
         color: p.color,
-        targetLanguage: p.targetLanguage,
-        sourceLanguage: p.sourceLanguage,
-        level: p.level,
+        targetLanguage: p.targetLanguage ?? "zh",
+        sourceLanguage: p.sourceLanguage ?? "en",
+        level: p.level ?? "A1",
         courseId: p.courseId,
         visibility: "public",
         createdBy: null,
@@ -862,7 +863,7 @@ export async function getUserOwnedCourses(
     sourceLanguage: string;
     targetLanguage: string;
     level: string;
-    visibility: string;
+    visibility: string | null;
     createdBy: string | null;
     creatorName: string | null;
     createdAt: Date | null;

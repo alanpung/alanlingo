@@ -32,6 +32,7 @@ export interface Unit {
  * The markdown is the single source of truth — DB columns mirror these for fast queries.
  */
 export interface ParsedUnitMeta {
+  id?: string | null;
   title: string;
   description: string;
   icon: string;
@@ -228,7 +229,7 @@ export interface OwnedCourseInfo {
   unitCount: number;
   lessonCount: number;
   completedLessons: number;
-  createdAt: Date;
+  createdAt: Date | null;
   createdBy?: string | null;
   creatorName?: string | null;
   isOwner?: boolean;
