@@ -366,7 +366,12 @@ export function ProgressView({
           </div>
 
           {/* Word Status Process Flow Chart */}
-          <WordStatusFlow />
+          <WordStatusFlow
+            dictionaryCount={totalWordCount}
+            newCount={totalNew}
+            learningCount={totalLearning}
+            masteredCount={totalLearned}
+          />
         </div>
       )}
     </div>

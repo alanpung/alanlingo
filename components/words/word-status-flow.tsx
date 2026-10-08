@@ -1,6 +1,18 @@
 "use client";
 
-export function WordStatusFlow() {
+interface WordStatusFlowProps {
+  dictionaryCount?: number;
+  newCount?: number;
+  learningCount?: number;
+  masteredCount?: number;
+}
+
+export function WordStatusFlow({
+  dictionaryCount,
+  newCount,
+  learningCount,
+  masteredCount,
+}: WordStatusFlowProps = {}) {
   return (
     <div className="w-full rounded-2xl border-2 border-lingo-border bg-lingo-card px-3 py-3 sm:px-5 sm:py-4 shadow-xs">
       <p className="text-[11px] sm:text-xs font-black text-lingo-text-light uppercase tracking-wider text-center mb-1">
@@ -281,6 +293,113 @@ export function WordStatusFlow() {
           </text>
         </svg>
       </div>
-    </div>
-  );
-}
+
+      {/* ── Status Legend & Count Explanations ── */}
+      <div className="mt-4 pt-3.5 border-t-2 border-lingo-border">
+        <div className="flex items-center justify-between mb-2.5">
+          <span className="text-[11px] sm:text-xs font-black text-lingo-text uppercase tracking-wider">
+            Status Legend & Definitions
+          </span>
+          <span className="text-[10px] sm:text-[11px] font-bold text-lingo-text-light">
+            Vocabulary Progression Stages
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          {/* Dictionary (D) */}
+          <div className="rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/40 p-2.5 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-5 h-5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-black text-[11px] flex items-center justify-center shrink-0">
+                    D
+                  </span>
+                  <span className="font-black text-xs text-slate-800 dark:text-slate-200">
+                    Dictionary
+                  </span>
+                </div>
+                {dictionaryCount !== undefined && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 shrink-0">
+                    {dictionaryCount.toLocaleString()}
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 font-medium leading-tight mt-1">
+                Total available vocabulary across CEFR levels A1–C2 in the master dictionary.
+              </p>
+            </div>
+          </div>
+
+          {/* New (N) */}
+          <div className="rounded-xl border-2 border-blue-200 dark:border-blue-900/60 bg-blue-50/80 dark:bg-blue-950/30 p-2.5 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-5 h-5 rounded-full bg-blue-500 text-white font-black text-[11px] flex items-center justify-center shrink-0">
+                    N
+                  </span>
+                  <span className="font-black text-xs text-blue-900 dark:text-blue-300">
+                    New
+                  </span>
+                </div>
+                {newCount !== undefined && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-blue-200 text-blue-900 dark:bg-blue-900 dark:text-blue-200 shrink-0">
+                    {newCount.toLocaleString()}
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-blue-800/80 dark:text-blue-300/80 font-medium leading-tight mt-1">
+                Words added to your personal list from lessons, waiting for initial practice.
+              </p>
+            </div>
+          </div>
+
+          {/* Learning (L) */}
+          <div className="rounded-xl border-2 border-amber-200 dark:border-amber-900/60 bg-amber-50/80 dark:bg-amber-950/30 p-2.5 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-5 h-5 rounded-full bg-amber-400 text-amber-950 font-black text-[11px] flex items-center justify-center shrink-0">
+                    L
+                  </span>
+                  <span className="font-black text-xs text-amber-900 dark:text-amber-300">
+                    Learning
+                  </span>
+                </div>
+                {learningCount !== undefined && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200 shrink-0">
+                    {learningCount.toLocaleString()}
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-amber-800/80 dark:text-amber-300/80 font-medium leading-tight mt-1">
+                Words actively in practice and flashcard SRS review cycles (&lt;3 repetitions).
+              </p>
+            </div>
+          </div>
+
+          {/* Mastered (M) */}
+          <div className="rounded-xl border-2 border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/80 dark:bg-emerald-950/30 p-2.5 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500 text-white font-black text-[11px] flex items-center justify-center shrink-0">
+                    M
+                  </span>
+                  <span className="font-black text-xs text-emerald-900 dark:text-emerald-300">
+                    Mastered
+                  </span>
+                </div>
+                {masteredCount !== undefined && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-200 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-200 shrink-0">
+                    {masteredCount.toLocaleString()}
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-emerald-800/80 dark:text-emerald-300/80 font-medium leading-tight mt-1">
+                Words successfully learned (≥3 correct reviews) or manually ticked as mastered.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
