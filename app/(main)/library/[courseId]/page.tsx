@@ -2,10 +2,9 @@ import { notFound } from "next/navigation";
 import { getCourseWithContent, SYSTEM_COURSE_IDS } from "@/lib/db/queries/courses";
 import { getUserProgress } from "@/lib/actions/progress";
 import { LearningPath } from "@/components/library/learning-path";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { getSession } from "@/lib/auth-server";
 import { isAdminEmail } from "@/lib/ai/models";
-import { db } from "@/lib/db";
+import { db, isDbAvailable } from "@/lib/db";
 import { userUnitLibrary, userCourseEnrollment } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { CourseTitleHeader } from "@/components/course/course-title-header";
@@ -17,7 +16,7 @@ interface PageProps {
 
 export default async function CourseDetailPage({ params }: PageProps) {
   const { courseId } = await params;
-  const session = await auth.api.getSession({ headers: await headers() });
+  const session = await getSession();
   const userId = session?.user?.id;
   const course = await getCourseWithContent(courseId, userId);
   if (!course) notFound();
@@ -29,7 +28,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
   let libraryUnitIds: string[] = [];
   let isCourseInLibrary = false;
-  if (userId) {
+  if (userId && (await isDbAvailable())) {
     try {
       const [libRows, enrollment] = await Promise.all([
         db

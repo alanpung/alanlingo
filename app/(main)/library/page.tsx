@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { getSession } from "@/lib/auth-server";
 import {
   getStandaloneUnits,
   getUserOwnedCourses,
@@ -18,13 +17,7 @@ import { LearnHeader } from "@/components/library/learn-header";
 export const dynamic = "force-dynamic";
 
 export default async function LearnPage() {
-  let session = null;
-
-  try {
-    session = await auth.api.getSession({ headers: await headers() });
-  } catch (err) {
-    console.error("LearnPage: failed to get session:", err);
-  }
+  const session = await getSession();
 
   const userId = session?.user?.id;
   const isAdmin = isAdminEmail(session?.user?.email);

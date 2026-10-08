@@ -89,11 +89,13 @@ export function LessonView({
   }
 
   function handleReturn() {
-    router.push(backUrl);
-    // Hard redirect fallback if client-side navigation ever stalls
+    router.replace(backUrl);
+    // Hard redirect fallback only if client-side router completely stalls
     setTimeout(() => {
-      window.location.href = backUrl;
-    }, 1200);
+      if (typeof window !== "undefined") {
+        window.location.href = backUrl;
+      }
+    }, 4000);
   }
 
   // When lesson completes, trigger UI instantly & submit results in background

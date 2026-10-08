@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { getSession } from "@/lib/auth-server";
 import {
   listCoursesWithLessonCounts,
   getAvailableFilters,
@@ -13,7 +12,7 @@ import { BrowseUnits } from "../browse-units";
 export const dynamic = "force-dynamic";
 
 export default async function BrowsePage() {
-  const session = await auth.api.getSession({ headers: await headers() });
+  const session = await getSession();
   const userId = session?.user?.id;
 
   if (!userId) {

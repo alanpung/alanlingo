@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { getSession } from "@/lib/auth-server";
 import { getUnitForEdit } from "@/lib/db/queries/courses";
 import { isAdminEmail } from "@/lib/ai/models";
 import { UnitEditor } from "./unit-editor";
@@ -11,7 +10,7 @@ interface EditUnitPageProps {
 
 export default async function EditUnitPage({ params }: EditUnitPageProps) {
   const { unitId } = await params;
-  const session = await auth.api.getSession({ headers: await headers() });
+  const session = await getSession();
 
   if (!session?.user?.id) {
     redirect("/sign-in");
