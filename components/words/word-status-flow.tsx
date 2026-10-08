@@ -403,3 +403,6 @@ export function WordStatusFlow({
           </div>
         </div>
       </div>
+    </div>
+  );
+}
