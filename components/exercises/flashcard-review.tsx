@@ -709,12 +709,7 @@ export function FlashcardReview({
                 /* ── EXAMPLES VIEW ── */
                 <div className="w-full text-left space-y-3 my-2">
                   <div className="flex items-center justify-between gap-2 pb-2 border-b border-lingo-border/60">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/40 px-2.5 py-1 rounded-lg">
-                        <MessageSquareText className="w-3.5 h-3.5" /> Examples
-                      </span>
-                      <span className="text-lg sm:text-xl font-black text-lingo-text">{exercise?.front}</span>
-                    </div>
+                    <span className="text-lg sm:text-xl font-black text-lingo-text">{exercise?.front}</span>
                     <button
                       type="button"
                       onClick={() => setShowExamples(false)}
@@ -725,7 +720,7 @@ export function FlashcardReview({
                   </div>
 
                   {/* Examples List */}
-                  <div className="space-y-2.5 max-h-[220px] overflow-y-auto pr-1">
+                  <div className="space-y-2.5 max-h-[250px] overflow-y-auto pr-1">
                     {(wordMeta.examples && wordMeta.examples.length > 0
                       ? wordMeta.examples
                       : [
@@ -753,15 +748,6 @@ export function FlashcardReview({
                       </div>
                     ))}
                   </div>
-
-                  {/* Helper cue button to toggle back to front */}
-                  <button
-                    type="button"
-                    onClick={() => setShowExamples(false)}
-                    className="w-full py-2 rounded-xl bg-indigo-50/80 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-300 text-xs font-extrabold flex items-center justify-center gap-1.5 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all cursor-pointer"
-                  >
-                    <ArrowUp className="w-3.5 h-3.5" /> Swipe up or click to return to Front
-                  </button>
                 </div>
               ) : (
                 /* ── STANDARD FRONT CARD VIEW ── */
