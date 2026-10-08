@@ -13,21 +13,42 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 // Convenience helpers (used by read paths that store markdown in DB)
 // ---------------------------------------------------------------------------
 
+const parsedLessonsCache = new Map<string, { lessons: UnitLesson[]; parseError: boolean }>();
+
 /** Parse raw unit markdown into UnitLesson[]. */
 export function getUnitLessons(markdown: string): UnitLesson[] {
-  return parseUnitMarkdown(markdown).lessons;
+  return getUnitLessonsSafe(markdown).lessons;
 }
 
-/** Safe version that never throws — returns parseError flag instead. */
+/** Safe version that never throws — returns parseError flag instead (cached by markdown content). */
 export function getUnitLessonsSafe(markdown: string): {
   lessons: UnitLesson[];
   parseError: boolean;
 } {
+  if (!markdown) return { lessons: [], parseError: false };
+  const cached = parsedLessonsCache.get(markdown);
+  if (cached) return cached;
+
   try {
-    return { lessons: parseUnitMarkdown(markdown).lessons, parseError: false };
+    const res = { lessons: parseUnitMarkdown(markdown).lessons, parseError: false };
+    if (parsedLessonsCache.size > 200) parsedLessonsCache.clear();
+    parsedLessonsCache.set(markdown, res);
+    return res;
   } catch {
-    return { lessons: [], parseError: true };
+    const res = { lessons: [], parseError: true };
+    parsedLessonsCache.set(markdown, res);
+    return res;
   }
+}
+
+/** Ultra-fast lesson count estimation without parsing exercise AST */
+export function getUnitLessonCountFast(markdown: string): number {
+  if (!markdown) return 0;
+  const matches = markdown.match(/lessonTitle\s*:/g);
+  if (matches && matches.length > 0) return matches.length;
+  const headings = markdown.match(/^##\s+/gm);
+  if (headings && headings.length > 0) return headings.length;
+  return getUnitLessonsSafe(markdown).lessons.length;
 }
 
 // ---------------------------------------------------------------------------

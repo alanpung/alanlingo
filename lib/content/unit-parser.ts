@@ -2,6 +2,23 @@ import matter from "gray-matter";
 import { parseExercisesFromMarkdown } from "./parser";
 import type { ParsedUnit, UnitLesson } from "./types";
 
+function parseLessonMeta(blockStr: string): Record<string, unknown> {
+  const meta: Record<string, unknown> = {};
+  const lines = blockStr.split("\n");
+  for (const line of lines) {
+    const idx = line.indexOf(":");
+    if (idx !== -1) {
+      const key = line.slice(0, idx).trim();
+      let val = line.slice(idx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      meta[key] = val;
+    }
+  }
+  return meta;
+}
+
 export function parseUnitMarkdown(raw: string): ParsedUnit {
   const { data: fm, content } = matter(raw);
 
@@ -23,13 +40,7 @@ export function parseUnitMarkdown(raw: string): ParsedUnit {
       i + 1 < blocks.length ? blocks[i + 1].start : content.length;
     const exerciseContent = content.slice(block.end, nextStart).trim();
 
-    let meta: Record<string, unknown> = {};
-    try {
-      const { data } = matter(`---\n${block.meta}\n---`);
-      meta = data;
-    } catch {
-      // If YAML parse fails, skip metadata
-    }
+    const meta = parseLessonMeta(block.meta);
 
     return {
       title: (meta.lessonTitle as string) ?? "Untitled",

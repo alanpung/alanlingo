@@ -28,7 +28,7 @@ import type {
   CourseManagementInfo,
   AvailableUnitForCourse,
 } from "@/lib/content/types";
-import { getUnitLessonsSafe } from "@/lib/content/loader";
+import { getUnitLessonsSafe, getUnitLessonCountFast } from "@/lib/content/loader";
 import { getUnitQuestionType } from "@/lib/content/question-types";
 import { seedContentFromFilesystem } from "@/lib/db/seed-content";
 
@@ -195,9 +195,9 @@ export async function listCoursesWithLessonCounts(
 
     for (const u of units) {
       if (!u.courseId) continue;
-      const { lessons } = getUnitLessonsSafe(u.markdown ?? "");
+      const count = getUnitLessonCountFast(u.markdown ?? "");
       const prev = lessonCountByCourse.get(u.courseId) ?? 0;
-      lessonCountByCourse.set(u.courseId, prev + (lessons?.length ?? 0));
+      lessonCountByCourse.set(u.courseId, prev + count);
     }
   } catch (err) {
     console.warn("listCoursesWithLessonCounts: unit query failed:", err);
@@ -753,10 +753,10 @@ export async function getUserOwnedCourses(
 
     for (const u of allUnits) {
       if (!u.courseId) continue;
-      const { lessons } = getUnitLessonsSafe(u.markdown ?? "");
+      const count = getUnitLessonCountFast(u.markdown ?? "");
       lessonCountMap.set(
         u.courseId,
-        (lessonCountMap.get(u.courseId) ?? 0) + (lessons?.length ?? 0)
+        (lessonCountMap.get(u.courseId) ?? 0) + count
       );
     }
   } catch (err) {

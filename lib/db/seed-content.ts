@@ -1,17 +1,19 @@
 import { db, isDbAvailable } from "./index";
 import { course, unit, user } from "./schema";
 import { getAllCourses, getAllUnits } from "../content/registry";
-import { eq, or, ilike, and, notInArray, inArray } from "drizzle-orm";
+import { eq, or, ilike, and, notInArray, inArray, sql } from "drizzle-orm";
 
+let isSeeding = false;
 let lastSyncedAt = 0;
 
 export async function seedContentFromFilesystem() {
   if (!(await isDbAvailable())) return;
 
-  // Throttle syncs to once every 10 seconds max per server instance
+  // Throttle syncs to once every 5 minutes max per server instance
   const now = Date.now();
-  if (now - lastSyncedAt < 10000) return;
-  lastSyncedAt = now;
+  if (now - lastSyncedAt < 300000) return;
+  if (isSeeding) return;
+  isSeeding = true;
 
   try {
     // 1. Ensure Alan's user name is "Alan P"
@@ -36,37 +38,35 @@ export async function seedContentFromFilesystem() {
     const units = getAllUnits();
     const courseIds = courses.map((c) => c.id);
 
-    // 3. Upsert all filesystem courses with Alan P (creatorId) as author
-    for (const c of courses) {
+    // 3. Batch upsert all filesystem courses with Alan P (creatorId) as author
+    if (courses.length > 0) {
+      const courseValues = courses.map((c) => ({
+        id: c.id,
+        title: c.title,
+        sourceLanguage: c.sourceLanguage,
+        targetLanguage: c.targetLanguage,
+        level: c.level,
+        visibility: "public" as const,
+        published: true,
+        createdBy: creatorId,
+      }));
+
       await db
         .insert(course)
-        .values({
-          id: c.id,
-          title: c.title,
-          sourceLanguage: c.sourceLanguage,
-          targetLanguage: c.targetLanguage,
-          level: c.level,
-          visibility: "public",
-          published: true,
-          createdBy: creatorId,
-        })
+        .values(courseValues)
         .onConflictDoUpdate({
           target: course.id,
           set: {
-            title: c.title,
-            sourceLanguage: c.sourceLanguage,
-            targetLanguage: c.targetLanguage,
-            level: c.level,
+            title: sql`excluded.title`,
+            sourceLanguage: sql`excluded.source_language`,
+            targetLanguage: sql`excluded.target_language`,
+            level: sql`excluded.level`,
             visibility: "public",
             published: true,
             createdBy: creatorId,
             updatedAt: new Date(),
           },
         });
-    }
-
-    if (courseIds.length > 0 && creatorId) {
-      await db.update(course).set({ createdBy: creatorId }).where(inArray(course.id, courseIds));
     }
 
     // 4. Delete unwanted German / test courses and units
@@ -96,8 +96,9 @@ export async function seedContentFromFilesystem() {
         )
       );
 
-    // 5. Track valid unit IDs for each course and upsert filesystem units
+    // 5. Track valid unit IDs for each course and batch upsert filesystem units
     const validUnitIdsByCourse = new Map<string, string[]>();
+    const unitValues = [];
 
     for (const u of units) {
       const p = u.parsed;
@@ -106,7 +107,6 @@ export async function seedContentFromFilesystem() {
       const match = p.title.match(/Unit\s+(\d+)/i);
       const unitNum = match ? parseInt(match[1], 10) : null;
       
-      // Use clean deterministic unit ID: e.g. "a1-flashcard-course-unit-1"
       const unitId = unitNum ? `${p.courseId}-unit-${unitNum}` : `${p.courseId}-${p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
       if (!validUnitIdsByCourse.has(p.courseId)) {
@@ -114,43 +114,45 @@ export async function seedContentFromFilesystem() {
       }
       validUnitIdsByCourse.get(p.courseId)!.push(unitId);
 
+      unitValues.push({
+        id: unitId,
+        courseId: p.courseId,
+        title: p.title,
+        description: p.description,
+        icon: p.icon,
+        color: p.color,
+        markdown: u.markdown,
+        targetLanguage: p.targetLanguage,
+        sourceLanguage: p.sourceLanguage,
+        level: p.level,
+        visibility: "public" as const,
+        createdBy: creatorId,
+      });
+    }
+
+    // Insert units in chunks of 20
+    for (let i = 0; i < unitValues.length; i += 20) {
+      const chunk = unitValues.slice(i, i + 20);
       await db
         .insert(unit)
-        .values({
-          id: unitId,
-          courseId: p.courseId,
-          title: p.title,
-          description: p.description,
-          icon: p.icon,
-          color: p.color,
-          markdown: u.markdown,
-          targetLanguage: p.targetLanguage,
-          sourceLanguage: p.sourceLanguage,
-          level: p.level,
-          visibility: "public",
-          createdBy: creatorId,
-        })
+        .values(chunk)
         .onConflictDoUpdate({
           target: unit.id,
           set: {
-            courseId: p.courseId,
-            title: p.title,
-            description: p.description,
-            icon: p.icon,
-            color: p.color,
-            markdown: u.markdown,
-            targetLanguage: p.targetLanguage,
-            sourceLanguage: p.sourceLanguage,
-            level: p.level,
+            courseId: sql`excluded.course_id`,
+            title: sql`excluded.title`,
+            description: sql`excluded.description`,
+            icon: sql`excluded.icon`,
+            color: sql`excluded.color`,
+            markdown: sql`excluded.markdown`,
+            targetLanguage: sql`excluded.target_language`,
+            sourceLanguage: sql`excluded.source_language`,
+            level: sql`excluded.level`,
             visibility: "public",
             createdBy: creatorId,
             updatedAt: new Date(),
           },
         });
-    }
-
-    if (courseIds.length > 0 && creatorId) {
-      await db.update(unit).set({ createdBy: creatorId }).where(inArray(unit.courseId, courseIds));
     }
 
     // 6. Strict cleanup of old/ghost units in DB for known courses
@@ -167,29 +169,10 @@ export async function seedContentFromFilesystem() {
       }
     }
 
-    // 7. General deduplication by course and Unit number
-    const allDbUnits = await db.select().from(unit);
-    const seenByCourseAndNum = new Map<string, string>();
-    const dupesToDelete: string[] = [];
-
-    for (const u of allDbUnits) {
-      if (!u.courseId || !u.title) continue;
-      const match = u.title.match(/Unit\s+(\d+)/i);
-      if (match) {
-        const key = `${u.courseId}-unit-${match[1]}`;
-        if (seenByCourseAndNum.has(key)) {
-          dupesToDelete.push(u.id);
-        } else {
-          seenByCourseAndNum.set(key, u.id);
-        }
-      }
-    }
-
-    for (const dupId of dupesToDelete) {
-      await db.delete(unit).where(eq(unit.id, dupId));
-    }
-
+    lastSyncedAt = Date.now();
   } catch (err) {
     console.warn("seedContentFromFilesystem error:", err);
+  } finally {
+    isSeeding = false;
   }
 }
