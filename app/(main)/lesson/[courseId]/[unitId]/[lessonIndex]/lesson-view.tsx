@@ -70,31 +70,43 @@ export function LessonView({
     advance();
   }
 
-  // When lesson completes, submit results
+  // When lesson completes, trigger UI instantly & submit results in background
   useEffect(() => {
     if (isComplete && !showComplete) {
+      // 1. Show celebration screen IMMEDIATELY (0ms latency)
+      setShowComplete(true);
+      setLessonResult({ perfectScore: mistakeCount === 0 });
+
+      // 2. Persist lesson completion in background without blocking UI
       startTransition(async () => {
-        const result = await completeLesson({
-          unitId,
-          lessonIndex,
-          results: results.map((r) => ({
-            exerciseIndex: r.exerciseIndex,
-            exerciseType: r.exerciseType,
-            correct: r.correct,
-            userAnswer: r.userAnswer,
-          })),
-          mistakeCount,
-        });
-        setLessonResult(result);
-        setShowComplete(true);
+        try {
+          const result = await completeLesson({
+            unitId,
+            lessonIndex,
+            results: results.map((r) => ({
+              exerciseIndex: r.exerciseIndex,
+              exerciseType: r.exerciseType,
+              correct: r.correct,
+              userAnswer: r.userAnswer,
+            })),
+            mistakeCount,
+          });
+          if (result) {
+            setLessonResult(result);
+          }
+        } catch (err) {
+          console.error("Failed to persist lesson completion:", err);
+        }
       });
     }
-  }, [isComplete]);
+  }, [isComplete, showComplete, unitId, lessonIndex, results, mistakeCount]);
 
-  if (showComplete && lessonResult) {
+  if (showComplete) {
     return (
       <LessonCompleteModal
-        perfectScore={lessonResult.perfectScore}
+        perfectScore={lessonResult?.perfectScore ?? mistakeCount === 0}
+        totalExercises={totalExercises}
+        mistakeCount={mistakeCount}
         onContinue={() => router.push(backUrl)}
       />
     );
