@@ -14,7 +14,9 @@ import {
   getLocalCards,
   getLocalCard,
   upsertLocalCard,
+  upsertLocalCardsBatch,
   deleteLocalCard,
+  type SrsCardRecord,
 } from "@/lib/srs-store";
 
 export async function migrateDefaultUserCards(userId: string) {
