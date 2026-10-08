@@ -22,10 +22,10 @@ translation: "n. 运气；财富；命运; vt. 给予财富; vi. 偶然发生; �
 srsWords: "fortune"
 
 [flashcard-review]
-front: "fail"
-meaning: "to be unsuccessful in achieving one's goal."
-translation: "to be unsuccessful in achieving one's goal."
-srsWords: "fail"
+front: "sibling"
+meaning: "n. a person's brother or sister"
+translation: "n. 兄弟, 同胞；[医] 同胞(兄弟姐妹)"
+srsWords: "sibling"
 
 [flashcard-review]
 front: "fashion"
@@ -70,10 +70,10 @@ translation: "a small community"
 srsWords: "village"
 
 [flashcard-review]
-front: "fresh"
-meaning: "not previously known or used; newly made or acquired"
-translation: "not previously known or used; newly made or acquired"
-srsWords: "fresh"
+front: "slim"
+meaning: "v take off weight; s being of delicate or slender build; s small in quantity"
+translation: "a. 瘦的, 苗条的, 微小的, 稀少的, 微薄的；vi. 变苗条；vt. 使苗条"
+srsWords: "slim"
 
 ---
 lessonTitle: "Lesson 2: Shopping, Fashion & Services Part 2"
@@ -94,16 +94,16 @@ translation: "a person who acts on behalf of another"
 srsWords: "agent"
 
 [flashcard-review]
-front: "apply"
-meaning: "to make a formal request"
-translation: "to make a formal request; to put something on a surface"
-srsWords: "apply"
+front: "someday"
+meaning: "r. some unspecified time in the future"
+translation: "adv. 有一天"
+srsWords: "someday"
 
 [flashcard-review]
-front: "enter"
-meaning: "to come or go into"
-translation: "to come or go into"
-srsWords: "enter"
+front: "backwards"
+meaning: "r at or to or toward the back or rear; r in a manner or order or direction the reverse of normal"
+translation: "adv. 向后"
+srsWords: "backwards"
 
 [flashcard-review]
 front: "friendship"
@@ -124,10 +124,10 @@ translation: "vt. & vi. (使)惊恐; vt. 吓唬; 时态:frightened, frightening,
 srsWords: "frighten"
 
 [flashcard-review]
-front: "adult"
-meaning: "a person who is fully grown or developed"
-translation: "a person who is fully grown or developed"
-srsWords: "adult"
+front: "flavor"
+meaning: "n. (physics) the six kinds of quarks"
+translation: "n. 滋味, 调味品；vt. 加味于"
+srsWords: "flavor"
 
 [flashcard-review]
 front: "apparently"
@@ -184,10 +184,10 @@ translation: "n. 大蒜；大蒜头；用于有相似气味的植物名中"
 srsWords: "garlic"
 
 [flashcard-review]
-front: "gas"
-meaning: "fuel for cars"
-translation: "fuel for cars"
-srsWords: "gas"
+front: "soda"
+meaning: "n a sodium salt of carbonic acid; used in making soap powders and glass and paper; n a sweet drink containing carbonated water and flavoring"
+translation: "n. 苏打, 碳酸水；[化] 纯碱; 苏打; 碳酸钠"
+srsWords: "soda"
 
 [flashcard-review]
 front: "wild"
@@ -226,16 +226,16 @@ translation: "adj. 温和的；文雅的; vt. 使温和，使驯服; n. 蛆，�
 srsWords: "gentle"
 
 [flashcard-review]
-front: "camp"
-meaning: "camp"
-translation: "camp"
-srsWords: "camp"
+front: "semester"
+meaning: "n. one of two divisions of an academic year; n. half a year; a period of 6 months"
+translation: "n. 学期"
+srsWords: "semester"
 
 [flashcard-review]
-front: "dangerous"
-meaning: "dangerous"
-translation: "dangerous"
-srsWords: "dangerous"
+front: "sock"
+meaning: "n. hosiery consisting of a cloth covering for the foot; worn inside the shoe; reaches to between the ankle and the knee; v. hit hard"
+translation: "n. 短袜, 鞋垫, 一击；vt. 重击, 猛投, 给...穿袜；vi. 打击；adv. 正着地, 不偏不倚地；a. 非常成功的"
+srsWords: "sock"
 
 [flashcard-review]
 front: "extremely"
@@ -316,10 +316,10 @@ translation: "apart"
 srsWords: "apart"
 
 [flashcard-review]
-front: "customer"
-meaning: "customer"
-translation: "customer"
-srsWords: "customer"
+front: "den"
+meaning: "n. a unit of 8 to 10 cub scouts; n. a room that is comfortable and secluded"
+translation: "n. 兽穴, 洞穴；[法] 匪巢, 贼窝"
+srsWords: "den"
 
 [flashcard-review]
 front: "gradually"
@@ -430,16 +430,16 @@ translation: "adj. 贪婪的，贪心的；贪吃的，嘴馋的；渴望的"
 srsWords: "greedy"
 
 [flashcard-review]
-front: "green"
-meaning: "green"
-translation: "adj. 绿色的；青春的; n. 绿色；青春; vt. 使…变绿色; vi. 变绿色比较级:greener, greenest副 词:greenly; 名 词:greenness"
-srsWords: "green"
+front: "pal"
+meaning: "v. become friends; act friendly towards"
+translation: "n. 朋友, 伙伴, 同志, 同谋；vi. 交友, 结伴"
+srsWords: "pal"
 
 [flashcard-review]
-front: "copy"
-meaning: "copy"
-translation: "copy"
-srsWords: "copy"
+front: "skinny"
+meaning: "n. confidential information about a topic or person; a. of or relating to or resembling skin"
+translation: "a. 似皮的, 极瘦的, 少的, 小气的；[医] 皮的; 消瘦的"
+srsWords: "skinny"
 
 [flashcard-review]
 front: "host"
@@ -466,10 +466,10 @@ translation: "1,000"
 srsWords: "thousand"
 
 [flashcard-review]
-front: "alive"
-meaning: "living"
-translation: "living"
-srsWords: "alive"
+front: "uncertain"
+meaning: "a. lacking or indicating lack of confidence or assurance; a. not established beyond doubt; still undecided or unknown; a. not certain to occur; not inevitable; s. not consistent or dependable"
+translation: "a. 不确定的, 无常的, 不确信的, 不可预测的；[法] 不确定的, 未定的, 不确信的"
+srsWords: "uncertain"
 
 ---
 lessonTitle: "Lesson 8: Shopping, Fashion & Services Part 8"
@@ -478,10 +478,10 @@ icon: "🛍️"
 color: "#FF5722"
 ---
 [flashcard-review]
-front: "boss"
-meaning: "manager, employer"
-translation: "manager, employer"
-srsWords: "boss"
+front: "weigh"
+meaning: "v. have a certain weight; v. determine the weight of; v. to be oppressive or burdensome"
+translation: "vt. 称...重量, 衡量, 把...压弯, 考虑, 权衡, 起锚；vi. 称分量, 有意义, 重压, 起锚；n. 过秤, 称分量"
+srsWords: "weigh"
 
 [flashcard-review]
 front: "guidebook"
@@ -490,10 +490,10 @@ translation: "n. 旅行指南；指导手册"
 srsWords: "guidebook"
 
 [flashcard-review]
-front: "dress"
-meaning: "a piece of clothing"
-translation: "a piece of clothing"
-srsWords: "dress"
+front: "cart"
+meaning: "n. a heavy open wagon usually having two wheels and drawn by an animal; v. transport something in a cart"
+translation: "n. 二轮运货马车；vi. 驾运货马车；vt. 用车装载"
+srsWords: "cart"
 
 [flashcard-review]
 front: "magic"
@@ -508,10 +508,10 @@ translation: "to control, to succeed in doing"
 srsWords: "manage"
 
 [flashcard-review]
-front: "beauty"
-meaning: "quality of being beautiful"
-translation: "quality of being beautiful"
-srsWords: "beauty"
+front: "cord"
+meaning: "n. a line made of twisted fibers or threads; n. a unit of amount of wood cut for burning; 128 cubic feet; n. a light insulated conductor for household use; n. a cut pile fabric with vertical ribs; usually made of cotton"
+translation: "n. 绳索, 束缚；[医] 索, 带"
+srsWords: "cord"
 
 [flashcard-review]
 front: "exist"
@@ -532,10 +532,10 @@ translation: "adj. 过火的；做作的 vi. 表演过火 vt. 演得过火 n. �
 srsWords: "ham"
 
 [flashcard-review]
-front: "hand"
-meaning: "hand"
-translation: "part of the body"
-srsWords: "hand"
+front: "kitty"
+meaning: "n. informal terms referring to a domestic cat"
+translation: "n. 小猫, 全部赌注"
+srsWords: "kitty"
 
 ---
 lessonTitle: "Lesson 9: Shopping, Fashion & Services Part 9"
@@ -616,10 +616,10 @@ translation: "to recognize the full worth of"
 srsWords: "appreciate"
 
 [flashcard-review]
-front: "head"
-meaning: "head"
-translation: "n. 头；头脑，智力；顶部；排头；领导人，负责人；&lt;英&gt;校长，院长；人数，（动物的）头数；（植物的）叶球，头状花序；（人或动物的）一头长,一头高；钉头，锤头；啤酒沫；（河流）源头；上座（桌子旁最重要的座位）；&lt;英&gt;（地名）海边悬崖；脓头；硬币正面（有人像）；（录音机、录像机的）磁头；蒸汽压力；（短语的）中心词，主导词；文章或书页的开头；行动的高潮；桶或鼓的平端；船头；船的桅杆顶；桌子或床的上端；窗框或门框的上水平部分；&lt;英,非正式&gt;（持续的）头痛；一段楼梯或台阶的顶端；在一定高度贮存的水体；体液中两点之间的高度差；一团运动中的水（如离岸流） v. 朝某特定方向行进；领导、主管；在…的前部（或顶部）；位于排行之首；在（页或篇章的）顶端加标题；朝某一事件、结果或结果的特定状态前进，尤指不好的状态；用头顶（球）；挡在前面以阻碍、停止或返回；形成…的头或顶部；砍掉（植物或树的）上部或枝干；（指莴苣或卷心菜）形成头状；发源 adj. 主要的；头部的；位于高处的；从前方来的 adv. 硬币人像面朝上地"
-srsWords: "head"
+front: "pity"
+meaning: "n. an unfortunate development"
+translation: "n. 遗憾, 同情, 怜悯, 憾事, 可惜；vt. 同情, 怜悯；vi. 觉得可怜, 有同情心"
+srsWords: "pity"
 
 [flashcard-review]
 front: "headphone"
@@ -634,22 +634,22 @@ translation: "n. 中小学的校长"
 srsWords: "headteacher"
 
 [flashcard-review]
-front: "discover"
-meaning: "to find unexpectedly or during a search"
-translation: "to find unexpectedly or during a search"
-srsWords: "discover"
+front: "writing"
+meaning: "n. the act of creating written works; n. the work of a writer; anything expressed in letters of the alphabet (especially when considered from the point of view of style and effect); n. (usually plural) the collected work of an author; n. letters or symbols that are written or imprinted on a surface to represent the sounds or words of a language"
+translation: "n. 书写, 著作, 笔迹, 作品；[医] 书写"
+srsWords: "writing"
 
 [flashcard-review]
-front: "dry"
-meaning: "free from moisture or liquid"
-translation: "free from moisture or liquid"
-srsWords: "dry"
+front: "robbery"
+meaning: "n. larceny by threat of violence"
+translation: "n. 抢掠, 抢夺；[法] 强盗, 抢劫, 劫掠"
+srsWords: "robbery"
 
 [flashcard-review]
-front: "excite"
-meaning: "to cause strong feelings of enthusiasm and eagerness"
-translation: "to cause strong feelings of enthusiasm and eagerness"
-srsWords: "excite"
+front: "steak"
+meaning: "n. a slice of meat cut from the fleshy part of an animal or large fish"
+translation: "n. 牛排, 鱼排, 肉排"
+srsWords: "steak"
 
 [flashcard-review]
 front: "forever"
@@ -668,4 +668,3 @@ front: "prepare"
 meaning: "to make (something) ready for use or consideration"
 translation: "to make (something) ready for use or consideration"
 srsWords: "prepare"
-

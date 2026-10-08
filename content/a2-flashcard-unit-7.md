@@ -70,10 +70,10 @@ translation: "a legally recognized subject or national of a state"
 srsWords: "citizen"
 
 [flashcard-review]
-front: "electric"
-meaning: "powered by electricity"
-translation: "powered by electricity"
-srsWords: "electric"
+front: "prediction"
+meaning: "n. the act of predicting (as by reasoning about the future); n. a statement made about the future"
+translation: "n. 预言, 预报；[化] 预测"
+srsWords: "prediction"
 
 ---
 lessonTitle: "Lesson 2: Home, Neighborhood & Community Part 2"
@@ -82,10 +82,10 @@ icon: "🏡"
 color: "#9C27B0"
 ---
 [flashcard-review]
-front: "high"
-meaning: "high"
-translation: "of great or more than average extent, size, or amount"
-srsWords: "high"
+front: "toast"
+meaning: "n. slices of bread that have been toasted; n. a celebrity who receives much acclaim and attention; v. propose a toast to"
+translation: "n. 吐司, 烤面包, 干杯；vt. 敬酒, 烤, 使暖和；vi. 烤, 烘"
+srsWords: "toast"
 
 [flashcard-review]
 front: "emergency"
@@ -148,22 +148,22 @@ icon: "🏡"
 color: "#9C27B0"
 ---
 [flashcard-review]
-front: "accident"
-meaning: "an unfortunate incident"
-translation: "an unfortunate incident"
-srsWords: "accident"
+front: "locker"
+meaning: "n. a fastener that locks or closes"
+translation: "n. 抽屉, 小柜, 上锁人；[机] 锁柜"
+srsWords: "locker"
 
 [flashcard-review]
-front: "anywhere"
-meaning: "in, at, or to any place"
-translation: "in, at, or to any place"
-srsWords: "anywhere"
+front: "terrify"
+meaning: "v. fill with terror; frighten greatly"
+translation: "vt. 使恐惧, 恐吓"
+srsWords: "terrify"
 
 [flashcard-review]
-front: "cheap"
-meaning: "low in price"
-translation: "low in price"
-srsWords: "cheap"
+front: "neighbourhood"
+meaning: "n a surrounding or nearby region; n people living near one another"
+translation: "n. 邻接, 周围, 附近一带, 邻近, 邻居关系, 地区, 街道, 街坊, 四邻；[计] 邻域"
+srsWords: "neighbourhood"
 
 [flashcard-review]
 front: "discussion"
@@ -220,22 +220,22 @@ translation: "narrow way, route"
 srsWords: "path"
 
 [flashcard-review]
-front: "beer"
-meaning: "alcoholic beverage"
-translation: "alcoholic beverage"
-srsWords: "beer"
+front: "wifi"
+meaning: "n a local area network that uses high frequency radio signals to transmit and receive data over distances of a few hundred feet; uses ethernet protocol"
+translation: "abbr. 基于IEEE 802.11b标准的无线局域网（Wireless Fidelity）；无线网络模块"
+srsWords: "wifi"
 
 [flashcard-review]
-front: "crowd"
-meaning: "a large group of people"
-translation: "a large group of people"
-srsWords: "crowd"
+front: "painter"
+meaning: "n. an artist who paints; n. a worker who is employed to cover objects with paint; n. a line that is attached to the bow of a boat and used for tying up (as when docking or towing)"
+translation: "n. 画家, 油漆匠；[机] 油漆匠, 喷漆匠"
+srsWords: "painter"
 
 [flashcard-review]
-front: "forest"
-meaning: "large area of trees"
-translation: "large area of trees"
-srsWords: "forest"
+front: "printer"
+meaning: "n. someone whose occupation is printing; n. (computer science) an output device that prints the results of data processing; n. a machine that prints"
+translation: "n. 印刷工, 打印机；[计] 打印机"
+srsWords: "printer"
 
 [flashcard-review]
 front: "intelligence"
@@ -292,10 +292,10 @@ translation: "a line of light or energy"
 srsWords: "ray"
 
 [flashcard-review]
-front: "hundred"
-meaning: "hundred"
-translation: "100"
-srsWords: "hundred"
+front: "reunion"
+meaning: "n. a party of former associates who have come together again; n. the act of coming together again"
+translation: "n. 团圆, 重聚；[医] 再连合, 复连[合]"
+srsWords: "reunion"
 
 [flashcard-review]
 front: "ancient"
@@ -328,10 +328,10 @@ translation: "to copy data from one computer system to another"
 srsWords: "download"
 
 [flashcard-review]
-front: "email"
-meaning: "electronic mail"
-translation: "electronic mail"
-srsWords: "email"
+front: "pasta"
+meaning: "n. a dish that contains pasta as its main ingredient; n. shaped and dried dough made from flour and water and sometimes egg"
+translation: "n. 意大利面食；[医] 糊剂, 泥膏剂"
+srsWords: "pasta"
 
 [flashcard-review]
 front: "hero"
@@ -364,10 +364,10 @@ translation: "to carry out, accomplish, or entertain"
 srsWords: "perform"
 
 [flashcard-review]
-front: "ill"
-meaning: "sick"
-translation: "sick"
-srsWords: "ill"
+front: "polite"
+meaning: "a. showing regard for others in manners, speech, behavior, etc."
+translation: "a. 有礼貌的, 文雅的, 客气的, 有教养的"
+srsWords: "polite"
 
 [flashcard-review]
 front: "imagination"
@@ -412,10 +412,10 @@ icon: "🏡"
 color: "#9C27B0"
 ---
 [flashcard-review]
-front: "impossible"
-meaning: "impossible"
-translation: "adj.不可能的，做不到的,难以忍受的,不会有的，不能相信的n.不可能,不可能的事"
-srsWords: "impossible"
+front: "receipt"
+meaning: "n. an acknowledgment (usually tangible) that payment has been made; v. mark or stamp as paid"
+translation: "n. 收据, 收入, 收到；vt. 开...的收据"
+srsWords: "receipt"
 
 [flashcard-review]
 front: "impress"
@@ -490,10 +490,10 @@ translation: "visible vapor from burning"
 srsWords: "smoke"
 
 [flashcard-review]
-front: "comfortable"
-meaning: "providing physical ease"
-translation: "providing physical ease"
-srsWords: "comfortable"
+front: "paste"
+meaning: "n. any mixture of a soft and malleable consistency; n. a hard, brilliant lead glass that is used in making artificial jewelry; n. an adhesive made from water and flour or starch; used on paper and paperboard; v. hit with the fists"
+translation: "n. 面团, 面食, 浆糊, 糊状物, 粘贴, 用拳重击；vt. 用浆糊粘, 张贴, 狠狠地打；[计] 粘贴"
+srsWords: "paste"
 
 [flashcard-review]
 front: "inspiration"
@@ -550,10 +550,10 @@ translation: "lacking strength"
 srsWords: "weak"
 
 [flashcard-review]
-front: "apartment"
-meaning: "apartment"
-translation: "apartment"
-srsWords: "apartment"
+front: "plaza"
+meaning: "n. a public square with room for pedestrians; n. mercantile establishment consisting of a carefully landscaped complex of shops representing leading merchandisers; usually includes restaurants and a convenient parking area; a modern version of the traditional marketplace"
+translation: "n. 广场, 市场, 购物区"
+srsWords: "plaza"
 
 [flashcard-review]
 front: "chain"
@@ -562,10 +562,10 @@ translation: "chain"
 srsWords: "chain"
 
 [flashcard-review]
-front: "chapter"
-meaning: "chapter"
-translation: "chapter"
-srsWords: "chapter"
+front: "wool"
+meaning: "n. a fabric made from the hair of sheep; n. fiber sheared from animals (such as sheep) and twisted into yarn for weaving; n. outer coat of especially sheep and yaks"
+translation: "n. 羊毛, 毛织物, 毛线, 绒线；[医] 羊毛, 绒毛, 棉[花]"
+srsWords: "wool"
 
 [flashcard-review]
 front: "invade"
@@ -668,4 +668,3 @@ front: "context"
 meaning: "the circumstances that form the setting for an event, statement, or idea"
 translation: "the circumstances that form the setting for an event, statement, or idea"
 srsWords: "context"
-

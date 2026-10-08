@@ -64,10 +64,10 @@ translation: "v. （鸟）啁啾，（昆虫）唧唧叫； 轻松愉快地说�
 srsWords: "chirp"
 
 [flashcard-review]
-front: "choice"
-meaning: "choice"
-translation: "n. 选择；选择权；精选品; adj. 精选的；仔细推敲的比较级:choicer, choicest副 词:choicely; 名 词:choiceness"
-srsWords: "choice"
+front: "tourist"
+meaning: "n. someone who travels for pleasure"
+translation: "n. 观光客, 旅行者；a. 旅游的"
+srsWords: "tourist"
 
 [flashcard-review]
 front: "safe"
@@ -268,10 +268,10 @@ translation: "vt. & vi. 传达；表达; vi. 通讯；交际，交流相连；�
 srsWords: "communicate"
 
 [flashcard-review]
-front: "company"
-meaning: "a business organization"
-translation: "a business organization"
-srsWords: "company"
+front: "anytime"
+meaning: "at any time"
+translation: "adv. 任何时候；无例外地"
+srsWords: "anytime"
 
 ---
 lessonTitle: "Lesson 5: Work, Careers & Technology Part 5"
@@ -370,10 +370,10 @@ translation: "n.大陆，陆地,欧洲大陆,<美>北美洲大陆adj.自制的�
 srsWords: "continent"
 
 [flashcard-review]
-front: "continue"
-meaning: "continue"
-translation: "vi. 仍旧，连续；继续，延续; vt. 继续说…；使…继续；使…延长; 时态:continued, continuing, continues 缩 写:cont; 形容词:continuable"
-srsWords: "continue"
+front: "sandy"
+meaning: "s of hair color; pale yellowish to yellowish brown; a resembling or containing or abounding in sand; or growing in sandy areas"
+translation: "a. 沙的, 沙地的, 多沙的"
+srsWords: "sandy"
 
 [flashcard-review]
 front: "contrast"
@@ -454,10 +454,10 @@ translation: "not long ago"
 srsWords: "recently"
 
 [flashcard-review]
-front: "country"
-meaning: "country"
-translation: "n. 国家，国土；国民；乡下，农村；乡村；故乡 adj. 祖国的，故乡的；地方的，乡村的；国家的；粗鲁的；乡村音乐的"
-srsWords: "country"
+front: "uncomfortable"
+meaning: "a. conducive to or feeling mental discomfort; a. providing or experiencing physical discomfort"
+translation: "a. 不舒服的, 不自在的, 不安的"
+srsWords: "uncomfortable"
 
 [flashcard-review]
 front: "countryside"
@@ -484,16 +484,16 @@ translation: "how heavy something is"
 srsWords: "weight"
 
 [flashcard-review]
-front: "cover"
-meaning: "cover"
-translation: "v. 覆盖，遮盖；包括，涉及；报道；占（一片面积）；行走（一段路程）；掩护；翻唱；给……保险；足够支付；守住，封锁；顶替，代替（cover for）；找借口，包庇（cover for）；采取行动（保护自己）（cover oneself）；防守，（棒球）守（垒）；（以更大点数的牌）盖打 n. 覆盖物，盖子，罩子；封面，封底；保险；掩护；掩饰；掩蔽处；转录，翻唱；被子，床单；遮盖，覆盖；代替，替代；掩护活动，掩护身份；板球；（生态）盖度；借口"
-srsWords: "cover"
+front: "runner"
+meaning: "n. someone who travels on foot by running; n. a person who is employed to deliver messages or documents; n. a trained athlete who competes in foot races; n. a long narrow carpet"
+translation: "n. 跑步者, 赛跑者, 送信人, 走私船, 操作者, 滑槽；[化] 碾碎机; 压碎机"
+srsWords: "runner"
 
 [flashcard-review]
-front: "crazy"
-meaning: "insane, wild"
-translation: "insane, wild"
-srsWords: "crazy"
+front: "sadly"
+meaning: "r. in an unfortunate way; r. with sadness; in a sad manner"
+translation: "adv. 悲痛地, 悲惨地, 悲伤地, 说来遗憾"
+srsWords: "sadly"
 
 [flashcard-review]
 front: "addition"
@@ -526,10 +526,10 @@ translation: "adj. 爽口的，脆生的；脆的，易碎的；洁净的，挺�
 srsWords: "crisp"
 
 [flashcard-review]
-front: "ahead"
-meaning: "in front"
-translation: "in front"
-srsWords: "ahead"
+front: "soap"
+meaning: "n. a cleansing agent made from the salts of vegetable or animal fats; n. money offered as a bribe; n. street names for gamma hydroxybutyrate; v. rub soap all over, usually with the purpose of cleaning"
+translation: "n. 肥皂, 阿谀；vt. 以肥皂洗, 阿谀；[计] 评语"
+srsWords: "soap"
 
 [flashcard-review]
 front: "association"
@@ -556,10 +556,10 @@ translation: "a large group of people"
 srsWords: "crowd"
 
 [flashcard-review]
-front: "brown"
-meaning: "a color"
-translation: "a color"
-srsWords: "brown"
+front: "unnecessary"
+meaning: "a. not necessary"
+translation: "a. 不必要的"
+srsWords: "unnecessary"
 
 [flashcard-review]
 front: "crown"
@@ -628,10 +628,10 @@ translation: "to think that something will happen"
 srsWords: "expect"
 
 [flashcard-review]
-front: "daily"
-meaning: "happening every day"
-translation: "happening every day"
-srsWords: "daily"
+front: "shine"
+meaning: "v. emit light; be bright, as of the sun or a light; v. be distinguished or eminent; v. be clear and obvious; v. throw or flash the light of (a lamp)"
+translation: "n. 光泽, 阳光；vt. 使发光；vi. 照耀, 发光, 发亮"
+srsWords: "shine"
 
 [flashcard-review]
 front: "dam"
@@ -668,4 +668,3 @@ front: "daylight"
 meaning: "the natural light of the day"
 translation: "n.日光，白昼,清早，黎明,公开，发表,<俚>眼睛，视力"
 srsWords: "daylight"
-

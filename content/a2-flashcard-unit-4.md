@@ -28,10 +28,10 @@ translation: "usual or ordinary"
 srsWords: "normal"
 
 [flashcard-review]
-front: "decide"
-meaning: "decide"
-translation: "vt. 决定；判决；解决; vi. 决定，下决心; 时态:decided, deciding, decides名 词:decidability; 形容词:decidable; 名 词:decider"
-srsWords: "decide"
+front: "treasure"
+meaning: "n. accumulated wealth in the form of money or jewels etc.; n. any possession that is highly valued by its owner; n. a collection of precious things"
+translation: "n. 宝物, 财富；vt. 珍爱, 重视, 秘藏"
+srsWords: "treasure"
 
 [flashcard-review]
 front: "population"
@@ -40,10 +40,10 @@ translation: "the number of people living in an area"
 srsWords: "population"
 
 [flashcard-review]
-front: "deep"
-meaning: "extending far down from the top or surface"
-translation: "extending far down from the top or surface"
-srsWords: "deep"
+front: "unfair"
+meaning: "a. not fair; marked by injustice or partiality or deception"
+translation: "a. 不公平的, 不正直的, 不正当的；[法] 不正直的, 不公平的, 偏颇的"
+srsWords: "unfair"
 
 [flashcard-review]
 front: "deeply"
@@ -82,10 +82,10 @@ icon: "🏃"
 color: "#E91E63"
 ---
 [flashcard-review]
-front: "beginning"
-meaning: "the start"
-translation: "the start"
-srsWords: "beginning"
+front: "shade"
+meaning: "n. relative darkness caused by light rays being intercepted by an opaque body; n. a quality of a given color that differs slightly from another color; n. protective covering that protects something from direct sunlight; n. a position of relative inferiority"
+translation: "n. 荫, 阴暗, 遮光物, 灯罩, 帘, 浓淡, 微量, 底纹；vi. 渐变；vt. 使阴暗, 使渐变, 遮蔽, 微减；[计] 底纹"
+srsWords: "shade"
 
 [flashcard-review]
 front: "dessert"
@@ -118,10 +118,10 @@ translation: "to stop living"
 srsWords: "die"
 
 [flashcard-review]
-front: "certainly"
-meaning: "without a doubt"
-translation: "without a doubt"
-srsWords: "certainly"
+front: "quietly"
+meaning: "r. with little or no sound; r. with little or no activity or no agitation (`quiet' is a nonstandard variant for `quietly')"
+translation: "adv. 安静地, 沉着地, 秘密地"
+srsWords: "quietly"
 
 [flashcard-review]
 front: "credit"
@@ -148,10 +148,10 @@ icon: "🏃"
 color: "#E91E63"
 ---
 [flashcard-review]
-front: "cross"
-meaning: "a shape made of two lines intersecting"
-translation: "a shape made of two lines intersecting"
-srsWords: "cross"
+front: "wallet"
+meaning: "n. a pocket-size case for holding papers and paper money"
+translation: "n. 皮夹；[法] 皮包, 皮夹, 钱袋"
+srsWords: "wallet"
 
 [flashcard-review]
 front: "dinosaur"
@@ -376,10 +376,10 @@ translation: "n.灰尘,（建筑物内、家具或地板等上的）灰尘,遗�
 srsWords: "dust"
 
 [flashcard-review]
-front: "centre"
-meaning: "the middle point or part"
-translation: "the middle point or part"
-srsWords: "centre"
+front: "pepper"
+meaning: "n. climber having dark red berries (peppercorns) when fully ripe; southern India and Sri Lanka; naturalized in northern Burma and Assam; n. pungent seasoning from the berry of the common pepper plant of East India; use whole or ground; n. sweet and hot varieties of fruits of plants of the genus Capsicum; v. add pepper to"
+translation: "n. 胡椒粉, 胡椒, 辣椒；[化] 胡椒; 辣椒; 花椒"
+srsWords: "pepper"
 
 [flashcard-review]
 front: "claim"
@@ -418,10 +418,10 @@ translation: "material"
 srsWords: "material"
 
 [flashcard-review]
-front: "earth"
-meaning: "planet, ground"
-translation: "planet, ground"
-srsWords: "earth"
+front: "pile"
+meaning: "n. a collection of objects laid on top of each other; n. a large sum of money (especially as pay or profit); n. a column of wood or steel or concrete that is driven into the ground to provide support for a structure; n. the yarn (as in a rug or velvet or corduroy) that stands up from the weave"
+translation: "n. 堆, 大堆, 大厦, 建筑群, 电池, 大量, 桥桩, 软毛, 痔疮；vi. 堆起, 堆积, 积累, 挤, 猛烈攻击；vt. 堆于, 累积, 堆叠, 打桩于, 用桩支撑"
+srsWords: "pile"
 
 [flashcard-review]
 front: "earthquake"
@@ -556,10 +556,10 @@ translation: "vt. 鼓励, 激励促进, 助长, 激发; 时态:encouraged, encou
 srsWords: "encourage"
 
 [flashcard-review]
-front: "end"
-meaning: "end"
-translation: "the final part"
-srsWords: "end"
+front: "stair"
+meaning: "n support consisting of a place to rest the foot while ascending or descending a stairway"
+translation: "n. 梯级, 楼梯, 阶梯"
+srsWords: "stair"
 
 [flashcard-review]
 front: "opinion"
@@ -610,10 +610,10 @@ icon: "🏃"
 color: "#E91E63"
 ---
 [flashcard-review]
-front: "enough"
-meaning: "as much as needed"
-translation: "as much as needed"
-srsWords: "enough"
+front: "sweat"
+meaning: "n. condensation of moisture on a cold surface; v. excrete perspiration through the pores in the skin"
+translation: "n. 汗, 汗水, 水珠, 焦急；vi. 出汗, 渗出, 冒出水气, 结水珠, 烦恼, 懊恼；vt. 使出汗, 流出, 榨出, 使汗流浃背"
+srsWords: "sweat"
 
 [flashcard-review]
 front: "enter"
@@ -640,16 +640,16 @@ translation: "n. 信封，封皮；[生]包膜；[天]包层；[数]包迹"
 srsWords: "envelope"
 
 [flashcard-review]
-front: "australian"
-meaning: "relating to Australia or its people"
-translation: "relating to Australia or its people"
-srsWords: "australian"
+front: "teenage"
+meaning: "s being of the age 13 through 19"
+translation: "a. 十三岁到十九岁的"
+srsWords: "teenage"
 
 [flashcard-review]
-front: "direction"
-meaning: "the path that something takes"
-translation: "the path that something takes; guidance"
-srsWords: "direction"
+front: "bend"
+meaning: "n. a circular segment of a curve; n. curved segment (of a road or river or railroad track etc.); n. a town in central Oregon at the eastern foot of the Cascade Range; n. diagonal line traversing a shield from the upper right corner to the lower left"
+translation: "vi. 变弯曲, 屈服；vt. 使弯曲, 使屈服；n. 弯曲"
+srsWords: "bend"
 
 [flashcard-review]
 front: "wonder"
@@ -658,14 +658,13 @@ translation: "a feeling of surprise and admiration; a remarkable thing"
 srsWords: "wonder"
 
 [flashcard-review]
-front: "cash"
-meaning: "money in coins or notes"
-translation: "money in coins or notes"
-srsWords: "cash"
+front: "closet"
+meaning: "n. a small private room for study or prayer; v. confine to a small space, as for intensive work"
+translation: "n. 壁橱, 小室；a. 秘密的, 空谈的；vt. 把...关入小室"
+srsWords: "closet"
 
 [flashcard-review]
 front: "error"
 meaning: "a mistake"
 translation: "a mistake"
 srsWords: "error"
-

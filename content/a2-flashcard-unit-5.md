@@ -16,10 +16,10 @@ icon: "🍲"
 color: "#FF9800"
 ---
 [flashcard-review]
-front: "clearly"
-meaning: "in a clear manner"
-translation: "in a clear manner; obviously"
-srsWords: "clearly"
+front: "precise"
+meaning: "a. sharply exact or accurate or delimited"
+translation: "a. 精确的, 严谨的, 明确的；[机] 精密的, 正确的"
+srsWords: "precise"
 
 [flashcard-review]
 front: "escalator"
@@ -46,10 +46,10 @@ translation: "abbr. 欧洲（European）"
 srsWords: "euro"
 
 [flashcard-review]
-front: "european"
-meaning: "European"
-translation: "adj.欧洲的，欧洲人的,欧盟的n.欧洲人"
-srsWords: "european"
+front: "jewelry"
+meaning: "n. an adornment (as a bracelet or ring or necklace) made of precious metals and set with gems (or imitation gems)"
+translation: "n. 珠宝, 珠宝类"
+srsWords: "jewelry"
 
 [flashcard-review]
 front: "effort"
@@ -58,10 +58,10 @@ translation: "a vigorous or determined attempt"
 srsWords: "effort"
 
 [flashcard-review]
-front: "ever"
-meaning: "at any time"
-translation: "at any time"
-srsWords: "ever"
+front: "predict"
+meaning: "v. make a prediction about; tell in advance"
+translation: "v. 预知, 预言, 预报"
+srsWords: "predict"
 
 [flashcard-review]
 front: "impact"
@@ -124,16 +124,16 @@ translation: "to cause strong feelings of enthusiasm and eagerness"
 srsWords: "excite"
 
 [flashcard-review]
-front: "dream"
-meaning: "a series of thoughts, images, and sensations occurring in a person's mind during sleep"
-translation: "a series of thoughts, images, and sensations occurring in a person's mind during sleep"
-srsWords: "dream"
+front: "fig"
+meaning: "n. Mediterranean tree widely cultivated for its edible fruit; n. fleshy sweet pear-shaped yellowish or purple multiple fruit eaten fresh or preserved or dried"
+translation: "n. 无花果, 无价值的东西, 少许, 服装；vt. 打扮, 使马跑快"
+srsWords: "fig"
 
 [flashcard-review]
-front: "easily"
-meaning: "without difficulty"
-translation: "without difficulty"
-srsWords: "easily"
+front: "pour"
+meaning: "v. cause to run; v. move in large numbers; v. flow in a spurt; v. supply in large amounts or quantities"
+translation: "n. 流出, 倾泻, 骤雨；vt. 倒, 灌, 注, 倾泻, 诉说, 倾吐；vi. 倾泻, 蜂涌而来, 下大雨"
+srsWords: "pour"
 
 [flashcard-review]
 front: "necessary"
@@ -160,10 +160,10 @@ translation: "n.陈列，展览,展览品，陈列品,表明,法（证据等的�
 srsWords: "exhibition"
 
 [flashcard-review]
-front: "expect"
-meaning: "to think that something will happen"
-translation: "to think that something will happen"
-srsWords: "expect"
+front: "shark"
+meaning: "n. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales; n. a person who is ruthless and greedy and dishonest; n. a person who is unusually skilled in certain ways; v. play the shark; act with trickery"
+translation: "n. 鲨鱼, 骗子；v. 诈骗"
+srsWords: "shark"
 
 [flashcard-review]
 front: "sweet"
@@ -196,16 +196,16 @@ translation: "set up, found"
 srsWords: "establish"
 
 [flashcard-review]
-front: "face"
-meaning: "face"
-translation: "n. 脸，面部；面部表情，脸色；人；初看，初听；尊严，威信；面貌；（物体的）正面，表面；斜坡，山坡；钟面，表盘；采掘面，工作面；（球拍的）拍面；（尤指足球的）球门 v. 面临，遭遇；正视，面对；与……交往，与……交谈；面向，面朝；迎战，对阵；抹盖，覆盖；接受，容忍"
-srsWords: "face"
+front: "cafe"
+meaning: "n. a small restaurant where drinks and snacks are sold"
+translation: "n. 咖啡馆, 酒店"
+srsWords: "cafe"
 
 [flashcard-review]
-front: "fact"
-meaning: "a piece of information known to be true"
-translation: "a piece of information known to be true"
-srsWords: "fact"
+front: "dairy"
+meaning: "n. a farm where dairy products are produced"
+translation: "n. 牛奶公司, 乳品店, 乳牛场"
+srsWords: "dairy"
 
 ---
 lessonTitle: "Lesson 4: Food, Cooking & Restaurants Part 4"
@@ -214,10 +214,10 @@ icon: "🍲"
 color: "#FF9800"
 ---
 [flashcard-review]
-front: "basic"
-meaning: "fundamental, essential"
-translation: "fundamental, essential"
-srsWords: "basic"
+front: "hug"
+meaning: "n. a tight or amorous embrace; v. fit closely or tightly"
+translation: "n. 紧抱, 拥抱；vt. 紧抱, 坚持, 使沾沾自喜"
+srsWords: "hug"
 
 [flashcard-review]
 front: "fail"
@@ -226,10 +226,10 @@ translation: "to be unsuccessful in achieving one's goal."
 srsWords: "fail"
 
 [flashcard-review]
-front: "fall"
-meaning: "autumn, descent"
-translation: "autumn, descent"
-srsWords: "fall"
+front: "statue"
+meaning: "n. a sculpture representing a human or animal"
+translation: "vt. 以雕像装饰；n. 雕像"
+srsWords: "statue"
 
 [flashcard-review]
 front: "captain"
@@ -244,10 +244,10 @@ translation: "illegal act"
 srsWords: "crime"
 
 [flashcard-review]
-front: "explain"
-meaning: "make clear"
-translation: "make clear"
-srsWords: "explain"
+front: "teenager"
+meaning: "n a juvenile between the onset of puberty and maturity"
+translation: "n. 十三岁到十九岁的少年"
+srsWords: "teenager"
 
 [flashcard-review]
 front: "fully"
@@ -256,10 +256,10 @@ translation: "completely, entirely"
 srsWords: "fully"
 
 [flashcard-review]
-front: "far"
-meaning: "far"
-translation: "ad; v. 到很远距离, 遥远地久远地到很大程度, 很, 极; adj. 远的, 遥远的FARabbr. Failure Analysis Report 故障分析报告比较级:farther , furtherfarthest , furthest"
-srsWords: "far"
+front: "chick"
+meaning: "n. young bird especially of domestic fowl"
+translation: "n. 小鸡, 小鸟, 竹帘"
+srsWords: "chick"
 
 [flashcard-review]
 front: "male"
@@ -298,10 +298,10 @@ translation: "the reason for which something is done or created or for which som
 srsWords: "purpose"
 
 [flashcard-review]
-front: "favorite"
-meaning: "preferred above all others"
-translation: "preferred above all others"
-srsWords: "favorite"
+front: "nest"
+meaning: "n. a structure in which animals lay eggs or give birth to their young; n. a kind of gun emplacement; n. a cosy or secluded retreat; n. a gang of people (criminals or spies or terrorists) assembled in one locality"
+translation: "n. 巢, 窝, 休息所, 隐匿处；vi. 筑巢, 找鸟巢；vt. 为...设窝, 使套叠；[计] 嵌套"
+srsWords: "nest"
 
 [flashcard-review]
 front: "avoid"
@@ -382,10 +382,10 @@ translation: "female monarch"
 srsWords: "queen"
 
 [flashcard-review]
-front: "accept"
-meaning: "receive, agree to"
-translation: "receive, agree to"
-srsWords: "accept"
+front: "toe"
+meaning: "n. one of the digits of the foot; n. the part of footwear that provides a covering for the toes; n. forepart of a hoof; n. (golf) the part of a clubhead farthest from the shaft"
+translation: "n. 足趾, 趾部, 脚趾；vt. 以趾踏触, 用脚尖走；vi. 动脚尖"
+srsWords: "toe"
 
 [flashcard-review]
 front: "fiction"
@@ -394,10 +394,10 @@ translation: "n.小说，虚构的文学作品,虚构的或想像出的事，并
 srsWords: "fiction"
 
 [flashcard-review]
-front: "appear"
-meaning: "seem, become visible"
-translation: "seem, become visible"
-srsWords: "appear"
+front: "pronounce"
+meaning: "v. speak, pronounce, or utter in a certain way; v. pronounce judgment on"
+translation: "v. 发音, 宣告, 断言"
+srsWords: "pronounce"
 
 [flashcard-review]
 front: "powerful"
@@ -520,10 +520,10 @@ translation: "a type of product manufactured by a particular company under a par
 srsWords: "brand"
 
 [flashcard-review]
-front: "cent"
-meaning: "a monetary unit equal to one hundredth of a dollar, euro, or other decimal currency unit"
-translation: "a monetary unit equal to one hundredth of a dollar, euro, or other decimal currency unit"
-srsWords: "cent"
+front: "rope"
+meaning: "n. a strong line; v. fasten with a rope"
+translation: "n. 绳, 索, 粗绳, 绞索, 决窍；vt. 捆, 缚, 绑, 圈起, 以绳将...系住；vi. 拧成绳状"
+srsWords: "rope"
 
 [flashcard-review]
 front: "flea"
@@ -532,10 +532,10 @@ translation: "n.跳蚤，蚤目的昆虫,生蚤的动物"
 srsWords: "flea"
 
 [flashcard-review]
-front: "flight"
-meaning: "journey by air, act of flying"
-translation: "journey by air, act of flying"
-srsWords: "flight"
+front: "smartphone"
+meaning: "a mobile phone that performs many of the functions of a computer"
+translation: "n. 智能手机"
+srsWords: "smartphone"
 
 ---
 lessonTitle: "Lesson 9: Food, Cooking & Restaurants Part 9"
@@ -592,10 +592,10 @@ translation: "to become aware of something."
 srsWords: "realize"
 
 [flashcard-review]
-front: "follow"
-meaning: "follow"
-translation: "v. 跟着，跟随；尾随，跟踪；（时间、空间或顺序）排在……后；遵循，听从；仿效，追随；循着，沿着（道路、标志等）；沿着……伸延，与……平行；理解，明白；可以推断出，由此得出；有浓厚兴趣，密切关注；信奉，信仰；以……为原型，讲述……的故事；沿袭，继承；跟唱，跟读；从事（行业、职业）；（欣赏节目的同时）对照看（脚本或乐谱）"
-srsWords: "follow"
+front: "unhappy"
+meaning: "a. experiencing or marked by or causing sadness or sorrow or discontent; s. causing discomfort"
+translation: "a. 不快乐的, 不幸的, 不适当的"
+srsWords: "unhappy"
 
 [flashcard-review]
 front: "remain"
@@ -652,10 +652,10 @@ translation: "n. 餐叉耙子，叉(道路或河流的)分岔处; vi. 分叉; vt
 srsWords: "fork"
 
 [flashcard-review]
-front: "african"
-meaning: "relating to Africa or its people."
-translation: "relating to Africa or its people."
-srsWords: "african"
+front: "pill"
+meaning: "n. something that resembles a tablet of medicine in shape or size; n. a dose of medicine in the form of a small pellet; n. a unpleasant or tiresome person; n. something unpleasant or offensive that must be tolerated or endured"
+translation: "n. 药丸, 弹丸, 屈辱, 胡说；v. 做成药丸, 形成丸状, 服药丸, 挫败, 抢劫"
+srsWords: "pill"
 
 [flashcard-review]
 front: "budget"
@@ -664,8 +664,7 @@ translation: "an estimate of income and expenditure for a set period of time."
 srsWords: "budget"
 
 [flashcard-review]
-front: "click"
-meaning: "to press a button on a computer mouse or other device."
-translation: "to press a button on a computer mouse or other device."
-srsWords: "click"
-
+front: "rhythm"
+meaning: "n. the basic rhythmic unit in a piece of music; n. recurring at regular intervals; n. the arrangement of spoken words alternating stressed and unstressed elements"
+translation: "n. 旋律, 节奏, 韵律, 匀称, 张弛节律；[医] 节律"
+srsWords: "rhythm"

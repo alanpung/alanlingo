@@ -16,10 +16,10 @@ icon: "📚"
 color: "#E91E63"
 ---
 [flashcard-review]
-front: "morning"
-meaning: "the period of time between midnight and noon"
-translation: "the period of time between midnight and noon"
-srsWords: "morning"
+front: "min"
+meaning: "n. any of the forms of Chinese spoken in Fukien province; n. an Egyptian god of procreation"
+translation: "abbr. 部长（Minister）；部（Ministry）"
+srsWords: "min"
 
 [flashcard-review]
 front: "mother"
@@ -34,10 +34,10 @@ translation: "a large natural elevation of the earth's surface"
 srsWords: "mountain"
 
 [flashcard-review]
-front: "meet"
-meaning: "encounter, get to know"
-translation: "encounter, get to know"
-srsWords: "meet"
+front: "purple"
+meaning: "n. a purple color or pigment; n. of imperial status; v. become purple; v. color purple"
+translation: "n. 紫色, 帝位；a. 紫色的, 帝王的, 华而不实的；v. (使)成紫色"
+srsWords: "purple"
 
 [flashcard-review]
 front: "mouse"
@@ -64,16 +64,16 @@ translation: "abbr. 先生（Mister）mrabbr. Mauritania 毛里塔尼亚Medium-R
 srsWords: "mr"
 
 [flashcard-review]
-front: "baby"
-meaning: "infant"
-translation: "infant"
-srsWords: "baby"
+front: "mama"
+meaning: "n. a name under which Ninkhursag was worshipped"
+translation: "n. 妈妈"
+srsWords: "mama"
 
 [flashcard-review]
-front: "much"
-meaning: "a large amount"
-translation: "a large amount"
-srsWords: "much"
+front: "ninth"
+meaning: "n. position nine in a countable series of things; s. coming next after the eighth and just before the tenth in position"
+translation: "num. 第九, 九分之一"
+srsWords: "ninth"
 
 ---
 lessonTitle: "Lesson 2: School & Education Part 2"
@@ -88,10 +88,10 @@ translation: "n. 妈妈；（非正式）（栽培的）菊花；啤酒; adj. �
 srsWords: "mum"
 
 [flashcard-review]
-front: "music"
-meaning: "organized sound"
-translation: "organized sound"
-srsWords: "music"
+front: "shorts"
+meaning: "n trousers that end at or above the knee; n underpants worn by men; n the location on a baseball field where the shortstop is stationed; n accidental contact between two points in an electric circuit that have a potential difference; n the fielding position of the player on a baseball team who is stationed between second and third base; v cheat someone by not returning him enough money; v create a short circuit in"
+translation: "n. 短裤, (美)男人的短衬裤；[经] 空头户, 空头, 短期债券"
+srsWords: "shorts"
 
 [flashcard-review]
 front: "musician"
@@ -100,10 +100,10 @@ translation: "n. 音乐家形容词:musicianly; 名 词:musicianship"
 srsWords: "musician"
 
 [flashcard-review]
-front: "father"
-meaning: "male parent"
-translation: "male parent"
-srsWords: "father"
+front: "grocery"
+meaning: "n. (usually plural) consumer goods sold by a grocer"
+translation: "n. 食品杂货店, 食品杂货业"
+srsWords: "grocery"
 
 [flashcard-review]
 front: "song"
@@ -148,16 +148,16 @@ icon: "📚"
 color: "#E91E63"
 ---
 [flashcard-review]
-front: "new"
-meaning: "not existing before"
-translation: "not existing before"
-srsWords: "new"
+front: "papa"
+meaning: "n an informal term for a father; probably derived from baby talk"
+translation: "n. 爸爸"
+srsWords: "papa"
 
 [flashcard-review]
-front: "news"
-meaning: "information about recent events"
-translation: "information about recent events"
-srsWords: "news"
+front: "mat"
+meaning: "n. a thick flat pad used as a floor covering; n. mounting consisting of a border or background for a picture; n. sports equipment consisting of a piece of thick padding on the floor for gymnastic sports; n. a mass that is densely tangled or interwoven"
+translation: "n. 垫, 丛, 衬边；a. 粗糙的, 无光泽的；vi. 纠缠在一起；vt. 铺席于...上, 使无光泽, 使缠结"
+srsWords: "mat"
 
 [flashcard-review]
 front: "newspaper"
@@ -166,10 +166,10 @@ translation: "a daily or weekly publication"
 srsWords: "newspaper"
 
 [flashcard-review]
-front: "nice"
-meaning: "pleasant or agreeable"
-translation: "pleasant or agreeable"
-srsWords: "nice"
+front: "café"
+meaning: "a small restaurant serving drinks and light meals"
+translation: "a small restaurant serving drinks and light meals"
+srsWords: "café"
 
 [flashcard-review]
 front: "action"
@@ -202,10 +202,10 @@ translation: "num.九十n.九十,九十年代,九十岁adj.九十的,九十岁�
 srsWords: "ninety"
 
 [flashcard-review]
-front: "no"
-meaning: "not any"
-translation: "ad; v. 不; adj. 没有；不是; n. 不；否决票abbr. [化]元素锘（nobelium）的符号；数字（number）No元素锘(nobelium)的符号NOabbr. Naphthenic Oil 环烷油"
-srsWords: "no"
+front: "drying"
+meaning: "v remove the moisture from and make dry; v become dry or drier"
+translation: "[计] 干燥的；[化] 干燥"
+srsWords: "drying"
 
 ---
 lessonTitle: "Lesson 4: School & Education Part 4"
@@ -232,10 +232,10 @@ translation: "the part of the face used for smelling and breathing"
 srsWords: "nose"
 
 [flashcard-review]
-front: "not"
-meaning: "not"
-translation: "adv.不,用以表示否定、否认、拒绝、禁止等不是,几乎不,未必，没有用于否定后面的词或短语"
-srsWords: "not"
+front: "eng"
+meaning: "English (abbreviation)"
+translation: "[医] 眼震电流描记法"
+srsWords: "eng"
 
 [flashcard-review]
 front: "notebook"
@@ -286,22 +286,22 @@ translation: "a very brief period of time"
 srsWords: "moment"
 
 [flashcard-review]
-front: "mother"
-meaning: "female parent"
-translation: "female parent"
-srsWords: "mother"
+front: "cellphone"
+meaning: "n a hand-held mobile radiotelephone for use in an area divided into small sections, each with its own short-range transmitter/receiver"
+translation: "n. 蜂窝式便携无线电话；大哥大"
+srsWords: "cellphone"
 
 [flashcard-review]
-front: "office"
-meaning: "a place where people work"
-translation: "a place where people work"
-srsWords: "office"
+front: "hen"
+meaning: "n. adult female chicken; n. adult female bird; n. flesh of an older chicken suitable for stewing; n. female of certain aquatic animals e.g. octopus or lobster"
+translation: "n. 母鸡, 雌禽"
+srsWords: "hen"
 
 [flashcard-review]
-front: "often"
-meaning: "frequently"
-translation: "frequently"
-srsWords: "often"
+front: "mister"
+meaning: "n. a form of address for a man"
+translation: "n. 先生"
+srsWords: "mister"
 
 [flashcard-review]
 front: "town"
@@ -328,16 +328,16 @@ translation: "wife"
 srsWords: "wife"
 
 [flashcard-review]
-front: "only"
-meaning: "no one or nothing more than"
-translation: "no one or nothing more than"
-srsWords: "only"
+front: "ketchup"
+meaning: "n thick spicy sauce made from tomatoes"
+translation: "n. 蕃茄酱"
+srsWords: "ketchup"
 
 [flashcard-review]
-front: "open"
-meaning: "open"
-translation: "adj. 营业着的；敞开的；空旷的；公开的；坦率的; vi. 开始；展现; vt. 打开；公开; n. 公开；空旷；户外; 时态:opened, opening, opens副 词:openly; 名 词:openness"
-srsWords: "open"
+front: "donut"
+meaning: "n a small ring-shaped friedcake"
+translation: "[医] 电子回旋加速器环状真空室, 同步加速器环状真空室"
+srsWords: "donut"
 
 ---
 lessonTitle: "Lesson 6: School & Education Part 6"
@@ -352,10 +352,10 @@ translation: "n. 歌剧；歌剧院；歌剧团 n. (Opera)人名；(意)奥佩�
 srsWords: "opera"
 
 [flashcard-review]
-front: "beautiful"
-meaning: "beautiful"
-translation: "beautiful"
-srsWords: "beautiful"
+front: "toaster"
+meaning: "n. someone who proposes a toast; someone who drinks to the health of success of someone or some venture; n. a kitchen appliance (usually electric) for toasting bread"
+translation: "n. 烤面包器, 烤面包炉, 祝酒人"
+srsWords: "toaster"
 
 [flashcard-review]
 front: "orange"
@@ -382,10 +382,10 @@ translation: "site, location"
 srsWords: "site"
 
 [flashcard-review]
-front: "out"
-meaning: "away from the inside"
-translation: "away from the inside"
-srsWords: "out"
+front: "mamma"
+meaning: "n informal terms for a mother; n milk-secreting organ of female mammals"
+translation: "n. 妈妈, 乳房；[医] 乳房"
+srsWords: "mamma"
 
 [flashcard-review]
 front: "page"
@@ -430,10 +430,10 @@ translation: "n. 父母亲；父亲（或母亲）；根源; 时态:parented, pa
 srsWords: "parent"
 
 [flashcard-review]
-front: "pay"
-meaning: "to give money for something"
-translation: "to give money for something"
-srsWords: "pay"
+front: "moo"
+meaning: "n. the sound made by a cow or bull; v. make a low noise, characteristic of bovines"
+translation: "vi. 发哞声；n. 牛叫声"
+srsWords: "moo"
 
 [flashcard-review]
 front: "pen"
@@ -454,22 +454,22 @@ translation: "men（noun）"
 srsWords: "men"
 
 [flashcard-review]
-front: "people"
-meaning: "human beings in general"
-translation: "human beings in general"
-srsWords: "people"
+front: "cheeseburger"
+meaning: "n. a hamburger with melted cheese on it"
+translation: "n. 干酪汉堡包"
+srsWords: "cheeseburger"
 
 [flashcard-review]
-front: "eye"
-meaning: "eye"
-translation: "eye"
-srsWords: "eye"
+front: "rollin"
+meaning: "to move by turning over and over"
+translation: "n. 转入（返回）；n. (Rollin)人名；(英、德、西、意、葡、瑞典、芬)罗林；(法)罗兰"
+srsWords: "rollin"
 
 [flashcard-review]
-front: "person"
-meaning: "human being"
-translation: "human being"
-srsWords: "person"
+front: "zed"
+meaning: "n the 26th letter of the Roman alphabet"
+translation: "n. Z字母"
+srsWords: "zed"
 
 ---
 lessonTitle: "Lesson 8: School & Education Part 8"
@@ -484,16 +484,16 @@ translation: "n. 宠物；受宠爱的人；生气; vt. 宠爱; vi. 爱抚；生
 srsWords: "pet"
 
 [flashcard-review]
-front: "phone"
-meaning: "telephone"
-translation: "n. 电话；耳机，听筒; vt. 打电话; vi. 打电话; 时态:phoned, phoning, phones"
-srsWords: "phone"
+front: "doggie"
+meaning: "n informal terms for dogs"
+translation: "n. 小狗, 狗儿(对狗的爱称)"
+srsWords: "doggie"
 
 [flashcard-review]
-front: "parent"
-meaning: "parent"
-translation: "parent"
-srsWords: "parent"
+front: "centimetre"
+meaning: "n a metric unit of length equal to one hundredth of a meter"
+translation: "n. 厘米, 公分"
+srsWords: "centimetre"
 
 [flashcard-review]
 front: "photo"
@@ -550,10 +550,10 @@ translation: "an organization; a heavy stick"
 srsWords: "club"
 
 [flashcard-review]
-front: "happen"
-meaning: "to occur"
-translation: "to occur"
-srsWords: "happen"
+front: "eraser"
+meaning: "n. an implement used to erase something"
+translation: "n. 擦子"
+srsWords: "eraser"
 
 [flashcard-review]
 front: "poem"
@@ -610,10 +610,10 @@ icon: "📚"
 color: "#E91E63"
 ---
 [flashcard-review]
-front: "problem"
-meaning: "a difficulty"
-translation: "a difficulty"
-srsWords: "problem"
+front: "werent"
+meaning: "were not"
+translation: "short. were not"
+srsWords: "werent"
 
 [flashcard-review]
 front: "put"
@@ -652,10 +652,10 @@ translation: "n. 鼠；卑鄙小人，叛徒; vi. 捕鼠；背叛，告密RATabb
 srsWords: "rat"
 
 [flashcard-review]
-front: "read"
-meaning: "interpret written words"
-translation: "interpret written words"
-srsWords: "read"
+front: "fell"
+meaning: "n. seam made by turning under or folding together and stitching the seamed materials to avoid rough edges; n. the act of felling something (as a tree); v. cause to fall by or as if by delivering a blow; v. sew a seam by folding the edges"
+translation: "vt. 击倒；n. 一季所伐的木材, 折缝；a. 凶猛的, 可怕的；fall的过去式"
+srsWords: "fell"
 
 [flashcard-review]
 front: "reader"
@@ -668,4 +668,3 @@ front: "reading"
 meaning: "the action or skill of reading"
 translation: "n. 读，阅读；读书；读本；读物；阅读材料（尤指文学著作的）读书会，朗诵会理解方法；解读方法；解释议案宣读（法案在成为法律前须经议会讨论通过的步骤）读数（一件测量设备所显示的数字或量值）Reading雷丁(姓氏)"
 srsWords: "reading"
-

@@ -508,10 +508,10 @@ translation: "n.原子,原子能,微粒，微量"
 srsWords: "atom"
 
 [flashcard-review]
-front: "area"
-meaning: "area"
-translation: "area"
-srsWords: "area"
+front: "swedish"
+meaning: "n. a Scandinavian language that is the official language of Sweden and one of two official languages of Finland; a. of or relating to or characteristic of Sweden or its people or culture or language"
+translation: "n. 瑞典人, 瑞典语；a. 瑞典的, 瑞典人的, 瑞典语的"
+srsWords: "swedish"
 
 [flashcard-review]
 front: "attractive"
@@ -668,4 +668,3 @@ front: "death"
 meaning: "end of life"
 translation: "end of life"
 srsWords: "death"
-

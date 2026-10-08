@@ -436,10 +436,10 @@ translation: "n.词典，字典,自代码字典"
 srsWords: "dictionary"
 
 [flashcard-review]
-front: "bad"
-meaning: "not good"
-translation: "not good"
-srsWords: "bad"
+front: "exercise"
+meaning: "n. the activity of exerting your muscles in various ways to keep fit; n. systematic training by multiple repetitions; n. a task performed or problem solved in order to develop skill or understanding; n. (usually plural) a ceremony that involves processions and speeches"
+translation: "n. 行使, 执行, 运动, 练习, 作业；vt. 运用, 练习, 运动；vi. 练习, 锻炼"
+srsWords: "exercise"
 
 [flashcard-review]
 front: "difficult"
@@ -484,10 +484,10 @@ translation: "n. 碟，盘；一道菜; vt. 把…装盘；使成碟状; vi. 成
 srsWords: "dish"
 
 [flashcard-review]
-front: "do"
-meaning: "perform an action"
-translation: "perform an action"
-srsWords: "do"
+front: "girlfriend"
+meaning: "n. any female friend; n. a girl or young woman with whom a man is romantically involved"
+translation: "n. 女朋友"
+srsWords: "girlfriend"
 
 [flashcard-review]
 front: "music"
@@ -668,4 +668,3 @@ front: "eleven"
 meaning: "the number 11"
 translation: "n. 十一；十一个; adj. 十一的；十一个的; num. 十一；十一个形容词:eleven"
 srsWords: "eleven"
-

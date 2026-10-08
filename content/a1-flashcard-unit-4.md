@@ -40,10 +40,10 @@ translation: "pleasant or agreeable"
 srsWords: "nice"
 
 [flashcard-review]
-front: "close"
-meaning: "a short distance away"
-translation: "a short distance away"
-srsWords: "close"
+front: "blow"
+meaning: "n. a powerful stroke with the fist or a weapon; n. an impact (as from a collision); n. forceful exhalation through the nose or mouth; v. exhale hard"
+translation: "n. 吹, 打击, 殴打, 花开；v. 吹, 风吹, 吹响, 开花"
+srsWords: "blow"
 
 [flashcard-review]
 front: "here"
@@ -70,10 +70,10 @@ translation: "expected, owed"
 srsWords: "due"
 
 [flashcard-review]
-front: "happy"
-meaning: "feeling pleasure or contentment"
-translation: "feeling pleasure or contentment"
-srsWords: "happy"
+front: "boyfriend"
+meaning: "n. a man who is the lover of a girl or young woman"
+translation: "n. 男朋友"
+srsWords: "boyfriend"
 
 ---
 lessonTitle: "Lesson 2: Home & Daily Life Part 2"
@@ -130,10 +130,10 @@ translation: "n. 旅馆，饭店；客栈 vt. 使…在饭店下榻 vi. 进行�
 srsWords: "hotel"
 
 [flashcard-review]
-front: "hour"
-meaning: "60 minutes"
-translation: "60 minutes"
-srsWords: "hour"
+front: "careful"
+meaning: "a. exercising caution or showing care or attention; s. cautiously attentive; s. unhurried and with care and dignity; s. full of cares or anxiety"
+translation: "a. 小心的, 谨慎的"
+srsWords: "careful"
 
 [flashcard-review]
 front: "wait"
@@ -148,10 +148,10 @@ icon: "🏠"
 color: "#9C27B0"
 ---
 [flashcard-review]
-front: "how"
-meaning: "in what way"
-translation: "in what way"
-srsWords: "how"
+front: "flag"
+meaning: "n. emblem usually consisting of a rectangular piece of cloth of distinctive design; n. a rectangular piece of fabric used as a signalling device; n. stratified stone that splits into pieces suitable as paving stones; n. a conspicuously marked or shaped tail"
+translation: "n. 标志, 旗标, 旗子, 信号旗, 菖蒲；vt. 悬旗, 打旗号, 铺石板；vi. 无力地下垂；[计] 标志; 属性标记命令"
+srsWords: "flag"
 
 [flashcard-review]
 front: "hungry"
@@ -160,16 +160,16 @@ translation: "adj. 饥饿的；渴望的；荒年的；不毛的比较级:hungri
 srsWords: "hungry"
 
 [flashcard-review]
-front: "ask"
-meaning: "to put a question to someone"
-translation: "to put a question to someone"
-srsWords: "ask"
+front: "guest"
+meaning: "n. a visitor to whom hospitality is extended; n. United States journalist (born in England) noted for his syndicated homey verse (1881-1959); n. a customer of a hotel or restaurant etc."
+translation: "n. 客人, 来宾, 旅客；[化] 客体"
+srsWords: "guest"
 
 [flashcard-review]
-front: "idea"
-meaning: "a thought or suggestion"
-translation: "a thought or suggestion"
-srsWords: "idea"
+front: "concert"
+meaning: "n. a performance of music by players or singers not involving theatrical staging; v. contrive (a plan) by mutual agreement; v. settle by agreement"
+translation: "n. 音乐会, 和声, 一致；vt. 协力, 协调；vi. 协力；[计] 美国北卡罗来纳州Internet网"
+srsWords: "concert"
 
 [flashcard-review]
 front: "ideal"
@@ -190,10 +190,10 @@ translation: "go away from"
 srsWords: "leave"
 
 [flashcard-review]
-front: "important"
-meaning: "significant"
-translation: "significant"
-srsWords: "important"
+front: "factory"
+meaning: "n. a plant consisting of one or more buildings with facilities for manufacturing"
+translation: "n. 工厂, 产生地, 代理店；[经] 工厂, 代理店, 商行在国外的代理处"
+srsWords: "factory"
 
 [flashcard-review]
 front: "interviewer"
@@ -262,10 +262,10 @@ translation: "having little length"
 srsWords: "short"
 
 [flashcard-review]
-front: "job"
-meaning: "job"
-translation: "n. 工作；职业 vt. 承包；代客买卖 vi. 做零工 n. (Job)人名；(英)乔布；(法、葡)若布；(?-1605)约伯〈俄〉俄罗斯正教会莫斯科牧首。；(德、塞、捷、荷、意)约布"
-srsWords: "job"
+front: "baseball"
+meaning: "n. a ball game played with a bat and ball between two teams of nine players; teams take turns at bat trying to score runs; n. a ball used in playing baseball"
+translation: "n. 棒球；[计] 棒球系统"
+srsWords: "baseball"
 
 [flashcard-review]
 front: "juice"
@@ -286,16 +286,16 @@ translation: "remain in a place"
 srsWords: "stay"
 
 [flashcard-review]
-front: "age"
-meaning: "the length of time that a person has lived"
-translation: "the length of time that a person has lived"
-srsWords: "age"
+front: "exciting"
+meaning: "a. creating or arousing excitement; s. stimulating interest and discussion"
+translation: "a. 令人兴奋的, 刺激的；[电] 激磁"
+srsWords: "exciting"
 
 [flashcard-review]
-front: "buy"
-meaning: "obtain in exchange for payment"
-translation: "obtain in exchange for payment"
-srsWords: "buy"
+front: "hide"
+meaning: "n. the dressed skin of an animal (especially a large animal); n. body covering of a living animal; v. prevent from being seen or discovered; v. be or go into hiding; keep out of sight, as for protection and safety"
+translation: "n. 兽皮, 迹象, 躲藏处；vt. 藏, 隐瞒, 遮避, 剥...的皮, 隐藏；vi. 躲藏；[计] 隐藏"
+srsWords: "hide"
 
 [flashcard-review]
 front: "reason"
@@ -334,10 +334,10 @@ translation: "n. 刀；匕首; vt. 用刀切；（口）伤害; vi. 劈开；划
 srsWords: "knife"
 
 [flashcard-review]
-front: "know"
-meaning: "have information or understanding"
-translation: "have information or understanding"
-srsWords: "know"
+front: "princess"
+meaning: "n. a female member of a royal family other than the queen (especially the daughter of a sovereign)"
+translation: "n. 公主, 王妃, 女巨头"
+srsWords: "princess"
 
 ---
 lessonTitle: "Lesson 6: Home & Daily Life Part 6"
@@ -358,10 +358,10 @@ translation: "in a short time"
 srsWords: "soon"
 
 [flashcard-review]
-front: "large"
-meaning: "of considerable or relatively great size"
-translation: "of considerable or relatively great size"
-srsWords: "large"
+front: "paint"
+meaning: "n. a substance used as a coating to protect or decorate a surface (especially a mixture of pigment suspended in a liquid); dries to form a hard coating; v. make a painting; v. apply paint to; coat with paint; v. make a painting of"
+translation: "n. 油漆, 颜料, 绘画作品, 涂漆；vt. 油漆, 绘, 画, 描绘, 装饰, 点缀；vi. 绘画, 涂漆"
+srsWords: "paint"
 
 [flashcard-review]
 front: "turn"
@@ -370,10 +370,10 @@ translation: "move in a circular direction"
 srsWords: "turn"
 
 [flashcard-review]
-front: "late"
-meaning: "after the usual or expected time"
-translation: "after the usual or expected time"
-srsWords: "late"
+front: "cap"
+meaning: "n. a tight-fitting headdress; n. a top (as for a bottle); n. something serving as a cover or protection; n. a fruiting structure resembling an umbrella or a cone that forms the top of a stalked fleshy fungus such as a mushroom"
+translation: "n. 盖子, 帽子；vt. 戴帽子, 覆盖, 胜过；vi. 脱帽致意；[计] 调用程序分析, 容量, 代码分析程序, 计算机辅助生产, 计算机辅助印刷"
+srsWords: "cap"
 
 [flashcard-review]
 front: "lazy"
@@ -484,10 +484,10 @@ translation: "feel deep affection for"
 srsWords: "love"
 
 [flashcard-review]
-front: "fun"
-meaning: "enjoyment, amusement"
-translation: "enjoyment, amusement"
-srsWords: "fun"
+front: "celebrate"
+meaning: "v. have a celebration"
+translation: "v. 庆祝, 祝贺, 举行"
+srsWords: "celebrate"
 
 [flashcard-review]
 front: "lunch"
@@ -544,10 +544,10 @@ icon: "🏠"
 color: "#9C27B0"
 ---
 [flashcard-review]
-front: "easy"
-meaning: "not difficult"
-translation: "not difficult"
-srsWords: "easy"
+front: "repeat"
+meaning: "n. an event that repeats; v. to say, state, or perform again; v. to say again or imitate; v. do over"
+translation: "n. 重复, 反复；vt. 重做, 重复, 复述, 使再现, 复制；vi. 重复；[计] 重复"
+srsWords: "repeat"
 
 [flashcard-review]
 front: "near"
@@ -592,10 +592,10 @@ translation: "white liquid from mammals"
 srsWords: "milk"
 
 [flashcard-review]
-front: "minute"
-meaning: "sixty seconds"
-translation: "sixty seconds"
-srsWords: "minute"
+front: "guitar"
+meaning: "n. a stringed instrument usually having six strings; played by strumming or plucking"
+translation: "n. 吉他"
+srsWords: "guitar"
 
 [flashcard-review]
 front: "son"
@@ -622,10 +622,10 @@ translation: "mother"
 srsWords: "mom"
 
 [flashcard-review]
-front: "bring"
-meaning: "carry, take"
-translation: "carry, take"
-srsWords: "bring"
+front: "pocket"
+meaning: "n. a small pouch inside a garment for carrying small articles; n. a supply of money; n. (bowling) the space between the headpin and the pins behind it on the right or left; n. a small isolated group of people"
+translation: "n. 口袋, 钱袋, 钱, 容器；vt. 装...在口袋里, 隐藏, 抑制, 私吞, 搁置, 击...入袋；a. 袖珍的, 小型的, 压缩的, 金钱上的"
+srsWords: "pocket"
 
 [flashcard-review]
 front: "college"
@@ -652,10 +652,10 @@ translation: "currency"
 srsWords: "money"
 
 [flashcard-review]
-front: "hear"
-meaning: "perceive sound"
-translation: "perceive sound"
-srsWords: "hear"
+front: "bone"
+meaning: "n. rigid connective tissue that makes up the skeleton of vertebrates; n. the porous calcified substance from which bones are made; n. a shade of white the color of bleached bones; v. remove the bones from"
+translation: "n. 骨头, 骨, 骨制品；vt. 剔骨；vi. 专心致志"
+srsWords: "bone"
 
 [flashcard-review]
 front: "monkey"
@@ -664,8 +664,7 @@ translation: "n.猴,猿,淘气鬼,小淘气vi.胡闹,捣蛋vt.嘲弄"
 srsWords: "monkey"
 
 [flashcard-review]
-front: "month"
-meaning: "a period of about 30 days"
-translation: "a period of about 30 days"
-srsWords: "month"
-
+front: "p.m"
+meaning: "afternoon/evening"
+translation: "afternoon/evening"
+srsWords: "p.m"

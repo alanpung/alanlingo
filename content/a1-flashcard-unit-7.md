@@ -28,10 +28,10 @@ translation: "n. 阳光；愉快；晴天；快活 n. (Sunshine)人名；(英)�
 srsWords: "sunshine"
 
 [flashcard-review]
-front: "football"
-meaning: "a team sport played with a ball"
-translation: "a team sport played with a ball"
-srsWords: "football"
+front: "by"
+meaning: "r. so as to pass a given point"
+translation: "prep. 被, 经, 由, 在...之旁；adv. 经过, 在近处"
+srsWords: "by"
 
 [flashcard-review]
 front: "supermarket"
@@ -46,22 +46,22 @@ translation: "vi. 游泳；浸；漂浮；眩晕; vt. 游过；使浮起; n. 游
 srsWords: "swim"
 
 [flashcard-review]
-front: "dog"
-meaning: "a common domesticated carnivorous mammal"
-translation: "a common domesticated carnivorous mammal"
-srsWords: "dog"
+front: "bye"
+meaning: "n. you advance to the next round in a tournament without playing an opponent"
+translation: "interj. 再会, 回头见；[计] 结束命令"
+srsWords: "bye"
 
 [flashcard-review]
-front: "language"
-meaning: "language"
-translation: "language"
-srsWords: "language"
+front: "cafe/café"
+meaning: "cafe/café"
+translation: "cafe/café"
+srsWords: "cafe/café"
 
 [flashcard-review]
-front: "november"
-meaning: "November"
-translation: "November"
-srsWords: "november"
+front: "cd player"
+meaning: "cd player"
+translation: "激光唱机；CD播放器"
+srsWords: "cd player"
 
 [flashcard-review]
 front: "table"
@@ -118,10 +118,10 @@ translation: "n. 电视电视播放的节目电视机电视台, 电视行业"
 srsWords: "television"
 
 [flashcard-review]
-front: "tell"
-meaning: "communicate information"
-translation: "communicate information"
-srsWords: "tell"
+front: "closed"
+meaning: "a. not open or affording passage or access; a. (set theory) of an interval that contains both its endpoints; a. used especially of mouth or eyes; s. requiring union membership"
+translation: "a. 关闭的, 限于少数人的；[计] 关闭指令"
+srsWords: "closed"
 
 [flashcard-review]
 front: "article"
@@ -148,10 +148,10 @@ icon: "✈️"
 color: "#00BCD4"
 ---
 [flashcard-review]
-front: "enjoy"
-meaning: "enjoy"
-translation: "enjoy"
-srsWords: "enjoy"
+front: "coke"
+meaning: "n. carbon fuel produced by distillation of coal; n. street names for cocaine; v. become coke"
+translation: "n. 可口可乐, 焦炭；v. (使)成焦炭"
+srsWords: "coke"
 
 [flashcard-review]
 front: "tennis"
@@ -160,22 +160,22 @@ translation: "n. 网球（运动） n. （英）坦尼斯（人名）"
 srsWords: "tennis"
 
 [flashcard-review]
-front: "french"
-meaning: "French"
-translation: "French"
-srsWords: "french"
+front: "color/colour"
+meaning: "color/colour"
+translation: "color/colour"
+srsWords: "color/colour"
 
 [flashcard-review]
-front: "thank"
-meaning: "thank"
-translation: "vt. 谢谢, 感谢责怪; n. 感谢, 谢谢, 道谢的话; 时态:thanked, thanking, thanks"
-srsWords: "thank"
+front: "could"
+meaning: "imp. of Can; imp. Was, should be, or would be, able, capable, or; susceptible. Used as an auxiliary, in the past tense or in the; conditional present."
+translation: "aux. 可以, 能"
+srsWords: "could"
 
 [flashcard-review]
-front: "january"
-meaning: "January"
-translation: "January"
-srsWords: "january"
+front: "credit card"
+meaning: "credit card"
+translation: "[计] 信用卡, 记帐卡；[经] 信用卡片, 赊购证, 购物信用卡"
+srsWords: "credit card"
 
 [flashcard-review]
 front: "poor"
@@ -202,10 +202,10 @@ translation: "code"
 srsWords: "code"
 
 [flashcard-review]
-front: "door"
-meaning: "door"
-translation: "door"
-srsWords: "door"
+front: "dancing"
+meaning: "n. taking a series of rhythmical steps (and movements) in time to music"
+translation: "n. 舞蹈；[建] 跳动的"
+srsWords: "dancing"
 
 ---
 lessonTitle: "Lesson 4: Travel, Places & City Part 4"
@@ -220,10 +220,10 @@ translation: "next"
 srsWords: "then"
 
 [flashcard-review]
-front: "there"
-meaning: "in that place"
-translation: "in that place"
-srsWords: "there"
+front: "did"
+meaning: "v engage in; v carry out or perform an action; v get (something) done; v proceed or get along; v give rise to; cause to happen or occur, not always intentionally; v carry out or practice; as of jobs and professions; v be sufficient; be adequate, either in quality or quantity; v create or design, often in a certain way; v behave in a certain manner; show a certain behavior; conduct or comport oneself; v spend time in prison or in a labor camp; v carry on or function; v arrange attractively; v travel or traverse (a distance)"
+translation: "do的过去式"
+srsWords: "did"
 
 [flashcard-review]
 front: "foreign"
@@ -232,10 +232,10 @@ translation: "foreign"
 srsWords: "foreign"
 
 [flashcard-review]
-front: "hair"
-meaning: "hair"
-translation: "hair"
-srsWords: "hair"
+front: "dining room"
+meaning: "dining room"
+translation: "饭厅"
+srsWords: "dining room"
 
 [flashcard-review]
 front: "pick"
@@ -256,10 +256,10 @@ translation: "adj. 薄的；瘦的；稀薄的；微弱的; vt. 使淡；使瘦�
 srsWords: "thin"
 
 [flashcard-review]
-front: "seven"
-meaning: "7"
-translation: "7"
-srsWords: "seven"
+front: "doctor/dr./dr"
+meaning: "doctor/dr./dr"
+translation: "doctor/dr./dr"
+srsWords: "doctor/dr./dr"
 
 [flashcard-review]
 front: "thing"
@@ -298,22 +298,22 @@ translation: "stroll, journey on foot"
 srsWords: "walk"
 
 [flashcard-review]
-front: "bed"
-meaning: "furniture for sleeping"
-translation: "furniture for sleeping"
-srsWords: "bed"
+front: "does"
+meaning: "n the federal department responsible for maintaining a national energy policy of the United States; created in 1977; n mature female of mammals of which the male is called `buck'; v engage in; v carry out or perform an action; v get (something) done; v proceed or get along; v give rise to; cause to happen or occur, not always intentionally; v carry out or practice; as of jobs and professions; v be sufficient; be adequate, either in quality or quantity; v create or design, often in a certain way; v behave in a certain manner; show a certain behavior; conduct or comport oneself; v spend time in prison or in a labor camp; v carry on or function; v arrange attractively; v travel or traverse (a distance)"
+translation: "v. 做；工作；有用（do的第三人称单数形式）"
+srsWords: "does"
 
 [flashcard-review]
-front: "begin"
-meaning: "start"
-translation: "start"
-srsWords: "begin"
+front: "dvd"
+meaning: "n a digital recording (as of a movie) on an optical disk that can be played on a computer or a television set"
+translation: "abbr. 数字化视频光盘（Digital Video Disk）"
+srsWords: "dvd"
 
 [flashcard-review]
-front: "daughter"
-meaning: "female child"
-translation: "female child"
-srsWords: "daughter"
+front: "each other"
+meaning: "each other"
+translation: "彼此"
+srsWords: "each other"
 
 [flashcard-review]
 front: "thursday"
@@ -334,10 +334,10 @@ translation: "n. 老虎；凶暴的人 n. (Tiger)人名；(英)泰格；(法)蒂
 srsWords: "tiger"
 
 [flashcard-review]
-front: "december"
-meaning: "12th month"
-translation: "12th month"
-srsWords: "december"
+front: "eight"
+meaning: "n. the cardinal number that is the sum of seven and one; s. being one more than seven"
+translation: "num. 八, 八个"
+srsWords: "eight"
 
 ---
 lessonTitle: "Lesson 6: Travel, Places & City Part 6"
@@ -346,10 +346,10 @@ icon: "✈️"
 color: "#00BCD4"
 ---
 [flashcard-review]
-front: "difficult"
-meaning: "hard, not easy"
-translation: "hard, not easy"
-srsWords: "difficult"
+front: "email/e-mail/e-mail"
+meaning: "email/e-mail/e-mail"
+translation: "email/e-mail/e-mail"
+srsWords: "email/e-mail/e-mail"
 
 [flashcard-review]
 front: "hospital"
@@ -358,16 +358,16 @@ translation: "medical institution"
 srsWords: "hospital"
 
 [flashcard-review]
-front: "today"
-meaning: "this day"
-translation: "this day"
-srsWords: "today"
+front: "every"
+meaning: "s. (used of count nouns) each and all of the members of a group considered singly and without exception; s. each and all of a series of entities or intervals as specified"
+translation: "a. 每一, 所有的"
+srsWords: "every"
 
 [flashcard-review]
-front: "paper"
-meaning: "material for writing/printing"
-translation: "material for writing/printing"
-srsWords: "paper"
+front: "everybody"
+meaning: "n. Every person."
+translation: "pron. 每个人, 人人"
+srsWords: "everybody"
 
 [flashcard-review]
 front: "toilet"
@@ -382,10 +382,10 @@ translation: "n. 番茄，西红柿；番茄红，鲜红色；番茄植株；番
 srsWords: "tomato"
 
 [flashcard-review]
-front: "forget"
-meaning: "fail to remember"
-translation: "fail to remember"
-srsWords: "forget"
+front: "everyone"
+meaning: "n. Everybody; -- commonly separated, every one."
+translation: "pron. 每个人, 人人；[计] 系统中的一个组名"
+srsWords: "everyone"
 
 [flashcard-review]
 front: "tomorrow"
@@ -424,16 +424,16 @@ translation: "n. 毛巾，手巾；纸巾; vt. 用毛巾擦; vi. 用毛巾擦干
 srsWords: "towel"
 
 [flashcard-review]
-front: "listen"
-meaning: "to hear with attention"
-translation: "to hear with attention"
-srsWords: "listen"
+front: "everything"
+meaning: "n. Whatever pertains to the subject under consideration;; all things."
+translation: "pron. 每件事物, 所有事物"
+srsWords: "everything"
 
 [flashcard-review]
-front: "town"
-meaning: "town"
-translation: "n. 城镇，市镇；市内商业区 n. (Town)人名；(英)汤"
-srsWords: "town"
+front: "excited"
+meaning: "a. in an aroused state"
+translation: "a. 兴奋的, 已励磁的, 已激发的, 激昂的, 激动的"
+srsWords: "excited"
 
 [flashcard-review]
 front: "toy"
@@ -460,10 +460,10 @@ translation: "a large road vehicle for carrying goods"
 srsWords: "truck"
 
 [flashcard-review]
-front: "true"
-meaning: "in accordance with fact or reality"
-translation: "in accordance with fact or reality"
-srsWords: "true"
+front: "favorite/favourite"
+meaning: "favorite/favourite"
+translation: "favorite/favourite"
+srsWords: "favorite/favourite"
 
 [flashcard-review]
 front: "tube"
@@ -484,34 +484,34 @@ translation: "n. 星期二"
 srsWords: "tuesday"
 
 [flashcard-review]
-front: "turn"
-meaning: "move in a circular direction"
-translation: "move in a circular direction"
-srsWords: "turn"
+front: "february"
+meaning: "n. the month following January and preceding March"
+translation: "n. 二月"
+srsWords: "february"
 
 [flashcard-review]
-front: "tv"
-meaning: "television"
-translation: "television"
-srsWords: "tv"
+front: "fishing"
+meaning: "n. the act of someone who fishes as a diversion; n. the occupation of catching fish for a living"
+translation: "n. 钓鱼, 鱼业；a. 钓鱼的"
+srsWords: "fishing"
 
 [flashcard-review]
-front: "sea"
-meaning: "the ocean"
-translation: "the ocean"
-srsWords: "sea"
+front: "five"
+meaning: "n. the cardinal number that is the sum of four and one; s. being one more than four"
+translation: "num. 五, 五个"
+srsWords: "five"
 
 [flashcard-review]
-front: "sir"
-meaning: "a polite term of address for a man"
-translation: "a polite term of address for a man"
-srsWords: "sir"
+front: "for"
+meaning: "prep. In the most general sense, indicating that in consideration; of, in view of, or with reference to, which anything is done or takes; place.; prep. Indicating the antecedent cause or occasion of an action;; the motive or inducement accompanying and prompting to an act or state;; the reason of anything; that on account of which a thing is or is done.; prep. Indicating the remoter and indirect object of an act; the; end or final cause with reference to which anything is, acts, serves,; or is done.; prep. Indicating that in favor of which, or in promoting which,; anything is, or is done; hence, in behalf of; in favor of; on the side; of; -- opposed to against.; prep. Indicating that toward which the action of anything is; directed, or the point toward which motion is made; /ntending to go to.; prep. Indicating that on place of or instead of which anything; acts or serves, or that to which a substitute, an equivalent, a; compensation, or the like, is offered or made; instead of, or place of.; prep. Indicating that in the character of or as being which; anything is regarded or treated; to be, or as being.; prep. Indicating that instead of which something else controls in; the performing of an action, or that in spite of which anything is; done, occurs, or is; hence, equivalent to notwithstanding, in spite of;; -- generally followed by all, aught, anything, etc.; prep. Indicating the space or time through which an action or; state extends; hence, during; in or through the space or time of.; prep. Indicating that in prevention of which, or through fear of; which, anything is done.; conj. Because; by reason that; for that; indicating, in Old; English, the reason of anything.; conj. Since; because; introducing a reason of something before; advanced, a cause, motive, explanation, justification, or the like, of; an action related or a statement made. It is logically nearly; equivalent to since, or because, but connects less closely, and is; sometimes used as a very general introduction to something suggested by; what has gone before.; n. One who takes, or that which is said on, the affrimative side;; that which is said in favor of some one or something; -- the antithesis; of against, and commonly used in connection with it."
+translation: "prep. 为, 因为, 至于；conj. 因为；[计] DOS批处理命令:对一组参数重复执行指定的命令"
+srsWords: "for"
 
 [flashcard-review]
-front: "two"
-meaning: "the number 2"
-translation: "the number 2"
-srsWords: "two"
+front: "four"
+meaning: "n. the cardinal number that is the sum of three and one; s. being one more than three"
+translation: "num. 四, 四个；[机] 四冲程循环"
+srsWords: "four"
 
 [flashcard-review]
 front: "ugly"
@@ -550,16 +550,16 @@ translation: "to rest in a state of unconsciousness"
 srsWords: "sleep"
 
 [flashcard-review]
-front: "table"
-meaning: "a piece of furniture with a flat top and one or more legs"
-translation: "a piece of furniture with a flat top and one or more legs"
-srsWords: "table"
+front: "friday"
+meaning: "n. the sixth day of the week; the fifth working day"
+translation: "n. 星期五"
+srsWords: "friday"
 
 [flashcard-review]
-front: "ten"
-meaning: "the number 10"
-translation: "the number 10"
-srsWords: "ten"
+front: "from"
+meaning: "prep. Out of the neighborhood of; lessening or losing proximity; to; leaving behind; by reason of; out of; by aid of; -- used whenever; departure, setting out, commencement of action, being, state,; occurrence, etc., or procedure, emanation, absence, separation, etc.,; are to be expressed. It is construed with, and indicates, the point of; space or time at which the action, state, etc., are regarded as setting; out or beginning; also, less frequently, the source, the cause, the; occasion, out of which anything proceeds; -- the aritithesis and; correlative of to; as, it, is one hundred miles from Boston to; Springfield; he took his sword from his side; light proceeds from the; sun; separate the coarse wool from the fine; men have all sprung from; Adam, and often go from good to bad, and from bad to worse; the merit; of an action depends on the principle from which it proceeds; men judge; of facts from personal knowledge, or from testimony."
+translation: "prep. 从, 来自, 根据"
+srsWords: "from"
 
 [flashcard-review]
 front: "vacation"
@@ -568,10 +568,10 @@ translation: "n. 假期；（房屋）搬出; vi. 休假，度假; 时态:vacati
 srsWords: "vacation"
 
 [flashcard-review]
-front: "ball"
-meaning: "a round object used in games"
-translation: "a round object used in games"
-srsWords: "ball"
+front: "glasses"
+meaning: "n optical instrument consisting of a frame that holds a pair of lenses for correcting defective vision; n a brittle transparent solid with irregular atomic structure; n a container for holding liquids while drinking; n the quantity a glass will hold; n a small refracting telescope; n an amphetamine derivative (trade name Methedrine) used in the form of a crystalline hydrochloride; used as a stimulant to the nervous system and as an appetite suppressant; n a mirror; usually a ladies' dressing mirror; n glassware collectively; v furnish with glass; v scan (game in the forest) with binoculars; v enclose with glass; v put in a glass container; v become glassy or take on a glass-like appearance"
+translation: "n. 眼镜；双筒望远镜；玻璃（glass的复数形式）"
+srsWords: "glasses"
 
 [flashcard-review]
 front: "vase"
@@ -592,10 +592,10 @@ translation: "an act of going to see a person or place"
 srsWords: "visit"
 
 [flashcard-review]
-front: "box"
-meaning: "a container with flat sides and a lid"
-translation: "a container with flat sides and a lid"
-srsWords: "box"
+front: "good afternoon"
+meaning: "good afternoon"
+translation: "下午好"
+srsWords: "good afternoon"
 
 [flashcard-review]
 front: "volleyball"
@@ -622,10 +622,10 @@ translation: "n. 女服务员；女侍者 vi. 做女服务生"
 srsWords: "waitress"
 
 [flashcard-review]
-front: "walk"
-meaning: "stroll, journey on foot"
-translation: "stroll, journey on foot"
-srsWords: "walk"
+front: "good morning"
+meaning: "good morning"
+translation: "早上好"
+srsWords: "good morning"
 
 [flashcard-review]
 front: "wall"
@@ -634,16 +634,16 @@ translation: "a continuous vertical brick or stone structure"
 srsWords: "wall"
 
 [flashcard-review]
-front: "card"
-meaning: "a piece of thick stiff paper or plastic"
-translation: "a piece of thick stiff paper or plastic"
-srsWords: "card"
+front: "good night"
+meaning: "good night"
+translation: "晚安, 再见"
+srsWords: "good night"
 
 [flashcard-review]
-front: "dark"
-meaning: "with little or no light"
-translation: "with little or no light"
-srsWords: "dark"
+front: "gray/grey"
+meaning: "gray/grey"
+translation: "gray/grey"
+srsWords: "gray/grey"
 
 [flashcard-review]
 front: "wash"
@@ -658,14 +658,13 @@ translation: "a short written message"
 srsWords: "note"
 
 [flashcard-review]
-front: "watch"
-meaning: "look at or observe attentively"
-translation: "look at or observe attentively"
-srsWords: "watch"
+front: "had"
+meaning: "v have or possess, either in a concrete or an abstract sense; v have as a feature; v go through (mental or physical states or experiences); v have ownership or possession of; v cause to move; cause to be in a certain position or condition; v serve oneself to, or consume regularly; v have a personal or business relationship with someone; v organize or be responsible for; v have left; v be confronted with; v undergo; v suffer from; be ill with; v cause to do; cause to act in a specified manner; v receive willingly something given or offered; v get something; come into possession of; v undergo (as of injuries and illnesses); v achieve a point or goal; v cause to be born; v have sex with; archaic use"
+translation: "have的过去式和过去分词"
+srsWords: "had"
 
 [flashcard-review]
 front: "way"
 meaning: "path"
 translation: "path"
 srsWords: "way"
-

@@ -28,16 +28,16 @@ translation: "the date on which an event took place in a previous year"
 srsWords: "anniversary"
 
 [flashcard-review]
-front: "attractive"
-meaning: "pleasing or appealing to the senses or mind"
-translation: "pleasing or appealing to the senses or mind"
-srsWords: "attractive"
+front: "spill"
+meaning: "n. liquid that is spilled; n. the act of allowing a fluid to escape; n. a sudden drop from an upright position; v. cause or allow (a liquid substance) to run or flow from a container"
+translation: "n. 溢出, 溅出, 摔下, 溢出量, 木片, 小塞子；vt. 使溢出, 使散落, 洒, 使流出, 倒出, 使摔下；vi. 溢出, 涌流, 摔下"
+srsWords: "spill"
 
 [flashcard-review]
-front: "mark"
-meaning: "a visible impression or stain"
-translation: "a visible impression or stain"
-srsWords: "mark"
+front: "traveler"
+meaning: "n. a person who changes location"
+translation: "n. 旅行者, 游客, 旅客, 旅行推销员, 活动起重架, 行车, 临时记帐单"
+srsWords: "traveler"
 
 [flashcard-review]
 front: "fee"
@@ -52,10 +52,10 @@ translation: "almost not; barely"
 srsWords: "hardly"
 
 [flashcard-review]
-front: "invite"
-meaning: "to ask someone to come somewhere or do something"
-translation: "to ask someone to come somewhere or do something"
-srsWords: "invite"
+front: "vanilla"
+meaning: "n. any of numerous climbing plants of the genus Vanilla having fleshy leaves and clusters of large waxy highly fragrant white or green or topaz flowers; n. a flavoring prepared from vanilla beans macerated in alcohol (or imitating vanilla beans); n. a distinctive fragrant flavor characteristic of vanilla beans"
+translation: "n. 香草, 香子兰"
+srsWords: "vanilla"
 
 [flashcard-review]
 front: "pc"
@@ -70,10 +70,10 @@ translation: "not cooked"
 srsWords: "raw"
 
 [flashcard-review]
-front: "marry"
-meaning: "to join in marriage"
-translation: "to join in marriage"
-srsWords: "marry"
+front: "superstar"
+meaning: "n someone who is dazzlingly skilled in any field"
+translation: "n. 超级明星"
+srsWords: "superstar"
 
 ---
 lessonTitle: "Lesson 2: Culture, Arts & Entertainment Part 2"
@@ -94,10 +94,10 @@ translation: "not known or familiar"
 srsWords: "unknown"
 
 [flashcard-review]
-front: "chest"
-meaning: "the upper front part of the body of humans and some animals, between the neck and the stomach"
-translation: "the upper front part of the body of humans and some animals, between the neck and the stomach"
-srsWords: "chest"
+front: "toddler"
+meaning: "n. a young child"
+translation: "n. 蹒跚行走的人, 学步的小孩, 学步的幼儿, (非正式)信步走的人"
+srsWords: "toddler"
 
 [flashcard-review]
 front: "pilot"
@@ -154,16 +154,16 @@ translation: "the grounds and buildings of a university"
 srsWords: "campus"
 
 [flashcard-review]
-front: "childhood"
-meaning: "the period of being a child"
-translation: "the period of being a child"
-srsWords: "childhood"
+front: "nickel"
+meaning: "n. a hard malleable ductile silvery metallic element that is resistant to corrosion; used in alloys; occurs in pentlandite and smaltite and garnierite and millerite; n. a United States coin worth one twentieth of a dollar; n. five dollars worth of a drug; v. plate with nickel"
+translation: "n. 镍, 镍币, 五分镍币；vt. 镀镍于"
+srsWords: "nickel"
 
 [flashcard-review]
-front: "meaning"
-meaning: "what is meant by a word, text, concept, or action"
-translation: "what is meant by a word, text, concept, or action"
-srsWords: "meaning"
+front: "quiz"
+meaning: "n. an examination consisting of a few short questions; v. examine someone's knowledge of something"
+translation: "n. 考查, 课堂测验, 恶作剧, 智力测验；vt. 戏弄, 考查, 恶作剧"
+srsWords: "quiz"
 
 [flashcard-review]
 front: "medal"
@@ -256,16 +256,16 @@ translation: "菜单 (n.) - 餐饮选项列表"
 srsWords: "menu"
 
 [flashcard-review]
-front: "appointment"
-meaning: "a scheduled meeting"
-translation: "a scheduled meeting"
-srsWords: "appointment"
+front: "vocabulary"
+meaning: "n. a listing of the words used in some enterprise; n. a language user's knowledge of words; n. the system of techniques or symbols serving as a means of expression (as in arts or crafts)"
+translation: "n. 词汇(量), 词汇表；[计] 词表"
+srsWords: "vocabulary"
 
 [flashcard-review]
-front: "bush"
-meaning: "a shrub or small tree"
-translation: "a shrub or small tree"
-srsWords: "bush"
+front: "homemade"
+meaning: "a. made or produced in the home or by yourself"
+translation: "a. 自制的, 国产的"
+srsWords: "homemade"
 
 [flashcard-review]
 front: "gallery"
@@ -280,10 +280,10 @@ icon: "🎨"
 color: "#673AB7"
 ---
 [flashcard-review]
-front: "highway"
-meaning: "a main road"
-translation: "a main road"
-srsWords: "highway"
+front: "pony"
+meaning: "n. a range horse of the western United States; n. an informal term for a racehorse; n. a literal translation used in studying a foreign language (often used illicitly); n. any of various breeds of small gentle horses usually less than five feet high at the shoulder"
+translation: "n. 矮种马；v. 借助逐字直译文翻译；a. 小型的, 每日摘要的"
+srsWords: "pony"
 
 [flashcard-review]
 front: "junior"
@@ -292,10 +292,10 @@ translation: "younger, lower in rank"
 srsWords: "junior"
 
 [flashcard-review]
-front: "metal"
-meaning: "a solid material that is typically hard, shiny, malleable, fusible, and ductile, with good electrical and thermal conductivity."
-translation: "a solid material that is typically hard, shiny, malleable, fusible, and ductile, with good electrical and thermal conductivity."
-srsWords: "metal"
+front: "austrian"
+meaning: "n. a native or inhabitant of Austria; a. of or relating to Austria or its people or culture"
+translation: "n. 奥地利人；a. 奥地利的, 奥地利人的"
+srsWords: "austrian"
 
 [flashcard-review]
 front: "meter"
@@ -364,16 +364,16 @@ translation: "sound"
 srsWords: "audio"
 
 [flashcard-review]
-front: "confuse"
-meaning: "to make someone unable to think clearly or understand"
-translation: "to make someone unable to think clearly or understand"
-srsWords: "confuse"
+front: "glue"
+meaning: "n. cement consisting of a sticky substance that is used as an adhesive; v. join or attach with or as if with glue; v. be fixed as if by glue"
+translation: "n. 胶, 粘性物；vt. 粘合, 胶合"
+srsWords: "glue"
 
 [flashcard-review]
-front: "consequence"
-meaning: "a result or effect of an action or condition"
-translation: "a result or effect of an action or condition"
-srsWords: "consequence"
+front: "psychologist"
+meaning: "n. a scientist trained in psychology"
+translation: "n. 心理学家；[医] 心理学家"
+srsWords: "psychologist"
 
 [flashcard-review]
 front: "divide"
@@ -382,10 +382,10 @@ translation: "to separate into parts or shares"
 srsWords: "divide"
 
 [flashcard-review]
-front: "gate"
-meaning: "a movable barrier in a fence or wall"
-translation: "a movable barrier in a fence or wall"
-srsWords: "gate"
+front: "sausage"
+meaning: "n. highly seasoned minced meat stuffed in casings"
+translation: "n. 香肠, 腊肠"
+srsWords: "sausage"
 
 [flashcard-review]
 front: "harm"
@@ -394,10 +394,10 @@ translation: "physical injury or damage"
 srsWords: "harm"
 
 [flashcard-review]
-front: "killer"
-meaning: "a person or thing that kills"
-translation: "a person or thing that kills"
-srsWords: "killer"
+front: "twentieth"
+meaning: "n. position 20 in a countable series of things; s. coming next after the nineteenth in position"
+translation: "num. 第二十, 二十分之一"
+srsWords: "twentieth"
 
 [flashcard-review]
 front: "mirror"
@@ -412,10 +412,10 @@ icon: "🎨"
 color: "#673AB7"
 ---
 [flashcard-review]
-front: "mirror"
-meaning: "a reflective surface, typically glass coated with a metallic amalgam"
-translation: "a reflective surface, typically glass coated with a metallic amalgam"
-srsWords: "mirror"
+front: "unpleasant"
+meaning: "a. disagreeable to the senses, to the mind, or feelings"
+translation: "a. 使人不愉快的, 使人厌恶的, 煞风景的"
+srsWords: "unpleasant"
 
 [flashcard-review]
 front: "strongly"
@@ -424,52 +424,52 @@ translation: "with great physical power or force; in a strong manner"
 srsWords: "strongly"
 
 [flashcard-review]
-front: "adventure"
-meaning: "an exciting or unusual experience"
-translation: "an exciting or unusual experience"
-srsWords: "adventure"
+front: "wander"
+meaning: "v. go via an indirect route or at no set pace"
+translation: "vi. 游荡, 漫步, 徘徊, 迷路, 离题, 蜿蜒；vt. 在...漫游"
+srsWords: "wander"
 
 [flashcard-review]
-front: "argue"
-meaning: "to express disagreement"
-translation: "to express disagreement"
-srsWords: "argue"
+front: "fuller"
+meaning: "n. United States jurist and chief justice of the United States Supreme Court (1833-1910); n. United States architect who invented the geodesic dome (1895-1983); n. a workman who fulls (cleans and thickens) freshly woven cloth for a living"
+translation: "n. 漂洗工, 套柄铁锤；[机] 半圆型锤"
+srsWords: "fuller"
 
 [flashcard-review]
-front: "awful"
-meaning: "very bad or unpleasant"
-translation: "very bad or unpleasant"
-srsWords: "awful"
+front: "kindergarten"
+meaning: "n. a preschool for children age 4 to 6 to prepare them for primary school"
+translation: "n. 幼稚园"
+srsWords: "kindergarten"
 
 [flashcard-review]
-front: "contrast"
-meaning: "a striking difference between two things"
-translation: "a striking difference between two things"
-srsWords: "contrast"
+front: "playground"
+meaning: "n. yard consisting of an outdoor area for children's play"
+translation: "n. 运动场, 操场, 度假胜地, 活动场所"
+srsWords: "playground"
 
 [flashcard-review]
-front: "mistake"
-meaning: "an error or wrong action"
-translation: "an error or wrong action"
-srsWords: "mistake"
+front: "sweater"
+meaning: "n. a crocheted or knitted garment covering the upper part of the body"
+translation: "n. 毛衣, 毛线衫, 运动衫, 出汗者；[化] 发汗器"
+srsWords: "sweater"
 
 [flashcard-review]
-front: "elsewhere"
-meaning: "in, at, or to some other place"
-translation: "in, at, or to some other place"
-srsWords: "elsewhere"
+front: "tractor"
+meaning: "n. a wheeled vehicle with large wheels; used in farming and other applications; n. a truck that has a cab but no body; used for pulling large trailers or vans"
+translation: "n. 牵引器, 拖拉机, 拉纸器；[计] 进纸器"
+srsWords: "tractor"
 
 [flashcard-review]
-front: "mix"
-meaning: "combine"
-translation: "combine"
-srsWords: "mix"
+front: "symphony"
+meaning: "n. a long and complex sonata for symphony orchestra"
+translation: "n. 交响乐, 交响曲"
+srsWords: "symphony"
 
 [flashcard-review]
-front: "loose"
-meaning: "not firmly or tightly fixed in place"
-translation: "not firmly or tightly fixed in place"
-srsWords: "loose"
+front: "textbook"
+meaning: "n. a book prepared for use in schools or colleges"
+translation: "n. 教科书"
+srsWords: "textbook"
 
 ---
 lessonTitle: "Lesson 8: Culture, Arts & Entertainment Part 8"
@@ -478,10 +478,10 @@ icon: "🎨"
 color: "#673AB7"
 ---
 [flashcard-review]
-front: "modern"
-meaning: "contemporary, new"
-translation: "contemporary, new"
-srsWords: "modern"
+front: "dice"
+meaning: "v. play dice"
+translation: "n. 骰子；vt. 切成方块；vi. 掷骰子"
+srsWords: "dice"
 
 [flashcard-review]
 front: "silence"
@@ -496,10 +496,10 @@ translation: "using or involving physical force intended to hurt, damage, or kil
 srsWords: "violent"
 
 [flashcard-review]
-front: "angel"
-meaning: "a spiritual being acting as a messenger of God"
-translation: "a spiritual being acting as a messenger of God"
-srsWords: "angel"
+front: "nineteenth"
+meaning: "n. position 19 in a countable series of things; s. coming next after the eighteenth in position"
+translation: "num. 第十九, 十九分之一"
+srsWords: "nineteenth"
 
 [flashcard-review]
 front: "mood"
@@ -508,22 +508,22 @@ translation: "n. 情绪，语气；心境；气氛 n. (Mood)人名；(英)穆德
 srsWords: "mood"
 
 [flashcard-review]
-front: "bonus"
-meaning: "an amount of money added to wages as a reward for good performance"
-translation: "an amount of money added to wages as a reward for good performance"
-srsWords: "bonus"
+front: "recycle"
+meaning: "v. cause to repeat a cycle; v. use again after processing"
+translation: "vt. 使再循环, 重新利用, 再制；n. 再循环"
+srsWords: "recycle"
 
 [flashcard-review]
-front: "castle"
-meaning: "a large fortified building or set of buildings"
-translation: "a large fortified building or set of buildings"
-srsWords: "castle"
+front: "syrup"
+meaning: "n. a thick sweet sticky liquid"
+translation: "n. 糖浆, 果汁；[化] 糖浆剂"
+srsWords: "syrup"
 
 [flashcard-review]
-front: "encourage"
-meaning: "to give support, confidence, or hope to someone"
-translation: "to give support, confidence, or hope to someone"
-srsWords: "encourage"
+front: "username"
+meaning: "a name used to identify a user"
+translation: "n. [计]由字母或数字组成的用户名称, 以标明用户的身份"
+srsWords: "username"
 
 [flashcard-review]
 front: "math"
@@ -580,10 +580,10 @@ translation: "n. 高速公路，汽车高速公路"
 srsWords: "motorway"
 
 [flashcard-review]
-front: "badly"
-meaning: "badly"
-translation: "badly"
-srsWords: "badly"
+front: "perfume"
+meaning: "n. a toiletry that emits and diffuses a fragrant odor; v. fill or impregnate with an odor; v. apply perfume to"
+translation: "n. 香水, 香气, (悦人的)气氛, 美名；vt. 洒香水于, 薰香, 使充满香气"
+srsWords: "perfume"
 
 [flashcard-review]
 front: "move"
@@ -592,16 +592,16 @@ translation: "change position"
 srsWords: "move"
 
 [flashcard-review]
-front: "deeply"
-meaning: "deeply"
-translation: "deeply"
-srsWords: "deeply"
+front: "selfie"
+meaning: "n. a photograph that you take of yourself, usually with a mobile phone. Selfies are often published using social media"
+translation: "n. 自拍照"
+srsWords: "selfie"
 
 [flashcard-review]
-front: "explanation"
-meaning: "explanation"
-translation: "explanation"
-srsWords: "explanation"
+front: "jewellery"
+meaning: "n an adornment (as a bracelet or ring or necklace) made of precious metals and set with gems (or imitation gems)"
+translation: "n. 宝石, 贵重饰物, 珠宝, 宝石饰物, 受珍视的人/物, 宝贝, 有价值的人/物"
+srsWords: "jewellery"
 
 ---
 lessonTitle: "Lesson 10: Culture, Arts & Entertainment Part 10"
@@ -610,16 +610,16 @@ icon: "🎨"
 color: "#673AB7"
 ---
 [flashcard-review]
-front: "fiction"
-meaning: "fiction"
-translation: "fiction"
-srsWords: "fiction"
+front: "policeman"
+meaning: "n. a member of a police force"
+translation: "n. 警察；[化] 淀帚"
+srsWords: "policeman"
 
 [flashcard-review]
-front: "happiness"
-meaning: "happiness"
-translation: "happiness"
-srsWords: "happiness"
+front: "singular"
+meaning: "n. the form of a word that is used to denote a singleton; s. being a single and separate person or thing; a. composed of one member, set, or kind; a. grammatical number category referring to a single item or unit"
+translation: "n. 单数；a. 异常的, 单一的"
+srsWords: "singular"
 
 [flashcard-review]
 front: "mug"
@@ -628,16 +628,16 @@ translation: "n.马克杯，杯子,<口>容易受骗的人,<俚>脸,一缸子（
 srsWords: "mug"
 
 [flashcard-review]
-front: "mood"
-meaning: "mood"
-translation: "mood"
-srsWords: "mood"
+front: "supper"
+meaning: "n. a light evening meal; served in early evening if dinner is at midday or served late in the evening at bedtime; n. a social gathering where a light evening meal is served"
+translation: "n. 晚餐"
+srsWords: "supper"
 
 [flashcard-review]
-front: "museum"
-meaning: "place for exhibiting artifacts"
-translation: "place for exhibiting artifacts"
-srsWords: "museum"
+front: "sweetheart"
+meaning: "n. a person loved by another person; n. any well-liked individual; s. privileged treatment of a favored person or corporation (sometimes unethically)"
+translation: "n. 心上人, 爱人；vi. 爱慕；vt. 向...求爱"
+srsWords: "sweetheart"
 
 [flashcard-review]
 front: "mushroom"
@@ -652,20 +652,19 @@ translation: "to stop working due to age"
 srsWords: "retire"
 
 [flashcard-review]
-front: "commitment"
-meaning: "a promise or firm decision to do something"
-translation: "a promise or firm decision to do something"
-srsWords: "commitment"
+front: "thirsty"
+meaning: "s. needing moisture; a. feeling a need or desire to drink; s. able to take in large quantities of moisture"
+translation: "a. 口渴的, 渴望的, 干燥的"
+srsWords: "thirsty"
 
 [flashcard-review]
-front: "confident"
-meaning: "feeling or showing confidence in oneself or one's abilities"
-translation: "feeling or showing confidence in oneself or one's abilities"
-srsWords: "confident"
+front: "violin"
+meaning: "n. bowed stringed instrument that is the highest member of the violin family; this instrument has four strings and a hollow body and an unfretted fingerboard and is played with a bow"
+translation: "n. 小提琴"
+srsWords: "violin"
 
 [flashcard-review]
-front: "custom"
-meaning: "a traditional and widely accepted way of behaving or doing something"
-translation: "a traditional and widely accepted way of behaving or doing something"
-srsWords: "custom"
-
+front: "flavour"
+meaning: "n the general atmosphere of a place or situation and the effect that it has on people; n (physics) the six kinds of quarks; n the taste experience when a savoury condiment is taken into the mouth; v lend flavor to"
+translation: "n. 味, 调味香料, 滋味, 香味, 气味, 风味, 情味, 情趣, 风韵；vt. 给...调味, 给...增添风趣, 加香料, 加味于"
+srsWords: "flavour"

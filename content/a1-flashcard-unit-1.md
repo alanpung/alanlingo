@@ -292,10 +292,10 @@ translation: "a room with a toilet and sink"
 srsWords: "bathroom"
 
 [flashcard-review]
-front: "be"
-meaning: "to be"
-translation: "prep. 在，存在；是Beabbr. 铍BEabbr. Bank of England 〈英〉英格兰银行; 时态:First and third person singular past indicative waswhen unstressed second person singular and plural and first and third person plural past indicative were past subjunctive werepast participle been present participle being first person singular present indicative am second person singular and plural and first and third person plural present indicative are third person singular present indicative is present subjunctive be"
-srsWords: "be"
+front: "expensive"
+meaning: "a. high in price or charging high prices"
+translation: "a. 贵的, 奢华的, 费用浩大的, 乱化钱的；[经] 高价的, 昂贵的, 浪费的"
+srsWords: "expensive"
 
 [flashcard-review]
 front: "beach"
@@ -532,10 +532,10 @@ translation: "carry, take"
 srsWords: "bring"
 
 [flashcard-review]
-front: "also"
-meaning: "in addition"
-translation: "in addition"
-srsWords: "also"
+front: "jump"
+meaning: "n. a sudden and decisive increase; n. (film) an abrupt transition from one scene to another; n. descent with a parachute; n. the act of jumping; propelling yourself off the ground"
+translation: "n. 跳跃, 跳动, 暴涨, 惊跳；vt. 跳跃, 跃过, 突升, 使跳跃；vi. 跳跃, 跳, 跳动, 暴涨；[计] 转移, 跳转"
+srsWords: "jump"
 
 ---
 lessonTitle: "Lesson 9: Everyday Essentials & Greetings Part 9"
@@ -668,4 +668,3 @@ front: "car"
 meaning: "car"
 translation: "n. 汽车；车厢 n. (Car)人名；(土)贾尔；(法、西)卡尔；(塞)察尔"
 srsWords: "car"
-

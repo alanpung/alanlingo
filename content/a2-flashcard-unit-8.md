@@ -124,10 +124,10 @@ translation: "well known or recognized"
 srsWords: "familiar"
 
 [flashcard-review]
-front: "id"
-meaning: "identification document"
-translation: "identification document"
-srsWords: "id"
+front: "snack"
+meaning: "n a light informal meal; v eat a snack; eat lightly"
+translation: "n. 小吃, 点心, 快餐；vi. 吃零食, 吃快餐"
+srsWords: "snack"
 
 [flashcard-review]
 front: "perfectly"
@@ -160,10 +160,10 @@ translation: "to try to find or obtain something"
 srsWords: "seek"
 
 [flashcard-review]
-front: "lake"
-meaning: "a large body of water surrounded by land"
-translation: "a large body of water surrounded by land"
-srsWords: "lake"
+front: "cub"
+meaning: "n. an awkward and inexperienced youth; n. a male child (a familiar term of address to a boy); n. the young of certain carnivorous mammals such as the bear or wolf or lion; v. give birth to cubs"
+translation: "n. 幼兽, 年轻人"
+srsWords: "cub"
 
 [flashcard-review]
 front: "lamp"
@@ -232,28 +232,28 @@ translation: "n. 皮革；皮革制品; vt. 用皮革包盖；抽打; adj. 皮�
 srsWords: "leather"
 
 [flashcard-review]
-front: "cry"
-meaning: "shed tears"
-translation: "shed tears"
-srsWords: "cry"
+front: "fist"
+meaning: "n. a hand with the fingers clenched in the palm (as for hitting)"
+translation: "n. 拳头, 手；vt. 拳打, 握成拳, 紧握"
+srsWords: "fist"
 
 [flashcard-review]
-front: "left"
-meaning: "left"
-translation: "on the side of the body that is to the west when one is facing north"
-srsWords: "left"
+front: "bunny"
+meaning: "n. a young waitress in a nightclub whose costume includes the tail and ears of a rabbit; n. (usually informal) especially a young rabbit"
+translation: "n. 兔子"
+srsWords: "bunny"
 
 [flashcard-review]
-front: "danger"
-meaning: "the possibility of suffering harm or injury"
-translation: "the possibility of suffering harm or injury"
-srsWords: "danger"
+front: "spoon"
+meaning: "n. a piece of cutlery with a shallow bowl-shaped container and a handle; used to stir or serve or take up food; n. as much as a spoon will hold; n. formerly a golfing wood with an elevated face; v. scoop up or take up with a spoon"
+translation: "n. 匙, 调羹, 匙形工具；vt. 以匙舀起, 调情, 使成匙状"
+srsWords: "spoon"
 
 [flashcard-review]
-front: "empty"
-meaning: "containing nothing"
-translation: "containing nothing"
-srsWords: "empty"
+front: "teddy"
+meaning: "n. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials)"
+translation: "n. 连衫衬裤；泰迪玩具熊"
+srsWords: "teddy"
 
 [flashcard-review]
 front: "leisure"
@@ -376,10 +376,10 @@ translation: "n.计量 公升（容量单位）"
 srsWords: "liter"
 
 [flashcard-review]
-front: "chat"
-meaning: "to talk in a friendly, informal way"
-translation: "to talk in a friendly, informal way"
-srsWords: "chat"
+front: "thief"
+meaning: "n. a criminal who takes property belonging to someone else with the intention of keeping it or selling it"
+translation: "n. 小偷, 贼；[化] 取样"
+srsWords: "thief"
 
 [flashcard-review]
 front: "litre"
@@ -400,10 +400,10 @@ translation: "adj. 充满活力的, 活泼的, 轻快的逼真的, 醒目的剧�
 srsWords: "lively"
 
 [flashcard-review]
-front: "favourite"
-meaning: "preferred before all others of the same kind"
-translation: "preferred before all others of the same kind"
-srsWords: "favourite"
+front: "yearly"
+meaning: "n a reference book that is published regularly once every year; s occurring or payable every year; r without missing a year"
+translation: "a. 每年的, 一年一度的；adv. 一年一次, 每年"
+srsWords: "yearly"
 
 ---
 lessonTitle: "Lesson 7: Education, Science & Nature Part 7"
@@ -424,10 +424,10 @@ translation: "adj. 逻辑学的；合逻辑的，合理的名 词:logicality; �
 srsWords: "logical"
 
 [flashcard-review]
-front: "long"
-meaning: "long"
-translation: "measuring a great distance from end to end"
-srsWords: "long"
+front: "marker"
+meaning: "n. some conspicuous object used to distinguish or mark something; n. a distinguishing symbol; n. a writing implement for making a mark"
+translation: "n. 作记号的人, 记分员, 书签, 纪念碑, 里程碑, 标识物, 标记；[计] 标记"
+srsWords: "marker"
 
 [flashcard-review]
 front: "loose"
@@ -454,16 +454,16 @@ translation: "once a week"
 srsWords: "weekly"
 
 [flashcard-review]
-front: "crown"
-meaning: "royal headwear, top part"
-translation: "royal headwear, top part"
-srsWords: "crown"
+front: "roast"
+meaning: "n. a piece of meat roasted or for roasting and of a size for slicing into more than one portion; v. cook with dry heat, usually in an oven; s. (meat) cooked by dry heat in an oven"
+translation: "n. 烤肉, 烘烤, 嘲笑；a. 烘烤的, 烤过的；vt. 烤, 炙, 烘焙, 嘲笑；vi. 烤, 炙, 烘焙"
+srsWords: "roast"
 
 [flashcard-review]
-front: "depend"
-meaning: "rely on, be contingent on"
-translation: "rely on, be contingent on"
-srsWords: "depend"
+front: "swallow"
+meaning: "n. a small amount of liquid food; n. the act of swallowing; n. small long-winged songbird noted for swift graceful flight and the regularity of its migrations; v. pass through the esophagus as part of eating or drinking"
+translation: "n. 燕子, 吞咽, 喉；vt. 咽, 淹没, 吞没, 耗尽, 轻信, 忍受, 抑制；vi. 吞下, 咽下"
+srsWords: "swallow"
 
 [flashcard-review]
 front: "expert"
@@ -484,10 +484,10 @@ translation: "ad; v. 高声地；吵闹地花哨地，华丽地"
 srsWords: "loudly"
 
 [flashcard-review]
-front: "golf"
-meaning: "a sport"
-translation: "a sport"
-srsWords: "golf"
+front: "lime"
+meaning: "n. any of various related trees bearing limes; n. the green acidic fruit of any of various lime trees; v. cover with lime so as to induce growth"
+translation: "n. 石灰, 粘鸟胶, 酸橙；vt. 以石灰处理, 粘鸟胶于, 撒石灰"
+srsWords: "lime"
 
 [flashcard-review]
 front: "lover"
@@ -526,10 +526,10 @@ translation: "very bright or radiant; exceptionally clever or talented"
 srsWords: "brilliant"
 
 [flashcard-review]
-front: "earn"
-meaning: "to obtain money in return for labor or services"
-translation: "to obtain money in return for labor or services"
-srsWords: "earn"
+front: "sunlight"
+meaning: "n. the rays of the sun"
+translation: "n. 日光；[医] 日光, 太阳光"
+srsWords: "sunlight"
 
 [flashcard-review]
 front: "lunchtime"
@@ -544,10 +544,10 @@ icon: "🔬"
 color: "#4CAF50"
 ---
 [flashcard-review]
-front: "error"
-meaning: "a mistake"
-translation: "a mistake"
-srsWords: "error"
+front: "surf"
+meaning: "n. waves breaking on the shore; v. switch channels, on television"
+translation: "n. 海浪, 拍岸浪；vi. 作冲浪运动"
+srsWords: "surf"
 
 [flashcard-review]
 front: "expression"
@@ -562,16 +562,16 @@ translation: "n. 歌词；抒情诗 adj. 抒情的，写抒情诗的；（歌声
 srsWords: "lyric"
 
 [flashcard-review]
-front: "joy"
-meaning: "a feeling of great pleasure and happiness"
-translation: "a feeling of great pleasure and happiness"
-srsWords: "joy"
+front: "wheelchair"
+meaning: "n. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant"
+translation: "n. 轮椅"
+srsWords: "wheelchair"
 
 [flashcard-review]
-front: "mad"
-meaning: "insane; very angry"
-translation: "insane; very angry"
-srsWords: "mad"
+front: "atm"
+meaning: "n a unit of pressure: the pressure that will support a column of mercury 760 mm high at sea level and 0 degrees centigrade; n a means of digital communications that is capable of very high speeds; suitable for transmission of images or voice or video as well as data; n an unattended machine (outside some banks) that dispenses money when a personal coded card is used"
+translation: "[计] 自动出纳机; 异步传输方式"
+srsWords: "atm"
 
 [flashcard-review]
 front: "manner"
@@ -598,10 +598,10 @@ translation: "the top covering of a building"
 srsWords: "roof"
 
 [flashcard-review]
-front: "magic"
-meaning: "supernatural power"
-translation: "supernatural power"
-srsWords: "magic"
+front: "gasoline"
+meaning: "n. a volatile flammable mixture of hydrocarbons (hexane and heptane and octane etc.) derived from petroleum; used mainly as a fuel in internal-combustion engines"
+translation: "n. 汽油；[化] 汽油"
+srsWords: "gasoline"
 
 ---
 lessonTitle: "Lesson 10: Education, Science & Nature Part 10"
@@ -658,14 +658,13 @@ translation: "by a large number of people or in many places"
 srsWords: "widely"
 
 [flashcard-review]
-front: "male"
-meaning: "masculine, relating to men"
-translation: "masculine, relating to men"
-srsWords: "male"
+front: "splash"
+meaning: "n. the sound like water splashing; n. a patch of bright color; n. the act of scattering water about haphazardly; v. mark or overlay with patches of contrasting color or texture; cause to appear splashed or spattered"
+translation: "n. 飞溅, 污点, 一点儿, 溅泼声, 色斑；vi. 溅湿, 溅开, 飞溅；vt. 溅, 泼, 使溅起水, 洒, 使成斑驳状"
+srsWords: "splash"
 
 [flashcard-review]
 front: "worldwide"
 meaning: "throughout the world"
 translation: "throughout the world"
 srsWords: "worldwide"
-

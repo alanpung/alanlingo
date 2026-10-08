@@ -34,16 +34,16 @@ translation: "n. 傍晚；晚上；后期；（联欢性的）晚会; adj. 在�
 srsWords: "evening"
 
 [flashcard-review]
-front: "child"
-meaning: "child"
-translation: "child"
-srsWords: "child"
+front: "drama"
+meaning: "n. an episode that is turbulent or highly emotional; n. the literary genre of works intended for the theater; n. the quality of being arresting or highly emotional"
+translation: "n. 戏剧, 戏剧艺术"
+srsWords: "drama"
 
 [flashcard-review]
-front: "black"
-meaning: "black"
-translation: "black"
-srsWords: "black"
+front: "pool"
+meaning: "n. an excavation that is (usually) filled with water; n. an organization of people or resources that can be shared; n. any communal combination of funds; n. a small body of standing water (rainwater) or other liquid"
+translation: "n. 池, 水塘, 石油层, 联营；vt. 合伙经营, 共享, 采掘, 汇聚成；vi. 汇合成塘, 淤积, 联营"
+srsWords: "pool"
 
 [flashcard-review]
 front: "together"
@@ -64,10 +64,10 @@ translation: "war"
 srsWords: "war"
 
 [flashcard-review]
-front: "car"
-meaning: "car"
-translation: "car"
-srsWords: "car"
+front: "discuss"
+meaning: "n an athletic competition in which a disk-shaped object is thrown as far as possible; n a disk used in throwing competitions; v to consider or examine in speech or writing; v speak with others about (something); talk (something) over in detail; have a discussion"
+translation: "vt. 讨论, 论述；[医] 讨论, 辩论"
+srsWords: "discuss"
 
 [flashcard-review]
 front: "kind"
@@ -184,10 +184,10 @@ translation: "vt. 完成；结束；用完; vi. 结束，终止；完成；终�
 srsWords: "finish"
 
 [flashcard-review]
-front: "first"
-meaning: "coming before all others"
-translation: "coming before all others"
-srsWords: "first"
+front: "everywhere"
+meaning: "r. to or in any or all places; (`everyplace' is used informally for `everywhere')"
+translation: "adv. 各处, 到处"
+srsWords: "everywhere"
 
 [flashcard-review]
 front: "important"
@@ -304,10 +304,10 @@ translation: "adj.法国的，法国人的,法语的n.法语,法国人"
 srsWords: "french"
 
 [flashcard-review]
-front: "ago"
-meaning: "in the past"
-translation: "in the past"
-srsWords: "ago"
+front: "hole"
+meaning: "n. an opening into or through something; n. an opening deliberately made in or through something; n. one playing period (from tee to green) on a golf course; n. an unoccupied space"
+translation: "n. 孔, 洞, 穴, 漏洞；vt. 挖洞, 掘坑；vi. 进洞, 凿洞"
+srsWords: "hole"
 
 [flashcard-review]
 front: "social"
@@ -322,10 +322,10 @@ translation: "speak"
 srsWords: "talk"
 
 [flashcard-review]
-front: "friend"
-meaning: "companion"
-translation: "companion"
-srsWords: "friend"
+front: "laugh"
+meaning: "n. the sound of laughing; n. a facial expression characteristic of a person laughing; v. produce laughter"
+translation: "n. 笑, 笑声；vi. 笑, 大笑；vt. 以笑表示"
+srsWords: "laugh"
 
 [flashcard-review]
 front: "frog"
@@ -352,10 +352,10 @@ translation: "the sweet and fleshy product of a tree or other plant"
 srsWords: "fruit"
 
 [flashcard-review]
-front: "full"
-meaning: "containing as much as possible"
-translation: "containing as much as possible"
-srsWords: "full"
+front: "actor"
+meaning: "n. a theatrical performer; n. a person who acts and gets things done"
+translation: "n. 男演员, 行动者；[医] 作用物, 反应物"
+srsWords: "actor"
 
 [flashcard-review]
 front: "fun"
@@ -394,10 +394,10 @@ translation: "adj.德国的,德国人/语的,德国文化的n.德国人，德语
 srsWords: "german"
 
 [flashcard-review]
-front: "get"
-meaning: "obtain, receive"
-translation: "obtain, receive"
-srsWords: "get"
+front: "cute"
+meaning: "s. obviously contrived to charm"
+translation: "a. 可爱的, 聪明的, 伶俐的；[医] 品他病"
+srsWords: "cute"
 
 [flashcard-review]
 front: "ghost"
@@ -412,10 +412,10 @@ icon: "🍎"
 color: "#FF9800"
 ---
 [flashcard-review]
-front: "become"
-meaning: "grow into"
-translation: "grow into"
-srsWords: "become"
+front: "collect"
+meaning: "n. a short prayer generally preceding the lesson in the Church of Rome or the Church of England; v. call for and obtain payment of; v. get or bring together; v. gather or collect"
+translation: "v. 收集, 聚集, 集中, 搜集；a. 由收到者付款的；adv. 由收到者付款地"
+srsWords: "collect"
 
 [flashcard-review]
 front: "girl"
@@ -436,16 +436,16 @@ translation: "hard, brittle substance; a drinking vessel"
 srsWords: "glass"
 
 [flashcard-review]
-front: "body"
-meaning: "physical structure"
-translation: "physical structure"
-srsWords: "body"
+front: "false"
+meaning: "a. not in accordance with the fact or reality or actuality; s. arising from error; s. erroneous and usually accidental; s. deliberately deceptive"
+translation: "a. 错误的, 虚伪的, 假的, 不老实的；adv. 不准确地, 欺诈地"
+srsWords: "false"
 
 [flashcard-review]
-front: "food"
-meaning: "edible substance"
-translation: "edible substance"
-srsWords: "food"
+front: "neck"
+meaning: "n. the part of an organism (human or animal) that connects the head to the rest of the body; n. a narrow elongated projecting strip of land; n. a cut of meat from the neck of an animal; n. a narrow part of an artifact that resembles a neck in position or form"
+translation: "n. 脖子, 衣领, 颈；vi. 拥抱, 拥吻, 收缩；vt. 割颈"
+srsWords: "neck"
 
 [flashcard-review]
 front: "hour"
@@ -562,10 +562,10 @@ translation: "n. 灰色 adj. 灰色的；灰白的 vt. 使变成灰色；使变�
 srsWords: "grey"
 
 [flashcard-review]
-front: "almost"
-meaning: "very nearly"
-translation: "very nearly"
-srsWords: "almost"
+front: "cream"
+meaning: "n. the best people or things in a group; n. the part of milk containing the butterfat; n. toiletry consisting of any of various substances in the form of a thick liquid that have a soothing and moisturizing effect when applied to the skin; v. make creamy by beating"
+translation: "n. 乳酪, 奶油, 面霜；[医] 乳油, 乳皮; 乳膏, 霜"
+srsWords: "cream"
 
 [flashcard-review]
 front: "habit"
@@ -640,10 +640,10 @@ translation: "a covering for the head"
 srsWords: "hat"
 
 [flashcard-review]
-front: "have"
-meaning: "to have"
-translation: "aux.用以构成完成式及完成式的不定式，表示已经…vt.有，具有,拿，取得,从事,必须，不得不n.〈口〉有产者，有钱人,富国,〈英俚〉欺骗，诈骗"
-srsWords: "have"
+front: "bright"
+meaning: "a. emitting or reflecting light readily or in large amounts; s. having striking color; s. characterized by quickness and ease in learning; s. having lots of light either natural or artificial"
+translation: "a. 明亮的, 聪明的, 鲜明的, 欢快的；adv. 明亮地, 欢快地"
+srsWords: "bright"
 
 [flashcard-review]
 front: "else"
@@ -652,10 +652,10 @@ translation: "in addition; besides"
 srsWords: "else"
 
 [flashcard-review]
-front: "girl"
-meaning: "a female child or young woman"
-translation: "a female child or young woman"
-srsWords: "girl"
+front: "painting"
+meaning: "n. graphic art consisting of an artistic composition made by applying paints to a surface; n. creating a picture with paints; n. the act of applying paint to a surface; n. the occupation of a house painter"
+translation: "n. 画, 绘画, 油漆；[化] 涂漆"
+srsWords: "painting"
 
 [flashcard-review]
 front: "headache"
@@ -668,4 +668,3 @@ front: "healthy"
 meaning: "in good health"
 translation: "in good health"
 srsWords: "healthy"
-

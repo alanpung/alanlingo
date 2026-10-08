@@ -325,21 +325,18 @@ export async function getAllCards(language?: string): Promise<SrsCardItem[]> {
     }));
   }
 
-  const wordsMissingLevel = cards
-    .filter((c) => !c.cefrLevel)
-    .map((c) => c.word.toLowerCase().trim());
-
-  if (wordsMissingLevel.length > 0) {
-    try {
-      const levelMap = await getWordToLevelMap();
-      for (const card of cards) {
-        if (!card.cefrLevel) {
-          card.cefrLevel = levelMap[card.word.toLowerCase().trim()] || "A1";
-        }
+  try {
+    const levelMap = await getWordToLevelMap();
+    for (const card of cards) {
+      const mappedLvl = levelMap[card.word.toLowerCase().trim()];
+      if (mappedLvl) {
+        card.cefrLevel = mappedLvl;
+      } else if (!card.cefrLevel) {
+        card.cefrLevel = "A1";
       }
-    } catch (err) {
-      console.error("Failed to map CEFR levels:", err);
     }
+  } catch (err) {
+    console.error("Failed to map CEFR levels:", err);
   }
 
   return cards;
@@ -662,9 +659,7 @@ export async function getUserLibraryWords(userIdParam?: string): Promise<string[
       const match = fsu.parsed.title.match(/Unit\s+(\d+)/i);
       const unitNum = match ? parseInt(match[1], 10) : null;
       const uId = unitNum ? `${cId}-unit-${unitNum}` : `${cId}-${fsu.parsed.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-      if (!unitMap.has(uId)) {
-        unitMap.set(uId, { id: uId, markdown: fsu.markdown });
-      }
+      unitMap.set(uId, { id: uId, markdown: fsu.markdown });
     }
   }
 
@@ -1350,14 +1345,12 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
           const match = fsu.parsed.title.match(/Unit\s+(\d+)/i);
           const unitNum = match ? parseInt(match[1], 10) : null;
           const uId = unitNum ? `${cId}-unit-${unitNum}` : `${cId}-${fsu.parsed.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-          if (!unitMap.has(uId)) {
-            unitMap.set(uId, {
-              id: uId,
-              markdown: fsu.markdown,
-              level: fsu.parsed.level || "A1",
-              targetLanguage: fsu.parsed.targetLanguage || "en",
-            });
-          }
+          unitMap.set(uId, {
+            id: uId,
+            markdown: fsu.markdown,
+            level: fsu.parsed.level || "A1",
+            targetLanguage: fsu.parsed.targetLanguage || "en",
+          });
         }
       }
 

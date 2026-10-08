@@ -16,10 +16,10 @@ icon: "💼"
 color: "#3F51B5"
 ---
 [flashcard-review]
-front: "ready"
-meaning: "prepared"
-translation: "prepared"
-srsWords: "ready"
+front: "more"
+meaning: "n. English statesman who opposed Henry VIII's divorce from Catherine of Aragon and was imprisoned and beheaded; recalled for his concept of Utopia, the ideal state; a. (comparative of `much' used with mass nouns) a quantifier meaning greater in size or amount or extent or degree; a. (comparative of `many' used with count nouns) quantifier meaning greater in number; r. used to form the comparative of some adjectives and adverbs"
+translation: "n. 更多；a. 多的, 程度较大的, 更大的；adv. 多, 更多, 进一步；[计] DOS外部命令:显示满屏后自动暂停, 并显示:\"--More--\", 按任意键继续"
+srsWords: "more"
 
 [flashcard-review]
 front: "really"
@@ -28,10 +28,10 @@ translation: "truly"
 srsWords: "really"
 
 [flashcard-review]
-front: "remember"
-meaning: "to recall from memory"
-translation: "to recall from memory"
-srsWords: "remember"
+front: "merci"
+meaning: "thank you (French loanword)"
+translation: "int. 谢谢（法语）"
+srsWords: "merci"
 
 [flashcard-review]
 front: "reporter"
@@ -88,10 +88,10 @@ translation: "n. 尺；统治者；[测] 划线板，划线的人"
 srsWords: "ruler"
 
 [flashcard-review]
-front: "run"
-meaning: "run"
-translation: "vt.& vi.跑,移动,（使）流动n.奔跑,行程,放映期,一系列vi.（工作等）进行,延续,逃跑,行驶vt.使奔跑,使…快速移动,运行，经营,划adj.融化的,浇铸的,跑的筋疲力尽的"
-srsWords: "run"
+front: "realy"
+meaning: "in fact; actually"
+translation: "n. 继电器"
+srsWords: "realy"
 
 [flashcard-review]
 front: "russian"
@@ -172,10 +172,10 @@ translation: "a thing made or used for sitting on."
 srsWords: "seat"
 
 [flashcard-review]
-front: "see"
-meaning: "perceive with the eyes"
-translation: "perceive with the eyes"
-srsWords: "see"
+front: "hallo"
+meaning: "an exclamation used as a greeting or to attract attention"
+translation: "interj. 嘿, 喂, 哈罗"
+srsWords: "hallo"
 
 [flashcard-review]
 front: "september"
@@ -196,16 +196,16 @@ translation: "7"
 srsWords: "seven"
 
 [flashcard-review]
-front: "answer"
-meaning: "a reply or solution"
-translation: "a reply or solution"
-srsWords: "answer"
+front: "lyin"
+meaning: "telling untruths; resting in a horizontal position"
+translation: "[网络] 说谎的；李颖；除甲醛这款有用"
+srsWords: "lyin"
 
 [flashcard-review]
-front: "boy"
-meaning: "a male child"
-translation: "a male child"
-srsWords: "boy"
+front: "tshirt"
+meaning: "a type of shirt"
+translation: "n. 短袖圆领汗衫；圆领运动衫；[网络] T恤；T恤文化；恤衫"
+srsWords: "tshirt"
 
 ---
 lessonTitle: "Lesson 4: Work & Professions Part 4"
@@ -238,10 +238,10 @@ translation: "n. 搁板；架子；搁板状物名 词:shelfful"
 srsWords: "shelf"
 
 [flashcard-review]
-front: "learn"
-meaning: "to gain knowledge or skill"
-translation: "to gain knowledge or skill"
-srsWords: "learn"
+front: "a"
+meaning: "a"
+translation: "a"
+srsWords: "a"
 
 [flashcard-review]
 front: "shirt"
@@ -256,10 +256,10 @@ translation: "footwear"
 srsWords: "shoe"
 
 [flashcard-review]
-front: "add"
-meaning: "to join something to something else"
-translation: "to join something to something else"
-srsWords: "add"
+front: "a.m./a.m./am/am"
+meaning: "a.m./a.m./am/am"
+translation: "a.m./a.m./am/am"
+srsWords: "a.m./a.m./am/am"
 
 [flashcard-review]
 front: "alone"
@@ -280,10 +280,10 @@ icon: "💼"
 color: "#3F51B5"
 ---
 [flashcard-review]
-front: "hot"
-meaning: "having a high temperature"
-translation: "having a high temperature"
-srsWords: "hot"
+front: "about"
+meaning: "s. on the move; r. all around or on all sides; r. in the area or vicinity; r. used of movement to or among many different places or in no particular direction"
+translation: "prep. 在...周围, 大约, 有关, 关于；adv. 大约, 四处, 在附近, 周围"
+srsWords: "about"
 
 [flashcard-review]
 front: "shy"
@@ -310,10 +310,10 @@ translation: "a person who sings"
 srsWords: "singer"
 
 [flashcard-review]
-front: "movie"
-meaning: "a film or motion picture"
-translation: "a film or motion picture"
-srsWords: "movie"
+front: "above"
+meaning: "n. an earlier section of a written text; s. appearing earlier in the same text; r. at an earlier place; r. in or to a place that is higher"
+translation: "prep. 在上方, 超出；adv. 在上面；a. 上述的, 上面的"
+srsWords: "above"
 
 [flashcard-review]
 front: "sir"
@@ -358,10 +358,10 @@ translation: "gathering, assembly"
 srsWords: "meeting"
 
 [flashcard-review]
-front: "september"
-meaning: "September"
-translation: "September"
-srsWords: "september"
+front: "after"
+meaning: "s. located farther aft; r. behind or in the rear"
+translation: "prep. 在...之后, 由于；conj. 在...之后；adv. 后来"
+srsWords: "after"
 
 [flashcard-review]
 front: "size"
@@ -394,16 +394,16 @@ translation: "the area above the earth"
 srsWords: "sky"
 
 [flashcard-review]
-front: "small"
-meaning: "small"
-translation: "adj. 少的，小的；不重要的；几乎没有的；微弱的；幼小的ad; v. 小小地；卑鄙地; n. 小件物品；矮小的人比较级:smaller, smallest 缩 写:s, sm; 形容词:smallish; 名 词:smallness"
-srsWords: "small"
+front: "airplane/aeroplane"
+meaning: "airplane/aeroplane"
+translation: "airplane/aeroplane"
+srsWords: "airplane/aeroplane"
 
 [flashcard-review]
-front: "blue"
-meaning: "blue"
-translation: "blue"
-srsWords: "blue"
+front: "all right"
+meaning: "all right"
+translation: "好, 顺利, 良好的, 正确的"
+srsWords: "all right"
 
 ---
 lessonTitle: "Lesson 7: Work & Professions Part 7"
@@ -412,16 +412,16 @@ icon: "💼"
 color: "#3F51B5"
 ---
 [flashcard-review]
-front: "eat"
-meaning: "consume food"
-translation: "consume food"
-srsWords: "eat"
+front: "am"
+meaning: "n a radioactive transuranic metallic element; discovered by bombarding uranium with helium atoms; n a master's degree in arts and sciences; n modulation of the amplitude of the (radio) carrier wave; v have the quality of being; (copula, used with an adjective or a predicate noun); v be identical to; be someone or something; v occupy a certain position or area; be somewhere; v have an existence, be extant; v happen, occur, take place; this was during the visit to my parents' house\"; v be identical or equivalent to; v form or compose; v work in a specific place, with a specific subject, or in a specific function; v represent, as of a character on stage; v spend or use time; v have life, be alive; v to remain unmolested, undisturbed, or uninterrupted -- used only in infinitive form; v be priced at"
+translation: "be的单数第一人称；[计] 存取管理程序, 寻址方式, 地址标记, 变址数, 调幅, 辅助存储器"
+srsWords: "am"
 
 [flashcard-review]
-front: "fast"
-meaning: "quick, rapid"
-translation: "quick, rapid"
-srsWords: "fast"
+front: "an"
+meaning: "n an associate degree in nursing"
+translation: "art. 一"
+srsWords: "an"
 
 [flashcard-review]
 front: "snake"
@@ -430,10 +430,10 @@ translation: "n.蛇,奸险的人,卑劣的人,蛇形浮动汇率制vt.沿…曲�
 srsWords: "snake"
 
 [flashcard-review]
-front: "size"
-meaning: "dimensions, magnitude"
-translation: "dimensions, magnitude"
-srsWords: "size"
+front: "and"
+meaning: "conj. A particle which expresses the relation of connection or; addition. It is used to conjoin a word with a word, a clause with a; clause, or a sentence with a sentence.; conj. In order to; -- used instead of the infinitival to,; especially after try, come, go.; conj. It is sometimes, in old songs, a mere expletive.; conj. If; though. See An, conj."
+translation: "conj. 和, 与；[计] 与"
+srsWords: "and"
 
 [flashcard-review]
 front: "snowy"
@@ -466,10 +466,10 @@ translation: "vt. 解决；解答；溶解; vi. 作解答; 时态:solved, solvin
 srsWords: "solve"
 
 [flashcard-review]
-front: "some"
-meaning: "an unspecified amount or number"
-translation: "an unspecified amount or number"
-srsWords: "some"
+front: "anybody"
+meaning: "n. Any one out of an indefinite number of persons; anyone;; any person.; n. A person of consideration or standing."
+translation: "pron. 任何人；n. 重要人物"
+srsWords: "anybody"
 
 ---
 lessonTitle: "Lesson 8: Work & Professions Part 8"
@@ -478,46 +478,46 @@ icon: "💼"
 color: "#3F51B5"
 ---
 [flashcard-review]
-front: "key"
-meaning: "a tool for opening locks"
-translation: "a tool for opening locks"
-srsWords: "key"
+front: "anyone"
+meaning: "n. One taken at random rather than by selection; anybody.; [Commonly written as two words.]"
+translation: "pron. 任何人"
+srsWords: "anyone"
 
 [flashcard-review]
-front: "mom"
-meaning: "mother"
-translation: "mother"
-srsWords: "mom"
+front: "anything"
+meaning: "n. Any object, act, state, event, or fact whatever; thing of; any kind; something or other; aught; as, I would not do it for; anything.; n. Expressing an indefinite comparison; -- with as or like.; adv. In any measure; anywise; at all."
+translation: "pron. 任何事"
+srsWords: "anything"
 
 [flashcard-review]
-front: "son"
-meaning: "male child"
-translation: "male child"
-srsWords: "son"
+front: "april"
+meaning: "n. the month following March and preceding May"
+translation: "n. 四月"
+srsWords: "april"
 
 [flashcard-review]
-front: "song"
-meaning: "musical composition"
-translation: "musical composition"
-srsWords: "song"
+front: "are"
+meaning: "n. a unit of surface area equal to 100 square meters"
+translation: "be的现在时复数或第二人称单数"
+srsWords: "are"
 
 [flashcard-review]
-front: "page"
-meaning: "a side of a sheet of paper"
-translation: "a side of a sheet of paper"
-srsWords: "page"
+front: "as"
+meaning: "n a very poisonous metallic element that has three allotropic forms; arsenic and arsenic compounds are used as herbicides and insecticides and various alloys; found in arsenopyrite and orpiment and realgar; n a United States territory on the eastern part of the island of Samoa; n a metric unit of length equal to one ten billionth of a meter (or 0.0001 micron); used to specify wavelengths of electromagnetic radiation; n any of several fat-soluble vitamins essential for normal vision; prevents night blindness or inflammation or dryness of the eyes; n one of the four nucleotides used in building DNA; all four nucleotides have a common phosphate group and a sugar (ribose); n (biochemistry) purine base found in DNA and RNA; pairs with thymine in DNA and with uracil in RNA; n the basic unit of electric current adopted under the Systeme International d'Unites; n the 1st letter of the Roman alphabet; n the blood group whose red cells carry the A antigen; r to the same degree (often followed by `as')"
+translation: "adv. 同样地, 例如；prep. 做为, 当作；conj. 当...之时, 以...的方式, 像...一样, 因为；[计] 高级系统, 先进系统, 辅助存储器, 自治系统"
+srsWords: "as"
 
 [flashcard-review]
-front: "soon"
-meaning: "in a short time"
-translation: "in a short time"
-srsWords: "soon"
+front: "at"
+meaning: "n. 100 at equal 1 kip in Laos"
+translation: "prep. 在, 向, 对；[计] 地址转换器, 异常传输, 自动订票"
+srsWords: "at"
 
 [flashcard-review]
-front: "sorry"
-meaning: "feeling regret; apologetic"
-translation: "feeling regret; apologetic"
-srsWords: "sorry"
+front: "august"
+meaning: "n. the month following July and preceding September; s. of or befitting a lord; s. profoundly honored"
+translation: "n. 八月；a. 威严的, 令人敬畏的"
+srsWords: "august"
 
 [flashcard-review]
 front: "soup"
@@ -556,10 +556,10 @@ translation: "n.间谍,密探vt.看见,秘密监视,精心调查vi.当间谍,从
 srsWords: "spy"
 
 [flashcard-review]
-front: "start"
-meaning: "begin"
-translation: "begin"
-srsWords: "start"
+front: "because"
+meaning: "conj. By or for the cause that; on this account that; for the; reason that.; conj. In order that; that."
+translation: "conj. 因为"
+srsWords: "because"
 
 [flashcard-review]
 front: "station"
@@ -574,22 +574,22 @@ translation: "got（noun）"
 srsWords: "got"
 
 [flashcard-review]
-front: "stop"
-meaning: "cease movement or activity"
-translation: "cease movement or activity"
-srsWords: "stop"
+front: "before"
+meaning: "r earlier in time; previously; r at or in the front"
+translation: "prep. 在...之前；conj. 在...之前；adv. 在前"
+srsWords: "before"
 
 [flashcard-review]
-front: "story"
-meaning: "narrative"
-translation: "narrative"
-srsWords: "story"
+front: "below"
+meaning: "r. in or to a place that is lower; r. at a later place; r. (in writing) see below"
+translation: "prep. 在下面；adv. 在下面"
+srsWords: "below"
 
 [flashcard-review]
-front: "street"
-meaning: "road"
-translation: "road"
-srsWords: "street"
+front: "beside"
+meaning: "n. At the side of; on one side of.; n. Aside from; out of the regular course or order of; in a; state of deviation from; out of.; n. Over and above; distinct from; in addition to.; adv. On one side.; adv. More than that; over and above; not included in the; number, or in what has been mentioned; moreover; in addition."
+translation: "prep. 在旁边"
+srsWords: "beside"
 
 [flashcard-review]
 front: "strict"
@@ -598,10 +598,10 @@ translation: "adj. 严格的, 严厉的严谨的, 精确的绝对的, 完全的�
 srsWords: "strict"
 
 [flashcard-review]
-front: "student"
-meaning: "person who is studying"
-translation: "person who is studying"
-srsWords: "student"
+front: "between"
+meaning: "r. in the interval; r. in between"
+translation: "prep. 在...之间"
+srsWords: "between"
 
 ---
 lessonTitle: "Lesson 10: Work & Professions Part 10"
@@ -634,10 +634,10 @@ translation: "n.建议，意见，暗示,联想，启发,微量"
 srsWords: "suggestion"
 
 [flashcard-review]
-front: "brother"
-meaning: "a male sibling"
-translation: "a male sibling"
-srsWords: "brother"
+front: "boring"
+meaning: "n. the act of drilling a hole in the earth in the hope of producing petroleum; s. so lacking in interest as to cause mental weariness"
+translation: "a. 烦人的, 无聊的, 无趣的；[机] 成孔期, 搪孔"
+srsWords: "boring"
 
 [flashcard-review]
 front: "sum"
@@ -652,10 +652,10 @@ translation: "a person in a novel, play, or movie"
 srsWords: "character"
 
 [flashcard-review]
-front: "summer"
-meaning: "summer"
-translation: "n. 夏, 夏天, 夏季黄金时代, 鼎盛时期岁数; 时态:summered, summering, summers副 词:summerly"
-srsWords: "summer"
+front: "both"
+meaning: "s. (used with count nouns) two considered together; the two"
+translation: "a. 两者的；adv. 两者都；pron. 两者"
+srsWords: "both"
 
 [flashcard-review]
 front: "sun"
@@ -664,8 +664,7 @@ translation: "the star that the Earth orbits"
 srsWords: "sun"
 
 [flashcard-review]
-front: "cup"
-meaning: "a small, round container for drinking"
-translation: "a small, round container for drinking"
-srsWords: "cup"
-
+front: "broken"
+meaning: "a. physically and forcibly separated into pieces or cracked or split; a. not continuous in space, time, or sequence or varying abruptly; s. subdued or brought low in condition or status; a. (especially of promises or contracts) having been violated or disregarded"
+translation: "a. 坏掉的, 打破的, 断掉的；break的过去分词"
+srsWords: "broken"

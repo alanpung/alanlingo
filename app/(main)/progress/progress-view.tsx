@@ -42,7 +42,7 @@ export function ProgressView({
   isAuthorAllWords = false,
   srsCards = [],
   language = "en",
-  levelDictionaryCounts = { A1: 941, A2: 1614, B1: 4610, B2: 8760, C1: 5127, C2: 1275 },
+  levelDictionaryCounts = { A1: 1000, A2: 1555, B1: 4610, B2: 8760, C1: 5127, C2: 1275 },
 }: {
   isAdmin?: boolean;
   isAuthorAllWords?: boolean;

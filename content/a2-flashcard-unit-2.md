@@ -448,10 +448,10 @@ translation: "n.日历,历法,日程表,（一年之中的）重大事件（或�
 srsWords: "calendar"
 
 [flashcard-review]
-front: "call"
-meaning: "call"
-translation: "to telephone; to name"
-srsWords: "call"
+front: "swiss"
+meaning: "n. the natives or inhabitants of Switzerland; a. of or relating to Switzerland or its people or culture"
+translation: "n. 瑞士人, 瑞士腔调；a. 瑞士的, 瑞士风格的"
+srsWords: "swiss"
 
 [flashcard-review]
 front: "increase"
@@ -478,10 +478,10 @@ icon: "🚗"
 color: "#00BCD4"
 ---
 [flashcard-review]
-front: "can"
-meaning: "can"
-translation: "aux. 能； 能够； 可以； 可能 n. 罐头； （用金属或塑料制作的）容器； （马口铁或其他金属制作的）食品罐头 vt. 将…装入密封罐中保存"
-srsWords: "can"
+front: "eighth"
+meaning: "n. position eight in a countable series of things; s. coming next after the seventh and just before the ninth in position"
+translation: "num. 第八, 八分之一"
+srsWords: "eighth"
 
 [flashcard-review]
 front: "simple"
@@ -668,4 +668,3 @@ front: "cheque"
 meaning: "a written order to a bank to pay money"
 translation: "n. 支票"
 srsWords: "cheque"
-
