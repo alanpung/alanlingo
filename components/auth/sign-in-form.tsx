@@ -50,8 +50,9 @@ export function SignInForm({ redirectUrl, initialError, hasGoogleAuth = true }: 
     setLoading(true);
 
     try {
+      const cleanEmail = email.trim().toLowerCase();
       const result = await signIn.email(
-        { email, password },
+        { email: cleanEmail, password },
         {
           headers: turnstileToken
             ? { "x-turnstile-token": turnstileToken }
@@ -61,10 +62,19 @@ export function SignInForm({ redirectUrl, initialError, hasGoogleAuth = true }: 
       setLoading(false);
 
       if (result.error) {
-        const errorMsg =
+        let errorMsg =
           result.error.status === 500
-            ? "Server error (500). Please check that your PostgreSQL database (DATABASE_URL) is connected and migrated."
+            ? "Server error (500). Please check that your PostgreSQL database is connected and migrated."
             : result.error.message || "Sign in failed. Please check your credentials.";
+
+        if (
+          result.error.code === "INVALID_EMAIL_OR_PASSWORD" ||
+          errorMsg.toLowerCase().includes("invalid email or password") ||
+          errorMsg.toLowerCase().includes("credentials")
+        ) {
+          errorMsg = "Invalid email or password. If you originally registered with Google or forgot your password, please click 'Forgot password?' to reset it.";
+        }
+
         setError(errorMsg);
         setTurnstileToken(null);
         turnstileRef.current?.reset();

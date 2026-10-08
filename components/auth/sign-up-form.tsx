@@ -50,8 +50,9 @@ export function SignUpForm({ redirectUrl, initialError, hasGoogleAuth = true }: 
     setLoading(true);
 
     try {
+      const cleanEmail = email.trim().toLowerCase();
       const result = await signUp.email(
-        { name, email, password },
+        { name: name.trim(), email: cleanEmail, password },
         {
           headers: turnstileToken
             ? { "x-turnstile-token": turnstileToken }
