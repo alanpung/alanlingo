@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { Zap, Target, Award, Sparkles, CheckCircle2 } from "lucide-react";
+import { Zap, Target, Award, Loader2 } from "lucide-react";
 
 interface LessonCompleteModalProps {
   perfectScore: boolean;
@@ -19,10 +20,18 @@ export function LessonCompleteModal({
   xpEarned,
   onContinue,
 }: LessonCompleteModalProps) {
+  const [isNavigating, setIsNavigating] = useState(false);
+
   const calculatedXp = xpEarned ?? (perfectScore ? 15 : 10);
   const accuracy = totalExercises > 0
     ? Math.max(0, Math.round(((totalExercises - mistakeCount) / totalExercises) * 100))
     : 100;
+
+  function handleContinue() {
+    if (isNavigating) return;
+    setIsNavigating(true);
+    onContinue();
+  }
 
   return (
     <div className="mx-auto max-w-md py-8 px-4 text-center select-none">
@@ -94,10 +103,18 @@ export function LessonCompleteModal({
 
         {/* Continue Action */}
         <Button
-          onClick={onContinue}
-          className="w-full h-12 text-base font-black uppercase tracking-wide bg-lingo-green hover:bg-lingo-green-dark border-b-4 border-lingo-green-dark active:border-b-0 active:translate-y-[2px] transition-all rounded-2xl cursor-pointer"
+          onClick={handleContinue}
+          disabled={isNavigating}
+          className="w-full h-12 text-base font-black uppercase tracking-wide bg-lingo-green hover:bg-lingo-green-dark border-b-4 border-lingo-green-dark active:border-b-0 active:translate-y-[2px] transition-all rounded-2xl cursor-pointer disabled:opacity-80 flex items-center justify-center gap-2"
         >
-          Continue
+          {isNavigating ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              <span>Loading...</span>
+            </>
+          ) : (
+            "Continue"
+          )}
         </Button>
       </motion.div>
     </div>

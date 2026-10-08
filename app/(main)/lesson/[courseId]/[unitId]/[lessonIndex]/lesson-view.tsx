@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { UnitLesson, Exercise } from "@/lib/content/types";
 import { exerciseSchema } from "@/lib/content/exercise-schema";
@@ -39,15 +39,33 @@ export function LessonView({
   targetLanguage,
 }: LessonViewProps) {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
   const [showComplete, setShowComplete] = useState(false);
   const [lessonResult, setLessonResult] = useState<{
     perfectScore: boolean;
   } | null>(null);
 
-  const backUrl = courseId
-    ? `/library/${courseId}?unit=${unitId}`
-    : `/unit/${unitId}`;
+  const [backUrl, setBackUrl] = useState<string>(() => {
+    if (courseId) return `/units/${courseId}?unit=${unitId}`;
+    return `/unit/${unitId}`;
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && courseId) {
+      if (document.referrer.includes("/library/")) {
+        setBackUrl(`/library/${courseId}?unit=${unitId}`);
+      }
+    }
+  }, [courseId, unitId]);
+
+  // Pre-fetch return URLs immediately so navigation on completion is instant
+  useEffect(() => {
+    if (courseId) {
+      router.prefetch(`/units/${courseId}?unit=${unitId}`);
+      router.prefetch(`/library/${courseId}?unit=${unitId}`);
+    } else {
+      router.prefetch(`/unit/${unitId}`);
+    }
+  }, [courseId, unitId, router]);
 
   const {
     currentIndex,
@@ -70,6 +88,14 @@ export function LessonView({
     advance();
   }
 
+  function handleReturn() {
+    router.push(backUrl);
+    // Hard redirect fallback if client-side navigation ever stalls
+    setTimeout(() => {
+      window.location.href = backUrl;
+    }, 1200);
+  }
+
   // When lesson completes, trigger UI instantly & submit results in background
   useEffect(() => {
     if (isComplete && !showComplete) {
@@ -77,27 +103,24 @@ export function LessonView({
       setShowComplete(true);
       setLessonResult({ perfectScore: mistakeCount === 0 });
 
-      // 2. Persist lesson completion in background without blocking UI
-      startTransition(async () => {
-        try {
-          const result = await completeLesson({
-            unitId,
-            lessonIndex,
-            results: results.map((r) => ({
-              exerciseIndex: r.exerciseIndex,
-              exerciseType: r.exerciseType,
-              correct: r.correct,
-              userAnswer: r.userAnswer,
-            })),
-            mistakeCount,
-          });
-          if (result) {
-            setLessonResult(result);
-          }
-        } catch (err) {
+      // 2. Persist lesson completion asynchronously in background without blocking UI
+      completeLesson({
+        unitId,
+        lessonIndex,
+        results: results.map((r) => ({
+          exerciseIndex: r.exerciseIndex,
+          exerciseType: r.exerciseType,
+          correct: r.correct,
+          userAnswer: r.userAnswer,
+        })),
+        mistakeCount,
+      })
+        .then((result) => {
+          if (result) setLessonResult(result);
+        })
+        .catch((err) => {
           console.error("Failed to persist lesson completion:", err);
-        }
-      });
+        });
     }
   }, [isComplete, showComplete, unitId, lessonIndex, results, mistakeCount]);
 
@@ -107,7 +130,7 @@ export function LessonView({
         perfectScore={lessonResult?.perfectScore ?? mistakeCount === 0}
         totalExercises={totalExercises}
         mistakeCount={mistakeCount}
-        onContinue={() => router.push(backUrl)}
+        onContinue={handleReturn}
       />
     );
   }
