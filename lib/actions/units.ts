@@ -7,7 +7,7 @@ import { requireSession } from "@/lib/auth-server";
 import { parseUnitMarkdown } from "@/lib/content/unit-parser";
 import { revalidatePath } from "next/cache";
 import { isAdminEmail } from "@/lib/ai/models";
-import { getCourseForManagement, getUserOwnedStandaloneUnits } from "@/lib/db/queries/courses";
+import { getCourseForManagement, getUserOwnedStandaloneUnits, clearContentCache } from "@/lib/db/queries/courses";
 import matter from "gray-matter";
 import type { CourseManagementInfo, AvailableUnitForCourse } from "@/lib/content/types";
 
@@ -16,6 +16,7 @@ function slugify(text: string): string {
 }
 
 function revalidateUnitPages(courseId?: string | null) {
+  clearContentCache();
   // Use layout-level revalidation recursively in the background to avoid blocking the user action response
   setTimeout(() => {
     try {

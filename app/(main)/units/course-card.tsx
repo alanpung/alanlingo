@@ -14,6 +14,7 @@ export function CourseCard({ course }: CourseCardProps) {
   return (
     <Link
       href={`/units/${course.id}`}
+      prefetch={true}
       className="block rounded-2xl border-2 border-lingo-border bg-lingo-card p-5 transition-transform hover:scale-[1.02] active:scale-[0.98]"
     >
       <div className="flex items-start justify-between gap-3">

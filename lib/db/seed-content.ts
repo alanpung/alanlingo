@@ -6,12 +6,7 @@ import { eq, or, ilike, and, notInArray, inArray, sql } from "drizzle-orm";
 let isSeeding = false;
 let lastSyncedAt = 0;
 
-export async function seedContentFromFilesystem() {
-  if (!(await isDbAvailable())) return;
-
-  // Throttle syncs to once every 5 minutes max per server instance
-  const now = Date.now();
-  if (now - lastSyncedAt < 300000) return;
+async function runSeedTask() {
   if (isSeeding) return;
   isSeeding = true;
 
@@ -36,7 +31,6 @@ export async function seedContentFromFilesystem() {
     // 2. Load filesystem content
     const courses = getAllCourses();
     const units = getAllUnits();
-    const courseIds = courses.map((c) => c.id);
 
     // 3. Batch upsert all filesystem courses with Alan P (creatorId) as author
     if (courses.length > 0) {
@@ -175,4 +169,33 @@ export async function seedContentFromFilesystem() {
   } finally {
     isSeeding = false;
   }
+}
+
+export async function seedContentFromFilesystem() {
+  if (!(await isDbAvailable())) return;
+
+  const now = Date.now();
+  // Throttle background syncs to max once every 5 minutes
+  if (lastSyncedAt > 0 && now - lastSyncedAt < 300000) return;
+
+  if (lastSyncedAt > 0) {
+    // Already seeded before: run sync in background without delaying request
+    void runSeedTask();
+    return;
+  }
+
+  // Check if DB already contains courses
+  try {
+    const existing = await db.select({ id: course.id }).from(course).limit(1);
+    if (existing.length > 0) {
+      lastSyncedAt = now;
+      void runSeedTask();
+      return;
+    }
+  } catch (err) {
+    console.warn("seedContentFromFilesystem check error:", err);
+  }
+
+  // DB is empty: initial sync synchronously
+  await runSeedTask();
 }

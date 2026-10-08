@@ -35,7 +35,7 @@ export function LessonNode({ title, state, href, color, index, language }: Lesso
 
   return (
     <div className={`flex flex-col items-center ${offset}`}>
-      <Link href={href} className="group">
+      <Link href={href} prefetch={true} className="group">
         <div
           className={`flex h-16 w-16 items-center justify-center rounded-full border-b-4 transition-transform group-hover:scale-110 ${
             state === "completed"

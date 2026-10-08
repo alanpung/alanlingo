@@ -229,12 +229,26 @@ export async function listCoursesWithLessonCounts(
   }));
 }
 
+const unitMemoryCache = new Map<string, { data: UnitWithContent; expiresAt: number }>();
+const courseMemoryCache = new Map<string, { data: Course; expiresAt: number }>();
+
+export function clearContentCache() {
+  unitMemoryCache.clear();
+  courseMemoryCache.clear();
+}
+
 export async function getCourseWithContent(
   courseId: string,
   userId?: string
 ): Promise<Course | null> {
+  const cacheKey = `${courseId}:${userId ?? "anon"}`;
+  const cached = courseMemoryCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.data;
+  }
+
   try {
-    await seedContentFromFilesystem();
+    seedContentFromFilesystem().catch(() => {});
   } catch (err) {
     console.warn("getCourseWithContent seed warning:", err);
   }
@@ -321,7 +335,7 @@ export async function getCourseWithContent(
         };
       });
 
-      return {
+      const res: Course = {
         id: courseRow.id,
         title: courseRow.title,
         sourceLanguage: courseRow.sourceLanguage,
@@ -332,6 +346,8 @@ export async function getCourseWithContent(
         creatorName: courseCreatorName,
         units: naturalSortUnits(mappedUnits),
       };
+      courseMemoryCache.set(cacheKey, { data: res, expiresAt: Date.now() + 60000 });
+      return res;
     }
   } catch (err) {
     console.warn("getCourseWithContent DB query failed, falling back to filesystem:", err);
@@ -364,7 +380,7 @@ export async function getCourseWithContent(
     };
   });
 
-  return {
+  const res: Course = {
     id: fsCourse.id,
     title: fsCourse.title,
     sourceLanguage: fsCourse.sourceLanguage,
@@ -375,6 +391,8 @@ export async function getCourseWithContent(
     creatorName: "Alan P",
     units: naturalSortUnits(mappedUnits),
   };
+  courseMemoryCache.set(cacheKey, { data: res, expiresAt: Date.now() + 60000 });
+  return res;
 }
 
 export async function getAvailableFilters(userId?: string) {
@@ -628,11 +646,16 @@ export async function getUnitForEdit(
 export async function getUnitWithContent(
   unitId: string
 ): Promise<UnitWithContent | null> {
+  const cached = unitMemoryCache.get(unitId);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.data;
+  }
+
   const [u] = await db.select().from(unit).where(eq(unit.id, unitId));
   if (!u) return null;
 
   const safeResult = getUnitLessonsSafe(u.markdown ?? "");
-  return {
+  const res: UnitWithContent = {
     id: u.id,
     title: u.title ?? "Untitled",
     description: u.description ?? "",
@@ -648,6 +671,8 @@ export async function getUnitWithContent(
     parseError: safeResult?.parseError ?? false,
     questionType: getUnitQuestionType({ lessons: safeResult?.lessons, markdown: u.markdown }),
   };
+  unitMemoryCache.set(unitId, { data: res, expiresAt: Date.now() + 60000 });
+  return res;
 }
 
 // ─── Course management queries ───
