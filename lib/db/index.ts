@@ -46,21 +46,24 @@ export async function isDbAvailable(): Promise<boolean> {
   }
 
   const now = Date.now();
-  // Cache check for 10 seconds if offline, 60 seconds if online
+  // Cache check for 3 seconds if offline, 60 seconds if online
   if (dbStatusCached !== null) {
-    const ttl = dbStatusCached ? 60000 : 10000;
+    const ttl = dbStatusCached ? 60000 : 3000;
     if (now - dbStatusCheckedAt < ttl) return dbStatusCached;
   }
 
   try {
     const checkPromise = client`SELECT 1`;
     const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error("DB probe timeout")), 600)
+      setTimeout(() => reject(new Error("DB probe timeout")), 4000)
     );
     await Promise.race([checkPromise, timeoutPromise]);
     dbStatusCached = true;
-  } catch {
-    dbStatusCached = false;
+  } catch (err) {
+    // Keep previously active status if it was true and this was just a probe lag
+    if (dbStatusCached !== true) {
+      dbStatusCached = false;
+    }
   }
   dbStatusCheckedAt = now;
   return dbStatusCached;

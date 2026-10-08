@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { db, isDbAvailable } from "@/lib/db";
 import {
   course,
   unit,
@@ -247,14 +247,15 @@ export async function getCourseWithContent(
     return cached.data;
   }
 
-  try {
-    seedContentFromFilesystem().catch(() => {});
-  } catch (err) {
-    console.warn("getCourseWithContent seed warning:", err);
-  }
+  if (await isDbAvailable()) {
+    try {
+      seedContentFromFilesystem().catch(() => {});
+    } catch (err) {
+      console.warn("getCourseWithContent seed warning:", err);
+    }
 
-  try {
-    const courseConditions = [eq(course.id, courseId)];
+    try {
+      const courseConditions = [eq(course.id, courseId)];
     let isEnrolled = false;
     if (userId) {
       try {
@@ -269,6 +270,15 @@ export async function getCourseWithContent(
           )
           .limit(1);
         isEnrolled = enrollment.length > 0;
+        if (!isEnrolled) {
+          try {
+            const { getLocalCourseEnrollments } = await import("@/lib/srs-store");
+            const localEnrollments = await getLocalCourseEnrollments(userId);
+            if (localEnrollments.includes(courseId)) {
+              isEnrolled = true;
+            }
+          } catch {}
+        }
       } catch (err) {
         console.warn("getCourseWithContent enrollment check failed:", err);
       }
@@ -352,6 +362,7 @@ export async function getCourseWithContent(
   } catch (err) {
     console.warn("getCourseWithContent DB query failed, falling back to filesystem:", err);
   }
+}
 
   // Filesystem fallback
   const { getAllCourses, getAllUnits } = await import("@/lib/content/registry");
@@ -436,73 +447,127 @@ export async function getAvailableFilters(userId?: string) {
 export async function getStandaloneUnits(
   userId: string
 ): Promise<StandaloneUnitInfo[]> {
+  const dbUp = await isDbAvailable();
   let libraryUnitIds = new Set<string>();
-  try {
-    const libraryRows = await db
-      .select({ unitId: userUnitLibrary.unitId })
-      .from(userUnitLibrary)
-      .where(eq(userUnitLibrary.userId, userId));
-    libraryUnitIds = new Set(libraryRows.map((r) => r.unitId));
-  } catch (err) {
-    console.warn("userUnitLibrary query failed, continuing:", err);
+  if (dbUp) {
+    try {
+      const libraryRows = await db
+        .select({ unitId: userUnitLibrary.unitId })
+        .from(userUnitLibrary)
+        .where(eq(userUnitLibrary.userId, userId));
+      libraryUnitIds = new Set(libraryRows.map((r) => r.unitId));
+    } catch (err) {
+      console.warn("userUnitLibrary query failed, continuing:", err);
+    }
   }
 
-  const libraryCondition =
-    libraryUnitIds.size > 0
-      ? and(
-          isNull(unit.courseId),
-          or(
-            eq(unit.createdBy, userId),
-            inArray(unit.id, [...libraryUnitIds])
-          )
-        )
-      : and(eq(unit.createdBy, userId), isNull(unit.courseId));
+  let rows: Array<{
+    id: string;
+    title: string | null;
+    description: string | null;
+    icon: string | null;
+    color: string | null;
+    targetLanguage: string | null;
+    sourceLanguage: string | null;
+    level: string | null;
+    markdown: string | null;
+    visibility: string | null;
+    createdBy: string | null;
+    creatorName: string | null;
+    createdAt: Date | null;
+  }> = [];
 
-  const rows = await db
-    .select({
-      id: unit.id,
-      title: unit.title,
-      description: unit.description,
-      icon: unit.icon,
-      color: unit.color,
-      targetLanguage: unit.targetLanguage,
-      sourceLanguage: unit.sourceLanguage,
-      level: unit.level,
-      markdown: unit.markdown,
-      visibility: unit.visibility,
-      createdBy: unit.createdBy,
-      creatorName: user.name,
-      createdAt: unit.createdAt,
-    })
-    .from(unit)
-    .leftJoin(user, eq(unit.createdBy, user.id))
-    .where(libraryCondition);
+  if (dbUp) {
+    try {
+      const libraryCondition =
+        libraryUnitIds.size > 0
+          ? and(
+              isNull(unit.courseId),
+              or(
+                eq(unit.createdBy, userId),
+                inArray(unit.id, [...libraryUnitIds])
+              )
+            )
+          : and(eq(unit.createdBy, userId), isNull(unit.courseId));
+
+      rows = await db
+        .select({
+          id: unit.id,
+          title: unit.title,
+          description: unit.description,
+          icon: unit.icon,
+          color: unit.color,
+          targetLanguage: unit.targetLanguage,
+          sourceLanguage: unit.sourceLanguage,
+          level: unit.level,
+          markdown: unit.markdown,
+          visibility: unit.visibility,
+          createdBy: unit.createdBy,
+          creatorName: user.name,
+          createdAt: unit.createdAt,
+        })
+        .from(unit)
+        .leftJoin(user, eq(unit.createdBy, user.id))
+        .where(libraryCondition);
+    } catch (err) {
+      console.warn("getStandaloneUnits DB query failed:", err);
+    }
+  }
+
+  // Filesystem standalone units fallback if DB query failed or returned nothing
+  if (rows.length === 0) {
+    try {
+      const { getAllUnits } = await import("@/lib/content/registry");
+      const fsUnits = getAllUnits().filter((u) => !u.parsed.courseId);
+      for (const fu of fsUnits) {
+        if (libraryUnitIds.has(fu.id)) {
+          rows.push({
+            id: fu.id,
+            title: fu.parsed.title,
+            description: fu.parsed.description,
+            icon: fu.parsed.icon,
+            color: fu.parsed.color,
+            targetLanguage: fu.parsed.targetLanguage,
+            sourceLanguage: fu.parsed.sourceLanguage,
+            level: fu.parsed.level,
+            markdown: fu.content,
+            visibility: "public",
+            createdBy: null,
+            creatorName: "Alan P",
+            createdAt: null,
+          });
+        }
+      }
+    } catch {}
+  }
 
   if (rows.length === 0) return [];
 
   const unitIds = rows.map((r) => r.id);
   const completionMap = new Map<string, number>();
 
-  try {
-    const completionCounts = await db
-      .select({
-        unitId: lessonCompletion.unitId,
-        count: count(),
-      })
-      .from(lessonCompletion)
-      .where(
-        and(
-          eq(lessonCompletion.userId, userId),
-          inArray(lessonCompletion.unitId, unitIds)
+  if (dbUp) {
+    try {
+      const completionCounts = await db
+        .select({
+          unitId: lessonCompletion.unitId,
+          count: count(),
+        })
+        .from(lessonCompletion)
+        .where(
+          and(
+            eq(lessonCompletion.userId, userId),
+            inArray(lessonCompletion.unitId, unitIds)
+          )
         )
-      )
-      .groupBy(lessonCompletion.unitId);
+        .groupBy(lessonCompletion.unitId);
 
-    for (const c of completionCounts) {
-      completionMap.set(c.unitId, Number(c.count));
+      for (const c of completionCounts) {
+        completionMap.set(c.unitId, Number(c.count));
+      }
+    } catch (err) {
+      console.warn("lessonCompletion query failed, continuing:", err);
     }
-  } catch (err) {
-    console.warn("lessonCompletion query failed, continuing:", err);
   }
 
   const mapped = rows.map((u) => {
@@ -536,8 +601,7 @@ export async function getStandaloneUnits(
 export async function getBrowsableUnits(
   userId: string
 ): Promise<StandaloneUnitInfo[]> {
-// Seeded async/background if needed
-
+  if (!(await isDbAvailable())) return [];
   let libraryUnitIds = new Set<string>();
   try {
     const libraryRows = await db
@@ -610,6 +674,7 @@ export async function getUnitForEdit(
   userId: string,
   isAdmin: boolean = false
 ): Promise<{ id: string; title: string; markdown: string; visibility: string | null } | null> {
+  if (!(await isDbAvailable())) return null;
   const [u] = await db
     .select({
       id: unit.id,
@@ -651,28 +716,74 @@ export async function getUnitWithContent(
     return cached.data;
   }
 
-  const [u] = await db.select().from(unit).where(eq(unit.id, unitId));
-  if (!u) return null;
+  try {
+    if (await isDbAvailable()) {
+      const [u] = await db.select().from(unit).where(eq(unit.id, unitId));
+      if (u) {
+        const safeResult = getUnitLessonsSafe(u.markdown ?? "");
+        const res: UnitWithContent = {
+          id: u.id,
+          title: u.title ?? "Untitled",
+          description: u.description ?? "",
+          icon: u.icon ?? "📘",
+          color: u.color ?? "#58CC02",
+          targetLanguage: u.targetLanguage ?? "",
+          sourceLanguage: u.sourceLanguage ?? null,
+          level: u.level ?? null,
+          courseId: u.courseId,
+          visibility: u.visibility ?? "private",
+          createdBy: u.createdBy,
+          lessons: safeResult?.lessons ?? [],
+          parseError: safeResult?.parseError ?? false,
+          questionType: getUnitQuestionType({ lessons: safeResult?.lessons, markdown: u.markdown }),
+        };
+        unitMemoryCache.set(unitId, { data: res, expiresAt: Date.now() + 60000 });
+        return res;
+      }
+    }
+  } catch (err) {
+    console.warn("getUnitWithContent DB error:", err);
+  }
 
-  const safeResult = getUnitLessonsSafe(u.markdown ?? "");
-  const res: UnitWithContent = {
-    id: u.id,
-    title: u.title ?? "Untitled",
-    description: u.description ?? "",
-    icon: u.icon ?? "📘",
-    color: u.color ?? "#58CC02",
-    targetLanguage: u.targetLanguage ?? "",
-    sourceLanguage: u.sourceLanguage ?? null,
-    level: u.level ?? null,
-    courseId: u.courseId,
-    visibility: u.visibility ?? "private",
-    createdBy: u.createdBy,
-    lessons: safeResult?.lessons ?? [],
-    parseError: safeResult?.parseError ?? false,
-    questionType: getUnitQuestionType({ lessons: safeResult?.lessons, markdown: u.markdown }),
-  };
-  unitMemoryCache.set(unitId, { data: res, expiresAt: Date.now() + 60000 });
-  return res;
+  // Fallback to filesystem registry
+  try {
+    const { getAllUnits } = await import("@/lib/content/registry");
+    const fsUnit = getAllUnits().find((u) => {
+      const p = u.parsed;
+      if (!p.courseId) return false;
+      const match = p.title.match(/Unit\s+(\d+)/i);
+      const unitNum = match ? parseInt(match[1], 10) : null;
+      const fsUnitId = unitNum ? `${p.courseId}-unit-${unitNum}` : `${p.courseId}-${p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+      return fsUnitId === unitId;
+    });
+
+    if (fsUnit) {
+      const p = fsUnit.parsed;
+      const lessons = p.lessons ?? [];
+      const res: UnitWithContent = {
+        id: unitId,
+        title: p.title,
+        description: p.description,
+        icon: p.icon,
+        color: p.color,
+        targetLanguage: p.targetLanguage,
+        sourceLanguage: p.sourceLanguage,
+        level: p.level,
+        courseId: p.courseId,
+        visibility: "public",
+        createdBy: null,
+        lessons,
+        parseError: false,
+        questionType: getUnitQuestionType({ lessons, markdown: fsUnit.markdown }),
+      };
+      unitMemoryCache.set(unitId, { data: res, expiresAt: Date.now() + 60000 });
+      return res;
+    }
+  } catch (err) {
+    console.warn("getUnitWithContent filesystem fallback error:", err);
+  }
+
+  return null;
 }
 
 // ─── Course management queries ───
@@ -680,113 +791,220 @@ export async function getUnitWithContent(
 export async function getUserOwnedCourses(
   userId: string
 ): Promise<OwnedCourseInfo[]> {
-  try {
-    await seedContentFromFilesystem();
-  } catch (err) {
-    console.warn("getUserOwnedCourses seed warning:", err);
+  const dbUp = await isDbAvailable();
+  if (dbUp) {
+    try {
+      await seedContentFromFilesystem();
+    } catch (err) {
+      console.warn("getUserOwnedCourses seed warning:", err);
+    }
   }
 
   let enrolledCourseIds: string[] = [];
-  try {
-    const enrollments = await db
-      .select({ courseId: userCourseEnrollment.courseId })
-      .from(userCourseEnrollment)
-      .where(eq(userCourseEnrollment.userId, userId));
-    enrolledCourseIds = enrollments.map((e) => e.courseId);
-  } catch (err) {
-    console.warn("getUserOwnedCourses enrollment query failed:", err);
+  if (dbUp) {
+    try {
+      const enrollments = await db
+        .select({ courseId: userCourseEnrollment.courseId })
+        .from(userCourseEnrollment)
+        .where(eq(userCourseEnrollment.userId, userId));
+      enrolledCourseIds = enrollments.map((e) => e.courseId);
+    } catch (err) {
+      console.warn("getUserOwnedCourses enrollment query failed:", err);
+    }
   }
 
-  const createdCourses = await db
-    .select({ id: course.id })
-    .from(course)
-    .where(and(eq(course.createdBy, userId), notInArray(course.id, SYSTEM_COURSE_IDS)));
-  const createdCourseIds = createdCourses.map((c) => c.id);
+  try {
+    const { getLocalCourseEnrollments } = await import("@/lib/srs-store");
+    const localEnrollments = await getLocalCourseEnrollments(userId);
+    localEnrollments.forEach((id) => {
+      if (!enrolledCourseIds.includes(id)) enrolledCourseIds.push(id);
+    });
+  } catch {}
 
-  const allTargetCourseIds = Array.from(new Set([...enrolledCourseIds, ...createdCourseIds]));
+  if (dbUp) {
+    try {
+      const userUnits = await db
+        .select({ courseId: unit.courseId })
+        .from(userUnitLibrary)
+        .innerJoin(unit, eq(unit.id, userUnitLibrary.unitId))
+        .where(eq(userUnitLibrary.userId, userId));
+      userUnits.forEach((u) => {
+        if (u.courseId && !enrolledCourseIds.includes(u.courseId)) {
+          enrolledCourseIds.push(u.courseId);
+        }
+      });
+    } catch (err) {
+      console.warn("getUserOwnedCourses userUnitLibrary query failed:", err);
+    }
+
+    try {
+      const createdCourses = await db
+        .select({ id: course.id })
+        .from(course)
+        .where(and(eq(course.createdBy, userId), notInArray(course.id, SYSTEM_COURSE_IDS)));
+      createdCourses.forEach((c) => {
+        if (!enrolledCourseIds.includes(c.id)) enrolledCourseIds.push(c.id);
+      });
+    } catch (err) {
+      console.warn("getUserOwnedCourses createdCourses query failed:", err);
+    }
+  }
+
+  const allTargetCourseIds = Array.from(new Set(enrolledCourseIds));
 
   if (allTargetCourseIds.length === 0) {
     return [];
   }
 
-  const rows = await db
-    .select({
-      id: course.id,
-      title: course.title,
-      sourceLanguage: course.sourceLanguage,
-      targetLanguage: course.targetLanguage,
-      level: course.level,
-      visibility: course.visibility,
-      createdBy: course.createdBy,
-      creatorName: user.name,
-      createdAt: course.createdAt,
-      unitCount: countDistinct(unit.id),
-    })
-    .from(course)
-    .leftJoin(unit, eq(unit.courseId, course.id))
-    .leftJoin(user, eq(course.createdBy, user.id))
-    .where(inArray(course.id, allTargetCourseIds))
-    .groupBy(
-      course.id,
-      course.title,
-      course.sourceLanguage,
-      course.targetLanguage,
-      course.level,
-      course.visibility,
-      course.createdBy,
-      user.name,
-      course.createdAt
-     )
-    .orderBy(course.title);
+  let rows: Array<{
+    id: string;
+    title: string;
+    sourceLanguage: string;
+    targetLanguage: string;
+    level: string;
+    visibility: string;
+    createdBy: string | null;
+    creatorName: string | null;
+    createdAt: Date | null;
+    unitCount: number;
+  }> = [];
+
+  if (dbUp) {
+    try {
+      const dbRows = await db
+        .select({
+          id: course.id,
+          title: course.title,
+          sourceLanguage: course.sourceLanguage,
+          targetLanguage: course.targetLanguage,
+          level: course.level,
+          visibility: course.visibility,
+          createdBy: course.createdBy,
+          creatorName: user.name,
+          createdAt: course.createdAt,
+          unitCount: countDistinct(unit.id),
+        })
+        .from(course)
+        .leftJoin(unit, eq(unit.courseId, course.id))
+        .leftJoin(user, eq(course.createdBy, user.id))
+        .where(inArray(course.id, allTargetCourseIds))
+        .groupBy(
+          course.id,
+          course.title,
+          course.sourceLanguage,
+          course.targetLanguage,
+          course.level,
+          course.visibility,
+          course.createdBy,
+          user.name,
+          course.createdAt
+        )
+        .orderBy(course.title);
+
+      rows = dbRows.map((r) => ({ ...r, unitCount: Number(r.unitCount) }));
+    } catch (err) {
+      console.warn("getUserOwnedCourses DB query failed, using filesystem fallback:", err);
+    }
+  }
+
+  // Hydrate missing enrolled courses from filesystem registry if not found in DB
+  const foundIds = new Set(rows.map((r) => r.id));
+  const missingIds = allTargetCourseIds.filter((id) => !foundIds.has(id));
+  if (missingIds.length > 0) {
+    try {
+      const { getAllCourses, getAllUnits } = await import("@/lib/content/registry");
+      const fsCourses = getAllCourses();
+      const fsUnits = getAllUnits();
+      for (const id of missingIds) {
+        const fc = fsCourses.find((c) => c.id === id);
+        if (fc) {
+          const cUnits = fsUnits.filter((u) => u.parsed.courseId === fc.id);
+          rows.push({
+            id: fc.id,
+            title: fc.title,
+            sourceLanguage: fc.sourceLanguage,
+            targetLanguage: fc.targetLanguage,
+            level: fc.level,
+            visibility: "public",
+            createdBy: null,
+            creatorName: "Alan P",
+            createdAt: null,
+            unitCount: cUnits.length,
+          });
+        }
+      }
+    } catch (err) {
+      console.warn("getUserOwnedCourses filesystem fallback error:", err);
+    }
+  }
 
   if (rows.length === 0) return [];
 
   const courseIds = rows.map((r) => r.id);
   const completionMap = new Map<string, number>();
 
-  try {
-    const completionCounts = await db
-      .select({
-        courseId: unit.courseId,
-        count: count(),
-      })
-      .from(lessonCompletion)
-      .innerJoin(unit, eq(unit.id, lessonCompletion.unitId))
-      .where(
-        and(
-          eq(lessonCompletion.userId, userId),
-          inArray(unit.courseId, courseIds)
+  if (dbUp) {
+    try {
+      const completionCounts = await db
+        .select({
+          courseId: unit.courseId,
+          count: count(),
+        })
+        .from(lessonCompletion)
+        .innerJoin(unit, eq(unit.id, lessonCompletion.unitId))
+        .where(
+          and(
+            eq(lessonCompletion.userId, userId),
+            inArray(unit.courseId, courseIds)
+          )
         )
-      )
-      .groupBy(unit.courseId);
+        .groupBy(unit.courseId);
 
-    for (const c of completionCounts) {
-      if (c.courseId) {
-        completionMap.set(c.courseId, Number(c.count));
+      for (const c of completionCounts) {
+        if (c.courseId) {
+          completionMap.set(c.courseId, Number(c.count));
+        }
       }
+    } catch (err) {
+      console.warn("getUserOwnedCourses completion count failed:", err);
     }
-  } catch (err) {
-    console.warn("getUserOwnedCourses completion count failed:", err);
   }
 
   const lessonCountMap = new Map<string, number>();
-  try {
-    const allUnits = await db
-      .select({ id: unit.id, courseId: unit.courseId, markdown: unit.markdown })
-      .from(unit)
-      .where(inArray(unit.courseId, courseIds));
+  if (dbUp) {
+    try {
+      const allUnits = await db
+        .select({ id: unit.id, courseId: unit.courseId, markdown: unit.markdown })
+        .from(unit)
+        .where(inArray(unit.courseId, courseIds));
 
-    for (const u of allUnits) {
-      if (!u.courseId) continue;
-      const count = getUnitLessonCountFast(u.markdown ?? "");
-      lessonCountMap.set(
-        u.courseId,
-        (lessonCountMap.get(u.courseId) ?? 0) + count
-      );
+      for (const u of allUnits) {
+        if (!u.courseId) continue;
+        const count = getUnitLessonCountFast(u.markdown ?? "");
+        lessonCountMap.set(
+          u.courseId,
+          (lessonCountMap.get(u.courseId) ?? 0) + count
+        );
+      }
+    } catch (err) {
+      console.warn("getUserOwnedCourses unit query failed:", err);
     }
-  } catch (err) {
-    console.warn("getUserOwnedCourses unit query failed:", err);
   }
+
+  // Filesystem lesson count fallback if DB didn't supply lesson counts
+  try {
+    const { getAllUnits } = await import("@/lib/content/registry");
+    const fsUnits = getAllUnits();
+    for (const id of courseIds) {
+      if (!lessonCountMap.has(id) || lessonCountMap.get(id) === 0) {
+        const cUnits = fsUnits.filter((u) => u.parsed.courseId === id);
+        const count = cUnits.reduce((sum, u) => sum + (u.parsed.lessons?.length ?? 0), 0);
+        if (count > 0) {
+          lessonCountMap.set(id, count);
+        }
+      }
+    }
+  } catch {}
 
   return rows.map((r) => ({
     ...r,

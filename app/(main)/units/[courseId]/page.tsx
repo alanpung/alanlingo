@@ -28,28 +28,43 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
   let libraryUnitIds: string[] = [];
   let isCourseInLibrary = false;
-  if (userId && (await isDbAvailable())) {
+  if (userId) {
+    let localEnrollments: string[] = [];
     try {
-      const [libRows, enrollment] = await Promise.all([
-        db
-          .select({ unitId: userUnitLibrary.unitId })
-          .from(userUnitLibrary)
-          .where(eq(userUnitLibrary.userId, userId)),
-        db
-          .select({ id: userCourseEnrollment.id })
-          .from(userCourseEnrollment)
-          .where(
-            and(
-              eq(userCourseEnrollment.userId, userId),
-              eq(userCourseEnrollment.courseId, courseId)
+      const { getLocalCourseEnrollments } = await import("@/lib/srs-store");
+      localEnrollments = await getLocalCourseEnrollments(userId);
+    } catch {}
+
+    if (await isDbAvailable()) {
+      try {
+        const [libRows, enrollment] = await Promise.all([
+          db
+            .select({ unitId: userUnitLibrary.unitId })
+            .from(userUnitLibrary)
+            .where(eq(userUnitLibrary.userId, userId)),
+          db
+            .select({ id: userCourseEnrollment.id })
+            .from(userCourseEnrollment)
+            .where(
+              and(
+                eq(userCourseEnrollment.userId, userId),
+                eq(userCourseEnrollment.courseId, courseId)
+              )
             )
-          )
-          .limit(1),
-      ]);
-      libraryUnitIds = libRows.map((r) => r.unitId);
-      isCourseInLibrary = enrollment.length > 0;
-    } catch (err) {
-      console.warn("CourseDetailPage: failed to fetch user unit library:", err);
+            .limit(1),
+        ]);
+        libraryUnitIds = libRows.map((r) => r.unitId);
+        const hasDbEnrollment = enrollment.length > 0;
+        const hasLocalEnrollment = localEnrollments.includes(courseId);
+        const hasUnitsInLibrary = course.units?.some((u) => libraryUnitIds.includes(u.id)) ?? false;
+
+        isCourseInLibrary = hasDbEnrollment || hasLocalEnrollment || hasUnitsInLibrary;
+      } catch (err) {
+        console.warn("CourseDetailPage: failed to fetch user unit library:", err);
+        isCourseInLibrary = localEnrollments.includes(courseId);
+      }
+    } else {
+      isCourseInLibrary = localEnrollments.includes(courseId);
     }
   }
 

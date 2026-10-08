@@ -194,8 +194,10 @@ export async function seedContentFromFilesystem() {
     }
   } catch (err) {
     console.warn("seedContentFromFilesystem check error:", err);
+    return;
   }
 
-  // DB is empty: initial sync synchronously
-  await runSeedTask();
+  // Initial sync in background so page rendering is never blocked
+  lastSyncedAt = now;
+  void runSeedTask();
 }
