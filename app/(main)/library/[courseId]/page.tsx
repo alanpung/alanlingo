@@ -57,8 +57,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
         const hasDbEnrollment = enrollment.length > 0;
         const hasLocalEnrollment = localEnrollments.includes(courseId);
         const hasUnitsInLibrary = course.units?.some((u) => libraryUnitIds.includes(u.id)) ?? false;
+        const hasCompletions = progress.completions.length > 0;
 
-        isCourseInLibrary = hasDbEnrollment || hasLocalEnrollment || hasUnitsInLibrary;
+        isCourseInLibrary = hasDbEnrollment || hasLocalEnrollment || hasUnitsInLibrary || hasCompletions || isOwner;
       } catch (err) {
         console.warn("CourseDetailPage: failed to fetch user unit library:", err);
         isCourseInLibrary = localEnrollments.includes(courseId);

@@ -839,6 +839,21 @@ export async function getUserOwnedCourses(
     }
 
     try {
+      const completedUnits = await db
+        .select({ courseId: unit.courseId })
+        .from(lessonCompletion)
+        .innerJoin(unit, eq(unit.id, lessonCompletion.unitId))
+        .where(eq(lessonCompletion.userId, userId));
+      completedUnits.forEach((u) => {
+        if (u.courseId && !enrolledCourseIds.includes(u.courseId)) {
+          enrolledCourseIds.push(u.courseId);
+        }
+      });
+    } catch (err) {
+      console.warn("getUserOwnedCourses lessonCompletion query failed:", err);
+    }
+
+    try {
       const createdCourses = await db
         .select({ id: course.id })
         .from(course)

@@ -8,13 +8,14 @@ import {
   dailyActivity,
   unit,
   userUnitLibrary,
+  userCourseEnrollment,
 } from "@/lib/db/schema";
 import { eq, sql } from "drizzle-orm";
 import { requireSession } from "@/lib/auth-server";
 import { computeStreak } from "@/lib/game/streaks";
 import type { Exercise } from "@/lib/content/types";
 import { getUnitLessons } from "@/lib/content/loader";
-import { recordWordPractice } from "@/lib/actions/srs";
+import { recordWordPracticeBatch } from "@/lib/actions/srs";
 import { extractSrsWords } from "@/lib/srs-words";
 
 interface CompleteLessonInput {
@@ -79,8 +80,8 @@ export async function completeLesson(input: CompleteLessonInput) {
         );
       }
 
-      // Collect all SRS word practice calls
-      const srsPromises: Promise<void>[] = [];
+      // Collect all SRS word practices for batch recording
+      const practicesToRecord: { word: string; correct: boolean }[] = [];
       if (unitRow) {
         try {
           const lessons = getUnitLessons(unitRow.markdown);
@@ -93,9 +94,7 @@ export async function completeLesson(input: CompleteLessonInput) {
               if (exercise.type === "flashcard-review") continue;
               const words = extractSrsWords(exercise);
               for (const w of words) {
-                srsPromises.push(
-                  recordWordPractice(userId, w, unitRow.targetLanguage, "", result.correct)
-                );
+                practicesToRecord.push({ word: w, correct: result.correct });
               }
             }
           }
@@ -105,7 +104,9 @@ export async function completeLesson(input: CompleteLessonInput) {
       }
 
       await Promise.all([
-        Promise.all(srsPromises).catch(() => {}),
+        practicesToRecord.length > 0
+          ? recordWordPracticeBatch(userId, practicesToRecord, unitRow?.targetLanguage || "en").catch(() => {})
+          : Promise.resolve(),
         upsertUserStats(userId, today),
         db
           .insert(dailyActivity)
@@ -176,8 +177,19 @@ async function autoAddToLibrary(
   unitRow: { id: string; courseId: string | null; visibility: string | null; createdBy: string | null } | undefined
 ) {
   if (!unitRow) return;
-  // Only auto-add standalone (no course), public, non-owned units
-  if (unitRow.courseId) return;
+  if (unitRow.courseId) {
+    // Automatically record course enrollment so course appears in user's library and stays enrolled
+    try {
+      await db
+        .insert(userCourseEnrollment)
+        .values({ userId, courseId: unitRow.courseId })
+        .onConflictDoNothing();
+      const { addLocalCourseEnrollment } = await import("@/lib/srs-store");
+      await addLocalCourseEnrollment(userId, unitRow.courseId);
+    } catch {}
+    return;
+  }
+  // Standalone units: auto-add public, non-owned units
   if (unitRow.visibility !== "public") return;
   if (unitRow.createdBy === userId) return;
 

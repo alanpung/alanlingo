@@ -292,7 +292,7 @@ export interface SrsCardItem {
 
 export async function getAllCards(language?: string): Promise<SrsCardItem[]> {
   const userId = await getSafeUserId();
-  await syncUserCourseWordsToSrs(userId, false);
+  void syncUserCourseWordsToSrs(userId, false).catch(() => {});
   const aliases = language ? getLanguageAliases(language) : [];
   const dbUp = await isDbAvailable();
 
@@ -475,7 +475,7 @@ export async function reviewCard(
 
 export async function getSrsStats(language?: string) {
   const userId = await getSafeUserId();
-  await syncUserCourseWordsToSrs(userId);
+  void syncUserCourseWordsToSrs(userId).catch(() => {});
   const dbUp = await isDbAvailable();
   const aliases = language ? getLanguageAliases(language) : [];
 
@@ -1028,6 +1028,165 @@ export async function recordWordPractice(
   }
 }
 
+export async function recordWordPracticeBatch(
+  userId: string,
+  practices: { word: string; correct: boolean; translation?: string }[],
+  language: string
+) {
+  if (!userId || practices.length === 0) return;
+
+  const targetLang = (language || "en").toLowerCase().trim();
+  const aliases = getLanguageAliases(targetLang);
+  const primaryLang = aliases[0] || targetLang;
+
+  const wordMap = new Map<string, { correctCount: number; totalCount: number; translation?: string }>();
+  for (const p of practices) {
+    const norm = p.word.toLowerCase().trim();
+    if (!norm) continue;
+    const existing = wordMap.get(norm);
+    if (existing) {
+      if (p.correct) existing.correctCount++;
+      existing.totalCount++;
+      if (p.translation) existing.translation = p.translation;
+    } else {
+      wordMap.set(norm, {
+        correctCount: p.correct ? 1 : 0,
+        totalCount: 1,
+        translation: p.translation,
+      });
+    }
+  }
+
+  const uniqueWords = Array.from(wordMap.keys());
+  if (uniqueWords.length === 0) return;
+
+  const localCards = await getLocalCards(userId, aliases);
+  const localCardMap = new Map<string, SrsCardRecord>();
+  localCards.forEach((c) => {
+    const key = c.word.toLowerCase().trim();
+    if (!localCardMap.has(key)) localCardMap.set(key, c);
+  });
+
+  const dbUp = await isDbAvailable();
+  const dbCardMap = new Map<string, typeof srsCard.$inferSelect>();
+  if (dbUp) {
+    try {
+      const dbRows = await db
+        .select()
+        .from(srsCard)
+        .where(
+          and(
+            eq(srsCard.userId, userId),
+            inArray(srsCard.word, uniqueWords)
+          )
+        );
+      dbRows.forEach((r) => dbCardMap.set(r.word.toLowerCase().trim(), r));
+    } catch (err) {
+      console.warn("recordWordPracticeBatch DB fetch failed:", err);
+    }
+  }
+
+  let levelMap: Record<string, string> = {};
+  try {
+    levelMap = (await getWordToLevelMap()) as Record<string, string>;
+  } catch {}
+
+  const now = new Date();
+  const localUpdatesToSave: (Partial<SrsCardRecord> & { word: string; language: string; userId: string })[] = [];
+  const dbInsertsToSave: (typeof srsCard.$inferInsert)[] = [];
+
+  for (const [normWord, data] of wordMap.entries()) {
+    const local = localCardMap.get(normWord);
+    const dbCard = dbCardMap.get(normWord);
+
+    const cefrLevel = local?.cefrLevel || dbCard?.cefrLevel || levelMap[normWord] || null;
+    const pos = local?.pos || dbCard?.pos || null;
+    const translation = data.translation || local?.translation || dbCard?.translation || normWord;
+
+    const previousReps = local?.repetitions ?? dbCard?.repetitions ?? 0;
+    const previousStatus = local?.status ?? dbCard?.status ?? "new";
+
+    const isAllCorrect = data.correctCount === data.totalCount;
+    let repetitions = isAllCorrect ? previousReps + 1 : previousReps;
+    let finalStatus: CardStatus = "learning";
+
+    if (previousStatus === "learned" || repetitions >= 3) {
+      finalStatus = "learned";
+      repetitions = Math.max(repetitions, 3);
+    } else {
+      finalStatus = "learning";
+    }
+
+    const nextReviewAt = new Date(now);
+    if (finalStatus === "learned") {
+      nextReviewAt.setDate(nextReviewAt.getDate() + 30);
+    } else {
+      nextReviewAt.setDate(nextReviewAt.getDate() + 1);
+    }
+
+    localUpdatesToSave.push({
+      word: normWord,
+      language: primaryLang,
+      userId,
+      translation,
+      cefrLevel,
+      pos,
+      status: finalStatus,
+      easeFactor: local?.easeFactor ?? dbCard?.easeFactor ?? 2.5,
+      interval: finalStatus === "learned" ? 36500 : 1,
+      repetitions,
+      nextReviewAt: nextReviewAt.toISOString(),
+      lastReviewedAt: now.toISOString(),
+    });
+
+    dbInsertsToSave.push({
+      word: normWord,
+      language: primaryLang,
+      userId,
+      translation,
+      cefrLevel,
+      pos,
+      status: finalStatus,
+      easeFactor: local?.easeFactor ?? dbCard?.easeFactor ?? 2.5,
+      interval: finalStatus === "learned" ? 36500 : 1,
+      repetitions,
+      nextReviewAt,
+      lastReviewedAt: now,
+    });
+  }
+
+  try {
+    await upsertLocalCardsBatch(localUpdatesToSave);
+  } catch (err) {
+    console.error("recordWordPracticeBatch local store error:", err);
+  }
+
+  if (dbUp && dbInsertsToSave.length > 0) {
+    try {
+      const CHUNK_SIZE = 100;
+      for (let i = 0; i < dbInsertsToSave.length; i += CHUNK_SIZE) {
+        const chunk = dbInsertsToSave.slice(i, i + CHUNK_SIZE);
+        await db
+          .insert(srsCard)
+          .values(chunk)
+          .onConflictDoUpdate({
+            target: [srsCard.word, srsCard.language, srsCard.userId],
+            set: {
+              status: sql`excluded.status`,
+              cefrLevel: sql`COALESCE(excluded.cefr_level, ${srsCard.cefrLevel})`,
+              repetitions: sql`excluded.repetitions`,
+              interval: sql`excluded.interval`,
+              nextReviewAt: sql`excluded.next_review_at`,
+              lastReviewedAt: sql`excluded.last_reviewed_at`,
+            },
+          });
+      }
+    } catch (err) {
+      console.warn("recordWordPracticeBatch DB upsert error:", err);
+    }
+  }
+}
+
 export async function addAllLevelWordsToMyWords(
   level: string,
   language: string = "en"
@@ -1152,9 +1311,12 @@ export async function recordChatExerciseResult(
 ) {
   const userId = await getSafeUserId();
   const words = extractSrsWords(exercise);
-
-  for (const w of words) {
-    await recordWordPractice(userId, w, language, "", correct);
+  if (words.length > 0) {
+    await recordWordPracticeBatch(
+      userId,
+      words.map((w) => ({ word: w, correct })),
+      language
+    );
   }
 }
 
