@@ -161,6 +161,9 @@ export interface FlashcardReviewExercise {
   ipa?: string;
   level?: string;
   cefrLevel?: string;
+  example?: string;
+  exampleZh?: string;
+  exampleTranslation?: string;
   noAudio?: string[];
   srsWords: string | string[];
 }

@@ -9,7 +9,7 @@ import type { FlashcardReviewExercise } from "@/lib/content/types";
 import { useAudio } from "@/hooks/use-audio";
 import { ReplayButton } from "@/components/replay-button";
 import { AudioSpinner } from "@/components/audio-spinner";
-import { X, Check, Award, Volume2, ArrowLeft, ArrowUp, ArrowRight } from "lucide-react";
+import { X, Check, Award, Volume2, ArrowLeft, ArrowUp, ArrowRight, ArrowDown, MessageSquareText, Sparkles } from "lucide-react";
 
 function cleanTextForTTS(raw: string, isTargetLanguageNonLatin: boolean): string {
   if (!raw) return "";
@@ -265,15 +265,17 @@ export function FlashcardReview({
 }) {
   const [rated, setRated] = useState(false);
   const [actionFeedback, setActionFeedback] = useState<"no" | "yes" | "learned" | null>(null);
+  const [showExamples, setShowExamples] = useState(false);
   const isHandlingRef = useRef(false);
 
-  // Dynamic enrichment for word info (pos, ipa, level, meaning, translation)
+  // Dynamic enrichment for word info (pos, ipa, level, meaning, translation, examples)
   const [wordMeta, setWordMeta] = useState<{
     pos?: string;
     ipa?: string;
     level?: string;
     meaning?: string;
     translation?: string;
+    examples?: { en: string; zh?: string }[];
   }>({});
 
   const targetWords = useMemo(() => extractTargetWords(exercise), [exercise]);
@@ -284,12 +286,19 @@ export function FlashcardReview({
   useEffect(() => {
     setRated(false);
     setActionFeedback(null);
+    setShowExamples(false);
     isHandlingRef.current = false;
   }, [currentKey]);
 
   useEffect(() => {
     let cancelled = false;
     if (!primaryWord) return;
+
+    // Collect base examples from exercise props if present
+    const initExamples: { en: string; zh?: string }[] = [];
+    if (exercise.example) {
+      initExamples.push({ en: exercise.example, zh: exercise.exampleZh || exercise.exampleTranslation });
+    }
 
     if (exercise.pos && exercise.ipa && exercise.translation && exercise.meaning) {
       setWordMeta({
@@ -298,6 +307,7 @@ export function FlashcardReview({
         level: exercise.cefrLevel || exercise.level,
         meaning: exercise.meaning,
         translation: exercise.translation,
+        examples: initExamples.length > 0 ? initExamples : undefined,
       });
       return;
     }
@@ -317,6 +327,7 @@ export function FlashcardReview({
               translation: match.translation || exercise.translation || prev.translation,
               ipa: exercise.ipa || prev.ipa,
               meaning: exercise.meaning || prev.meaning,
+              examples: prev.examples,
             }));
           }
         }
@@ -331,6 +342,24 @@ export function FlashcardReview({
         const exact = data.words.find((w: any) => w.word?.toLowerCase().trim() === norm) || data.words[0];
         if (exact) {
           const hasZhInExercise = /[\u4e00-\u9fa5]/.test(exercise.translation || "");
+          
+          const collected: { en: string; zh?: string }[] = [...initExamples];
+          if (exact.example_sentence_native || exact.example_sentence_english) {
+            const exEn = exact.example_sentence_native || exact.example_sentence_english;
+            if (exEn && !collected.some((e) => e.en.toLowerCase().trim() === exEn.toLowerCase().trim())) {
+              collected.push({ en: exEn, zh: exact.example_zh || exact.example_sentence_target });
+            }
+          }
+          if (Array.isArray(exact.examples)) {
+            exact.examples.forEach((item: any) => {
+              const enStr = typeof item === "string" ? item : item.en || item.native || item.sentence;
+              const zhStr = typeof item === "object" ? item.zh || item.translation : undefined;
+              if (enStr && !collected.some((e) => e.en.toLowerCase().trim() === enStr.toLowerCase().trim())) {
+                collected.push({ en: enStr, zh: zhStr });
+              }
+            });
+          }
+
           setWordMeta((prev) => ({
             pos: exercise.pos || exact.pos || prev.pos,
             ipa: exercise.ipa || exact.ipa || prev.ipa,
@@ -341,7 +370,28 @@ export function FlashcardReview({
               exact.definition_zh ||
               exercise.translation ||
               prev.translation,
+            examples: collected.length > 0 ? collected : prev.examples,
           }));
+        }
+      })
+      .catch(() => {});
+
+    // Secondary fallback to lookup endpoint for example sentences if none loaded yet
+    fetch(`/api/word/lookup?word=${encodeURIComponent(primaryWord)}&language=${encodeURIComponent(language || "en")}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        if (data.exampleNative) {
+          setWordMeta((prev) => {
+            const existing = prev.examples || [];
+            if (existing.some((e) => e.en.toLowerCase().trim() === data.exampleNative.toLowerCase().trim())) {
+              return prev;
+            }
+            return {
+              ...prev,
+              examples: [...existing, { en: data.exampleNative, zh: data.exampleTranslation }],
+            };
+          });
         }
       })
       .catch(() => {});
@@ -377,6 +427,7 @@ export function FlashcardReview({
   const noOpacity = useTransform(dragX, [-80, -20, 0], [1, 0.4, 0]);
   const yesOpacity = useTransform(dragX, [0, 20, 80], [0, 0.4, 1]);
   const learnedOpacity = useTransform(dragY, [-80, -20, 0], [1, 0.4, 0]);
+  const examplesOpacity = useTransform(dragY, [0, 20, 80], [0, 0.4, 1]);
 
   // Card rotation during drag
   const cardRotate = useTransform(dragX, [-150, 0, 150], [-10, 0, 10]);
@@ -517,7 +568,14 @@ export function FlashcardReview({
         handleNo();
       } else if (e.key === "ArrowUp" || e.key === "2" || e.key === "m" || e.key === "M" || e.key === "l" || e.key === "L") {
         e.preventDefault();
-        handleLearned();
+        if (showExamples) {
+          setShowExamples(false);
+        } else {
+          handleLearned();
+        }
+      } else if (e.key === "ArrowDown" || e.key === "e" || e.key === "E" || e.key === "s" || e.key === "S") {
+        e.preventDefault();
+        setShowExamples((prev) => !prev);
       } else if (e.key === "ArrowRight" || e.key === "3" || e.key === "y" || e.key === "Y") {
         e.preventDefault();
         handleYes();
@@ -528,20 +586,35 @@ export function FlashcardReview({
     }
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNo, handleLearned, handleYes, handlePlayFront]);
+  }, [handleNo, handleLearned, handleYes, handlePlayFront, showExamples]);
 
   // Handle Drag / Swipe Release
   function handleDragEnd(_: unknown, info: { offset: { x: number; y: number } }) {
     if (isHandlingRef.current || rated) return;
     const { x, y } = info.offset;
-    const SWIPE_THRESHOLD = 60;
+    const SWIPE_THRESHOLD = 50;
 
-    if (y < -SWIPE_THRESHOLD && Math.abs(y) > Math.abs(x)) {
-      handleLearned();
-    } else if (x > SWIPE_THRESHOLD) {
-      handleYes();
-    } else if (x < -SWIPE_THRESHOLD) {
-      handleNo();
+    if (showExamples) {
+      if (y < -SWIPE_THRESHOLD && Math.abs(y) > Math.abs(x)) {
+        // Swipe Up in examples view -> Return to Front!
+        setShowExamples(false);
+      } else if (x > SWIPE_THRESHOLD) {
+        handleYes();
+      } else if (x < -SWIPE_THRESHOLD) {
+        handleNo();
+      }
+    } else {
+      if (y > SWIPE_THRESHOLD && Math.abs(y) > Math.abs(x)) {
+        // Swipe Down -> Show Examples
+        setShowExamples(true);
+      } else if (y < -SWIPE_THRESHOLD && Math.abs(y) > Math.abs(x)) {
+        // Swipe Up -> Mastered
+        handleLearned();
+      } else if (x > SWIPE_THRESHOLD) {
+        handleYes();
+      } else if (x < -SWIPE_THRESHOLD) {
+        handleNo();
+      }
     }
   }
 
@@ -594,91 +667,172 @@ export function FlashcardReview({
                 <Check className="w-4 h-4" /> YES
               </motion.div>
 
-              <motion.div
-                style={{ opacity: learnedOpacity }}
-                className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none rounded-xl bg-lingo-blue text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
-              >
-                <Award className="w-4 h-4" /> MASTERED
-              </motion.div>
+              {showExamples ? (
+                <motion.div
+                  style={{ opacity: learnedOpacity }}
+                  className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none rounded-xl bg-indigo-600 text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
+                >
+                  <ArrowUp className="w-4 h-4" /> FRONT CARD
+                </motion.div>
+              ) : (
+                <>
+                  <motion.div
+                    style={{ opacity: learnedOpacity }}
+                    className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none rounded-xl bg-lingo-blue text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
+                  >
+                    <Award className="w-4 h-4" /> MASTERED
+                  </motion.div>
+
+                  <motion.div
+                    style={{ opacity: examplesOpacity }}
+                    className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none rounded-xl bg-indigo-600 text-white font-black px-3 py-1.5 text-xs sm:text-sm shadow-md flex items-center gap-1 border border-white/30"
+                  >
+                    <MessageSquareText className="w-4 h-4" /> EXAMPLES
+                  </motion.div>
+                </>
+              )}
 
               {/* Top bar with audio replay button and mobile swipe guide */}
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-xs font-black uppercase tracking-wider text-lingo-text-light/70 flex items-center gap-1">
-                  🎴 Flashcard
+                  🎴 {showExamples ? "Examples View" : "Flashcard"}
                 </span>
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-bold text-lingo-text-light hidden sm:inline">
-                    Swipe: ← No | ↑ Mastered | Yes →
+                    {showExamples ? "Swipe: ← No | ↑ Front | Yes →" : "Swipe: ← No | ↑ Mastered | ↓ Examples | Yes →"}
                   </span>
                   <ReplayButton onPlay={handlePlayFront} />
                 </div>
               </div>
 
-              {/* ── 1. ROW 1: Word + POS + Level + IPA (Inline on the Right Side) ── */}
-              <div className="my-3 sm:my-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-                <span className="text-2xl sm:text-3xl font-black text-lingo-text tracking-tight">
-                  {exercise?.front || ""}
-                </span>
-
-                {/* POS, Level & IPA placed inline on the right side of the word */}
-                {(activeLevel || activePos || activeIpa) && (
-                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                    {/* Part of Speech (POS) */}
-                    {activePos && (
-                      <span className="text-xs font-extrabold text-lingo-blue bg-lingo-blue/10 px-2.5 py-1 rounded-lg border border-lingo-blue/20">
-                        {POS_LABELS[activePos.toLowerCase()] || activePos}
+              {showExamples ? (
+                /* ── EXAMPLES VIEW ── */
+                <div className="w-full text-left space-y-3 my-2">
+                  <div className="flex items-center justify-between gap-2 pb-2 border-b border-lingo-border/60">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/40 px-2.5 py-1 rounded-lg">
+                        <MessageSquareText className="w-3.5 h-3.5" /> Examples
                       </span>
-                    )}
+                      <span className="text-lg sm:text-xl font-black text-lingo-text">{exercise?.front}</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowExamples(false)}
+                      className="text-xs font-bold text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1"
+                    >
+                      <ArrowUp className="w-3.5 h-3.5" /> Front
+                    </button>
+                  </div>
 
-                    {/* Level Badge */}
-                    {activeLevel && (
-                      <span className={`rounded-lg px-2 py-0.5 text-xs font-black border ${levelBadge}`}>
-                        {activeLevel}
-                      </span>
-                    )}
+                  {/* Examples List */}
+                  <div className="space-y-2.5 max-h-[220px] overflow-y-auto pr-1">
+                    {(wordMeta.examples && wordMeta.examples.length > 0
+                      ? wordMeta.examples
+                      : [
+                          {
+                            en: `This is a natural example sentence using "${exercise?.front || "this word"}".`,
+                            zh: activeTranslation || activeMeaning ? `使用 "${exercise?.front || "单词"}" 的示例句子。` : undefined,
+                          },
+                        ]
+                    ).map((ex, idx) => (
+                      <div
+                        key={idx}
+                        className="rounded-xl border border-lingo-border/80 bg-lingo-bg/60 dark:bg-lingo-gray/20 p-3 flex flex-col gap-1 transition-all hover:border-indigo-400/50"
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="text-sm sm:text-base font-bold text-lingo-text leading-snug">
+                            {ex.en}
+                          </p>
+                          <ReplayButton onPlay={() => play(cleanTextForTTS(ex.en, false), "en")} />
+                        </div>
+                        {ex.zh && (
+                          <p className="text-xs sm:text-sm font-semibold text-lingo-text-light/90">
+                            {ex.zh}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
 
-                    {/* IPA Phonetic */}
-                    {activeIpa && (
-                      <span className="text-xs font-mono text-lingo-text-light/90 bg-lingo-gray/20 px-2 py-0.5 rounded-lg border border-lingo-border/60">
-                        /{activeIpa.replace(/^\/+|\/+$/g, "")}/
-                      </span>
+                  {/* Helper cue button to toggle back to front */}
+                  <button
+                    type="button"
+                    onClick={() => setShowExamples(false)}
+                    className="w-full py-2 rounded-xl bg-indigo-50/80 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-300 text-xs font-extrabold flex items-center justify-center gap-1.5 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all cursor-pointer"
+                  >
+                    <ArrowUp className="w-3.5 h-3.5" /> Swipe up or click to return to Front
+                  </button>
+                </div>
+              ) : (
+                /* ── STANDARD FRONT CARD VIEW ── */
+                <>
+                  {/* ── 1. ROW 1: Word + POS + Level + IPA (Inline on the Right Side) ── */}
+                  <div className="my-3 sm:my-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+                    <span className="text-2xl sm:text-3xl font-black text-lingo-text tracking-tight">
+                      {exercise?.front || ""}
+                    </span>
+
+                    {/* POS, Level & IPA placed inline on the right side of the word */}
+                    {(activeLevel || activePos || activeIpa) && (
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                        {/* Part of Speech (POS) */}
+                        {activePos && (
+                          <span className="text-xs font-extrabold text-lingo-blue bg-lingo-blue/10 px-2.5 py-1 rounded-lg border border-lingo-blue/20">
+                            {POS_LABELS[activePos.toLowerCase()] || activePos}
+                          </span>
+                        )}
+
+                        {/* Level Badge */}
+                        {activeLevel && (
+                          <span className={`rounded-lg px-2 py-0.5 text-xs font-black border ${levelBadge}`}>
+                            {activeLevel}
+                          </span>
+                        )}
+
+                        {/* IPA Phonetic */}
+                        {activeIpa && (
+                          <span className="text-xs font-mono text-lingo-text-light/90 bg-lingo-gray/20 px-2 py-0.5 rounded-lg border border-lingo-border/60">
+                            /{activeIpa.replace(/^\/+|\/+$/g, "")}/
+                          </span>
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
 
-              {/* ── 2. ROW 2: Meaning / Definition (Direct text without header label) ── */}
-              {activeMeaning && (
-                <div
-                  onClick={handlePlayBack}
-                  className="relative mt-3 rounded-2xl bg-lingo-bg/70 dark:bg-lingo-gray/20 p-3.5 sm:p-4 border border-lingo-border/80 cursor-pointer hover:border-lingo-blue/40 transition-all select-none text-left shadow-2xs group"
-                >
-                  {backTTS && (
-                    <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
-                      <ReplayButton onPlay={handlePlayBack} />
+                  {/* ── 2. ROW 2: Meaning / Definition (Direct text without header label) ── */}
+                  {activeMeaning && (
+                    <div
+                      onClick={handlePlayBack}
+                      className="relative mt-3 rounded-2xl bg-lingo-bg/70 dark:bg-lingo-gray/20 p-3.5 sm:p-4 border border-lingo-border/80 cursor-pointer hover:border-lingo-blue/40 transition-all select-none text-left shadow-2xs group"
+                    >
+                      {backTTS && (
+                        <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
+                          <ReplayButton onPlay={handlePlayBack} />
+                        </div>
+                      )}
+                      <div className="prose prose-sm font-bold text-lingo-text text-base leading-relaxed pr-8 [&>p]:m-0">
+                        <Markdown remarkPlugins={[remarkBreaks]}>{activeMeaning}</Markdown>
+                      </div>
                     </div>
                   )}
-                  <div className="prose prose-sm font-bold text-lingo-text text-base leading-relaxed pr-8 [&>p]:m-0">
-                    <Markdown remarkPlugins={[remarkBreaks]}>{activeMeaning}</Markdown>
-                  </div>
-                </div>
-              )}
 
-              {/* ── 3. ROW 3: Translation (Chinese) (Direct text without header label) ── */}
-              {activeTranslation && (
-                <div
-                  onClick={handlePlayTranslation}
-                  className="relative mt-2.5 sm:mt-3 rounded-2xl bg-lingo-card p-3.5 sm:p-4 border border-lingo-border/80 cursor-pointer hover:border-emerald-500/40 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/10 transition-all select-none text-left shadow-2xs group"
-                >
-                  {translationTTS && (
-                    <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
-                      <ReplayButton onPlay={handlePlayTranslation} />
+                  {/* ── 3. ROW 3: Translation (Chinese) (Direct text without header label) ── */}
+                  {activeTranslation && (
+                    <div
+                      onClick={handlePlayTranslation}
+                      className="relative mt-2.5 sm:mt-3 rounded-2xl bg-lingo-card p-3.5 sm:p-4 border border-lingo-border/80 cursor-pointer hover:border-emerald-500/40 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/10 transition-all select-none text-left shadow-2xs group"
+                    >
+                      {translationTTS && (
+                        <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
+                          <ReplayButton onPlay={handlePlayTranslation} />
+                        </div>
+                      )}
+                      <div className="prose prose-sm font-bold text-lingo-text text-base leading-relaxed pr-8 [&>p]:m-0">
+                        <Markdown remarkPlugins={[remarkBreaks]}>{activeTranslation}</Markdown>
+                      </div>
                     </div>
                   )}
-                  <div className="prose prose-sm font-bold text-lingo-text text-base leading-relaxed pr-8 [&>p]:m-0">
-                    <Markdown remarkPlugins={[remarkBreaks]}>{activeTranslation}</Markdown>
-                  </div>
-                </div>
+                </>
               )}
             </motion.div>
         </AnimatePresence>
@@ -689,51 +843,74 @@ export function FlashcardReview({
         <AudioSpinner loading={audioLoading} />
       </div>
 
-      {/* ── 3 Bottom Response Buttons (Border-free, translucent arrow under No / Mastered / Yes) ── */}
-      <div className="grid grid-cols-3 gap-2 sm:gap-3.5 mt-1">
+      {/* ── 4 Bottom Response Buttons ── */}
+      <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5 mt-1">
         {/* 1. NO (Rose Red / Left) */}
         <button
           type="button"
           onClick={handleNo}
           disabled={rated}
-          className="group flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 sm:px-4 rounded-2xl bg-rose-50 hover:bg-rose-100/80 active:scale-95 text-rose-600 dark:bg-rose-950/30 dark:text-rose-300 dark:hover:bg-rose-900/40 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
+          className="group flex flex-col items-center justify-center gap-0.5 py-2 px-1.5 sm:px-3 rounded-2xl bg-rose-50 hover:bg-rose-100/80 active:scale-95 text-rose-600 dark:bg-rose-950/30 dark:text-rose-300 dark:hover:bg-rose-900/40 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
           title="Don't remember this word (Swipe Left)"
         >
-          <div className="flex items-center gap-1.5 text-sm sm:text-base font-black">
-            <X className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+          <div className="flex items-center gap-1 text-xs sm:text-sm font-black">
+            <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             <span>No</span>
           </div>
-          <ArrowLeft className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+          <ArrowLeft className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity" />
         </button>
 
-        {/* 2. MASTERED (Lingo Blue / Middle) */}
+        {/* 2. MASTERED (Lingo Blue / Middle Up) */}
         <button
           type="button"
           onClick={handleLearned}
           disabled={rated}
-          className="group flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 sm:px-4 rounded-2xl bg-lingo-blue/10 hover:bg-lingo-blue/20 active:scale-95 text-lingo-blue dark:bg-lingo-blue/20 dark:text-blue-300 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
+          className="group flex flex-col items-center justify-center gap-0.5 py-2 px-1.5 sm:px-3 rounded-2xl bg-lingo-blue/10 hover:bg-lingo-blue/20 active:scale-95 text-lingo-blue dark:bg-lingo-blue/20 dark:text-blue-300 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
           title="Mark as Mastered (Swipe Up)"
         >
-          <div className="flex items-center gap-1.5 text-sm sm:text-base font-black">
-            <Award className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+          <div className="flex items-center gap-1 text-xs sm:text-sm font-black">
+            <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             <span>Mastered</span>
           </div>
-          <ArrowUp className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+          <ArrowUp className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity" />
         </button>
 
-        {/* 3. YES (Emerald Green / Right) */}
+        {/* 3. EXAMPLES (Indigo / Middle Down) */}
+        <button
+          type="button"
+          onClick={() => setShowExamples((prev) => !prev)}
+          disabled={rated}
+          className={`group flex flex-col items-center justify-center gap-0.5 py-2 px-1.5 sm:px-3 rounded-2xl font-black transition-all cursor-pointer disabled:opacity-50 select-none ${
+            showExamples
+              ? "bg-indigo-600 text-white shadow-sm"
+              : "bg-indigo-50 hover:bg-indigo-100/80 active:scale-95 text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-300 dark:hover:bg-indigo-900/40"
+          }`}
+          title="View example sentences (Swipe Down)"
+        >
+          <div className="flex items-center gap-1 text-xs sm:text-sm font-black">
+            <MessageSquareText className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+            <span>{showExamples ? "Front" : "Examples"}</span>
+          </div>
+          {showExamples ? (
+            <ArrowUp className="w-3.5 h-3.5 opacity-80" />
+          ) : (
+            <ArrowDown className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity" />
+          )}
+        </button>
+
+        {/* 4. YES (Emerald Green / Right) */}
         <button
           type="button"
           onClick={handleYes}
           disabled={rated}
-          className="group flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 sm:px-4 rounded-2xl bg-emerald-50 hover:bg-emerald-100/80 active:scale-95 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-300 dark:hover:bg-emerald-900/40 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
+          className="group flex flex-col items-center justify-center gap-0.5 py-2 px-1.5 sm:px-3 rounded-2xl bg-emerald-50 hover:bg-emerald-100/80 active:scale-95 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-300 dark:hover:bg-emerald-900/40 font-black transition-all cursor-pointer disabled:opacity-50 select-none"
           title="Remember this word (Swipe Right)"
         >
-          <div className="flex items-center gap-1.5 text-sm sm:text-base font-black">
-            <Check className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+          <div className="flex items-center gap-1 text-xs sm:text-sm font-black">
+            <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             <span>Yes</span>
           </div>
-          <ArrowRight className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity" />
+          <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:opacity-80 transition-opacity" />
         </button>
       </div>
     </div>
