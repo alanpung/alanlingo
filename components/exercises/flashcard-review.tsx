@@ -732,16 +732,17 @@ export function FlashcardReview({
                     ).map((ex, idx) => (
                       <div
                         key={idx}
-                        className="rounded-xl border border-lingo-border/80 bg-lingo-bg/60 dark:bg-lingo-gray/20 p-3 flex flex-col gap-1 transition-all hover:border-indigo-400/50"
+                        onClick={() => play(cleanTextForTTS(ex.en, false), "en")}
+                        className="relative rounded-2xl border border-lingo-border/80 bg-lingo-bg/70 dark:bg-lingo-gray/20 p-3.5 sm:p-4 cursor-pointer hover:border-indigo-500/40 hover:bg-indigo-50/20 dark:hover:bg-indigo-950/10 transition-all select-none text-left shadow-2xs group flex flex-col gap-1"
                       >
-                        <div className="flex items-start justify-between gap-2">
-                          <p className="text-sm sm:text-base font-bold text-lingo-text leading-snug">
-                            {ex.en}
-                          </p>
+                        <div className="absolute top-2.5 right-2.5 z-10" onClick={(e) => e.stopPropagation()}>
                           <ReplayButton onPlay={() => play(cleanTextForTTS(ex.en, false), "en")} />
                         </div>
+                        <p className="text-sm sm:text-base font-bold text-lingo-text leading-snug pr-8">
+                          {ex.en}
+                        </p>
                         {ex.zh && (
-                          <p className="text-xs sm:text-sm font-semibold text-lingo-text-light/90">
+                          <p className="text-xs sm:text-sm font-semibold text-lingo-text-light/90 pr-8">
                             {ex.zh}
                           </p>
                         )}
