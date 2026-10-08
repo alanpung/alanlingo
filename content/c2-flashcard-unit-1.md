@@ -384,8 +384,8 @@ srsWords: "ferocity"
 
 [flashcard-review]
 front: "evokingly"
-meaning: "evokingly"
-translation: "evokingly（adverb）"
+meaning: "in an evocative manner that brings strong images, memories, or feelings to mind"
+translation: "adv. 唤起回忆地，引人联想地，富有感染力地"
 srsWords: "evokingly"
 
 [flashcard-review]

@@ -47,7 +47,11 @@ function playAudio(text: string, lang: string = "en", accent: "us" | "uk" = "us"
     currentAudioInstance = null;
   }
 
-  const clean = text.trim().toLowerCase();
+  let clean = text.trim().toLowerCase();
+  if (clean.includes("/")) {
+    clean = clean.split("/")[0].trim();
+  }
+  clean = clean.replace(/^[.,!?;:"'()[\]{}]+|[.,!?;:"'()[\]{}]+$/g, "").trim();
   const isEnglish = !lang || lang === "en" || lang === "english";
 
   // For single words or hyphenated words, use the high-quality human MP3 audio from ismartcoding/endict

@@ -24,7 +24,7 @@ srsWords: "who"
 [flashcard-review]
 front: "make"
 meaning: "create, produce"
-translation: "create, produce"
+translation: "vt. 制造, 安排, 创造, 构成, 使得, 产生, 造成, 整理, 布置, 引起, 到达, 进行；vi. 开始, 前进, 增大, 被制造, 被处理；n. 制造, 构造, 性情"
 srsWords: "make"
 
 [flashcard-review]
@@ -35,7 +35,7 @@ srsWords: "whose"
 
 [flashcard-review]
 front: "scientist"
-meaning: "scientist"
+meaning: "n. a person with advanced knowledge of one or more sciences"
 translation: "n.科学家,科学工作者"
 srsWords: "scientist"
 
@@ -59,20 +59,20 @@ srsWords: "yes"
 
 [flashcard-review]
 front: "yogurt/yoghurt"
-meaning: "yogurt/yoghurt"
-translation: "yogurt/yoghurt"
+meaning: "n. a custard-like food made from curdled milk"
+translation: "n. 酸乳酪；[医] 酸乳"
 srsWords: "yogurt/yoghurt"
 
 [flashcard-review]
 front: "want"
 meaning: "desire"
-translation: "desire"
+translation: "n. 需要的东西, 缺乏, 贫困, 需要；vt. 要, 希望, 应该, 缺少；vi. 生活困苦, 需要, 缺少"
 srsWords: "want"
 
 [flashcard-review]
 front: "go"
 meaning: "move"
-translation: "move"
+translation: "vi. 去, 走, 达到, 运转, 查阅, 消失, 结束, 放弃, 花费, 流传, 趋于, 打算, 剩下；vt. 以...打赌, 对付, 忍受, 出产, 为被捕者出(保释金)；n. 去, 尝试, 进行"
 srsWords: "go"
 
 ---
@@ -95,14 +95,14 @@ srsWords: "your"
 
 [flashcard-review]
 front: "shoulder"
-meaning: "shoulder"
-translation: "n. 肩, 肩部, 肩膀背的上部有责任[须承担责任]的人; vt. 扛, 担, 挑用肩顶…承担; 时态:shouldered, shouldering, shoulders"
+meaning: "n. the part of the body between the neck and the upper arm; n. a cut of meat including the upper joint of the foreleg; n. a ball-and-socket joint between the head of the humerus and a cavity of the scapula; n. the part of a garment that covers or fits over the shoulder"
+translation: "n. 肩, 肩膀, 衣肩；vt. 肩负, 负担, 担任；vi. 用肩推挤"
 srsWords: "shoulder"
 
 [flashcard-review]
 front: "say"
 meaning: "speak"
-translation: "speak"
+translation: "vt. 说, 讲, 念, 说明, 指明；vi. 说, 讲；n. 意见, 发言权"
 srsWords: "say"
 
 [flashcard-review]
@@ -113,8 +113,8 @@ srsWords: "yours"
 
 [flashcard-review]
 front: "sight"
-meaning: "sight"
-translation: "n. 视力；视觉视野，视界看见，瞥见情景，景象风景；名胜; vt. 看见；发现; vt. & vi. (用仪器)瞄准[观测，察看]; 时态:sighted，sighting，sights"
+meaning: "n. an instance of visual perception; n. anything that is seen; n. the ability to see; the visual faculty; n. a range of mental vision"
+translation: "n. 景观, 视力, 眼界, 阅读, 见解, 意见；vt. 看见, 瞄准；vi. 瞄准, 观看；a. 即席的, 见票即付的"
 srsWords: "sight"
 
 [flashcard-review]
@@ -138,7 +138,7 @@ srsWords: "stomach"
 [flashcard-review]
 front: "very"
 meaning: "extremely"
-translation: "extremely"
+translation: "a. 真正的, 恰好的, 十足的, 特有的；adv. 非常, 完全"
 srsWords: "very"
 
 ---
@@ -240,7 +240,7 @@ srsWords: "makeup"
 [flashcard-review]
 front: "take"
 meaning: "grasp"
-translation: "grasp"
+translation: "vt. 拿, 取, 抓, 带领, 获得, 就座, 接受, 吃, 吸引, 采取, 乘, 需要, 花费；vi. 吃掉对方棋子, 抓住, 起作用, 依法获得财产；n. 拿, 取, 收成, 奏效"
 srsWords: "take"
 
 [flashcard-review]
@@ -257,7 +257,7 @@ srsWords: "reflect"
 
 [flashcard-review]
 front: "strange"
-meaning: "strange"
+meaning: "a. being definitely out of the ordinary and unexpected; slightly odd or even a bit weird; s. not known before"
 translation: "adj. 陌生的；奇怪的；外行的ad; v. 奇怪地；陌生地，冷淡地比较级:stranger, strangest副 词:strangely"
 srsWords: "strange"
 
@@ -311,7 +311,7 @@ srsWords: "seed"
 
 [flashcard-review]
 front: "survey"
-meaning: "survey"
+meaning: "n. a detailed critical inspection; v. consider in a comprehensive way; v. look over carefully or inspect; v. make a survey of; for statistical purposes"
 translation: "n. 民意调查，民意测验；考察，调查；（对课题或情况的）全面考察，概述；测量，勘测；测绘图，勘测记录；测量部门；&lt;英&gt; （尤指为欲购房者所做的）房屋鉴定；查勘报告 v. 做民意测验，做民意调查；（尤指认真地）审视，检查；测量，勘测；&lt;英&gt; （尤指为可能的买家）查勘，检视（建筑物的状况）；全面评述，概述"
 srsWords: "survey"
 
@@ -323,8 +323,8 @@ srsWords: "spell"
 
 [flashcard-review]
 front: "team"
-meaning: "team"
-translation: "n. 队, 组; vi. (与某人)一起工作, 合作; 时态:teamed, teaming, teams"
+meaning: "n. a cooperative unit (especially in sports); n. two or more draft animals that work together to pull something; v. form a team"
+translation: "n. 队, 组；vt. 把马(牛)套在同一辆车上, 把...编成一组；vi. 驾驶卡车, 协作"
 srsWords: "team"
 
 [flashcard-review]
@@ -354,7 +354,7 @@ srsWords: "rob"
 [flashcard-review]
 front: "home"
 meaning: "the place where one lives permanently"
-translation: "the place where one lives permanently"
+translation: "n. 家, 避难所, 故乡；a. 家庭的, 国内的, 打中目标的；adv. 在家, 在本国, 打中目标地；[计] 返回始位"
 srsWords: "home"
 
 [flashcard-review]
@@ -366,7 +366,7 @@ srsWords: "theater"
 [flashcard-review]
 front: "use"
 meaning: "take, hold, or deploy (something) as a means of accomplishing a purpose"
-translation: "take, hold, or deploy (something) as a means of accomplishing a purpose"
+translation: "n. 使用, 习惯, 使用价值, 用法, 使用权；vt. 使用, 利用, 运用, 耗费；vi. 惯常"
 srsWords: "use"
 
 [flashcard-review]
@@ -389,20 +389,20 @@ srsWords: "pretend"
 
 [flashcard-review]
 front: "tool"
-meaning: "tool"
+meaning: "n. an implement used in the practice of a vocation; v. drive; v. furnish with tools; v. work with a tool"
 translation: "n. （尤指手用）工具；（完成工作或达到目标的）工具，手段；受人利用的人，工具；&lt;忌，俚&gt;阴茎；容易被利用（或欺骗）的人，蠢人；（计算机）工具；（书籍装订时的）压印图案 v. 驱车兜风，驾车到处跑；（用工具）制作，在（皮革，尤指书籍的皮革封面）上压印图案；（为生产而）配置设备；凿刻（石头）；&lt;英，非正式&gt;（尤指为犯罪活动而）武装"
 srsWords: "tool"
 
 [flashcard-review]
 front: "topic"
-meaning: "topic"
+meaning: "n. some situation or event that is thought about"
 translation: "n. 主题（等于theme）；题目；一般规则；总论"
 srsWords: "topic"
 
 [flashcard-review]
 front: "around"
 meaning: "on every side of"
-translation: "on every side of"
+translation: "prep. 包围, 在...周围, 四处；adv. 兜着圈子, 在附近, 到处"
 srsWords: "around"
 
 ---
@@ -413,7 +413,7 @@ color: "#8BC34A"
 ---
 [flashcard-review]
 front: "tower"
-meaning: "tower"
+meaning: "n. a structure taller than its diameter; can stand alone or be attached to a larger building"
 translation: "n. 塔，塔楼；（发送信号等的）塔台；塔状堆积物；高柜，高架子；高层建筑，办公大楼；立式机箱；伦敦塔（the Tower） v. （比周围的人或物）高出许多，屹立；胜过，超过（其他人或机构）；（尤指猎鹰为捕抓猎物俯冲前）高飞，翱翔"
 srsWords: "tower"
 
@@ -432,12 +432,12 @@ srsWords: "shore"
 [flashcard-review]
 front: "help"
 meaning: "make it easier for (someone) to do something"
-translation: "make it easier for (someone) to do something"
+translation: "n. 帮忙, 帮助者, 补救办法, 有益的东西；vt. 帮助, 帮忙, 接济, 治疗, 款待；vi. 有用, 救命, 招待；[计] 帮助, 帮助程序; DOS外部命令: DOS命令的电子文件帮助程序"
 srsWords: "help"
 
 [flashcard-review]
 front: "turkey"
-meaning: "turkey"
+meaning: "n. large gallinaceous bird with fan-shaped tail; widely domesticated for food; n. a Eurasian republic in Asia Minor and the Balkans; on the collapse of the Ottoman Empire in 1918, the Young Turks, led by Kemal Ataturk, established a republic in 1923; n. flesh of large domesticated fowl usually roasted; n. an event that fails badly or is totally ineffectual"
 translation: "土耳其（横跨欧亚两洲的国家）"
 srsWords: "turkey"
 
@@ -503,8 +503,8 @@ srsWords: "physically"
 
 [flashcard-review]
 front: "wheel"
-meaning: "wheel"
-translation: "n. 轮子, 车轮, 机轮方向盘, 舵轮旋转, 旋转运动; vi. 转动, 旋转; vt. 推, 拉(车); 时态:wheeled, wheeling, wheels"
+meaning: "n. a simple machine consisting of a circular frame with spokes (or a solid disc) that can rotate on a shaft or axle (as in vehicles or other machines); n. forces that provide energy and direction; n. a circular helm to control the rudder of a vessel; v. change directions as if revolving on a pivot"
+translation: "n. 轮子, 车轮, 轮, 方向盘, 旋转, 机构, 重要人物；vt. 使旋转, 转动, 使转向；vi. 旋转, 转弯, 盘旋"
 srsWords: "wheel"
 
 [flashcard-review]
@@ -522,7 +522,7 @@ srsWords: "wisdom"
 [flashcard-review]
 front: "show"
 meaning: "to display"
-translation: "to display; to present"
+translation: "n. 显示, 表现, 展览, 卖弄, 炫耀, 外观, 演出, 洋相；vt. 表示, 显示, 展现, 陈列, 演出, 表明, 指出, 带领；vi. 露面, 显现, 演出；[计] 显示"
 srsWords: "show"
 
 [flashcard-review]
@@ -551,14 +551,14 @@ srsWords: "peaceful"
 
 [flashcard-review]
 front: "writer"
-meaning: "writer"
+meaning: "n. writes (books or stories or articles or the like) professionally (for pay); n. a person who is able to write and has written something"
 translation: "n.作家,作者,撰写人,写字…的人"
 srsWords: "writer"
 
 [flashcard-review]
 front: "feel"
 meaning: "to experience an emotion or sensation"
-translation: "to experience an emotion or sensation"
+translation: "vt. 感觉, 觉得, 触摸, 以为；vi. 有知觉, 摸索, 同情；n. 感觉, 觉得, 触摸"
 srsWords: "feel"
 
 [flashcard-review]
@@ -576,7 +576,7 @@ srsWords: "satisfy"
 [flashcard-review]
 front: "keep"
 meaning: "to retain"
-translation: "to retain; to continue"
+translation: "n. 生计, 维持, 保持；vt. 保持, 保存, 遵守, 看守, 整理, 维持, 履行, 经营, 拘留, 记帐；vi. 保持, 继续不断"
 srsWords: "keep"
 
 [flashcard-review]
@@ -600,7 +600,7 @@ srsWords: "pursue"
 [flashcard-review]
 front: "away"
 meaning: "to or at a distance"
-translation: "to or at a distance"
+translation: "adv. 离去"
 srsWords: "away"
 
 ---
@@ -624,7 +624,7 @@ srsWords: "brazilian"
 [flashcard-review]
 front: "lot"
 meaning: "a large amount or number"
-translation: "a large amount or number"
+translation: "n. 运气, 签, 抽签, 份额, 许多, 一堆；vt. 划分；vi. 抽签, 抓阄"
 srsWords: "lot"
 
 [flashcard-review]
@@ -642,7 +642,7 @@ srsWords: "pleasant"
 [flashcard-review]
 front: "o'clock"
 meaning: "used after a number from one to twelve to indicate the hour of the day"
-translation: "abbr. …点钟（等于of the clock）"
+translation: "adv. …点钟"
 srsWords: "o'clock"
 
 [flashcard-review]
@@ -654,17 +654,17 @@ srsWords: "portrait"
 [flashcard-review]
 front: "real"
 meaning: "actual"
-translation: "actual; genuine"
+translation: "a. 真的, 真实的, 实际的, 实在的, 不动(产)的, 实数的；n. 实数, 现实；adv. 真正地"
 srsWords: "real"
 
 [flashcard-review]
 front: "different"
 meaning: "not the same"
-translation: "not the same"
+translation: "a. 不同的；[机] 差动, 微分的, 差速器"
 srsWords: "different"
 
 [flashcard-review]
 front: "set"
 meaning: "to put or place"
-translation: "to put or place; to establish"
+translation: "n. 日落, 同伙, 组合, 集合, 装置；vt. 放, 安置, 放置, 设定, 使凝结, 点燃, 确定, 点缀, 使就位, 树立, 分配, 调整；vi. 日落, 凝固, 定型, 搁住, 结果, 适合；a. 决心的, 规定的, 故意的, 持久的, 固定的, 老套的, 准备好的；[计] 设置; DOS内部命令:改变或显示分配给环境变量的值"
 srsWords: "set"

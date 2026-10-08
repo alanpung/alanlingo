@@ -17,8 +17,8 @@ color: "#FF5722"
 ---
 [flashcard-review]
 front: "fortune"
-meaning: "fortune"
-translation: "n. 运气；财富；命运; vt. 给予财富; vi. 偶然发生; 时态:fortuned, fortuning, fortunes"
+meaning: "n. a large amount of wealth or prosperity; n. your overall circumstances or condition in life (including everything that happens to you)"
+translation: "n. 财富, 运气, 兴隆, 大量财产, 好运, 命运；[法] 命运, 财产, 大量财产"
 srsWords: "fortune"
 
 [flashcard-review]
@@ -30,43 +30,43 @@ srsWords: "sibling"
 [flashcard-review]
 front: "fashion"
 meaning: "a popular or the latest style of clothing, hair, decoration, or behavior."
-translation: "a popular or the latest style of clothing, hair, decoration, or behavior."
+translation: "n. 流行, 风尚, 时样；vt. 形成, 造, 作"
 srsWords: "fashion"
 
 [flashcard-review]
 front: "generation"
 meaning: "all of the people born and living at about the same time."
-translation: "all of the people born and living at about the same time."
+translation: "n. 一代, 一世, 产生；[医] 生殖, 世代"
 srsWords: "generation"
 
 [flashcard-review]
 front: "metal"
 meaning: "a solid material that is typically hard, shiny, malleable, fusible, and ductile, with good electrical and thermal conductivity."
-translation: "a solid material that is typically hard, shiny, malleable, fusible, and ductile, with good electrical and thermal conductivity."
+translation: "n. 金属, 金属制品, 合金, 本质, 质料；a. 金属制的；vt. 以金属覆盖"
 srsWords: "metal"
 
 [flashcard-review]
 front: "freeze"
 meaning: "turn into ice or be turned into ice"
-translation: "vt. & vi. (使)结冰; n. 严寒时期结冰，凝固；冻结; 时态:froze frozen freezing，freezes"
+translation: "vi. 冻结, 冷冻, 僵硬, 楞住；vt. 使结冰, 使冻住, 使呆住；n. 结冰, 凝固；[计] 冻结"
 srsWords: "freeze"
 
 [flashcard-review]
 front: "pull"
 meaning: "to exert force on (someone or something) so as to cause movement toward oneself or the thing exerting the force."
-translation: "to exert force on (someone or something) so as to cause movement toward oneself or the thing exerting the force."
+translation: "vt. 拉, 拖, 拔, 牵, 撕开, 吸引；vi. 拉, 拖, 拔, 有吸引力；n. 拉, 拖, 拔, 拉力, 牵引力, 划船, 吸引"
 srsWords: "pull"
 
 [flashcard-review]
 front: "target"
 meaning: "a person, object, or place selected as the aim of an attack. Also, a goal or aim."
-translation: "a person, object, or place selected as the aim of an attack. Also, a goal or aim."
+translation: "n. 目标, 靶子, 指标；vt. 对准, 订指标"
 srsWords: "target"
 
 [flashcard-review]
 front: "village"
 meaning: "a small community"
-translation: "a small community"
+translation: "n. 村庄；a. 乡村的, 村庄的"
 srsWords: "village"
 
 [flashcard-review]
@@ -90,7 +90,7 @@ srsWords: "fridge"
 [flashcard-review]
 front: "agent"
 meaning: "a person who acts on behalf of another"
-translation: "a person who acts on behalf of another"
+translation: "n. 代理商, 政府代表, 动原, 媒介；[计] 代理程序"
 srsWords: "agent"
 
 [flashcard-review]
@@ -114,13 +114,13 @@ srsWords: "friendship"
 [flashcard-review]
 front: "silver"
 meaning: "a precious white metallic element"
-translation: "a precious white metallic element"
+translation: "n. 银, 银币, 银器；a. 银的, 银制的, 银器的；vt. 镀银；vi. 变银白色"
 srsWords: "silver"
 
 [flashcard-review]
 front: "frighten"
-meaning: "frighten"
-translation: "vt. & vi. (使)惊恐; vt. 吓唬; 时态:frightened, frightening, frightens副 词:frighteningly"
+meaning: "v. cause fear in; v. drive out by frightening"
+translation: "vt. 使惊吓；vi. 惊恐"
 srsWords: "frighten"
 
 [flashcard-review]
@@ -132,13 +132,13 @@ srsWords: "flavor"
 [flashcard-review]
 front: "apparently"
 meaning: "as far as one knows or can see"
-translation: "as far as one knows or can see"
+translation: "adv. 表面上, 清楚地, 显然地"
 srsWords: "apparently"
 
 [flashcard-review]
 front: "front"
-meaning: "front"
-translation: "the forward part"
+meaning: "n. the side that is forward or prominent; n. the outward appearance of a person; n. the side that is seen or that goes first; n. a sphere of activity involving effort"
+translation: "n. 前面, 开头, 前线, 阵线, 态度；vt. 面对, 朝向, 对抗；vi. 朝向"
 srsWords: "front"
 
 ---
@@ -150,13 +150,13 @@ color: "#FF5722"
 [flashcard-review]
 front: "chairman"
 meaning: "a person chosen to preside over a meeting or committee"
-translation: "a person chosen to preside over a meeting or committee"
+translation: "n. 主席, 会长；[经] 主席"
 srsWords: "chairman"
 
 [flashcard-review]
 front: "method"
 meaning: "a particular procedure for accomplishing or approaching something"
-translation: "a particular procedure for accomplishing or approaching something"
+translation: "n. 方法, 办法, 条理, 秩序；[医] [方]法"
 srsWords: "method"
 
 [flashcard-review]
@@ -167,8 +167,8 @@ srsWords: "furniture"
 
 [flashcard-review]
 front: "strength"
-meaning: "strength"
-translation: "strength"
+meaning: "n. the property of being physically or mentally strong; n. the condition of financial success"
+translation: "n. 力量, 实力, 强度, 浓度, 人数, 抵抗力；[化] 强度"
 srsWords: "strength"
 
 [flashcard-review]
@@ -191,14 +191,14 @@ srsWords: "soda"
 
 [flashcard-review]
 front: "wild"
-meaning: "wild"
-translation: "wild"
+meaning: "n. a wild primitive state untouched by civilization; a. marked by extreme lack of restraint or control; a. in a natural state; not tamed or domesticated or cultivated; s. in a state of extreme emotion"
+translation: "n. 荒野, 荒地；a. 野性的, 野蛮的, 野生的, 失控的, 任性的, 杂乱的, 轻率的, 狂热的, 疯狂的；adv. 狂暴地, 失控地"
 srsWords: "wild"
 
 [flashcard-review]
 front: "winner"
-meaning: "winner"
-translation: "winner"
+meaning: "n. the contestant who wins the contest; n. a gambler who wins a bet"
+translation: "n. 胜利者, 优胜者；[法] 取胜者"
 srsWords: "winner"
 
 [flashcard-review]
@@ -216,7 +216,7 @@ color: "#FF5722"
 [flashcard-review]
 front: "gather"
 meaning: "to come together; to collect"
-translation: "vt. 收集；使…聚集；收割；使…皱起; vi. 聚集；化脓；皱起; n. 衣褶；聚集；收获量; 时态:gathered, gathering, gathers名 词:gatherer"
+translation: "n. 集合, 聚集；vi. 聚集, 集合, 渐增；vt. 使聚集, 搜集, 积聚"
 srsWords: "gather"
 
 [flashcard-review]
@@ -239,38 +239,38 @@ srsWords: "sock"
 
 [flashcard-review]
 front: "extremely"
-meaning: "extremely"
-translation: "extremely"
+meaning: "r. to an extreme degree"
+translation: "adv. 极端地, 非常地"
 srsWords: "extremely"
 
 [flashcard-review]
 front: "given"
-meaning: "given"
+meaning: "n. an assumption that is taken for granted; s. acknowledged as a supposition"
 translation: "adj. 规定的，指定的；倾向于；&lt;古&gt;（文件）（已在某日期由某人）签署的；赠送的；假定的，假设的 prep. 考虑到；如果，倘若 n. 假定事实 v. 给予（give 的过去分词形式）"
 srsWords: "given"
 
 [flashcard-review]
 front: "improve"
-meaning: "improve"
-translation: "improve"
+meaning: "v to make better; v get better"
+translation: "vt. 改良, 提高...的价值, 改善, 利用；vi. 变得更好, 增加"
 srsWords: "improve"
 
 [flashcard-review]
 front: "indeed"
-meaning: "indeed"
-translation: "indeed"
+meaning: "r. in truth (often tends to intensify); r. (used as an interjection) an expression of surprise or skepticism or irony etc."
+translation: "adv. 的确, 实在, 真正地, 甚至"
 srsWords: "indeed"
 
 [flashcard-review]
 front: "globe"
-meaning: "globe"
-translation: "n. 地球，世界球体；球状物地球仪; 时态:globed，globing，globes"
+meaning: "n. a sphere on which a map (especially of the earth) is represented"
+translation: "n. 球, 球状物, 地球仪, 天体；v. (使)成球状"
 srsWords: "globe"
 
 [flashcard-review]
 front: "negative"
-meaning: "negative"
-translation: "negative"
+meaning: "n. a reply of denial; n. a piece of photographic film showing an image with light and shade or colors reversed; a. characterized by or displaying negation or denial or opposition or resistance; having no positive features; a. expressing or consisting of a negation or refusal or denial"
+translation: "n. 否定, 否定语, 负数, 底片；a. 否定的, 消极的, 负的, 阴性的；n. 负数, 负值；[计] 负数, 负值"
 srsWords: "negative"
 
 ---
@@ -282,37 +282,37 @@ color: "#FF5722"
 [flashcard-review]
 front: "glove"
 meaning: "a covering for the hand"
-translation: "n. 手套; 时态:gloved, gloving, gloves"
+translation: "n. 手套；vt. 给...戴手套"
 srsWords: "glove"
 
 [flashcard-review]
 front: "prevent"
-meaning: "prevent"
-translation: "prevent"
+meaning: "v. keep from happening or arising; make impossible; v. stop (someone or something) from doing something or being in a certain state"
+translation: "v. 预防, 防止, 阻止, 妨碍"
 srsWords: "prevent"
 
 [flashcard-review]
 front: "gold"
 meaning: "a precious yellow metallic element"
-translation: "a precious yellow metallic element"
+translation: "n. 黄金, 钱财, 金块, 金色, 宝贵；a. 金的, 似金的, 金色的, 金制的"
 srsWords: "gold"
 
 [flashcard-review]
 front: "golf"
-meaning: "golf"
-translation: "a sport"
+meaning: "n. a game played on a large open course with 9 or 18 holes; the object is use as few strokes as possible in playing all the holes; v. play golf"
+translation: "n. 高尔夫球；vi. 打高尔夫球"
 srsWords: "golf"
 
 [flashcard-review]
 front: "advantage"
-meaning: "advantage"
-translation: "advantage"
+meaning: "n. the quality of having a superior or more favorable position; n. (tennis) first point scored after deuce; n. benefit resulting from some event or action; v. give an advantage to"
+translation: "n. 优点, 便利, 好处, 优势；vt. 有助于"
 srsWords: "advantage"
 
 [flashcard-review]
 front: "apart"
-meaning: "apart"
-translation: "apart"
+meaning: "s. remote and separate physically or socially; s. having characteristics not shared by others; r. separated or at a distance in place or position or time; r. not taken into account or excluded from consideration"
+translation: "adv. 成零碎, 成距离, 分别地, 分离着；a. 分离的"
 srsWords: "apart"
 
 [flashcard-review]
@@ -323,7 +323,7 @@ srsWords: "den"
 
 [flashcard-review]
 front: "gradually"
-meaning: "gradually"
+meaning: "r. in a gradual manner"
 translation: "adv.逐步地，渐渐地,按部就班地,日趋,冉冉"
 srsWords: "gradually"
 
@@ -335,8 +335,8 @@ srsWords: "gram"
 
 [flashcard-review]
 front: "function"
-meaning: "function"
-translation: "function"
+meaning: "n. (mathematics) a mathematical relation such that each element of a given set (the domain of the function) is associated with an element of another set (the range of the function); n. what something is used for; n. the actions and activities assigned to or required or expected of a person or group; n. a relation such that one thing is dependent on another"
+translation: "n. 官能, 职务, 功能, 函数；vi. 活动, 运行, 行使职责；[计] 功能, 函数"
 srsWords: "function"
 
 ---
@@ -347,8 +347,8 @@ color: "#FF5722"
 ---
 [flashcard-review]
 front: "impossible"
-meaning: "impossible"
-translation: "impossible"
+meaning: "n. something that cannot be done; a. not capable of occurring or being accomplished or dealt with; s. totally unlikely; s. used of persons or their behavior"
+translation: "a. 不可能的, 难以置信的, 令人无法忍受的"
 srsWords: "impossible"
 
 [flashcard-review]
@@ -359,20 +359,20 @@ srsWords: "grandchild"
 
 [flashcard-review]
 front: "shoot"
-meaning: "shoot"
-translation: "shoot"
+meaning: "n. a new branch; n. the act of shooting at targets; v. hit with a missile from a weapon; v. kill by firing a missile"
+translation: "n. 射击, 狩猎, 芽, 射伤, 发射, 发芽, 急流, 推力, 摄影, 急送, 滑运道, 浪费；vt. 射击, 射中, 损毁, 拍摄, 喷出, 投射, 挥出, 飞速行进, 挥霍, 给...注射；vi. 射出, 射击, 发出, 拍电影, 射门, 发芽"
 srsWords: "shoot"
 
 [flashcard-review]
 front: "granddad"
 meaning: "grandfather (informal)"
-translation: "granddad（noun）"
+translation: "爷爷, 老太爷, 外公"
 srsWords: "granddad"
 
 [flashcard-review]
 front: "shut"
-meaning: "shut"
-translation: "shut"
+meaning: "a. not open"
+translation: "n. 关闭；vt. 关上, 闭起, 幽禁, 合拢, 轧住；vi. 关上, 停止营业"
 srsWords: "shut"
 
 [flashcard-review]
@@ -389,8 +389,8 @@ srsWords: "grandson"
 
 [flashcard-review]
 front: "wood"
-meaning: "wood"
-translation: "wood"
+meaning: "n. the hard fibrous lignified substance under the bark of trees; n. United States film actress (1938-1981); n. English conductor (1869-1944); n. English writer of novels about murders and thefts and forgeries (1814-1887)"
+translation: "n. 木材, 木制品；vt. 植林于, 给...添加木柴；vi. 收集木材"
 srsWords: "wood"
 
 [flashcard-review]
@@ -401,7 +401,7 @@ srsWords: "granny"
 
 [flashcard-review]
 front: "grateful"
-meaning: "grateful"
+meaning: "a. feeling or showing gratitude; s. affording comfort or pleasure"
 translation: "adj. 感谢的，感激的；（尤用于书信或正式场合提出请求）感激不尽，请；&lt;古&gt;令人获得快意的，受欢迎的"
 srsWords: "grateful"
 
@@ -413,19 +413,19 @@ color: "#FF5722"
 ---
 [flashcard-review]
 front: "background"
-meaning: "background"
-translation: "background"
+meaning: "n. a person's social heritage: previous experience or training; n. the part of a scene (or picture) that lies behind objects in the foreground; n. information that is essential to understanding a situation or problem; n. extraneous signals that can be confused with the phenomenon to be observed or measured"
+translation: "n. 背景, 背景资料；[计] 背景, 后台"
 srsWords: "background"
 
 [flashcard-review]
 front: "greatly"
-meaning: "greatly"
+meaning: "r. to an extraordinary extent or degree"
 translation: "ad; v. 大大地, 非常"
 srsWords: "greatly"
 
 [flashcard-review]
 front: "greedy"
-meaning: "greedy"
+meaning: "s. wanting to eat or drink more than one can reasonably consume"
 translation: "adj. 贪婪的，贪心的；贪吃的，嘴馋的；渴望的"
 srsWords: "greedy"
 
@@ -443,26 +443,26 @@ srsWords: "skinny"
 
 [flashcard-review]
 front: "host"
-meaning: "host"
-translation: "host"
+meaning: "n. a person who invites guests to a social event (such as a party in his or her own home) and who is responsible for them while they are there; n. an animal or plant that nourishes and supports a parasite; it does not benefit and is often harmed by the association; n. archaic terms for army; n. any organization that provides resources and facilities for a function or event"
+translation: "n. 主人, 旅馆老板, 节目主持人；vt. 当主人招待, 作...节目主持人；[计] 主机, 宿主机"
 srsWords: "host"
 
 [flashcard-review]
 front: "possibly"
-meaning: "possibly"
-translation: "possibly"
+meaning: "r. by chance; r. to a degree possible of achievement or by possible means"
+translation: "adv. 可能, 也许"
 srsWords: "possibly"
 
 [flashcard-review]
 front: "software"
 meaning: "computer programs"
-translation: "computer programs"
+translation: "n. 软件；[计] 软设备"
 srsWords: "software"
 
 [flashcard-review]
 front: "thousand"
 meaning: "1,000"
-translation: "1,000"
+translation: "num. 千；a. 成千的, 许多的；n. 许许多多"
 srsWords: "thousand"
 
 [flashcard-review]
@@ -485,7 +485,7 @@ srsWords: "weigh"
 
 [flashcard-review]
 front: "guidebook"
-meaning: "guidebook"
+meaning: "n. something that offers basic information or instruction"
 translation: "n. 旅行指南；指导手册"
 srsWords: "guidebook"
 
@@ -498,13 +498,13 @@ srsWords: "cart"
 [flashcard-review]
 front: "magic"
 meaning: "supernatural power"
-translation: "supernatural power"
+translation: "n. 魔术, 魔法；a. 魔术的, 有魔力的, 不可思议的"
 srsWords: "magic"
 
 [flashcard-review]
 front: "manage"
 meaning: "to control, to succeed in doing"
-translation: "to control, to succeed in doing"
+translation: "vi. 处理；vt. 管理, 控制, 维持, 达成, 经营, 运用"
 srsWords: "manage"
 
 [flashcard-review]
@@ -516,13 +516,13 @@ srsWords: "cord"
 [flashcard-review]
 front: "exist"
 meaning: "to be real, to live"
-translation: "to be real, to live"
+translation: "vi. 存在, 生存, 发生"
 srsWords: "exist"
 
 [flashcard-review]
 front: "frank"
 meaning: "a type of sausage, a hot dog"
-translation: "a type of sausage, a hot dog"
+translation: "a. 坦白的, 率直的, 老实的；vt. 免费邮寄；n. 免费邮寄特权"
 srsWords: "frank"
 
 [flashcard-review]
@@ -551,14 +551,14 @@ srsWords: "handbag"
 
 [flashcard-review]
 front: "handicapped"
-meaning: "handicapped"
+meaning: "n people collectively who are crippled or otherwise physically handicapped; v injure permanently; v attempt to forecast the winner (especially in a horse race) and assign odds for or against a contestant; v put at a disadvantage; s incapable of functioning as a consequence of injury or illness"
 translation: "adj.残疾的,有生理缺陷的,智力低下的"
 srsWords: "handicapped"
 
 [flashcard-review]
 front: "operate"
 meaning: "to control the functioning of a machine, process, or system"
-translation: "to control the functioning of a machine, process, or system"
+translation: "v. 操作, 运转, 动手术, 活动"
 srsWords: "operate"
 
 [flashcard-review]
@@ -569,38 +569,38 @@ srsWords: "happily"
 
 [flashcard-review]
 front: "happiness"
-meaning: "happiness"
+meaning: "n. state of well-being characterized by emotions ranging from contentment to intense joy; n. emotions experienced when in a state of well-being"
 translation: "n.幸福,高兴,恰当,合适"
 srsWords: "happiness"
 
 [flashcard-review]
 front: "suggest"
 meaning: "to put forward for consideration"
-translation: "to put forward for consideration"
+translation: "vt. 提议, 建议, 促成, 暗示, 启发, 使人想起；[法] 建议, 提出, 提议"
 srsWords: "suggest"
 
 [flashcard-review]
 front: "thought"
 meaning: "an idea or opinion produced by thinking"
-translation: "an idea or opinion produced by thinking"
+translation: "n. 想法, 思想, 思维, 关心, 挂念；think的过去式和过去分词"
 srsWords: "thought"
 
 [flashcard-review]
 front: "harmful"
-meaning: "harmful"
+meaning: "a. causing or capable of causing harm"
 translation: "adj. 能造成损害的；有害的副 词:harmfully; 名 词:harmfulness"
 srsWords: "harmful"
 
 [flashcard-review]
 front: "harmony"
-meaning: "harmony"
+meaning: "n. compatibility in opinion and action; n. the structure of music with respect to the composition and progression of chords; n. a harmonious state of things in general and of their properties (as of colors and sounds); congruity of parts with one another and with the whole; n. agreement of opinions"
 translation: "n. 协调；和睦；融洽；调和 n. (Harmony)人名；(英)哈莫尼"
 srsWords: "harmony"
 
 [flashcard-review]
 front: "youth"
 meaning: "the period of being young"
-translation: "the period of being young"
+translation: "n. 年轻, 青年时代, 青年们, 青春；[法] 青年, 青年时期, 青春时期"
 srsWords: "youth"
 
 ---
@@ -612,7 +612,7 @@ color: "#FF5722"
 [flashcard-review]
 front: "appreciate"
 meaning: "to recognize the full worth of"
-translation: "to recognize the full worth of"
+translation: "vt. 赏识, 鉴别, 为...而感激, 领会, 欣赏；vi. 增值, 涨价"
 srsWords: "appreciate"
 
 [flashcard-review]
@@ -629,7 +629,7 @@ srsWords: "headphone"
 
 [flashcard-review]
 front: "headteacher"
-meaning: "headteacher"
+meaning: "the person in charge of a school"
 translation: "n. 中小学的校长"
 srsWords: "headteacher"
 
@@ -654,17 +654,17 @@ srsWords: "steak"
 [flashcard-review]
 front: "forever"
 meaning: "for all time"
-translation: "for all time; for always"
+translation: "adv. 永远"
 srsWords: "forever"
 
 [flashcard-review]
 front: "mad"
 meaning: "insane"
-translation: "insane; very angry"
+translation: "a. 疯狂的, 发疯的, 生气的, 愚蠢的, 狂欢的；n. 狂怒"
 srsWords: "mad"
 
 [flashcard-review]
 front: "prepare"
 meaning: "to make (something) ready for use or consideration"
-translation: "to make (something) ready for use or consideration"
+translation: "vt. 准备, 筹备, 使在思想上有准备, 制造, 调制；vi. 预备"
 srsWords: "prepare"

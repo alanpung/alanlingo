@@ -314,12 +314,17 @@ export function FlashcardReview({
         const norm = primaryWord.toLowerCase().trim();
         const exact = data.words.find((w: any) => w.word?.toLowerCase().trim() === norm) || data.words[0];
         if (exact) {
+          const hasZhInExercise = /[\u4e00-\u9fa5]/.test(exercise.translation || "");
           setWordMeta((prev) => ({
             pos: exercise.pos || exact.pos || prev.pos,
             ipa: exercise.ipa || exact.ipa || prev.ipa,
             level: exercise.cefrLevel || exercise.level || exact.cefr_level || prev.level,
             meaning: exercise.meaning || exact.english_translation || prev.meaning,
-            translation: exercise.translation || exact.definition_zh || prev.translation,
+            translation:
+              (hasZhInExercise ? exercise.translation : exact.definition_zh) ||
+              exact.definition_zh ||
+              exercise.translation ||
+              prev.translation,
           }));
         }
       })
@@ -334,7 +339,10 @@ export function FlashcardReview({
   const { meaning: parsedMeaning, translation: parsedTranslation } = parseFlashcardContent(exercise);
 
   const activeMeaning = parsedMeaning || wordMeta.meaning || "";
-  const activeTranslation = parsedTranslation || wordMeta.translation || "";
+  const activeTranslation =
+    (/[\u4e00-\u9fa5]/.test(parsedTranslation)
+      ? parsedTranslation
+      : wordMeta.translation || parsedTranslation) || "";
   const activePos = exercise.pos || wordMeta.pos || "";
   const activeIpa = exercise.ipa || wordMeta.ipa || "";
   const activeLevel = (exercise.cefrLevel || exercise.level || wordMeta.level || "").toUpperCase();

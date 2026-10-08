@@ -35,6 +35,13 @@ function getGeminiClient(): GoogleGenAI {
 // Memory cache for generated audio to minimize API calls and avoid quota exhaustion
 const memoryAudioCache = new Map<string, { buffer: Buffer; mimeType: string }>();
 
+// Cache voice settings in memory for 60s to avoid sequential DB queries on every TTS call
+let cachedGlobalVoiceSettings: {
+  timestamp: number;
+  voice?: string;
+  instructions?: string;
+} | null = null;
+
 /**
  * Cleans raw 16-bit linear PCM audio to eliminate clicks, pops, DC offset, and buzz:
  * 1. Enforces 16-bit sample alignment.
@@ -363,75 +370,89 @@ export async function generateSpeech(
   let selectedVoice = options?.voiceName;
   let customInstructions = options?.instructions;
 
-  // 1. If not explicitly provided, check database for user or owner/global preferences
+  // 1. If not explicitly provided, check cached or database preferences
   if (!selectedVoice || !customInstructions) {
-    try {
-      const dbUp = await isDbAvailable();
-      if (dbUp) {
-        // First check user's personal settings if provided
-        if (options?.userId) {
-          const records = await db
-            .select()
-            .from(userMemory)
-            .where(eq(userMemory.userId, options.userId));
-          const map = new Map(records.map((r) => [r.key, r.value]));
-          if (!selectedVoice && map.has("tts:voice")) {
-            selectedVoice = map.get("tts:voice");
-          }
-          if (!customInstructions && map.has("prompt:tts-instructions")) {
-            customInstructions = map.get("prompt:tts-instructions");
-          }
-        }
-
-        // 2. Load the Author's (alan.pung@gmail.com) exact voice settings so students always match the author
-        if (!selectedVoice || !customInstructions) {
-          try {
-            const authorRows = await db
-              .select({ key: userMemory.key, value: userMemory.value })
+    if (
+      cachedGlobalVoiceSettings &&
+      Date.now() - cachedGlobalVoiceSettings.timestamp < 60_000
+    ) {
+      selectedVoice = selectedVoice || cachedGlobalVoiceSettings.voice;
+      customInstructions = customInstructions || cachedGlobalVoiceSettings.instructions;
+    } else {
+      try {
+        const dbUp = await isDbAvailable();
+        if (dbUp) {
+          // First check user's personal settings if provided
+          if (options?.userId) {
+            const records = await db
+              .select()
               .from(userMemory)
-              .innerJoin(user, eq(userMemory.userId, user.id))
-              .where(eq(user.email, "alan.pung@gmail.com"));
+              .where(eq(userMemory.userId, options.userId));
+            const map = new Map(records.map((r) => [r.key, r.value]));
+            if (!selectedVoice && map.has("tts:voice")) {
+              selectedVoice = map.get("tts:voice");
+            }
+            if (!customInstructions && map.has("prompt:tts-instructions")) {
+              customInstructions = map.get("prompt:tts-instructions");
+            }
+          }
 
-            const authorMap = new Map(authorRows.map((r) => [r.key, r.value]));
+          // 2. Load the Author's (alan.pung@gmail.com) exact voice settings so students always match the author
+          if (!selectedVoice || !customInstructions) {
+            try {
+              const authorRows = await db
+                .select({ key: userMemory.key, value: userMemory.value })
+                .from(userMemory)
+                .innerJoin(user, eq(userMemory.userId, user.id))
+                .where(eq(user.email, "alan.pung@gmail.com"));
+
+              const authorMap = new Map(authorRows.map((r) => [r.key, r.value]));
+              if (!selectedVoice) {
+                selectedVoice = authorMap.get("tts:voice") || authorMap.get("global:tts:voice");
+              }
+              if (!customInstructions) {
+                customInstructions =
+                  authorMap.get("prompt:tts-instructions") ||
+                  authorMap.get("global:prompt:tts-instructions");
+              }
+            } catch {
+              // Fallback if query fails
+            }
+          }
+
+          // 3. Fallback to any global setting in userMemory
+          if (!selectedVoice || !customInstructions) {
+            const globalRecords = await db
+              .select()
+              .from(userMemory)
+              .where(
+                or(
+                  eq(userMemory.key, "global:tts:voice"),
+                  eq(userMemory.key, "global:prompt:tts-instructions"),
+                  eq(userMemory.key, "tts:voice"),
+                  eq(userMemory.key, "prompt:tts-instructions")
+                )
+              );
+            const globalMap = new Map(globalRecords.map((r) => [r.key, r.value]));
             if (!selectedVoice) {
-              selectedVoice = authorMap.get("tts:voice") || authorMap.get("global:tts:voice");
+              selectedVoice = globalMap.get("global:tts:voice") || globalMap.get("tts:voice");
             }
             if (!customInstructions) {
               customInstructions =
-                authorMap.get("prompt:tts-instructions") ||
-                authorMap.get("global:prompt:tts-instructions");
+                globalMap.get("global:prompt:tts-instructions") ||
+                globalMap.get("prompt:tts-instructions");
             }
-          } catch {
-            // Fallback if query fails
           }
-        }
 
-        // 3. Fallback to any global setting in userMemory
-        if (!selectedVoice || !customInstructions) {
-          const globalRecords = await db
-            .select()
-            .from(userMemory)
-            .where(
-              or(
-                eq(userMemory.key, "global:tts:voice"),
-                eq(userMemory.key, "global:prompt:tts-instructions"),
-                eq(userMemory.key, "tts:voice"),
-                eq(userMemory.key, "prompt:tts-instructions")
-              )
-            );
-          const globalMap = new Map(globalRecords.map((r) => [r.key, r.value]));
-          if (!selectedVoice) {
-            selectedVoice = globalMap.get("global:tts:voice") || globalMap.get("tts:voice");
-          }
-          if (!customInstructions) {
-            customInstructions =
-              globalMap.get("global:prompt:tts-instructions") ||
-              globalMap.get("prompt:tts-instructions");
-          }
+          cachedGlobalVoiceSettings = {
+            timestamp: Date.now(),
+            voice: selectedVoice,
+            instructions: customInstructions,
+          };
         }
+      } catch {
+        // Fallback silently if DB lookup fails
       }
-    } catch {
-      // Fallback silently if DB lookup fails
     }
   }
 
@@ -541,7 +562,7 @@ export async function generateSpeech(
   }
 
   // 6. Secondary Fallback: Gemini Neural TTS
-  const geminiModels = ["gemini-3.8-flash", "gemini-2.5-flash", "gemini-2.0-flash"];
+  const geminiModels = ["gemini-2.5-flash-preview-tts", "gemini-2.5-flash"];
   let lastError: unknown = null;
 
   try {

@@ -24,7 +24,7 @@ srsWords: "mall"
 [flashcard-review]
 front: "anniversary"
 meaning: "the date on which an event took place in a previous year"
-translation: "the date on which an event took place in a previous year"
+translation: "n. 周年纪念"
 srsWords: "anniversary"
 
 [flashcard-review]
@@ -42,13 +42,13 @@ srsWords: "traveler"
 [flashcard-review]
 front: "fee"
 meaning: "a payment made to a professional person or to a professional or public body in exchange for advice or services"
-translation: "a payment made to a professional person or to a professional or public body in exchange for advice or services"
+translation: "n. 费用, 小费, 封地, 所有权；vt. 付费给"
 srsWords: "fee"
 
 [flashcard-review]
 front: "hardly"
 meaning: "almost not"
-translation: "almost not; barely"
+translation: "adv. 刚刚, 几乎不, 勉强是"
 srsWords: "hardly"
 
 [flashcard-review]
@@ -60,13 +60,13 @@ srsWords: "vanilla"
 [flashcard-review]
 front: "pc"
 meaning: "personal computer"
-translation: "personal computer"
+translation: "个人计算机；[计] 外部控制, 个人计算机, 光电导体, 伪码"
 srsWords: "pc"
 
 [flashcard-review]
 front: "raw"
 meaning: "not cooked"
-translation: "not cooked"
+translation: "n. 擦伤处, 半成品；a. 生的, 未加工的, 生疏的, 不成熟的, 阴冷的, 刺痛的, 擦掉皮的；vt. 擦伤；[计] 写后读"
 srsWords: "raw"
 
 [flashcard-review]
@@ -84,13 +84,13 @@ color: "#673AB7"
 [flashcard-review]
 front: "sample"
 meaning: "a small amount of something that shows you what the rest is like"
-translation: "a small amount of something that shows you what the rest is like"
+translation: "n. 样品, 范例, 样本；vt. 抽样, 尝试；[计] 示例, 字样"
 srsWords: "sample"
 
 [flashcard-review]
 front: "unknown"
 meaning: "not known or familiar"
-translation: "not known or familiar"
+translation: "a. 不知道的, 未知的, 陌生的；n. 未知物, 未知数"
 srsWords: "unknown"
 
 [flashcard-review]
@@ -102,43 +102,43 @@ srsWords: "toddler"
 [flashcard-review]
 front: "pilot"
 meaning: "a person who operates the flying controls of an aircraft"
-translation: "a person who operates the flying controls of an aircraft"
+translation: "n. 飞行员, 领航员, 航船者, 导向器, 驾驶仪, 向导, 领导人；vt. 领航, 驾驶, 引导, 试用；a. 引导的, 控制的, 试点的；[计] 引导"
 srsWords: "pilot"
 
 [flashcard-review]
 front: "matter"
 meaning: "a subject or situation"
-translation: "a subject or situation"
+translation: "n. 事件, 物质, 原因, 素材, 实体, 重要；vi. 有关系"
 srsWords: "matter"
 
 [flashcard-review]
 front: "pink"
 meaning: "a pale red color"
-translation: "a pale red color"
+translation: "n. 粉红色, 石竹花, 化身, 典范, 头面人物, 极度；a. 粉红的, 石竹科的, 比较激进的, 脸色发红的, 精致的, 有点下流的；vt. 刺, 扎, 刺痛, 射伤, 使面红耳赤, 使变粉红色；vi. 变粉红色"
 srsWords: "pink"
 
 [flashcard-review]
 front: "recognize"
 meaning: "identify"
-translation: "identify; know again"
+translation: "vt. 认出, 认可, 承认, 公认, 识别, 赏识；vi. 承认, 具结"
 srsWords: "recognize"
 
 [flashcard-review]
 front: "regularly"
 meaning: "often"
-translation: "often; at regular intervals"
+translation: "adv. 有规则地, 一丝不苟地, 正式地"
 srsWords: "regularly"
 
 [flashcard-review]
 front: "survive"
 meaning: "continue to live or exist"
-translation: "continue to live or exist"
+translation: "vt. 比...活得长, 生存, 生还, 幸免于；vi. 活下来, 幸存"
 srsWords: "survive"
 
 [flashcard-review]
 front: "theatre"
 meaning: "a building where plays are performed"
-translation: "a building where plays are performed"
+translation: "n. 戏院, 电影院, 剧场, 全体观众, 戏剧, 戏剧效果, 阶梯式讲堂, 场所"
 srsWords: "theatre"
 
 ---
@@ -150,7 +150,7 @@ color: "#673AB7"
 [flashcard-review]
 front: "campus"
 meaning: "the grounds and buildings of a university"
-translation: "the grounds and buildings of a university"
+translation: "n. 校园, 大学生活"
 srsWords: "campus"
 
 [flashcard-review]
@@ -168,31 +168,31 @@ srsWords: "quiz"
 [flashcard-review]
 front: "medal"
 meaning: "a metal disk given as an award"
-translation: "n. 勋章，奖章；纪念章MEDALabbr. Micro-mechanized Engineering Data Automated Logistics (自动化后勤用的) 微型机械化工程数据; 时态:medaled; also medalled medaling; also medalling medalsmedals形容词:medallic"
+translation: "n. 奖牌, 勋章；vt. 授勋予"
 srsWords: "medal"
 
 [flashcard-review]
 front: "injure"
 meaning: "cause harm or damage to"
-translation: "cause harm or damage to"
+translation: "vt. 伤害, 损害, 使受冤屈；[医] 损伤"
 srsWords: "injure"
 
 [flashcard-review]
 front: "oppose"
 meaning: "disagree with and try to prevent"
-translation: "disagree with and try to prevent"
+translation: "vt. 反对, 以...对抗, 抗争；vi. 反对"
 srsWords: "oppose"
 
 [flashcard-review]
 front: "wealth"
 meaning: "an abundance of valuable possessions or money"
-translation: "an abundance of valuable possessions or money"
+translation: "n. 财富, 资源, 财产, 丰富, 富裕, 大量；[经] 财富"
 srsWords: "wealth"
 
 [flashcard-review]
 front: "wise"
 meaning: "having or showing experience, knowledge, and good judgment"
-translation: "having or showing experience, knowledge, and good judgment"
+translation: "a. 明智的, 慎虑的, 聪明的, 博学的, 狡猾的, 机灵的；vi. 知道；vt. 教导, 告诉, 劝导；n. 方法, 方式；[计] 教育信息系统"
 srsWords: "wise"
 
 [flashcard-review]
@@ -204,7 +204,7 @@ srsWords: "melon"
 [flashcard-review]
 front: "fairly"
 meaning: "to a moderate extent"
-translation: "to a moderate extent; justly"
+translation: "adv. 美观地, 公平地, 相当地, 清楚地"
 srsWords: "fairly"
 
 ---
@@ -216,42 +216,42 @@ color: "#673AB7"
 [flashcard-review]
 front: "graduate"
 meaning: "successfully complete an academic degree"
-translation: "successfully complete an academic degree"
+translation: "n. 毕业生, 量杯；a. 已得学位的, 研究生的, 毕业的；vi. 毕业, 得学位, 逐渐变为；vt. 准予...毕业, 授予...学位, 分等级, 刻刻度"
 srsWords: "graduate"
 
 [flashcard-review]
 front: "member"
 meaning: "a person belonging to a group"
-translation: "a person belonging to a group"
+translation: "n. 成员, 会员；[医] │肢, 肢体"
 srsWords: "member"
 
 [flashcard-review]
 front: "inner"
 meaning: "situated inside or further in"
-translation: "situated inside or further in"
+translation: "a. 内部的, 内心的；n. 内部"
 srsWords: "inner"
 
 [flashcard-review]
 front: "neighborhood"
 meaning: "a district, especially one forming a community within a town or city"
-translation: "a district, especially one forming a community within a town or city"
+translation: "n. 附近, 邻近"
 srsWords: "neighborhood"
 
 [flashcard-review]
 front: "permission"
 meaning: "the action of allowing someone to do something"
-translation: "the action of allowing someone to do something"
+translation: "n. 许可, 允许；[计] 许可, 认可"
 srsWords: "permission"
 
 [flashcard-review]
 front: "tradition"
 meaning: "custom, belief passed down"
-translation: "custom, belief passed down"
+translation: "n. 传说, 传统, 交付；[法] 传统, 惯例, 移交"
 srsWords: "tradition"
 
 [flashcard-review]
 front: "menu"
-meaning: "menu"
+meaning: "n. a list of dishes available at a restaurant; n. the dishes making up a meal; n. (computer science) a list of options available to a computer user; n. an agenda of things to do"
 translation: "菜单 (n.) - 餐饮选项列表"
 srsWords: "menu"
 
@@ -270,7 +270,7 @@ srsWords: "homemade"
 [flashcard-review]
 front: "gallery"
 meaning: "a room or building for displaying art"
-translation: "a room or building for displaying art"
+translation: "n. 走廊, 最高楼座, 画廊, 收集, 图库；[计] 图库"
 srsWords: "gallery"
 
 ---
@@ -288,7 +288,7 @@ srsWords: "pony"
 [flashcard-review]
 front: "junior"
 meaning: "younger, lower in rank"
-translation: "younger, lower in rank"
+translation: "n. 年少者, 地位较低者, 大学三年级学生；a. 年少的, 下级的, 后进的"
 srsWords: "junior"
 
 [flashcard-review]
@@ -306,7 +306,7 @@ srsWords: "meter"
 [flashcard-review]
 front: "pride"
 meaning: "a feeling of deep pleasure or satisfaction"
-translation: "a feeling of deep pleasure or satisfaction"
+translation: "n. 骄傲, 自尊心, 自豪, 精华, 勇气；vt. 以...自豪"
 srsWords: "pride"
 
 [flashcard-review]
@@ -324,13 +324,13 @@ srsWords: "midday"
 [flashcard-review]
 front: "speaker"
 meaning: "a person who speaks"
-translation: "a person who speaks; a device that produces sound"
+translation: "n. 说话人, 讲演者, 发言人, 喇叭, 扬声器；[计] 扬声器"
 srsWords: "speaker"
 
 [flashcard-review]
 front: "middle"
 meaning: "center; intermediate"
-translation: "center; intermediate"
+translation: "n. 中央, 中间, 腰部；a. 中央的, 中庸的, 中间的"
 srsWords: "middle"
 
 [flashcard-review]
@@ -348,19 +348,19 @@ color: "#673AB7"
 [flashcard-review]
 front: "visitor"
 meaning: "a person visiting a place or person"
-translation: "a person visiting a place or person"
+translation: "n. 参观者, 游客, 访客；[法] 视察人, 检视人, 检查员"
 srsWords: "visitor"
 
 [flashcard-review]
 front: "pant"
 meaning: "a single leg covering (usually plural 'pants')"
-translation: "a single leg covering (usually plural 'pants')"
+translation: "n. 喘息, 悸动；vi. 喘息, 渴望；vt. 气喘吁吁地说"
 srsWords: "pant"
 
 [flashcard-review]
 front: "audio"
 meaning: "sound"
-translation: "sound"
+translation: "a. 音频的, 声音的；[电] 声频"
 srsWords: "audio"
 
 [flashcard-review]
@@ -378,7 +378,7 @@ srsWords: "psychologist"
 [flashcard-review]
 front: "divide"
 meaning: "to separate into parts or shares"
-translation: "to separate into parts or shares"
+translation: "vi. 分开, 分配, 分裂；vt. 分, 分开, 分裂, 除；n. 分配, 分水岭；[计] 除"
 srsWords: "divide"
 
 [flashcard-review]
@@ -390,7 +390,7 @@ srsWords: "sausage"
 [flashcard-review]
 front: "harm"
 meaning: "physical injury or damage"
-translation: "physical injury or damage"
+translation: "n. 伤害, 害处；vt. 伤害, 损害"
 srsWords: "harm"
 
 [flashcard-review]
@@ -402,7 +402,7 @@ srsWords: "twentieth"
 [flashcard-review]
 front: "mirror"
 meaning: "a reflective surface, typically glass coated with a metallic amalgam"
-translation: "n. 镜子写照; vt. 反映, 反射, 映照Mirror(反射)镜；反映(射)；(WIN)对称(M)； DOS命令：在磁盘安全区域存贮根目录和文件分配表; 时态:mirrored, mirroring, mirrors"
+translation: "n. 镜子, 写真, 典范；vt. 反映, 映出"
 srsWords: "mirror"
 
 ---
@@ -420,7 +420,7 @@ srsWords: "unpleasant"
 [flashcard-review]
 front: "strongly"
 meaning: "with great physical power or force"
-translation: "with great physical power or force; in a strong manner"
+translation: "adv. 强有力地, 坚强地, 激烈地"
 srsWords: "strongly"
 
 [flashcard-review]
@@ -486,13 +486,13 @@ srsWords: "dice"
 [flashcard-review]
 front: "silence"
 meaning: "complete absence of sound"
-translation: "complete absence of sound"
+translation: "n. 沉默, 无声, 静寂, 湮没, 无声息；vt. 使缄默；interj. 安静"
 srsWords: "silence"
 
 [flashcard-review]
 front: "violent"
 meaning: "using or involving physical force intended to hurt, damage, or kill someone or something"
-translation: "using or involving physical force intended to hurt, damage, or kill someone or something"
+translation: "a. 暴力的, 猛烈的, 激烈的, 极端的, 凶暴的"
 srsWords: "violent"
 
 [flashcard-review]
@@ -503,7 +503,7 @@ srsWords: "nineteenth"
 
 [flashcard-review]
 front: "mood"
-meaning: "mood"
+meaning: "n. verb inflections that express how the action or state is conceived by the speaker"
 translation: "n. 情绪，语气；心境；气氛 n. (Mood)人名；(英)穆德；(瑞典)莫德"
 srsWords: "mood"
 
@@ -528,13 +528,13 @@ srsWords: "username"
 [flashcard-review]
 front: "math"
 meaning: "the study of numbers, shapes, and quantities"
-translation: "the study of numbers, shapes, and quantities"
+translation: "n. 数学"
 srsWords: "math"
 
 [flashcard-review]
 front: "mystery"
 meaning: "something that is difficult or impossible to understand or explain"
-translation: "something that is difficult or impossible to understand or explain"
+translation: "n. 秘密, 神秘, 奥秘"
 srsWords: "mystery"
 
 ---
@@ -546,36 +546,36 @@ color: "#673AB7"
 [flashcard-review]
 front: "photography"
 meaning: "the art or process of producing images by the action of radiant energy and especially light on a sensitive surface"
-translation: "the art or process of producing images by the action of radiant energy and especially light on a sensitive surface"
+translation: "n. 摄影, 摄影术；[化] 照相术"
 srsWords: "photography"
 
 [flashcard-review]
 front: "mosque"
-meaning: "mosque"
+meaning: "n. (Islam) a Muslim place of worship that usually has a minaret"
 translation: "n. 清真寺, 伊斯兰教寺院"
 srsWords: "mosque"
 
 [flashcard-review]
 front: "rating"
-meaning: "rating"
-translation: "rating"
+meaning: "n. standing or position on a scale"
+translation: "n. 等级, 额定功率, 责骂；[经] 等级评定"
 srsWords: "rating"
 
 [flashcard-review]
 front: "successfully"
-meaning: "successfully"
-translation: "successfully"
+meaning: "r. with success; in a successful manner"
+translation: "adv. 成功, 结果良好, 有成就"
 srsWords: "successfully"
 
 [flashcard-review]
 front: "unusual"
-meaning: "unusual"
-translation: "unusual"
+meaning: "a. not usual or common or ordinary; s. not commonly encountered"
+translation: "a. 不寻常的, 罕见的, 与众不同的"
 srsWords: "unusual"
 
 [flashcard-review]
 front: "motorway"
-meaning: "motorway"
+meaning: "n a broad highway designed for high-speed traffic"
 translation: "n. 高速公路，汽车高速公路"
 srsWords: "motorway"
 
@@ -587,8 +587,8 @@ srsWords: "perfume"
 
 [flashcard-review]
 front: "move"
-meaning: "move"
-translation: "change position"
+meaning: "n. the act of deciding to do something; n. the act of changing your residence or place of business; n. (game) a player's turn to take some action permitted by the rules of the game; v. cause to move or shift into a new position or place, both in a concrete and in an abstract sense"
+translation: "n. 移动, 迁居, 步骤；vt. 移动, 开动, 感动, 搬(家)；vi. 移动, 离开, 运行, 迁移, 摇动, 搬家, 交往, 进展, 脱手；[计] 移动; 传送; DOS外部命令:移动文件, 它可将文件移动到指定的地方"
 srsWords: "move"
 
 [flashcard-review]
@@ -648,7 +648,7 @@ srsWords: "mushroom"
 [flashcard-review]
 front: "retire"
 meaning: "to stop working due to age"
-translation: "to stop working due to age"
+translation: "n. 隐居；vi. 引退, 退役, 退休, 退去, 撤退, 退却；vt. 使...撤退, 辞退"
 srsWords: "retire"
 
 [flashcard-review]

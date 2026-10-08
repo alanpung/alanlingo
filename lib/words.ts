@@ -454,33 +454,68 @@ Return:
   }
 }
 
-export type WordLookupResult = {
+export interface WordLookupResult {
   found: boolean;
   source?: "dictionary" | "ai";
   word: string;
   translation?: string;
+  definitionZh?: string | null;
+  ipa?: string | null;
   pos?: string | null;
   gender?: string | null;
   cefrLevel?: string | null;
   exampleNative?: string | null;
   exampleEnglish?: string | null;
-};
+}
 
 export async function lookupWord(
   word: string,
   language: string,
   nativeLanguage?: string,
 ): Promise<WordLookupResult> {
+  const cleanLookup = word.toLowerCase().trim();
   const wordLang = detectTextLanguage(word, { targetLanguage: language });
 
-  // 1. Try dictionary database with wordLang or course language
+  // 1. Fast in-memory bundled dictionary check (ismartcoding/endict + CEFR dictionary)
+  if (wordLang === "en" || language === "en" || language === "english") {
+    try {
+      const enMap = await loadLanguage("en");
+      let entry = enMap.get(cleanLookup);
+      if (!entry && cleanLookup.endsWith("s") && cleanLookup.length > 3) {
+        entry = enMap.get(cleanLookup.slice(0, -1)) || enMap.get(cleanLookup.slice(0, -2));
+      }
+      if (!entry && cleanLookup.endsWith("ed") && cleanLookup.length > 4) {
+        entry = enMap.get(cleanLookup.slice(0, -2)) || enMap.get(cleanLookup.slice(0, -1));
+      }
+      if (!entry && cleanLookup.endsWith("ing") && cleanLookup.length > 5) {
+        entry = enMap.get(cleanLookup.slice(0, -3)) || enMap.get(cleanLookup.slice(0, -3) + "e");
+      }
+      if (entry) {
+        return {
+          found: true,
+          source: "dictionary",
+          word: entry.word,
+          translation: entry.definition_zh || entry.english_translation,
+          definitionZh: entry.definition_zh || null,
+          ipa: entry.ipa || null,
+          pos: entry.pos || null,
+          gender: entry.gender || null,
+          cefrLevel: entry.cefr_level || null,
+          exampleNative: entry.example_sentence_native || null,
+          exampleEnglish: entry.example_zh || entry.example_sentence_english || null,
+        };
+      }
+    } catch {}
+  }
+
+  // 2. Try dictionary database with wordLang or course language
   try {
     const entries = await db
       .select()
       .from(dictionaryWord)
       .where(
         and(
-          eq(dictionaryWord.word, word.toLowerCase()),
+          eq(dictionaryWord.word, cleanLookup),
         ),
       )
       .limit(5);
@@ -495,7 +530,9 @@ export async function lookupWord(
         found: true,
         source: "dictionary",
         word: exactMatch.word,
-        translation: exactMatch.englishTranslation,
+        translation: exactMatch.definitionZh || exactMatch.englishTranslation,
+        definitionZh: exactMatch.definitionZh || null,
+        ipa: exactMatch.ipa || null,
         pos: exactMatch.pos,
         gender: exactMatch.gender || null,
         cefrLevel: exactMatch.cefrLevel,
@@ -507,13 +544,13 @@ export async function lookupWord(
     // Fall back to AI if DB is unreachable
   }
 
-  // 2. Try AI fallback with detected language
+  // 3. Try AI fallback with detected language
   const aiResult = await aiLookup(word, wordLang, nativeLanguage);
   if (aiResult) {
     return aiResult;
   }
 
-  // 3. Not found
+  // 4. Not found
   return { found: false, word };
 }
 

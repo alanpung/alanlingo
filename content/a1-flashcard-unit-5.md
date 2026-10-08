@@ -24,13 +24,13 @@ srsWords: "min"
 [flashcard-review]
 front: "mother"
 meaning: "female parent"
-translation: "female parent"
+translation: "n. 母亲, 修女院长；vt. 产生, 照看, 收养"
 srsWords: "mother"
 
 [flashcard-review]
 front: "mountain"
 meaning: "a large natural elevation of the earth's surface"
-translation: "a large natural elevation of the earth's surface"
+translation: "n. 山, 山脉, 大堆"
 srsWords: "mountain"
 
 [flashcard-review]
@@ -48,19 +48,19 @@ srsWords: "mouse"
 [flashcard-review]
 front: "mouth"
 meaning: "the opening in the lower part of the human face, surrounded by the lips, through which food is taken in and from which sounds and speech are emitted."
-translation: "the opening in the lower part of the human face, surrounded by the lips, through which food is taken in and from which sounds and speech are emitted."
+translation: "n. 嘴, 口, 口腔, 口状物；vi. 装腔作势说话, 做鬼脸；vt. 说出, 做作地说"
 srsWords: "mouth"
 
 [flashcard-review]
 front: "movie"
 meaning: "a film or motion picture"
-translation: "a film or motion picture"
+translation: "n. 电影"
 srsWords: "movie"
 
 [flashcard-review]
 front: "mr"
 meaning: "Mister (title)"
-translation: "abbr. 先生（Mister）mrabbr. Mauritania 毛里塔尼亚Medium-Range 中程MRabbr. Machine Rifle 冲锋枪"
+translation: "先生；[计] 存储器回收程序, 多重请求"
 srsWords: "mr"
 
 [flashcard-review]
@@ -84,7 +84,7 @@ color: "#E91E63"
 [flashcard-review]
 front: "mum"
 meaning: "mother (informal)"
-translation: "n. 妈妈；（非正式）（栽培的）菊花；啤酒; adj. 沉默的；守密的; v. 在传统假面哑剧中扮演（角色）；在英格兰民俗剧中扮演（角色）; 时态:mummed, mumming, mums"
+translation: "n. 菊花, 沉默；a. 沉默的；vi. 演哑剧；interj. 别说话"
 srsWords: "mum"
 
 [flashcard-review]
@@ -95,7 +95,7 @@ srsWords: "shorts"
 
 [flashcard-review]
 front: "musician"
-meaning: "musician"
+meaning: "n. someone who plays a musical instrument (as a profession); n. artist who composes or conducts music as a profession"
 translation: "n. 音乐家形容词:musicianly; 名 词:musicianship"
 srsWords: "musician"
 
@@ -108,25 +108,25 @@ srsWords: "grocery"
 [flashcard-review]
 front: "song"
 meaning: "musical composition"
-translation: "musical composition"
+translation: "n. 歌, 曲, 鸣声, 歌唱, 歌曲, 诗歌"
 srsWords: "song"
 
 [flashcard-review]
 front: "nationality"
-meaning: "nationality"
+meaning: "n. people having common origins or traditions and often comprising a nation; n. the status of belonging to a particular nation by birth or naturalization"
 translation: "n.国籍,国家,民族性,部落"
 srsWords: "nationality"
 
 [flashcard-review]
 front: "study"
 meaning: "act of learning, research"
-translation: "act of learning, research"
+translation: "n. 学习, 研究, 学科, 论文, 求学, 书房, 试作；vt. 学习, 读书, 研究, 考虑, 计划；vi. 学习, 思索"
 srsWords: "study"
 
 [flashcard-review]
 front: "word"
 meaning: "unit of language"
-translation: "unit of language"
+translation: "n. 话, 消息, 词, 诺言, 命令；vt. 用言辞表达；[计] 字"
 srsWords: "word"
 
 [flashcard-review]
@@ -138,7 +138,7 @@ srsWords: "neighbour"
 [flashcard-review]
 front: "never"
 meaning: "at no time"
-translation: "at no time"
+translation: "adv. 从不, 决不, 不曾；[法] 永不, 决不, 从来没有"
 srsWords: "never"
 
 ---
@@ -162,31 +162,31 @@ srsWords: "mat"
 [flashcard-review]
 front: "newspaper"
 meaning: "a daily or weekly publication"
-translation: "a daily or weekly publication"
+translation: "n. 报纸"
 srsWords: "newspaper"
 
 [flashcard-review]
 front: "café"
 meaning: "a small restaurant serving drinks and light meals"
-translation: "a small restaurant serving drinks and light meals"
+translation: "n. 咖啡馆；小餐馆"
 srsWords: "café"
 
 [flashcard-review]
 front: "action"
 meaning: "something done"
-translation: "something done"
+translation: "n. 行动, 活动, 动作, 作用, 战斗, 行为, 诉讼；vt. 对...起诉；[计] 方式"
 srsWords: "action"
 
 [flashcard-review]
 front: "night"
 meaning: "the period of darkness between sunset and sunrise"
-translation: "the period of darkness between sunset and sunrise"
+translation: "n. 夜, 夜晚, 晚上, 黑暗, 夜晚的工作；[法] 夜, 黑夜, 黑暗"
 srsWords: "night"
 
 [flashcard-review]
 front: "nine"
 meaning: "the number equivalent to the sum of eight and one"
-translation: "the number equivalent to the sum of eight and one"
+translation: "num. 九, 九个"
 srsWords: "nine"
 
 [flashcard-review]
@@ -216,19 +216,19 @@ color: "#E91E63"
 [flashcard-review]
 front: "noise"
 meaning: "sound"
-translation: "sound"
+translation: "n. 噪音, 杂音, 响声, 喧闹；vt. 谣传；vi. 喧闹；[计] 噪声"
 srsWords: "noise"
 
 [flashcard-review]
 front: "self"
 meaning: "a person's essential being"
-translation: "a person's essential being"
+translation: "n. 自己, 自我, 本性, 本质, 私心, 本人；vt. 使近亲繁殖, 使自花授精；vi. 自花授精；a. 同一的"
 srsWords: "self"
 
 [flashcard-review]
 front: "nose"
 meaning: "the part of the face used for smelling and breathing"
-translation: "the part of the face used for smelling and breathing"
+translation: "n. 鼻子, 突出部分, 嗅觉；vt. 嗅到, 探出, 用鼻子触；vi. 闻, 嗅, 探听, 告密"
 srsWords: "nose"
 
 [flashcard-review]
@@ -246,31 +246,31 @@ srsWords: "notebook"
 [flashcard-review]
 front: "student"
 meaning: "person who is studying"
-translation: "person who is studying"
+translation: "n. 学生, 研究者, 学者"
 srsWords: "student"
 
 [flashcard-review]
 front: "november"
-meaning: "November"
+meaning: "n. the month following October and preceding December"
 translation: "n. 十一月"
 srsWords: "november"
 
 [flashcard-review]
 front: "cut"
 meaning: "divide with a sharp tool"
-translation: "divide with a sharp tool"
+translation: "n. 切口, 割伤, 降低, 切, 割, 砍, 削, 伤口, 削减, 缩短, 删节, 通路；a. 经切割的, 缩减的；vt. 切, 割, 减少, 刺痛, 开辟, 雕刻, 删节, 缩短, 停止, 排斥, 切断, 关, 显出；vi. 切, 割, 砍, 刺痛, 相交, 抄近路, 剪辑；[计] 剪切"
 srsWords: "cut"
 
 [flashcard-review]
 front: "number"
 meaning: "a quantity or count"
-translation: "a quantity or count"
+translation: "n. 数, 数字, 数目, 号码；vt. 数, 计算, 共计；vi. 计算, 报数；[计] 数字"
 srsWords: "number"
 
 [flashcard-review]
 front: "field"
 meaning: "area of land, area of study"
-translation: "area of land, area of study"
+translation: "n. 领域, 田地, 场地, 战场, 场, 域；vt. 使...晒在场上, 使上场；a. 田间的, 野生的, 野外的, 田赛的；[计] 域, 字段"
 srsWords: "field"
 
 ---
@@ -282,7 +282,7 @@ color: "#E91E63"
 [flashcard-review]
 front: "moment"
 meaning: "a very brief period of time"
-translation: "a very brief period of time"
+translation: "n. 片刻, 瞬间, 重要, 阶段, 力矩；[医] 片刻, 瞬间, 时机, 因素, 矩"
 srsWords: "moment"
 
 [flashcard-review]
@@ -305,26 +305,26 @@ srsWords: "mister"
 
 [flashcard-review]
 front: "town"
-meaning: "town"
-translation: "town"
+meaning: "n. an urban area with a fixed boundary that is smaller than a city; n. the people living in a municipality smaller than a city; n. United States architect who was noted for his design and construction of truss bridges (1784-1844)"
+translation: "n. 城镇, 市, 镇；[法] 城镇, 城市, 闹市"
 srsWords: "town"
 
 [flashcard-review]
 front: "summer"
-meaning: "summer"
-translation: "summer"
+meaning: "n. the warmest season of the year; in the northern hemisphere it extends from the summer solstice to the autumnal equinox; n. the period of finest development, happiness, or beauty; v. spend the summer"
+translation: "n. 夏季, 全盛时期；vi. 避暑, 过夏天；[计] 加法器"
 srsWords: "summer"
 
 [flashcard-review]
 front: "old"
 meaning: "having lived for a long time; no longer young"
-translation: "having lived for a long time; no longer young"
+translation: "n. 以前, 往昔；a. 老的, 旧的, 古老的, 年长的, 老练的"
 srsWords: "old"
 
 [flashcard-review]
 front: "wife"
-meaning: "wife"
-translation: "wife"
+meaning: "n. a married woman; a man's partner in marriage"
+translation: "n. 妻子, 太太, 夫人；[法] 妻子, 已婚妇女"
 srsWords: "wife"
 
 [flashcard-review]
@@ -347,7 +347,7 @@ color: "#E91E63"
 ---
 [flashcard-review]
 front: "opera"
-meaning: "opera"
+meaning: "n. a drama set to music; consists of singing with orchestral accompaniment and an orchestral overture and interludes; n. a commercial browser; n. a building where musical dramas are performed"
 translation: "n. 歌剧；歌剧院；歌剧团 n. (Opera)人名；(意)奥佩拉"
 srsWords: "opera"
 
@@ -359,26 +359,26 @@ srsWords: "toaster"
 
 [flashcard-review]
 front: "orange"
-meaning: "orange"
+meaning: "n. round yellow to orange fruit of any of several citrus trees; n. orange color or pigment; any of a range of colors between red and yellow; n. any citrus tree bearing oranges; n. any pigment producing the orange color"
 translation: "n. 橙；橙色；桔子 adj. 橙色的；橘色的 n. (Orange)人名；(英)奥林奇；(法)奥朗热"
 srsWords: "orange"
 
 [flashcard-review]
 front: "kill"
-meaning: "kill"
-translation: "kill"
+meaning: "n. the destruction of an enemy plane or ship or tank or missile; v. cause to die; put to death, usually intentionally or knowingly; v. thwart the passage of; v. be fatal"
+translation: "n. 杀, 杀戮, 小河；vt. 杀, 破坏, 消灭, 使终止, 抵消, 否决；vi. 杀死；[计] 删除"
 srsWords: "kill"
 
 [flashcard-review]
 front: "miss"
-meaning: "miss"
-translation: "miss"
+meaning: "n. a failure to hit (or meet or find etc); n. a form of address for an unmarried woman; v. fail to perceive or to catch with the senses or the mind; v. feel or suffer from the lack of"
+translation: "n. 失误, 避免, 失败, 小姐；vt. 未得到, 未达到, 未听到, 未觉察, 逃脱, 遗漏, 错过, 思念；vi. 失败, 击不中"
 srsWords: "miss"
 
 [flashcard-review]
 front: "site"
 meaning: "site, location"
-translation: "site, location"
+translation: "n. 位置, 场所, 地点；vt. 给...择址"
 srsWords: "site"
 
 [flashcard-review]
@@ -390,19 +390,19 @@ srsWords: "mamma"
 [flashcard-review]
 front: "page"
 meaning: "a side of a sheet of paper"
-translation: "a side of a sheet of paper"
+translation: "n. 页, 记录, 事件, 专栏, 男侍；vt. 标明...的页数, 翻...的书页, 分页排版, 呼叫, 侍候；vi. 翻书页, 侍侯；[计] 页; 页面"
 srsWords: "page"
 
 [flashcard-review]
 front: "palace"
-meaning: "palace"
+meaning: "n. a large and stately mansion; n. the governing group of a kingdom; n. a large ornate exhibition hall; n. official residence of an exalted person (as a sovereign)"
 translation: "n.宫，宫殿,（主教）邸宅，宏伟大厦,华丽的娱乐场所"
 srsWords: "palace"
 
 [flashcard-review]
 front: "strong"
-meaning: "strong"
-translation: "strong"
+meaning: "a. having strength or power greater than average or expected; s. not faint or feeble; s. of verbs not having standard (or regular) inflection; s. freshly made or left"
+translation: "a. 强壮的, 坚固的, 坚强的, 强烈的, 有力的, 优良的；adv. 强劲地, 有力地, 猛烈地"
 srsWords: "strong"
 
 ---
@@ -414,19 +414,19 @@ color: "#E91E63"
 [flashcard-review]
 front: "paper"
 meaning: "material for writing/printing"
-translation: "material for writing/printing"
+translation: "n. 纸, 文件, 文章, 报纸, 证券, 证件；vt. 用纸糊, 贴壁纸于, 用纸包装；vi. 贴壁纸；a. 纸做的, 纸上的"
 srsWords: "paper"
 
 [flashcard-review]
 front: "paragraph"
-meaning: "paragraph"
+meaning: "n. one of several distinct subdivisions of a text intended to separate ideas; the beginning is usually marked by a new indented line; v. divide into paragraphs, as of text; v. write about in a paragraph; v. write paragraphs; work as a paragrapher"
 translation: "n.段落,分段符号vt.将…分段,写短文报导"
 srsWords: "paragraph"
 
 [flashcard-review]
 front: "parent"
-meaning: "parent"
-translation: "n. 父母亲；父亲（或母亲）；根源; 时态:parented, parenting, parents名 词:parenthood"
+meaning: "n. a father or mother; one who begets or one who gives birth to or nurtures and raises a child; a relative who plays the role of guardian; n. an organism (plant or animal) from which younger ones are obtained"
+translation: "n. 父母, 父母亲, 根源；[法] 父亲, 母亲, 根源"
 srsWords: "parent"
 
 [flashcard-review]
@@ -438,19 +438,19 @@ srsWords: "moo"
 [flashcard-review]
 front: "pen"
 meaning: "writing instrument"
-translation: "n. 笔；钢笔；圆珠笔写作圈，围栏; vt. 写(信等); vt. 把…关入栏中PENabbr. International Association of Poets，Playwrights，Editors，Essayists and Novelists 国际笔会PENabbr. International Association of Poets，Playwrights，Editors，Essayists and Novelists 国际笔会; 时态:penned，penning，pens名 词:penner"
+translation: "n. 钢笔, 笔, 笔调, 笔杆子, 作家, 围栏, 栅栏, 禽畜；vt. 写, 关入栏中, 囚禁；vi. 动笔, 写作"
 srsWords: "pen"
 
 [flashcard-review]
 front: "pencil"
 meaning: "a writing implement"
-translation: "n. 铅笔, 彩色铅笔光线锥; vt. 用铅笔写、画或标记(某物); 时态:penciled; also pencilled pencilingpencilling pencilspencils"
+translation: "n. 铅笔, 色笔, 眉笔, 画笔, 光线束；vt. 用铅笔写或涂, 草拟"
 srsWords: "pencil"
 
 [flashcard-review]
 front: "men"
 meaning: "adult human males (plural of man)"
-translation: "men（noun）"
+translation: "pl. man的复数"
 srsWords: "men"
 
 [flashcard-review]
@@ -480,7 +480,7 @@ color: "#E91E63"
 [flashcard-review]
 front: "pet"
 meaning: "a domestic or tamed animal kept for companionship or pleasure"
-translation: "n. 宠物；受宠爱的人；生气; vt. 宠爱; vi. 爱抚；生气; adj. 宠爱的PETabbr. Performance Evaluation Test 性能鉴定试验; 时态:petted, petting, pets名 词:petter"
+translation: "n. 宠物, 受宠爱的人, 宠坏的孩子, 不悦, 生气；a. 宠爱的, 表示亲昵的, 养着观赏的, 特别珍爱的, 格外的；vt. 宠爱, 溺爱, 抚摸；vi. 拥抱, 爱抚, 生气, 发脾气"
 srsWords: "pet"
 
 [flashcard-review]
@@ -503,38 +503,38 @@ srsWords: "photo"
 
 [flashcard-review]
 front: "piano"
-meaning: "piano"
+meaning: "n. a keyboard instrument that is played by depressing keys that cause hammers to strike tuned strings and produce sounds; n. (music) low loudness; a. used chiefly as a direction or description in music; r. used as a direction in music; to be played relatively softly"
 translation: "n. 钢琴 n. (Piano)人名；(法、意、葡)皮亚诺"
 srsWords: "piano"
 
 [flashcard-review]
 front: "period"
 meaning: "period, duration"
-translation: "period, duration"
+translation: "n. 时期, 节段, 节, 句点, 学时, 周期；a. 当时特有的, 过去某段时期的；interj. 就是这话, 就是这么回事"
 srsWords: "period"
 
 [flashcard-review]
 front: "picnic"
-meaning: "picnic"
+meaning: "n. any informal meal eaten outside or on an excursion; v. eat alfresco, in the open air"
 translation: "n.野餐郊游,供野餐吃的食品,猪的肩肉,轻松的工作vi.去野餐，参加野餐,野餐式地用餐,在户外用餐vt.用野餐招待"
 srsWords: "picnic"
 
 [flashcard-review]
 front: "pig"
-meaning: "pig"
-translation: "n. 猪肉；猪；警察; vi. 生小猪；像猪一样过活PIGabbr. PendulousIntegratingGyro摆式积分陀螺仪; 时态:pigged, pigging, pigs"
+meaning: "n. a crude block of metal (lead or iron) poured from a smelting furnace; v. live like a pig, in squalor"
+translation: "n. 猪, 猪肉, 贪婪的人, 猪一样的人；v. 生小猪, 象猪般地生活"
 srsWords: "pig"
 
 [flashcard-review]
 front: "pizza"
-meaning: "pizza"
+meaning: "n. Italian open pie made of thin bread dough spread with a spiced mixture of e.g. tomato sauce and cheese"
 translation: "n. 比萨饼（一种涂有乳酪核番茄酱的意大利式有馅烘饼） n. (Pizza)人名；(意)皮扎"
 srsWords: "pizza"
 
 [flashcard-review]
 front: "play"
 meaning: "to engage in an activity for enjoyment"
-translation: "to engage in an activity for enjoyment"
+translation: "n. 游戏, 游玩, 玩笑, 运动, 比赛, 赌博, 跳动, 表演, 剧本；v. 玩, 游戏, 假装, 开玩笑, 比赛, 扮演, 演奏, 演戏, 传摇曳, (使)跳动；[计] 播放"
 srsWords: "play"
 
 ---
@@ -546,7 +546,7 @@ color: "#E91E63"
 [flashcard-review]
 front: "club"
 meaning: "an organization"
-translation: "an organization; a heavy stick"
+translation: "n. 俱乐部, 木棍, 球棒；vt. 用棍棒打, 缴纳；vi. 联合起来；a. 俱乐部的"
 srsWords: "club"
 
 [flashcard-review]
@@ -557,32 +557,32 @@ srsWords: "eraser"
 
 [flashcard-review]
 front: "poem"
-meaning: "poem"
+meaning: "n. a composition written in metrical feet forming rhythmical lines"
 translation: "n.诗,韵文,诗一样的作品,富有诗意的东西"
 srsWords: "poem"
 
 [flashcard-review]
 front: "pollution"
-meaning: "pollution"
+meaning: "n. undesirable state of the natural environment being contaminated with harmful substances as a consequence of human activities"
 translation: "n. 污染；污染物；噪音污染，（夜间扰人的）强烈灯光"
 srsWords: "pollution"
 
 [flashcard-review]
 front: "personal"
 meaning: "private"
-translation: "private; individual"
+translation: "a. 私人的, 涉及隐私的, 有人性的, 人称的, 亲自的, 身体的；[医] 人的; 个人的, 自身的"
 srsWords: "personal"
 
 [flashcard-review]
 front: "poster"
-meaning: "poster"
+meaning: "n. a sign posted in a public place as an advertisement"
 translation: "n.海报，招贴，公告,招贴画,张贴者,古语急行的人，匆忙赶路的人"
 srsWords: "poster"
 
 [flashcard-review]
 front: "share"
 meaning: "a portion"
-translation: "a portion; a part"
+translation: "n. 部分, 参与, 一份, 参股, 份额；vt. 均分, 分担, 分享, 分配, 共有；vi. 分享；[计] 共享; DOS外部命令:在网络或多工系统中提供文件共享；文件锁定及检测磁盘更动和对超过32MB硬盘分区的支持"
 srsWords: "share"
 
 [flashcard-review]
@@ -594,13 +594,13 @@ srsWords: "potato"
 [flashcard-review]
 front: "tv"
 meaning: "television"
-translation: "television"
+translation: "电视；[计] 电视, 转移向量"
 srsWords: "tv"
 
 [flashcard-review]
 front: "pray"
-meaning: "pray"
-translation: "vt. 祈祷；恳求；央求; vi. 祈祷；恳求；请; 时态:prayed, praying, prays"
+meaning: "v. address a deity, a prophet, a saint or an object of worship; say a prayer"
+translation: "v. 祈祷, 恳求, 请"
 srsWords: "pray"
 
 ---
@@ -612,13 +612,13 @@ color: "#E91E63"
 [flashcard-review]
 front: "werent"
 meaning: "were not"
-translation: "short. were not"
+translation: "v. were not 的常用缩写（不是，没有）"
 srsWords: "werent"
 
 [flashcard-review]
 front: "put"
 meaning: "to place"
-translation: "to place"
+translation: "vt. 放, 摆, 安置, 移动, 发射, 投掷, 写上, 表达, 使从事, 使受到, 驱使, 赋予；vi. 出发, 航行, 发芽；n. 掷, 股票出售权, 笨蛋；a. 固定不动的；[计] 发送文件"
 srsWords: "put"
 
 [flashcard-review]
@@ -630,25 +630,25 @@ srsWords: "rabbit"
 [flashcard-review]
 front: "radio"
 meaning: "a device for listening to broadcasts"
-translation: "a device for listening to broadcasts"
+translation: "n. 无线电, 收音机, 无线电报, 无线电广播, 无线电台；v. 用无线电发送"
 srsWords: "radio"
 
 [flashcard-review]
 front: "rain"
 meaning: "precipitation"
-translation: "precipitation"
+translation: "n. 雨, 下雨, 雨天；vi. 下雨；vt. 使大量落下"
 srsWords: "rain"
 
 [flashcard-review]
 front: "rainy"
-meaning: "rainy"
+meaning: "s (of weather) wet by periods of rain"
 translation: "下雨的；多雨的; (Rainy)人名；(英)雷尼"
 srsWords: "rainy"
 
 [flashcard-review]
 front: "rat"
-meaning: "rat"
-translation: "n. 鼠；卑鄙小人，叛徒; vi. 捕鼠；背叛，告密RATabbr. Rocket-Assisted Torpedo 火箭助推鱼雷; 时态:ratted, ratting, rats"
+meaning: "n. any of various long-tailed rodents similar to but larger than a mouse; n. a pad (usually made of hair) worn as part of a woman's coiffure; v. desert one's party or group of friends, for example, for one's personal advantage; v. employ scabs or strike breakers in"
+translation: "n. 鼠, 卑鄙的人, 破坏者, 变节者；vi. 捕鼠, 变节；vt. 弄蓬松"
 srsWords: "rat"
 
 [flashcard-review]
@@ -659,7 +659,7 @@ srsWords: "fell"
 
 [flashcard-review]
 front: "reader"
-meaning: "reader"
+meaning: "n. a person who enjoys reading; n. a person who can read; a literate person; n. one of a series of texts for students learning to read"
 translation: "n. 读者；阅读器；读物 n. (Reader)人名；(英)里德"
 srsWords: "reader"
 

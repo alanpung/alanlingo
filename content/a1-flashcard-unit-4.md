@@ -18,25 +18,25 @@ color: "#9C27B0"
 [flashcard-review]
 front: "hear"
 meaning: "perceive sound"
-translation: "perceive sound"
+translation: "vt. 听到, 倾听, 听说, 审理；vi. 听见, 听"
 srsWords: "hear"
 
 [flashcard-review]
 front: "remember"
 meaning: "to recall from memory"
-translation: "to recall from memory"
+translation: "vt. 记得, 回忆起, 记住, 铭记, 纪念；vi. 记得"
 srsWords: "remember"
 
 [flashcard-review]
 front: "hello"
 meaning: "a greeting"
-translation: "a greeting"
+translation: "interj. 喂, 嘿"
 srsWords: "hello"
 
 [flashcard-review]
 front: "nice"
 meaning: "pleasant or agreeable"
-translation: "pleasant or agreeable"
+translation: "a. 美好的, 和蔼的, 正派的, 做得好的, 精密的, 细微的, 挑剔的, 谨慎的"
 srsWords: "nice"
 
 [flashcard-review]
@@ -48,25 +48,25 @@ srsWords: "blow"
 [flashcard-review]
 front: "here"
 meaning: "in this place"
-translation: "in this place"
+translation: "adv. 在这里, 此时, 这里；n. 这里"
 srsWords: "here"
 
 [flashcard-review]
 front: "idea"
 meaning: "a thought or suggestion"
-translation: "a thought or suggestion"
+translation: "n. 主意, 办法, 理想, 思想, 概念, 意见；[医] 观念, 思想"
 srsWords: "idea"
 
 [flashcard-review]
 front: "past"
 meaning: "the time that has gone by"
-translation: "the time that has gone by"
+translation: "n. 过去, 昔时, 往事, 早年经历, 过去时；a. 过去的, 结束的, 卸任的, 过去时的；prep. 越过, 晚于, 超越, 超出...的可能性(能力、范围等)；pass的过去分词"
 srsWords: "past"
 
 [flashcard-review]
 front: "due"
 meaning: "expected, owed"
-translation: "expected, owed"
+translation: "n. 应得的东西, 应付款；a. 到期的, 应得的, 应付的, 约定的"
 srsWords: "due"
 
 [flashcard-review]
@@ -83,49 +83,49 @@ color: "#9C27B0"
 ---
 [flashcard-review]
 front: "hobby"
-meaning: "hobby"
+meaning: "n. a child's plaything consisting of an imitation horse mounted on rockers; the child straddles it and pretends to ride; n. small Old World falcon formerly trained and flown at small birds"
 translation: "n. 嗜好；业余爱好 n. (Hobby)人名；(英)霍比"
 srsWords: "hobby"
 
 [flashcard-review]
 front: "holiday"
 meaning: "a day of celebration or rest"
-translation: "a day of celebration or rest"
+translation: "n. 假日, 假期, 节日；vi. 度假"
 srsWords: "holiday"
 
 [flashcard-review]
 front: "hometown"
-meaning: "hometown"
+meaning: "n. the town (or city) where you grew up or where you have your principal residence"
 translation: "n.家乡，故乡,“home town”的变体"
 srsWords: "hometown"
 
 [flashcard-review]
 front: "homework"
-meaning: "homework"
+meaning: "n. preparatory school work done outside school (especially at home)"
 translation: "n. 家庭作业，课外作业"
 srsWords: "homework"
 
 [flashcard-review]
 front: "horse"
 meaning: "a large animal"
-translation: "a large animal"
+translation: "n. 马, 骑兵, 脚架；vi. 骑马, 取笑；vt. 使骑马, 系马于"
 srsWords: "horse"
 
 [flashcard-review]
 front: "month"
 meaning: "a period of about 30 days"
-translation: "a period of about 30 days"
+translation: "n. 月；[经] 月"
 srsWords: "month"
 
 [flashcard-review]
 front: "hot"
 meaning: "having a high temperature"
-translation: "having a high temperature"
+translation: "a. 热的, 热心的, 辣的, 热情的, 激动的, 猛烈的, 紧迫的；adv. 热, 紧迫地"
 srsWords: "hot"
 
 [flashcard-review]
 front: "hotel"
-meaning: "hotel"
+meaning: "n. a building where travelers can pay for lodging and meals and other services"
 translation: "n. 旅馆，饭店；客栈 vt. 使…在饭店下榻 vi. 进行旅馆式办公 n. (Hotel)人名；(法)奥泰尔"
 srsWords: "hotel"
 
@@ -138,7 +138,7 @@ srsWords: "careful"
 [flashcard-review]
 front: "wait"
 meaning: "stay in one place until something happens"
-translation: "stay in one place until something happens"
+translation: "n. 等待, 等候；vt. 等候, 期待, 延缓, 伺候, 推迟；vi. 等, 等候, 耽搁, 伺候用餐；[计] 等待"
 srsWords: "wait"
 
 ---
@@ -173,20 +173,20 @@ srsWords: "concert"
 
 [flashcard-review]
 front: "ideal"
-meaning: "ideal"
+meaning: "n. the idea of something that is perfect; something that one hopes to attain; n. model of excellence or perfection of a kind; one having no equal; s. conforming to an ultimate standard of perfection or excellence; embodying an ideal; s. constituting or existing only in the form of an idea or mental image or conception"
 translation: "adj.理想的，完美的,被认为是最好的,完全或相当令人满意的,想象的，假设的n.理想,典范，典型,目标，高尚的、有价值的原则或目标"
 srsWords: "ideal"
 
 [flashcard-review]
 front: "late"
 meaning: "after the usual or expected time"
-translation: "after the usual or expected time"
+translation: "a. 迟的, 晚的, 已故的；adv. 很晚, 很迟, 晚"
 srsWords: "late"
 
 [flashcard-review]
 front: "leave"
 meaning: "go away from"
-translation: "go away from"
+translation: "n. 许可, 告别, 请假, 休假；vt. 离开, 剩下, 遗忘, 委托, 丢弃；vi. 出发, 离开, 生叶"
 srsWords: "leave"
 
 [flashcard-review]
@@ -197,14 +197,14 @@ srsWords: "factory"
 
 [flashcard-review]
 front: "interviewer"
-meaning: "interviewer"
+meaning: "n. a person who conducts an interview"
 translation: "n. 采访者；会见者；面谈者；进行面试者"
 srsWords: "interviewer"
 
 [flashcard-review]
 front: "special"
 meaning: "better, greater, or different from what is usual"
-translation: "better, greater, or different from what is usual"
+translation: "n. 专辑, 专车, 号外, 特别的东西, 负有特别任务的人员；a. 特别的, 专门的, 特殊的, 额外的, 附加的, 特别亲密的"
 srsWords: "special"
 
 ---
@@ -216,24 +216,24 @@ color: "#9C27B0"
 [flashcard-review]
 front: "watch"
 meaning: "look at or observe attentively"
-translation: "look at or observe attentively"
+translation: "n. 观察, 手表, 看守, 守护, 监视, 值班人；vt. 看, 注视, 照顾, 看守, 守护, 监视；vi. 观看, 注视, 守侯"
 srsWords: "watch"
 
 [flashcard-review]
 front: "future"
 meaning: "the time yet to come"
-translation: "the time yet to come"
+translation: "n. 未来, 将来；a. 将来的, 未来的"
 srsWords: "future"
 
 [flashcard-review]
 front: "jacket"
 meaning: "an outer garment extending to the waist or hips, with sleeves, a collar, and an opening down the front"
-translation: "n. 夹克；短上衣; vt. 给...穿夹克；给...装护套; 时态:jacketed, jacketing, jackets形容词:jacketed"
+translation: "n. 夹克, 外套, 护套；vt. 给...穿夹克, 给...装护套"
 srsWords: "jacket"
 
 [flashcard-review]
 front: "january"
-meaning: "January"
+meaning: "n. the first month of the year; begins 10 days after the winter solstice"
 translation: "n. 一月"
 srsWords: "january"
 
@@ -245,20 +245,20 @@ srsWords: "jeans"
 
 [flashcard-review]
 front: "jet"
-meaning: "jet"
-translation: "n. 喷射，喷嘴；黑玉；喷气式飞机; adj. 墨黑的; vt. 射出; vi. 射出；乘喷气式飞机; 时态:jetted, jetting, jets"
+meaning: "n. an airplane powered by one or more jet engines; n. the occurrence of a sudden discharge (as of liquid); n. a hard black form of lignite that takes a brilliant polish and is used in jewelry or ornamentation; n. atmospheric discharges (lasting 10 msec) bursting from the tops of giant storm clouds in blue cones that widen as they flash upward"
+translation: "n. 喷射流, 喷嘴, 煤玉；v. 射出, 迸出, 喷射；a. 黑而发亮的, 墨黑的"
 srsWords: "jet"
 
 [flashcard-review]
 front: "morning"
 meaning: "the period of time between midnight and noon"
-translation: "the period of time between midnight and noon"
+translation: "n. 早晨, 早上, 初期"
 srsWords: "morning"
 
 [flashcard-review]
 front: "short"
 meaning: "having little length"
-translation: "having little length"
+translation: "a. 短的, 近的, 矮的, 短期的, 简短的, 少量的；adv. 简短地, 突然；n. 扼要, 短片, 缺乏；vt. 故意少给, 使短路"
 srsWords: "short"
 
 [flashcard-review]
@@ -270,7 +270,7 @@ srsWords: "baseball"
 [flashcard-review]
 front: "juice"
 meaning: "the liquid part of a fruit or vegetable"
-translation: "n. 果汁；（水果）汁，液; 时态:juiced, juicing, juices"
+translation: "n. 汁, 活力, 体液；vt. 挤出汁来, 加汁"
 srsWords: "juice"
 
 ---
@@ -282,7 +282,7 @@ color: "#9C27B0"
 [flashcard-review]
 front: "stay"
 meaning: "remain in a place"
-translation: "remain in a place"
+translation: "n. 停留, 逗留, 制止, 延缓, 停止, 支柱, 支撑物, 支索；vt. 制止, 延缓, 坚持, 支持, 支撑, 用支索固定；vi. 停留, 逗留, 暂停, 坚持, 中止"
 srsWords: "stay"
 
 [flashcard-review]
@@ -300,18 +300,18 @@ srsWords: "hide"
 [flashcard-review]
 front: "reason"
 meaning: "a cause, explanation, or justification"
-translation: "a cause, explanation, or justification"
+translation: "n. 理由, 原因, 理智, 道理, 前提, 理性；vt. 说服, 推论, 辩论；vi. 推论, 劝说, 思考"
 srsWords: "reason"
 
 [flashcard-review]
 front: "key"
 meaning: "a tool for opening locks"
-translation: "a tool for opening locks"
+translation: "n. 钥匙, 键, 解答, 关键, 要害, 基调, 线索, 答案, 暗礁；vt. 调音, 锁上, 提供线索；vi. 使用钥匙；[计] 键, 密钥"
 srsWords: "key"
 
 [flashcard-review]
 front: "kitchen"
-meaning: "kitchen"
+meaning: "n. a room equipped for preparing meals"
 translation: "n. 厨房；炊具；炊事人员 n. (Kitchen)人名；(英)基钦"
 srsWords: "kitchen"
 
@@ -324,12 +324,12 @@ srsWords: "kite"
 [flashcard-review]
 front: "knee"
 meaning: "the joint between the thigh and the lower leg"
-translation: "n. 膝盖，膝; vt. 用膝盖碰; 时态:kneed, kneeing, knees"
+translation: "n. 膝, 膝盖；vt. 膝行, 用膝盖碰"
 srsWords: "knee"
 
 [flashcard-review]
 front: "knife"
-meaning: "knife"
+meaning: "n. edge tool used as a cutting instrument; has a pointed blade with a sharp edge and a handle; n. a weapon with a handle and blade with a sharp point; v. use a knife on"
 translation: "n. 刀；匕首; vt. 用刀切；（口）伤害; vi. 劈开；划过名 词:knifer"
 srsWords: "knife"
 
@@ -347,14 +347,14 @@ color: "#9C27B0"
 ---
 [flashcard-review]
 front: "language"
-meaning: "language"
+meaning: "n. a systematic means of communicating by the use of sounds or conventional symbols; n. the mental faculty or power of vocal communication"
 translation: "n.语言，语言文字,表达能力,言语，语风，文风，文体,专门用语，术语"
 srsWords: "language"
 
 [flashcard-review]
 front: "soon"
 meaning: "in a short time"
-translation: "in a short time"
+translation: "adv. 不久, 早, 快, 宁可"
 srsWords: "soon"
 
 [flashcard-review]
@@ -366,7 +366,7 @@ srsWords: "paint"
 [flashcard-review]
 front: "turn"
 meaning: "move in a circular direction"
-translation: "move in a circular direction"
+translation: "n. 转弯, 转动, 旋转, 翻转, 一圈, 顺次, 改动, 变化, 性格, 特色, 形状, 转折；vt. 使旋转, 转弯, 转动, 使转向, 驱赶, 阻挡, 兑换, 改写, 使作对, 绕过, 使流通；vi. 转动, 转弯, 转向, 翻转, 回转, 改变, 转身, 变成, 变质, 晕眩, 易脱手"
 srsWords: "turn"
 
 [flashcard-review]
@@ -377,32 +377,32 @@ srsWords: "cap"
 
 [flashcard-review]
 front: "lazy"
-meaning: "lazy"
+meaning: "s. moving slowly and gently"
 translation: "adj. 懒惰的；怠惰的；懒洋洋的；慢吞吞的比较级:lazier, laziest副 词:lazily; 名 词:laziness"
 srsWords: "lazy"
 
 [flashcard-review]
 front: "learn"
 meaning: "to gain knowledge or skill"
-translation: "to gain knowledge or skill"
+translation: "vt. 学习；认识到；得知"
 srsWords: "learn"
 
 [flashcard-review]
 front: "leg"
 meaning: "a limb used for walking or standing"
-translation: "a limb used for walking or standing"
+translation: "n. 腿, 假腿, 路程；vi. 走, 跑"
 srsWords: "leg"
 
 [flashcard-review]
 front: "lesson"
 meaning: "a period of learning or teaching"
-translation: "n. 功课，课一堂课，一节课课程教训，经验；榜样; 时态:lessoned，lessoning，lessons"
+translation: "n. 课, 课业, 教训"
 srsWords: "lesson"
 
 [flashcard-review]
 front: "let"
 meaning: "to allow"
-translation: "to allow"
+translation: "vt. 让, 假设, 出租, 排放, 妨碍；vi. 出租, 被承包；n. 出租屋, 障碍"
 srsWords: "let"
 
 ---
@@ -414,30 +414,30 @@ color: "#9C27B0"
 [flashcard-review]
 front: "heart"
 meaning: "organ that pumps blood"
-translation: "organ that pumps blood"
+translation: "n. 心, 心脏, 中心, 内心, 感情, 精神, 心情, 宝贝儿；vt. 鼓励"
 srsWords: "heart"
 
 [flashcard-review]
 front: "letter"
-meaning: "letter"
+meaning: "n. a written message addressed to a person or organization; n. the conventional characters of the alphabet used to represent speech; n. owner who lets another person use something (housing usually) for hire; n. a strictly literal interpretation (as distinct from the intention)"
 translation: "n. 信；字母，文字；证书；文学，学问；字面意义 vt. 写字母于 vi. 写印刷体字母 n. (Letter)人名；(英)莱特"
 srsWords: "letter"
 
 [flashcard-review]
 front: "library"
-meaning: "library"
+meaning: "n. a room where books are kept; n. a collection of literary documents or records kept for reference or borrowing; n. a depository built to contain books and other materials for reading and study; n. (computing) a collection of standard programs and subroutines that are stored and available for immediate use"
 translation: "n.图书馆，藏书楼,藏书,书屋，书斋,图书出租处"
 srsWords: "library"
 
 [flashcard-review]
 front: "life"
 meaning: "existence"
-translation: "existence"
+translation: "n. 生活, 生命, 人生, 世事, 生物, 寿命, 一生, 生命力, 灵魂, 无期徒刑；[医] 生活, 生存, 生命, 寿命"
 srsWords: "life"
 
 [flashcard-review]
 front: "lily"
-meaning: "lily"
+meaning: "n. any liliaceous plant of the genus Lilium having showy pendulous flowers"
 translation: "百合花，百合；类似百合花的植物；洁白之物; 洁白的，纯洁的"
 srsWords: "lily"
 
@@ -450,25 +450,25 @@ srsWords: "lion"
 [flashcard-review]
 front: "listen"
 meaning: "to hear with attention"
-translation: "to hear with attention"
+translation: "vi. 听, 倾听, 听从；n. 听, 倾听"
 srsWords: "listen"
 
 [flashcard-review]
 front: "minute"
 meaning: "sixty seconds"
-translation: "sixty seconds"
+translation: "n. 分, 分钟, 片刻, 备忘录, 笔记；vt. 记录, 摘录, 测定时间；a. 微小的, 详细的"
 srsWords: "minute"
 
 [flashcard-review]
 front: "lonely"
-meaning: "lonely"
+meaning: "s. marked by dejection from being alone; s. devoid of creatures"
 translation: "adj. 孤独的, 寂寞的荒凉的, 人迹罕至的比较级:lonelier, loneliest名 词:loneliness"
 srsWords: "lonely"
 
 [flashcard-review]
 front: "look"
 meaning: "direct one's gaze"
-translation: "direct one's gaze"
+translation: "n. 一看, 神色, 样子, 面容；vi. 看, 注意, 朝着, 显得；vt. 打量, 看上去与...一样, 以眼色(或脸色)显示, 期待"
 srsWords: "look"
 
 ---
@@ -480,7 +480,7 @@ color: "#9C27B0"
 [flashcard-review]
 front: "love"
 meaning: "feel deep affection for"
-translation: "feel deep affection for"
+translation: "n. 爱, 恋爱, 爱情, 爱好, 性爱；vt. 爱, 爱好, 爱慕；vi. 爱"
 srsWords: "love"
 
 [flashcard-review]
@@ -492,49 +492,49 @@ srsWords: "celebrate"
 [flashcard-review]
 front: "lunch"
 meaning: "midday meal"
-translation: "midday meal"
+translation: "n. 午餐"
 srsWords: "lunch"
 
 [flashcard-review]
 front: "ma"
 meaning: "mother (informal)"
-translation: "ma（noun）"
+translation: "n. 妈；[计] 存储器地址, 多路存取"
 srsWords: "ma"
 
 [flashcard-review]
 front: "phone"
 meaning: "telephone"
-translation: "telephone"
+translation: "n. 电话, 受话器, 耳机；vt. 打电话给；vi. 打电话"
 srsWords: "phone"
 
 [flashcard-review]
 front: "many"
 meaning: "a large number of"
-translation: "a large number of"
+translation: "n. 多数, 多数人；a. 许多的；pron. 许多"
 srsWords: "many"
 
 [flashcard-review]
 front: "map"
 meaning: "a drawing of an area"
-translation: "a drawing of an area"
+translation: "n. 地图, 天体图, 映像；vt. 映射, 绘制...地图, 计划；[计] 实用程序, 映射, 制造自动化协议"
 srsWords: "map"
 
 [flashcard-review]
 front: "player"
 meaning: "someone who plays"
-translation: "someone who plays"
+translation: "n. 竞赛者, 上场队员, 游戏者, 演员；[经] 交易者"
 srsWords: "player"
 
 [flashcard-review]
 front: "art"
 meaning: "creative expression"
-translation: "creative expression"
+translation: "n. 艺术, 人文科学, 技术, 巧妙, 诡计, 美术；[计] 实际保持时间, 特许权和资源表, 平均检索时间, 平均运行时间"
 srsWords: "art"
 
 [flashcard-review]
 front: "build"
 meaning: "to construct"
-translation: "to construct"
+translation: "v. 建立, 建筑；n. 构造, 体格"
 srsWords: "build"
 
 ---
@@ -552,43 +552,43 @@ srsWords: "repeat"
 [flashcard-review]
 front: "near"
 meaning: "close to"
-translation: "close to"
+translation: "a. 近的, 近亲的, 近似的；adv. 接近, 亲近；prep. 靠近, 近似于；v. 接近, 走近"
 srsWords: "near"
 
 [flashcard-review]
 front: "ready"
 meaning: "prepared"
-translation: "prepared"
+translation: "n. 预备好的状态, 现款；a. 准备好的, 备用的, 可以使用的；adv. 预先, 迅速；vt. 使准备好"
 srsWords: "ready"
 
 [flashcard-review]
 front: "meal"
 meaning: "an occasion when food is eaten"
-translation: "an occasion when food is eaten"
+translation: "n. 一餐, 膳食, 粗粉；vi. 进餐"
 srsWords: "meal"
 
 [flashcard-review]
 front: "meat"
-meaning: "meat"
+meaning: "n. the flesh of animals (including fishes and birds and snails) used as food"
 translation: "n.肉,食物,实质adj.重要的,基本的"
 srsWords: "meat"
 
 [flashcard-review]
 front: "meet"
 meaning: "encounter, get to know"
-translation: "encounter, get to know"
+translation: "n. 会, 集会；a. 适宜的, 合适的；vt. 遇见, 引见, 认识, 满足, 对付；vi. 相遇, 接触"
 srsWords: "meet"
 
 [flashcard-review]
 front: "merry"
-meaning: "merry"
+meaning: "s full of or showing high-spirited merriment; s offering fun and gaiety; s quick and energetic"
 translation: "adj.愉快的，快活的,有趣的,口微醉的,生动的n.甜樱桃,梅里（姓氏）"
 srsWords: "merry"
 
 [flashcard-review]
 front: "milk"
 meaning: "white liquid from mammals"
-translation: "white liquid from mammals"
+translation: "n. 奶, 乳状物；vt. 挤乳, 榨取；vi. 产乳"
 srsWords: "milk"
 
 [flashcard-review]
@@ -600,7 +600,7 @@ srsWords: "guitar"
 [flashcard-review]
 front: "son"
 meaning: "male child"
-translation: "male child"
+translation: "n. 儿子, 女婿, 子孙；[法] 儿子, 女婿, 养子"
 srsWords: "son"
 
 ---
@@ -612,13 +612,13 @@ color: "#9C27B0"
 [flashcard-review]
 front: "street"
 meaning: "road"
-translation: "road"
+translation: "n. 街道, 马路, 街区；a. 街道的"
 srsWords: "street"
 
 [flashcard-review]
 front: "mom"
 meaning: "mother"
-translation: "mother"
+translation: "n. 妈妈"
 srsWords: "mom"
 
 [flashcard-review]
@@ -630,7 +630,7 @@ srsWords: "pocket"
 [flashcard-review]
 front: "college"
 meaning: "institution for higher education"
-translation: "institution for higher education"
+translation: "n. 学院, 大学, 学会"
 srsWords: "college"
 
 [flashcard-review]
@@ -642,13 +642,13 @@ srsWords: "mommy"
 [flashcard-review]
 front: "example"
 meaning: "instance, model"
-translation: "instance, model"
+translation: "n. 例子, 样本, 实例；[化] 实例"
 srsWords: "example"
 
 [flashcard-review]
 front: "money"
 meaning: "currency"
-translation: "currency"
+translation: "n. 金钱, 一笔款, 财富, 货币, 金额；[经] 货币, 金钱, 财产"
 srsWords: "money"
 
 [flashcard-review]
@@ -659,12 +659,12 @@ srsWords: "bone"
 
 [flashcard-review]
 front: "monkey"
-meaning: "monkey"
+meaning: "n. any of various long-tailed primates (excluding the prosimians)"
 translation: "n.猴,猿,淘气鬼,小淘气vi.胡闹,捣蛋vt.嘲弄"
 srsWords: "monkey"
 
 [flashcard-review]
 front: "p.m"
 meaning: "afternoon/evening"
-translation: "afternoon/evening"
+translation: "abbr. 下午（post meridiem）"
 srsWords: "p.m"

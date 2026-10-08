@@ -79,12 +79,27 @@ if (typeof window !== "undefined") {
   window.addEventListener("click", unlockAudio, { passive: true });
 }
 
+// Track negative lookups for endict MP3s so we don't re-request 404 words
+const missingEndictWords = new Set<string>();
+
+function getEndictMp3Url(text: string, resolvedLang: string, accent: "us" | "uk" = "us"): string | null {
+  if (resolvedLang !== "en" && resolvedLang !== "english") return null;
+  let clean = text.trim().toLowerCase();
+  if (clean.includes("/")) {
+    clean = clean.split("/")[0].trim();
+  }
+  clean = clean.replace(/^[.,!?;:"'()[\]{}]+|[.,!?;:"'()[\]{}]+$/g, "").trim();
+  if (!clean || !/^[a-z]+(?:-[a-z]+)*$/.test(clean)) return null;
+  if (missingEndictWords.has(clean)) return null;
+  return `https://raw.githubusercontent.com/ismartcoding/endict/main/audio/${accent}/${encodeURIComponent(clean)}.mp3`;
+}
+
 /**
- * Fallback to browser Web Speech API if AI audio fails or is offline.
+ * Fast, zero-latency browser Web Speech API synthesis.
  */
-function speakWithBrowserSynth(text: string, language: string) {
+function speakWithBrowserSynth(text: string, language: string): boolean {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-    return;
+    return false;
   }
   try {
     window.speechSynthesis.cancel();
@@ -93,7 +108,7 @@ function speakWithBrowserSynth(text: string, language: string) {
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = targetLocale;
-    utterance.rate = 1.15;
+    utterance.rate = 1.08;
 
     const voices = window.speechSynthesis.getVoices();
     if (voices.length > 0) {
@@ -113,8 +128,10 @@ function speakWithBrowserSynth(text: string, language: string) {
     }
 
     window.speechSynthesis.speak(utterance);
+    return true;
   } catch (err) {
     console.warn("Browser speech synthesis failed:", err);
+    return false;
   }
 }
 
@@ -302,15 +319,62 @@ export function useAudio() {
       // Ensure AudioContext is awakened as early as possible in call stack
       const audioCtx = getAudioContext();
 
+      // 1. Fast Path: For English single/hyphenated words, play directly from ismartcoding/endict MP3
+      const endictUrl = getEndictMp3Url(text, resolvedLang);
+      if (endictUrl) {
+        if (audioCtx) {
+          const playedWebAudio = await playWithWebAudio(endictUrl, audioCtx);
+          if (playedWebAudio) return;
+        }
+
+        try {
+          const audio = new Audio();
+          audio.preload = "auto";
+          audio.src = endictUrl;
+          currentAudioElement.current = audio;
+
+          audio.onended = () => {
+            if (currentAudioElement.current === audio) {
+              currentAudioElement.current = null;
+            }
+          };
+
+          await audio.play();
+          return;
+        } catch (err: unknown) {
+          const isNotAllowed =
+            err instanceof Error &&
+            (err.name === "NotAllowedError" ||
+              err.message.toLowerCase().includes("interact") ||
+              err.message.toLowerCase().includes("gesture"));
+          if (isNotAllowed) {
+            pendingMobilePlayback = {
+              text,
+              language: resolvedLang,
+              playFn: () => {
+                playRef.current(text, language);
+              },
+            };
+            return;
+          }
+          // Mark word as not in endict MP3 repo so future plays immediately use speech synthesis
+          const clean = text.trim().toLowerCase().split("/")[0].trim();
+          missingEndictWords.add(clean);
+        }
+      }
+
+      // 2. Instant Browser SpeechSynthesis (zero network latency for sentences, definitions, Chinese translations, or words not in endict MP3)
+      if (nonce === nonceRef.current && speakWithBrowserSynth(text, resolvedLang)) {
+        return;
+      }
+
+      // 3. Fallback: Server TTS only if browser speech synthesis is unavailable
       setLoading(true);
       let url: string | null = null;
       try {
         url = await fetchUrl(text, resolvedLang);
       } catch (err) {
-        console.warn("AI TTS fetch failed, falling back to browser speech synthesis:", err);
-        if (nonce === nonceRef.current) {
-          speakWithBrowserSynth(text, resolvedLang);
-        }
+        console.warn("AI TTS fetch failed:", err);
         return;
       } finally {
         if (nonce === nonceRef.current) setLoading(false);
@@ -318,13 +382,11 @@ export function useAudio() {
 
       if (nonce !== nonceRef.current || !url) return;
 
-      // Method 1: Try Web Audio API (bypasses mobile gesture timeout and iOS Range bugs)
       if (audioCtx) {
         const played = await playWithWebAudio(url, audioCtx);
         if (played) return;
       }
 
-      // Method 2: HTMLAudioElement with Range support
       try {
         const audio = new Audio();
         audio.preload = "auto";
@@ -346,19 +408,13 @@ export function useAudio() {
             playErr.message.toLowerCase().includes("gesture"));
 
         if (isNotAllowed) {
-          // If blocked by mobile policy before first touch, queue it to play on the very first touch
           pendingMobilePlayback = {
             text,
             language: resolvedLang,
-            playFn: () => { playRef.current(text, language); },
+            playFn: () => {
+              playRef.current(text, language);
+            },
           };
-          console.info("Mobile autoplay deferred until user touches screen.");
-        } else {
-          // Real error: fallback to browser synth
-          console.warn("Audio playback failed, falling back to speech synthesis:", playErr);
-          if (nonce === nonceRef.current) {
-            speakWithBrowserSynth(text, resolvedLang);
-          }
         }
       }
     },
@@ -373,22 +429,25 @@ export function useAudio() {
         if (!text || !text.trim()) return;
         try {
           const resolvedLang = detectTextLanguage(text, { targetLanguage: language });
-          const url = await fetchUrl(text, resolvedLang);
-          if (url && !audioBufferCache.has(url)) {
+          const endictUrl = getEndictMp3Url(text, resolvedLang);
+          if (endictUrl && !audioBufferCache.has(endictUrl)) {
             const audioCtx = getAudioContext();
             if (audioCtx) {
-              const res = await fetch(url);
+              const res = await fetch(endictUrl);
               if (res.ok) {
                 const arrayBuffer = await res.arrayBuffer();
                 const buffer = await audioCtx.decodeAudioData(arrayBuffer);
-                audioBufferCache.set(url, buffer);
+                audioBufferCache.set(endictUrl, buffer);
+              } else if (res.status === 404) {
+                const clean = text.trim().toLowerCase().split("/")[0].trim();
+                missingEndictWords.add(clean);
               }
             }
           }
         } catch {}
       });
     },
-    [fetchUrl]
+    []
   );
 
   useEffect(() => {

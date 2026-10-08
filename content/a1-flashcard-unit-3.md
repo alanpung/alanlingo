@@ -17,19 +17,19 @@ color: "#FF9800"
 ---
 [flashcard-review]
 front: "thank"
-meaning: "thank"
-translation: "thank"
+meaning: "v. express gratitude or show appreciation to"
+translation: "n. 谢意, 感谢；vt. 谢谢, 感谢"
 srsWords: "thank"
 
 [flashcard-review]
 front: "enjoy"
-meaning: "enjoy"
-translation: "vt. 喜欢；欣赏享有，享受玩得快乐，过得快活; 时态:enjoyed，enjoying，enjoys形容词:enjoyable; 副 词:enjoyably; 名 词:enjoyer"
+meaning: "v. derive or receive pleasure from; get enjoyment from; take pleasure in; v. have benefit from; v. have for one's benefit"
+translation: "vt. 享受, 喜欢, 欣赏；[法] 享受, 享有, 获得某种利益"
 srsWords: "enjoy"
 
 [flashcard-review]
 front: "evening"
-meaning: "evening"
+meaning: "n. the latter part of the day (the period of decreasing daylight from late afternoon until nightfall); n. a later concluding time period; n. the early part of night (from dinner until bedtime) spent in a special way"
 translation: "n. 傍晚；晚上；后期；（联欢性的）晚会; adj. 在晚上的；为晚上的；晚上用的int. 晚上好（等于good evening）"
 srsWords: "evening"
 
@@ -47,20 +47,20 @@ srsWords: "pool"
 
 [flashcard-review]
 front: "together"
-meaning: "together"
-translation: "together"
+meaning: "s. mentally and emotionally stable; r. in contact with each other or in proximity; r. assembled in one place; r. in each other's company"
+translation: "adv. 一起, 共同, 彼此"
 srsWords: "together"
 
 [flashcard-review]
 front: "everyday"
-meaning: "everyday"
+meaning: "s. found in the ordinary course of events; s. commonplace and ordinary"
 translation: "n. 平时；寻常日子 adj. 每天的，日常的"
 srsWords: "everyday"
 
 [flashcard-review]
 front: "war"
-meaning: "war"
-translation: "war"
+meaning: "n. the waging of armed conflict against an enemy; n. a legal state created by a declaration of war and ended by official declaration during which the international rules of war apply; n. an active struggle between competing entities; n. a concerted campaign to end something that is injurious"
+translation: "n. 战争, 战争状态, 战术, 军事, 冲突, 斗争, 竞争；vi. 进行战争, 作战, 打仗, 战斗；a. 战争的, 战时用的"
 srsWords: "war"
 
 [flashcard-review]
@@ -71,8 +71,8 @@ srsWords: "discuss"
 
 [flashcard-review]
 front: "kind"
-meaning: "kind"
-translation: "kind"
+meaning: "n. a category of things distinguished by some common characteristic or quality; a. having or showing a tender and considerate and helpful nature; used especially of persons and their behavior; s. agreeable, conducive to comfort; s. tolerant and forgiving under provocation"
+translation: "n. 种类, 性质, 方式；a. 亲切的, 仁慈的, 和蔼的"
 srsWords: "kind"
 
 ---
@@ -83,62 +83,62 @@ color: "#FF9800"
 ---
 [flashcard-review]
 front: "eye"
-meaning: "eye"
-translation: "n. 眼睛视力, 眼力见解, 观点眼状物; vt. 定睛地看, 盯着; 时态:eyed, eyeing, eyingeyes"
+meaning: "n. the organ of sight; n. good discernment (either visually or as if visually); n. attention to what is seen; n. a small hole or loop (as in a needle)"
+translation: "n. 眼睛, 视力, 看；vt. 看, 注视"
 srsWords: "eye"
 
 [flashcard-review]
 front: "fairy"
-meaning: "fairy"
+meaning: "n. a small being, human in form, playful and having magical powers"
 translation: "n.仙女,小仙子,小精灵adj.美丽的，可爱的,仙女似的"
 srsWords: "fairy"
 
 [flashcard-review]
 front: "family"
 meaning: "a group of related people"
-translation: "a group of related people"
+translation: "n. 家庭, 家人, 族；a. 家庭的"
 srsWords: "family"
 
 [flashcard-review]
 front: "farm"
 meaning: "land used for growing crops or raising animals"
-translation: "land used for growing crops or raising animals"
+translation: "n. 农场, 农田；vt. 耕种；vi. 种田"
 srsWords: "farm"
 
 [flashcard-review]
 front: "farmer"
-meaning: "farmer"
+meaning: "n. a person who operates a farm; n. United States civil rights leader who in 1942 founded the Congress of Racial Equality (born in 1920); n. an expert on cooking whose cookbook has undergone many editions (1857-1915)"
 translation: "n. 农夫，农民 n. (Farmer)人名；(英)法默；(法)法尔梅；(西)法梅尔"
 srsWords: "farmer"
 
 [flashcard-review]
 front: "maybe"
 meaning: "perhaps"
-translation: "perhaps"
+translation: "adv. 也许, 大概；n. 可能性"
 srsWords: "maybe"
 
 [flashcard-review]
 front: "fast"
 meaning: "quick, rapid"
-translation: "quick, rapid"
+translation: "a. 快速的, 紧的；adv. 很快地, 紧紧地, 彻底地；n. 绝食, 斋戒；vi. 绝食, 斋戒"
 srsWords: "fast"
 
 [flashcard-review]
 front: "father"
 meaning: "male parent"
-translation: "male parent"
+translation: "n. 父亲, 祖先, 长辈, 神父, 创始者；vt. 当...的父亲, 保护, 创作, 发明, 培养"
 srsWords: "father"
 
 [flashcard-review]
 front: "story"
 meaning: "narrative"
-translation: "narrative"
+translation: "n. 故事, 小说, 传奇, 描述, 阅历, 经历, 层"
 srsWords: "story"
 
 [flashcard-review]
 front: "fever"
-meaning: "fever"
-translation: "n. 发烧，发热；狂热; vt. 使发烧；使狂热；使患热病; vi. 发烧；狂热；患热病; 时态:fevered, fevering, fevers"
+meaning: "n. a rise in the temperature of the body; frequently a symptom of infection; n. intense nervous anticipation"
+translation: "n. 发烧, 发热, 热病；[医] 发热, 热"
 srsWords: "fever"
 
 ---
@@ -150,7 +150,7 @@ color: "#FF9800"
 [flashcard-review]
 front: "course"
 meaning: "path"
-translation: "path; subject of study"
+translation: "n. 课程, 路线, 过程, 一道菜, 道路；v. 追, (使)跑"
 srsWords: "course"
 
 [flashcard-review]
@@ -162,7 +162,7 @@ srsWords: "fifteen"
 [flashcard-review]
 front: "health"
 meaning: "state of well-being"
-translation: "state of well-being"
+translation: "n. 健康, 卫生, 蓬勃, 健康状态；[医] 健康"
 srsWords: "health"
 
 [flashcard-review]
@@ -174,13 +174,13 @@ srsWords: "fifty"
 [flashcard-review]
 front: "find"
 meaning: "discover or perceive after a search"
-translation: "discover or perceive after a search"
+translation: "vt. 发现, 感到, 找到, 认为, 得到；vi. 裁决；n. 发现；[计] 查找; DOS外部命令:在指定的文件或从键盘输入的文本行中；寻找指定的字符串, 将符合条件的行或行数输出到标准输出设备上"
 srsWords: "find"
 
 [flashcard-review]
 front: "finish"
-meaning: "to finish"
-translation: "vt. 完成；结束；用完; vi. 结束，终止；完成；终结; n. 结束；完美；完成；磨光; 时态:finished, finishing, finishes名 词:finisher"
+meaning: "n. the place designated as the end (as of a race or journey); n. designated event that concludes a contest (especially a race); n. the downfall of someone (as of persons on one side of a conflict); n. (wine tasting) the taste of a wine on the back of the tongue (as it is swallowed)"
+translation: "n. 完成, 结束, 末道漆, 磨光, 完美；vt. 完成, 结束, 用完, 毁掉；vi. 结束；[计] 完成"
 srsWords: "finish"
 
 [flashcard-review]
@@ -192,19 +192,19 @@ srsWords: "everywhere"
 [flashcard-review]
 front: "important"
 meaning: "significant"
-translation: "significant"
+translation: "a. 重要的, 有地位的, 大量的, 显要的, 自负的；[计] 要点"
 srsWords: "important"
 
 [flashcard-review]
 front: "news"
 meaning: "information about recent events"
-translation: "information about recent events"
+translation: "n. 新闻, 消息, 报导；[法] 新闻, 消息, 新闻报导"
 srsWords: "news"
 
 [flashcard-review]
 front: "early"
 meaning: "before the usual time"
-translation: "before the usual time"
+translation: "a. 早的, 早熟的；adv. 很早, 初"
 srsWords: "early"
 
 ---
@@ -215,62 +215,62 @@ color: "#FF9800"
 ---
 [flashcard-review]
 front: "floor"
-meaning: "floor"
-translation: "n. 地面, 地板楼层底发言权; vt. 给…铺地板把…打倒在地击败, 打败; 时态:floored, flooring, floors名 词:floorer"
+meaning: "n. the inside lower horizontal surface (as of a room, hallway, tent, or other structure); n. a structure consisting of a room or set of rooms at a single position along a vertical scale; n. a lower limit; n. the ground on which people and animals move about"
+translation: "n. 地板, 楼层, 底部, 底价；vt. 铺地板, 打倒；n. 地面, 地板, 基底；[计] 基底"
 srsWords: "floor"
 
 [flashcard-review]
 front: "friend"
 meaning: "companion"
-translation: "companion"
+translation: "n. 朋友, 支持者, 赞助者；[法] 朋友, 友人, 赞助者"
 srsWords: "friend"
 
 [flashcard-review]
 front: "information"
 meaning: "facts or details"
-translation: "facts or details"
+translation: "n. 消息, 知识, 通知, 情报, 信息, 问讯处, 起诉；[计] 信息"
 srsWords: "information"
 
 [flashcard-review]
 front: "flower"
 meaning: "the part of a plant that blossoms"
-translation: "the part of a plant that blossoms"
+translation: "n. 花, 开花植物, 精华, 盛时；vi. 开花, 发育, 旺盛, 成熟；vt. 用花装饰, 使开花"
 srsWords: "flower"
 
 [flashcard-review]
 front: "foggy"
-meaning: "foggy"
+meaning: "s stunned or confused and slow to react (as from blows or drunkenness or exhaustion); s indistinct or hazy in outline; s filled or abounding with fog or mist; s obscured by fog"
 translation: "adj.有雾的,雾气朦胧的,模糊的,混乱的"
 srsWords: "foggy"
 
 [flashcard-review]
 front: "video"
 meaning: "moving images"
-translation: "moving images"
+translation: "n. 影像, 电视；a. 图像的, 电视的"
 srsWords: "video"
 
 [flashcard-review]
 front: "food"
 meaning: "edible substance"
-translation: "edible substance"
+translation: "n. 食物, 养料；[医] 食物, 食品"
 srsWords: "food"
 
 [flashcard-review]
 front: "football"
 meaning: "a team sport played with a ball"
-translation: "a team sport played with a ball"
+translation: "n. 足球, 橄榄球"
 srsWords: "football"
 
 [flashcard-review]
 front: "foreigner"
-meaning: "foreigner"
+meaning: "n. a person who comes from a foreign country; someone who does not owe allegiance to your country; n. someone who is excluded from or is not a member of a group"
 translation: "n.外国人,外人，陌生人,外来物，进口货物,（非本土的）外来动植物"
 srsWords: "foreigner"
 
 [flashcard-review]
 front: "forget"
 meaning: "fail to remember"
-translation: "fail to remember"
+translation: "vt. 忘记, 忽略, 忘；vi. 忘记"
 srsWords: "forget"
 
 ---
@@ -288,7 +288,7 @@ srsWords: "forty"
 [flashcard-review]
 front: "young"
 meaning: "not old"
-translation: "not old"
+translation: "a. 年轻的, 无经验的, 朝气蓬勃的；n. 青年们, 幼小动物, 崽"
 srsWords: "young"
 
 [flashcard-review]
@@ -299,7 +299,7 @@ srsWords: "fourteen"
 
 [flashcard-review]
 front: "french"
-meaning: "French"
+meaning: "n. the Romance language spoken in France and in countries colonized by France; n. the people of France; n. United States sculptor who created the seated marble figure of Abraham Lincoln in the Lincoln Memorial in Washington D.C. (1850-1931)"
 translation: "adj.法国的，法国人的,法语的n.法语,法国人"
 srsWords: "french"
 
@@ -312,13 +312,13 @@ srsWords: "hole"
 [flashcard-review]
 front: "social"
 meaning: "relating to society"
-translation: "relating to society"
+translation: "a. 社会的, 群居的, 社交的；n. 联欢会"
 srsWords: "social"
 
 [flashcard-review]
 front: "talk"
 meaning: "speak"
-translation: "speak"
+translation: "n. 谈话, 交谈, 会谈, 讲话, 演讲, 空谈, 谣言, 方言, 语言；vi. 讲话, 演讲, 说话, 谈话, 交流, 闲聊, 说闲话；vt. 讲, 说, 讨论, 谈论；[计] 对话类, 聊天"
 srsWords: "talk"
 
 [flashcard-review]
@@ -336,7 +336,7 @@ srsWords: "frog"
 [flashcard-review]
 front: "guy"
 meaning: "man"
-translation: "man"
+translation: "n. 家伙, 支索；vt. 用支索撑住, 取笑, 嘲弄；vi. 逃跑"
 srsWords: "guy"
 
 ---
@@ -348,7 +348,7 @@ color: "#FF9800"
 [flashcard-review]
 front: "fruit"
 meaning: "the sweet and fleshy product of a tree or other plant"
-translation: "the sweet and fleshy product of a tree or other plant"
+translation: "n. 水果, 果类, 结果；[医] 果实, 种实"
 srsWords: "fruit"
 
 [flashcard-review]
@@ -360,36 +360,36 @@ srsWords: "actor"
 [flashcard-review]
 front: "fun"
 meaning: "enjoyment, amusement"
-translation: "enjoyment, amusement"
+translation: "n. 乐趣, 玩笑, 娱乐；vi. 开玩笑；a. 供娱乐用的"
 srsWords: "fun"
 
 [flashcard-review]
 front: "game"
 meaning: "an activity or sport involving skill, chance, or endurance"
-translation: "an activity or sport involving skill, chance, or endurance"
+translation: "n. 比赛, 玩耍, 比分, 得胜, 比赛规则, 策略, 游戏, 野味；vi. 赌博；a. 勇敢的, 有胆量的, 关于野味的, 跛的；[计] 博弈; 对策"
 srsWords: "game"
 
 [flashcard-review]
 front: "often"
 meaning: "frequently"
-translation: "frequently"
+translation: "adv. 时常, 常常"
 srsWords: "often"
 
 [flashcard-review]
 front: "garbage"
-meaning: "garbage"
+meaning: "n. food that is discarded (as from a kitchen); n. a receptacle where waste can be discarded"
 translation: "n.垃圾,脏东西,丢弃的食物,无用的数据"
 srsWords: "garbage"
 
 [flashcard-review]
 front: "garden"
-meaning: "garden"
-translation: "n. 菜园；花园; vt. 栽培花木; vi. 从事园艺；在园中种植Garden加登(姓氏); 时态:gardened, gardening, gardens"
+meaning: "n. a plot of ground where plants are cultivated; n. the flowers or vegetables or fruits or herbs that are cultivated in a garden; n. a yard or lawn adjoining a house; v. work in the garden"
+translation: "n. 花园, 果园, 菜园；vi. 栽培花木；vt. 造园；a. 花园的, 普通的"
 srsWords: "garden"
 
 [flashcard-review]
 front: "german"
-meaning: "German"
+meaning: "n. a person of German nationality; n. the standard German language; developed historically from West Germanic; a. of or pertaining to or characteristic of Germany or its people or language"
 translation: "adj.德国的,德国人/语的,德国文化的n.德国人，德语"
 srsWords: "german"
 
@@ -401,7 +401,7 @@ srsWords: "cute"
 
 [flashcard-review]
 front: "ghost"
-meaning: "ghost"
+meaning: "n. a mental representation of some haunting experience; n. the visible disembodied soul of a dead person; v. move like a ghost; v. write for someone else"
 translation: "n.鬼，幽灵,（尤指可怕事物的）记忆,隐约的一点点,（电视屏幕上的）重影vt.悄悄地行进vi.替人代笔"
 srsWords: "ghost"
 
@@ -420,19 +420,19 @@ srsWords: "collect"
 [flashcard-review]
 front: "girl"
 meaning: "a female child or young woman"
-translation: "a female child or young woman"
+translation: "n. 女孩, 少女, 女佣"
 srsWords: "girl"
 
 [flashcard-review]
 front: "give"
 meaning: "freely transfer the possession of (something) to (someone)"
-translation: "vt. & vi. 给予, 赠送; vt. 供给, 提供交给, 托付做出(某一动作), 发出(声音等)举办, 表演付出, 出售产生, 引起; vi. (物体)塌下让步; 时态:gave given giving, gives"
+translation: "n. 弹性, 适应性；vt. 给, 授予, 供给, 产生, 发表, 付出, 献出, 让出；vi. 捐赠, 支持不住, 让步"
 srsWords: "give"
 
 [flashcard-review]
 front: "glass"
 meaning: "hard, brittle substance; a drinking vessel"
-translation: "hard, brittle substance; a drinking vessel"
+translation: "n. 玻璃, 玻璃杯, 透镜；vt. 装玻璃于, 反射, 反映；vi. 成玻璃状"
 srsWords: "glass"
 
 [flashcard-review]
@@ -450,24 +450,24 @@ srsWords: "neck"
 [flashcard-review]
 front: "hour"
 meaning: "60 minutes"
-translation: "60 minutes"
+translation: "n. 小时, 钟头, 时间, ...点钟, 课时"
 srsWords: "hour"
 
 [flashcard-review]
 front: "office"
 meaning: "a place where people work"
-translation: "a place where people work"
+translation: "n. 办公室, 部, 公职, 职责；[化] 办公室"
 srsWords: "office"
 
 [flashcard-review]
 front: "pay"
 meaning: "to give money for something"
-translation: "to give money for something"
+translation: "n. 薪资, 付款, 补偿；vt. 支付, 付清, 补偿, 偿还, 对...有利, 为...涂防水物；vi. 付款, 付出代价, 偿还, 得到报应, 获得好处"
 srsWords: "pay"
 
 [flashcard-review]
 front: "grammar"
-meaning: "grammar"
+meaning: "n. the branch of linguistics that deals with syntax and morphology (and sometimes also deals with semantics)"
 translation: "n.语法,语法书,（学术的）基本原理,（人的）语言知识及运用能力"
 srsWords: "grammar"
 
@@ -479,14 +479,14 @@ color: "#FF9800"
 ---
 [flashcard-review]
 front: "grandfather"
-meaning: "grandfather"
-translation: "n. (外)祖父; 时态:grandfathered, grandfathering, grandfathers"
+meaning: "n. the father of your father or mother"
+translation: "n. 祖父, 始祖；[电] 原始资料组"
 srsWords: "grandfather"
 
 [flashcard-review]
 front: "problem"
 meaning: "a difficulty"
-translation: "a difficulty"
+translation: "n. 问题, 难题；a. 成问题的, 难处理的"
 srsWords: "problem"
 
 [flashcard-review]
@@ -510,7 +510,7 @@ srsWords: "grandpa"
 [flashcard-review]
 front: "true"
 meaning: "in accordance with fact or reality"
-translation: "in accordance with fact or reality"
+translation: "a. 真实的, 正确的, 忠诚的, 可靠的, 纯粹的, 正式的；n. 真实, 准确；adv. 真实地, 准确地"
 srsWords: "true"
 
 [flashcard-review]
@@ -521,20 +521,20 @@ srsWords: "grandparent"
 
 [flashcard-review]
 front: "grape"
-meaning: "grape"
+meaning: "n. any of various juicy fruit of the genus Vitis with green or purple skins; grow in clusters; n. any of numerous woody vines of genus Vitis bearing clusters of edible berries"
 translation: "n. 葡萄；葡萄酒；葡萄树；葡萄色 n. (Grape)人名；(法)格拉普；(德、瑞典)格拉佩"
 srsWords: "grape"
 
 [flashcard-review]
 front: "grass"
 meaning: "green plant covering ground"
-translation: "n. 草；草地，草坪; vt. 使……长满草；使……吃草；放牧; vi. 长草; 时态:grassed, grassing, grasses"
+translation: "n. 草, 草原, 牧场；[医] 草, 禾本"
 srsWords: "grass"
 
 [flashcard-review]
 front: "gray"
 meaning: "a color between black and white"
-translation: "a color between black and white"
+translation: "n. 灰色, 暗淡；a. 灰色的, 灰白的, 面色苍白的, 年老的, 老练的, 阴沉的；v. (使)变灰色"
 srsWords: "gray"
 
 ---
@@ -546,12 +546,12 @@ color: "#FF9800"
 [flashcard-review]
 front: "great"
 meaning: "excellent"
-translation: "excellent"
+translation: "a. 大的, 非常的, 主要的, 重大的, 崇高的, 伟大的；adv. 顺利地, 得意地；n. 全部, 大人物, 大师"
 srsWords: "great"
 
 [flashcard-review]
 front: "greet"
-meaning: "greet"
+meaning: "v. express greetings upon meeting someone; v. send greetings to; v. react to in a certain way; v. be perceived by"
 translation: "vt. 欢迎，迎接；致敬，致意；映入眼帘 n. (Greet)人名；(英)格里特"
 srsWords: "greet"
 
@@ -569,32 +569,32 @@ srsWords: "cream"
 
 [flashcard-review]
 front: "habit"
-meaning: "habit"
-translation: "n. 习惯，习性；嗜好; vt. 使穿衣; 时态:habited, habiting, habits"
+meaning: "n. an established custom; n. (psychology) an automatic pattern of behavior in reaction to a specific situation; may be inherited or acquired through frequent repetition; n. a distinctive attire worn by a member of a religious order; n. the general form or mode of growth (especially of a plant or crystal)"
+translation: "n. 习惯, 嗜好, 习性；vt. 使穿衣"
 srsWords: "habit"
 
 [flashcard-review]
 front: "history"
 meaning: "the study of past events"
-translation: "the study of past events"
+translation: "n. 历史, 过去, 经历, 发展过程, 历史学, 过去的事, 历史记录；[计] 历史记录"
 srsWords: "history"
 
 [flashcard-review]
 front: "hair"
-meaning: "hair"
+meaning: "n. a covering for the body (or parts of it) consisting of a dense growth of threadlike structures (as on the human head); helps to prevent heat loss; n. filamentous hairlike growth on a plant; n. any of the cylindrical filaments characteristically growing from the epidermis of a mammal; n. a filamentous projection or process on an organism"
 translation: "n. 头发；毛发；些微; vt. 除去…的毛发; vi. 生长毛发；形成毛状纤维; adj. 毛发的；护理毛发的；用毛发制成的"
 srsWords: "hair"
 
 [flashcard-review]
 front: "haircut"
-meaning: "haircut"
+meaning: "n. the style in which hair has been cut; n. the act of cutting the hair"
 translation: "n.理发,发型,发式"
 srsWords: "haircut"
 
 [flashcard-review]
 front: "large"
 meaning: "of considerable or relatively great size"
-translation: "of considerable or relatively great size"
+translation: "a. 大的, 大量的, 宽大的, 广博的；adv. 大大地, 夸大地"
 srsWords: "large"
 
 [flashcard-review]
@@ -611,32 +611,32 @@ color: "#FF9800"
 ---
 [flashcard-review]
 front: "handsome"
-meaning: "handsome"
+meaning: "s pleasing in appearance especially by reason of conformity to ideals of form and proportion; s given or giving freely"
 translation: "adj. （男子）英俊的；可观的；大方的，慷慨的；健美而端庄的"
 srsWords: "handsome"
 
 [flashcard-review]
 front: "happen"
-meaning: "to occur"
-translation: "to occur"
+meaning: "v. come to pass; v. happen, occur, or be the case in the course of events or by chance; v. chance to be or do something, without intention or causation; v. come into being; become reality"
+translation: "vi. 发生, 发生, 恰巧"
 srsWords: "happen"
 
 [flashcard-review]
 front: "happy"
 meaning: "feeling pleasure or contentment"
-translation: "feeling pleasure or contentment"
+translation: "a. 快乐的, 幸福的, 愉快的, 恰当的"
 srsWords: "happy"
 
 [flashcard-review]
 front: "win"
 meaning: "to be successful in a competition"
-translation: "to be successful in a competition"
+translation: "vt. 赢得, 打胜, 成功；vi. 获胜, 达到, 影响；n. 胜利, 赢, 收益"
 srsWords: "win"
 
 [flashcard-review]
 front: "hat"
 meaning: "a covering for the head"
-translation: "a covering for the head"
+translation: "n. 帽子；vt. 给...戴帽子"
 srsWords: "hat"
 
 [flashcard-review]
@@ -648,7 +648,7 @@ srsWords: "bright"
 [flashcard-review]
 front: "else"
 meaning: "in addition"
-translation: "in addition; besides"
+translation: "a. 别的, 其他的；adv. 另外, 否则, 不然"
 srsWords: "else"
 
 [flashcard-review]
@@ -659,12 +659,12 @@ srsWords: "painting"
 
 [flashcard-review]
 front: "headache"
-meaning: "headache"
+meaning: "n. pain in the head caused by dilation of cerebral arteries or muscle contractions or a reaction to drugs"
 translation: "n. 头痛令人头痛的事形容词:headachy"
 srsWords: "headache"
 
 [flashcard-review]
 front: "healthy"
 meaning: "in good health"
-translation: "in good health"
+translation: "a. 健康的, 有益健康的, 卫生的；[医] 健康的"
 srsWords: "healthy"

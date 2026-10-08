@@ -449,8 +449,8 @@ srsWords: "arcanely"
 
 [flashcard-review]
 front: "porten"
-meaning: "porten"
-translation: "porten（noun）"
+meaning: "to be a sign or warning that something momentous or calamitous is likely to happen"
+translation: "vt. 预示，预兆（同 portend）；n. 征兆"
 srsWords: "porten"
 
 [flashcard-review]

@@ -18,30 +18,30 @@ color: "#00BCD4"
 [flashcard-review]
 front: "beauty"
 meaning: "quality of being beautiful"
-translation: "quality of being beautiful"
+translation: "n. 美, 美人"
 srsWords: "beauty"
 
 [flashcard-review]
 front: "provide"
 meaning: "supply, give"
-translation: "supply, give"
+translation: "vt. 提供, 供应, 规定, 预备；vi. 作准备, 抚养, 规定"
 srsWords: "provide"
 
 [flashcard-review]
 front: "beer"
 meaning: "alcoholic beverage"
-translation: "alcoholic beverage"
+translation: "n. 啤酒；[化] 啤酒"
 srsWords: "beer"
 
 [flashcard-review]
 front: "sound"
 meaning: "noise, auditory sensation"
-translation: "noise, auditory sensation"
+translation: "n. 声音, 语音, 吵闹, 声调, 听力范围, 探条, 海峡；a. 健全的, 可靠的, 合理的, 健康的, 彻底的, 资金充实的；adv. 彻底地, 充分地；vi. 发出声音, 回响, 测深, 试探, 听起来；vt. 使发声, 宣告, 听诊, 测...深, 试探；[计] 声音"
 srsWords: "sound"
 
 [flashcard-review]
 front: "beg"
-meaning: "beg"
+meaning: "v. call upon in supplication; entreat; v. ask to obtain free; v. dodge, avoid answering, or take for granted"
 translation: "vi. 乞讨；请求 vt. 乞讨；恳求；回避正题 n. (Beg)人名；(德、塞、巴基)贝格"
 srsWords: "beg"
 
@@ -54,7 +54,7 @@ srsWords: "beginner"
 [flashcard-review]
 front: "beginning"
 meaning: "the start"
-translation: "the start"
+translation: "n. 开始"
 srsWords: "beginning"
 
 [flashcard-review]
@@ -65,14 +65,14 @@ srsWords: "behaviour"
 
 [flashcard-review]
 front: "being"
-meaning: "being"
+meaning: "n. the state or fact of existing"
 translation: "n. 存在；生命；本质；品格 adj. 存在的；现有的"
 srsWords: "being"
 
 [flashcard-review]
 front: "source"
 meaning: "origin, point of supply"
-translation: "origin, point of supply"
+translation: "n. 来源, 水源, 根源, 原始资料, 源；[计] 来源, 源程序"
 srsWords: "source"
 
 ---
@@ -90,55 +90,55 @@ srsWords: "belly"
 [flashcard-review]
 front: "belong"
 meaning: "be a part of, be owned by"
-translation: "vi. 属于；是…的成员应被放在，应归入适应，合得来; 时态:belonged，belonging，belongs"
+translation: "vi. 属于, 合适"
 srsWords: "belong"
 
 [flashcard-review]
 front: "belt"
 meaning: "a strip of material worn around the waist"
-translation: "n. 腰带, 带子区域, 地带; vt.（用带子）系住；（作为惩罚用皮带等）抽打；击打; vi.（尤指驾车）疾驰；飞奔; 时态:belted, belting, belts"
+translation: "n. 带子, 地带；[医] 带, 腰带, 束带, 地带, 区"
 srsWords: "belt"
 
 [flashcard-review]
 front: "bench"
-meaning: "bench"
-translation: "n. 长凳；工作台；（健身房里的）练习台；运动员休息区；替补队员席；法官；法官席；（英国议会的）议员席（the benches）; v. 把（场上队员）换下；罚（场上队员）下场；不让（队员）上场；仰卧推举，卧推; 时态:benched, benching, benches"
+meaning: "n. a long seat for more than one person; n. the magistrate or judge or judges sitting in court in judicial capacity to compose the court collectively; n. the reserve players on a team; n. (law) the seat for judges in a courtroom"
+translation: "n. 长椅子；[机] 台"
 srsWords: "bench"
 
 [flashcard-review]
 front: "evidence"
 meaning: "proof, data"
-translation: "proof, data"
+translation: "n. 根据, 证据, 迹象；[经] 证据, 凭证"
 srsWords: "evidence"
 
 [flashcard-review]
 front: "better"
-meaning: "better"
+meaning: "n. something superior in quality or condition or effect; n. a superior person having claim to precedence; n. the superior one of two alternatives; v. surpass in excellence"
 translation: "n. 长辈；较好者；打赌的人（等于bettor） adj. 较好的 vt. 改善；胜过 adv. 更好的；更多的；较大程度地 vi. 变得较好 n. (Better)人名；(西、瑞典、德)贝特尔"
 srsWords: "better"
 
 [flashcard-review]
 front: "production"
 meaning: "manufacturing, output"
-translation: "manufacturing, output"
+translation: "n. 制造, 生产, 产物；[医] 产生, 生成"
 srsWords: "production"
 
 [flashcard-review]
 front: "stand"
 meaning: "be upright, tolerate"
-translation: "be upright, tolerate"
+translation: "n. 站立, 站住, 停顿, 讲台, 看台, 立场, 法院证人席；vi. 站, 立, 坐落, 停滞, 位于, 坚持, 维持原状；vt. 忍受, 使站立, 抵挡"
 srsWords: "stand"
 
 [flashcard-review]
 front: "fall"
 meaning: "autumn, descent"
-translation: "autumn, descent"
+translation: "n. 落下, 瀑布, 采伐量, 下降, 落差, 降低, 堕落, 秋天；vi. 倒下, 落下, 来临, 失守, 阵亡, 下跌, 减弱, 倾斜, 垮台, 轮到, 变成, 降低；a. 秋天的"
 srsWords: "fall"
 
 [flashcard-review]
 front: "bit"
 meaning: "a small piece or amount"
-translation: "a small piece or amount"
+translation: "n. 少量, 马嚼子, 辅币；vt. 给马上嚼子, 控制；bite的过去式和过去分词；[计] 比特, 二进制数位, 机内测试"
 srsWords: "bit"
 
 ---
@@ -149,8 +149,8 @@ color: "#00BCD4"
 ---
 [flashcard-review]
 front: "green"
-meaning: "green"
-translation: "green"
+meaning: "n. green color or pigment; resembling the color of growing grass; n. United States labor leader who was president of the American Federation of Labor from 1924 to 1952 and who led the struggle with the Congress of Industrial Organizations (1873-1952); n. an environmentalist who belongs to the Green Party; n. a river that rises in western Wyoming and flows southward through Utah to become a tributary of the Colorado River"
+translation: "n. 绿色, 绿色颜料；a. 绿色的, 未成熟的, 新鲜的, 青春的, 无经验的, 脸色发青的"
 srsWords: "green"
 
 [flashcard-review]
@@ -161,14 +161,14 @@ srsWords: "blackboard"
 
 [flashcard-review]
 front: "blanket"
-meaning: "blanket"
-translation: "n. 毛毯，毯子; adj. 适用于任何情况的；总括的，综合的; v. 以厚层覆盖; 时态:blanketed, blanketing, blankets"
+meaning: "n. bedding that keeps a person warm in bed; n. anything that covers; n. a layer of lead surrounding the highly reactive core of a nuclear reactor; v. cover as if with a blanket"
+translation: "n. 毛毯, 毯子；vt. 掩盖, 覆盖；a. 总共的"
 srsWords: "blanket"
 
 [flashcard-review]
 front: "trust"
 meaning: "confidence, reliance"
-translation: "confidence, reliance"
+translation: "n. 信任, 信赖, 相信, 受托, 职责, 信心, 托拉斯；a. 信托的, 托拉斯的；vt. 信赖, 信任, 相信, 盼望, 赊卖给；vi. 相信, 信赖, 依靠；[计] 委托, 信任"
 srsWords: "trust"
 
 [flashcard-review]
@@ -180,31 +180,31 @@ srsWords: "blonde"
 [flashcard-review]
 front: "forward"
 meaning: "towards the front"
-translation: "towards the front"
+translation: "a. 向前的, 早的, 迅速的, 在前的, 进步的；vt. 促进...的生长, 转寄, 运送；adv. 向前地；[计] 前推, 转信"
 srsWords: "forward"
 
 [flashcard-review]
 front: "attention"
 meaning: "the act of focusing the mind on something"
-translation: "the act of focusing the mind on something"
+translation: "n. 注意, 注意力；[计] 引起注意信号"
 srsWords: "attention"
 
 [flashcard-review]
 front: "hate"
 meaning: "intense dislike"
-translation: "intense dislike"
+translation: "n. 憎恨, 恨, 厌恶；vt. 憎恨, 憎恶；vi. 仇恨"
 srsWords: "hate"
 
 [flashcard-review]
 front: "natural"
 meaning: "existing in or derived from nature"
-translation: "existing in or derived from nature"
+translation: "n. 白痴；a. 自然的, 自然界的, 本能的, 天然的, 物质的, 正常的, 原始的, 自然数的"
 srsWords: "natural"
 
 [flashcard-review]
 front: "boil"
 meaning: "reach or cause to reach the temperature at which it bubbles and turns to vapor"
-translation: "vi. 煮沸，沸腾；激动，激昂; vt. 煮沸，烧开；使…激动；使…蒸发; n. 沸腾，煮沸；疖子; 时态:boiled, boiling, boils"
+translation: "n. 煮沸, 沸腾, 疖；v. 煮沸, 激动"
 srsWords: "boil"
 
 ---
@@ -216,19 +216,19 @@ color: "#00BCD4"
 [flashcard-review]
 front: "quality"
 meaning: "the standard of something as measured against other things of a similar kind"
-translation: "the standard of something as measured against other things of a similar kind"
+translation: "n. 品质, 特性, 才能, 质量；a. 优质的；[计] 品质"
 srsWords: "quality"
 
 [flashcard-review]
 front: "style"
 meaning: "a distinctive manner of doing something"
-translation: "a distinctive manner of doing something"
+translation: "n. 风格, 时尚, 文体, 风度, 字体, 类型；vt. 称呼, (根据新款式)设计, 使合潮流；n. 风格, 样式；[计] 风格, 样式"
 srsWords: "style"
 
 [flashcard-review]
 front: "bonus"
-meaning: "bonus"
-translation: "n. 奖金；红利；额外津贴BONUSabbr. Boling Nuclear Superheat Reactor 沸腾式过热核反应堆"
+meaning: "n. anything that tends to arouse; n. an additional payment (or other remuneration) to employees as a means of increasing output"
+translation: "n. 奖金, 红利；[经] 奖金, 红利, 额外补贴"
 srsWords: "bonus"
 
 [flashcard-review]
@@ -252,25 +252,25 @@ srsWords: "bookshop"
 [flashcard-review]
 front: "blood"
 meaning: "the red liquid that circulates in the arteries and veins"
-translation: "the red liquid that circulates in the arteries and veins"
+translation: "n. 血, 血统, 流血, 气质, 生命；vt. 使出血, 用血涂"
 srsWords: "blood"
 
 [flashcard-review]
 front: "boss"
 meaning: "manager, employer"
-translation: "manager, employer"
+translation: "n. 老板, 上司, 岩瘤, 浮雕, 母牛；vt. 指挥, 控制, 浮雕"
 srsWords: "boss"
 
 [flashcard-review]
 front: "oil"
-meaning: "oil"
-translation: "oil"
+meaning: "n. a slippery or viscous liquid or liquefiable substance not miscible with water; n. oil paint containing pigment that is used by an artist; v. cover with oil, as if by rubbing"
+translation: "n. 油, 石油, 油画颜料；vt. 涂油于, 使融化成油状, 加油于；vi. 加燃油, 融化"
 srsWords: "oil"
 
 [flashcard-review]
 front: "title"
-meaning: "title"
-translation: "title"
+meaning: "n. a heading that names a statute or legislative bill; may give a brief summary of the matters it deals with; n. the name of a work of art or literary composition etc.; n. a general or descriptive heading for a section of a written work; n. an identifying appellation signifying status or function: e.g. `Mr.' or `General'"
+translation: "n. 头衔, 名称, 标题, 书名, 扉页, 权利, 资格, 冠军, 字幕；vt. 授予头衔, 加标题于；[计] 标题"
 srsWords: "title"
 
 ---
@@ -287,20 +287,20 @@ srsWords: "bra"
 
 [flashcard-review]
 front: "brainstorm"
-meaning: "brainstorm"
+meaning: "v. try to solve a problem by thinking intensely about it"
 translation: "n.集思广益；头脑风暴；灵机一动vt.集体讨论；集思广益以寻找vi.集体讨论；动脑筋；出主意"
 srsWords: "brainstorm"
 
 [flashcard-review]
 front: "attack"
-meaning: "attack"
-translation: "attack"
+meaning: "n. (military) an offensive against an enemy (using weapons); n. an offensive move in a sport or game; n. the act of attacking; n. a decisive manner of beginning a musical tone or phrase"
+translation: "n. 攻击, 抨击；vt. 攻击, 抨击, 动手干；vi. 攻击"
 srsWords: "attack"
 
 [flashcard-review]
 front: "bear"
-meaning: "bear"
-translation: "bear"
+meaning: "n. massive plantigrade carnivorous or omnivorous mammals with long shaggy coats and strong claws; n. an investor with a pessimistic market outlook; an investor who expects prices to fall and so sells now in order to buy later at a lower price; v. have; v. move while holding up or supporting"
+translation: "n. 熊；vt. 忍受, 支承, 产生, 怀有, 通过卖空使跌价；vi. 忍受, 结果实, 压挤, 行进, 转向"
 srsWords: "bear"
 
 [flashcard-review]
@@ -311,19 +311,19 @@ srsWords: "brave"
 
 [flashcard-review]
 front: "decide"
-meaning: "decide"
-translation: "decide"
+meaning: "v. reach, make, or come to a decision about something; v. bring to an end; settle conclusively; v. cause to decide; v. influence or determine"
+translation: "v. 决定, 判决"
 srsWords: "decide"
 
 [flashcard-review]
 front: "perhaps"
-meaning: "perhaps"
-translation: "perhaps"
+meaning: "r by chance"
+translation: "adv. 也许, 大概"
 srsWords: "perhaps"
 
 [flashcard-review]
 front: "breeze"
-meaning: "breeze"
+meaning: "n. a slight wind (usually refreshing); v. blow gently and lightly; v. to proceed quickly and easily"
 translation: "n. 微风，和风；轻而易举的事；煤屑，焦炭渣；&lt;英，非正式&gt;骚动，争吵 v. 轻盈而自信地走；轻松过关，轻易通过；吹微风"
 srsWords: "breeze"
 
@@ -335,8 +335,8 @@ srsWords: "bride"
 
 [flashcard-review]
 front: "situation"
-meaning: "situation"
-translation: "situation"
+meaning: "n. the general state of things; the combination of circumstances at a given time; n. a condition or position in which you find yourself; n. a complex or critical or unusual difficulty"
+translation: "n. 情形, 境遇, 位置；[医] 情境, 处境"
 srsWords: "situation"
 
 ---
@@ -347,26 +347,26 @@ color: "#00BCD4"
 ---
 [flashcard-review]
 front: "website"
-meaning: "website"
-translation: "website"
+meaning: "n a computer connected to the internet that maintains a series of web pages on the World Wide Web"
+translation: "n. 网站（全球资讯网的主机站）"
 srsWords: "website"
 
 [flashcard-review]
 front: "brown"
-meaning: "brown"
-translation: "a color"
+meaning: "n. an orange of low brightness and saturation; n. Scottish botanist who first observed the movement of small particles in fluids now known a Brownian motion (1773-1858); n. abolitionist who was hanged after leading an unsuccessful raid at Harper's Ferry, Virginia (1800-1859); v. fry in a pan until it changes color"
+translation: "n. 褐色；a. 褐色的；v. (使)变褐色"
 srsWords: "brown"
 
 [flashcard-review]
 front: "bug"
-meaning: "bug"
-translation: "n. 虫子病菌(机器等)故障窃听器; vt. 在…装窃听器；窃听打扰，使厌烦Bug程序缺陷、臭虫，电脑系统或者程序中存在的任何一种破坏正常运转能力的问题或者缺陷，都可以叫做“bug”; 时态:bugged，bugging，bugs名 词:bugger"
+meaning: "n. general term for any insect or similar creeping or crawling invertebrate; n. a fault or defect in a computer program, system, or machine; n. a small hidden microphone; for listening secretly"
+translation: "n. 错误, 虫, 病菌, 缺陷, 窃听器, 癖好, 防盗报警器, 双座小汽车, 要人；vt. 装防盗报警器, 装窃听器, 激怒；vi. 捉虫, 暴突；[计] 缺点, 错误"
 srsWords: "bug"
 
 [flashcard-review]
 front: "choice"
-meaning: "choice"
-translation: "choice"
+meaning: "n. the person or thing chosen or selected; n. the act of choosing or selecting; s. of superior grade; s. appealing to refined taste"
+translation: "n. 选择, 精选品, 选择权；a. 精选的, 挑三拣四的, 上等的；[计] DOS内部命令:在批处理文件中；该命令用于提示用户作出选择, 决定批处理文件的流程"
 srsWords: "choice"
 
 [flashcard-review]
@@ -377,32 +377,32 @@ srsWords: "bulb"
 
 [flashcard-review]
 front: "consider"
-meaning: "consider"
-translation: "consider"
+meaning: "v. take into consideration for exemplifying purposes; v. show consideration for; take into account; v. think about carefully; weigh; v. regard or treat with consideration, respect, and esteem"
+translation: "v. 考虑, 思考, 认为"
 srsWords: "consider"
 
 [flashcard-review]
 front: "bury"
-meaning: "bury"
-translation: "vt. 埋葬掩埋，埋藏原谅不公开，隐藏沉溺于；专心于; 时态:buried，burying，buries名 词:burier"
+meaning: "v. cover from sight; v. place in a grave or tomb; v. place in the earth and cover with soil; v. embed deeply"
+translation: "vt. 埋葬, 埋藏"
 srsWords: "bury"
 
 [flashcard-review]
 front: "continue"
-meaning: "continue"
-translation: "continue"
+meaning: "v. continue a certain state, condition, or activity; v. continue talking; v. keep or maintain in unaltered condition; cause to remain or last; v. do something repeatedly and showing no intention to stop"
+translation: "vi. 继续, 延续, 延长；vt. 使继续, 使延长"
 srsWords: "continue"
 
 [flashcard-review]
 front: "cover"
-meaning: "cover"
-translation: "cover"
+meaning: "n. the act of concealing the existence of something by obstructing the view of it; n. fire that makes it difficult for the enemy to fire on your own individuals or formations; n. a recording of a song that was first recorded or made popular by somebody else; n. a false identity and background (especially one created for an undercover agent)"
+translation: "n. 盖子, 封面, 藉口；vt. 覆盖, 掩饰, 保护, 掩护, 包括；vi. 覆盖"
 srsWords: "cover"
 
 [flashcard-review]
 front: "bush"
 meaning: "a shrub or small tree"
-translation: "a shrub or small tree"
+translation: "n. 矮树丛；[化] 管衬"
 srsWords: "bush"
 
 ---
@@ -413,8 +413,8 @@ color: "#00BCD4"
 ---
 [flashcard-review]
 front: "european"
-meaning: "European"
-translation: "European"
+meaning: "n. a native or inhabitant of Europe; a. of or relating to or characteristic of Europe or the people of Europe"
+translation: "n. 欧洲人；a. 欧洲的, 欧洲人的"
 srsWords: "european"
 
 [flashcard-review]
@@ -443,7 +443,7 @@ srsWords: "cafeteria"
 
 [flashcard-review]
 front: "calendar"
-meaning: "calendar"
+meaning: "n. a system of timekeeping that defines the beginning and length and divisions of the year; n. a list or register of events (appointments or social events or court cases etc); n. a tabular array of the days (usually for one year); v. enter into a calendar"
 translation: "n.日历,历法,日程表,（一年之中的）重大事件（或重要日期）一览表vt.把…记入日程表中,把…列入表中,为（文件等）作分类索引,将…排入日程表"
 srsWords: "calendar"
 
@@ -456,13 +456,13 @@ srsWords: "swiss"
 [flashcard-review]
 front: "increase"
 meaning: "growth, rise"
-translation: "growth, rise"
+translation: "n. 增加, 增进, 利益；vt. 增加, 加大；vi. 增加, 繁殖"
 srsWords: "increase"
 
 [flashcard-review]
 front: "camp"
-meaning: "camp"
-translation: "vi. 扎营；露营; vt. 扎营；使扎营; n. 露营cAMP(=cyclic adenosine monophosphate)环腺苷酸CAMPabbr. Computer Aided Maintenance Project 计算机辅助维修计划CAMPabbr. Computer Aided Maintenance Project 计算机辅助维修计划〈英〉Camp坎普(姓氏); 时态:camped, camping, camps形容词:campy"
+meaning: "n. temporary living quarters specially built by the army for soldiers; n. a group of people living together in a camp; n. temporary lodgings in the country for travelers or vacationers; n. a penal institution (often for forced labor)"
+translation: "n. 露营, 帐篷；vi. 露营, 扎营；vt. 使扎营"
 srsWords: "camp"
 
 [flashcard-review]
@@ -486,55 +486,55 @@ srsWords: "eighth"
 [flashcard-review]
 front: "simple"
 meaning: "easy, not complicated"
-translation: "easy, not complicated"
+translation: "a. 简单的, 普通的, 朴素的, 单纯的, 绝对的, 初级的, 原始的, 迟钝的；n. 出身低微者, 傻子"
 srsWords: "simple"
 
 [flashcard-review]
 front: "simply"
 meaning: "just, merely"
-translation: "just, merely"
+translation: "adv. 简单地, 只是, 简直, 简朴地, 坦白地"
 srsWords: "simply"
 
 [flashcard-review]
 front: "staff"
 meaning: "employees"
-translation: "employees"
+translation: "n. 全体人员, 工作班子, 棍棒, 杆, 拐杖, 支柱, 权杖；a. 职员的, 雇员的, 参谋的；vt. 为...配备人员"
 srsWords: "staff"
 
 [flashcard-review]
 front: "crazy"
 meaning: "insane, wild"
-translation: "insane, wild"
+translation: "a. 发狂的, 狂热的"
 srsWords: "crazy"
 
 [flashcard-review]
 front: "daily"
 meaning: "happening every day"
-translation: "happening every day"
+translation: "a. 每日的, 日常的；adv. 每日地, 日常地；n. 日报"
 srsWords: "daily"
 
 [flashcard-review]
 front: "carrot"
-meaning: "carrot"
+meaning: "n. deep orange edible root of the cultivated carrot plant; n. perennial plant widely cultivated as an annual in many varieties for its long conical orange edible roots; temperate and tropical regions; n. orange root; important source of carotene; n. promise of reward as in 'carrot and stick';"
 translation: "n. 胡萝卜；（为鼓励某人做某事而作出的）诱人的承诺；&lt;非正式，贬&gt;红发人（carrots）"
 srsWords: "carrot"
 
 [flashcard-review]
 front: "cash"
 meaning: "money in coins or notes"
-translation: "money in coins or notes"
+translation: "n. 现金；vt. 兑现"
 srsWords: "cash"
 
 [flashcard-review]
 front: "cassette"
-meaning: "cassette"
+meaning: "n. a container that holds a magnetic tape used for recording or playing sound or video"
 translation: "n.盒式录音带,摄影胶卷暗匣，弹夹,珠宝箱，宝匣"
 srsWords: "cassette"
 
 [flashcard-review]
 front: "castle"
 meaning: "a large fortified building or set of buildings"
-translation: "n. 城堡；象棋中的车; vt. 置…于城堡中；筑城堡防御; 时态:castled, castling, castles"
+translation: "n. 城堡, 象棋中的车；vt. 置于城堡中, 盘踞于"
 srsWords: "castle"
 
 ---
@@ -546,25 +546,25 @@ color: "#00BCD4"
 [flashcard-review]
 front: "figure"
 meaning: "number, shape, person"
-translation: "number, shape, person"
+translation: "n. 数字, 价格, 图形, 形状；vt. 描绘, 表示, 演算, 认为；vi. 计算, 出现, 估计"
 srsWords: "figure"
 
 [flashcard-review]
 front: "modern"
 meaning: "contemporary, new"
-translation: "contemporary, new"
+translation: "n. 现代人, 有思想的人；a. 现代的, 时髦的"
 srsWords: "modern"
 
 [flashcard-review]
 front: "cent"
 meaning: "a monetary unit equal to one hundredth of a dollar, euro, or other decimal currency unit"
-translation: "a monetary unit equal to one hundredth of a dollar, euro, or other decimal currency unit"
+translation: "n. 分；[经] 美分"
 srsWords: "cent"
 
 [flashcard-review]
 front: "center"
 meaning: "the middle point"
-translation: "the middle point"
+translation: "n. 中心, 中心点, 中锋；a. 中央的, 位在正中的；vt. 集中, 定中心；vi. 居中；[计] 居中; 中央"
 srsWords: "center"
 
 [flashcard-review]
@@ -576,31 +576,31 @@ srsWords: "centimeter"
 [flashcard-review]
 front: "popular"
 meaning: "well-liked"
-translation: "well-liked"
+translation: "a. 通俗的, 流行的, 受欢迎的, 大众的, 人民的, 普及的；[经] 大众的, 通俗的, 普及的"
 srsWords: "popular"
 
 [flashcard-review]
 front: "centre"
 meaning: "the middle point or part"
-translation: "the middle point or part"
+translation: "n. 中心, 中心点, 中锋；a. 中央的, 位在正中的；vt. 集中, 定中心；vi. 居中"
 srsWords: "centre"
 
 [flashcard-review]
 front: "cereal"
-meaning: "cereal"
+meaning: "n. grass whose starchy grains are used as food: wheat; rice; rye; oats; maize; buckwheat; millet; n. a breakfast food prepared from grain; a. made of grain or relating to grain or the plants that produce it"
 translation: "n. 谷类，谷物；谷类食品；谷类植物 adj. 谷类的；谷类制成的"
 srsWords: "cereal"
 
 [flashcard-review]
 front: "certain"
 meaning: "sure; confident"
-translation: "sure; confident"
+translation: "a. 确定的, 某一个的, 必然的；[法] 确凿的, 无疑的, 可靠的"
 srsWords: "certain"
 
 [flashcard-review]
 front: "certainly"
 meaning: "without a doubt"
-translation: "without a doubt"
+translation: "adv. 确定地"
 srsWords: "certainly"
 
 ---
@@ -611,50 +611,50 @@ color: "#00BCD4"
 ---
 [flashcard-review]
 front: "champagne"
-meaning: "champagne"
+meaning: "n. a white sparkling wine either produced in Champagne or resembling that produced there; n. a region of northeastern France"
 translation: "n.香槟酒,香槟酒色,平原,平野"
 srsWords: "champagne"
 
 [flashcard-review]
 front: "publish"
 meaning: "print and distribute"
-translation: "print and distribute"
+translation: "vt. 出版, 发行, 公开, 发表, 宣传, 公布；vi. 出版, 发行"
 srsWords: "publish"
 
 [flashcard-review]
 front: "chapter"
-meaning: "chapter"
+meaning: "n. a subdivision of a written work; usually numbered and titled; n. any distinct period in history or in a person's life; n. a local branch of some fraternity or association; n. an ecclesiastical assembly of the monks in a monastery or even of the canons of a church"
 translation: "n. 章，回；（俱乐部、协会等的）分会；人生或历史上的重要时期 vt. 把…分成章节"
 srsWords: "chapter"
 
 [flashcard-review]
 front: "chat"
 meaning: "to talk in a friendly, informal way"
-translation: "to talk in a friendly, informal way"
+translation: "n. 闲谈；vi. 闲谈, 聊天"
 srsWords: "chat"
 
 [flashcard-review]
 front: "cheap"
 meaning: "low in price"
-translation: "low in price"
+translation: "a. 便宜的, 不值钱的, 可鄙的；adv. 便宜地"
 srsWords: "cheap"
 
 [flashcard-review]
 front: "check"
-meaning: "to verify"
-translation: "to verify"
+meaning: "n. a written order directing a bank to pay money; n. the bill in a restaurant; n. the act of inspecting or verifying; n. a mark left after a small piece has been chopped or broken off of something"
+translation: "n. 检查, 支票, 阻止物, 寄物牌, 象棋中将军；vt. 检查, 阻止, 核对, 寄存, 托运；vi. 逐项相符, 开支票；[计] 复选"
 srsWords: "check"
 
 [flashcard-review]
 front: "cheek"
-meaning: "cheek"
-translation: "n. 面颊，脸颊；[俚]臀部; vt. 无礼地向…讲话，对…大胆无礼; 时态:cheeked, cheeking, cheeks"
+meaning: "n. either side of the face below the eyes; v. speak impudently to"
+translation: "n. 颊, 厚颜, 脸蛋；[医] 颊"
 srsWords: "cheek"
 
 [flashcard-review]
 front: "cheer"
-meaning: "cheer"
-translation: "vt. 欢呼；使高兴；为…加油; n. 欢呼；愉快；心情；令人愉快的事; vi. 欢呼；感到高兴; 时态:cheered, cheering, cheers副 词:cheeringly"
+meaning: "n. a cry or shout of approval; v. give encouragement to; v. show approval or good wishes by shouting; v. cause (somebody) to feel happier or more cheerful"
+translation: "n. 愉快, 振奋, 欢呼；vi. 欢呼, 喝彩, 快活起来；vt. 使振奋, 欢呼"
 srsWords: "cheer"
 
 [flashcard-review]

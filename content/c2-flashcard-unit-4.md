@@ -171,7 +171,7 @@ srsWords: "deviant"
 
 [flashcard-review]
 front: "deviantly"
-meaning: "deviantly"
+meaning: "in a manner that departs from usual or accepted standards"
 translation: "n.不正常的人，异常的人adj.不正常的，异常的,离经叛道的（…地，副词）"
 srsWords: "deviantly"
 
@@ -443,7 +443,7 @@ srsWords: "bereft"
 
 [flashcard-review]
 front: "bereftly"
-meaning: "bereftly"
+meaning: "in a sad, lonely, and deprived manner"
 translation: "adj.被剥夺的,丧失的,失去亲人的vt.失去…的(bereave的过去式)（…地，副词）"
 srsWords: "bereftly"
 
