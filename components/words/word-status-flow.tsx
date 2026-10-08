@@ -242,7 +242,7 @@ export function WordStatusFlow() {
             Mastered
           </text>
 
-          {/* ── BOTTOM DOTTED ARC: L / M -> D / N (xMastered) ── */}
+          {/* ── BOTTOM DOTTED ARC: L / M -> D / N (Reset) ── */}
           <path
             d="M 366 108 C 320 142, 120 142, 62 108"
             fill="none"
@@ -277,7 +277,7 @@ export function WordStatusFlow() {
             fontSize="9.5"
             fontWeight="800"
           >
-            ✕ Unmaster
+            ✕ Reset
           </text>
         </svg>
       </div>

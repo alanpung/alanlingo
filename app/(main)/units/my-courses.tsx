@@ -10,6 +10,7 @@ import { removeCourseFromLibrary } from "@/lib/actions/library";
 import { CreateCourseForm } from "./create-course-form";
 import { CourseManager } from "./course-manager";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
+import { CourseLevelIcon } from "@/components/library/course-level-icon";
 
 interface MyCoursesProps {
   courses: OwnedCourseInfo[];
@@ -200,9 +201,7 @@ function OwnedCourseCard({
     <div className="min-w-0 overflow-hidden rounded-xl border-2 border-lingo-border bg-white shadow-[0_2px_0_0] shadow-lingo-border hover:border-lingo-blue transition-all">
       <Link href={`/units/${course.id}`} className="block">
         <div className="flex min-w-0 items-center gap-3 p-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-lingo-blue/10 text-2xl">
-            📘
-          </div>
+          <CourseLevelIcon level={course.level} />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <p className="font-bold text-lingo-text truncate">{course.title}</p>

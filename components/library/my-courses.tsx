@@ -10,6 +10,7 @@ import { removeCourseFromLibrary } from "@/lib/actions/library";
 import { CreateCourseForm } from "@/components/library/create-course-form";
 import { CourseManager } from "@/components/library/course-manager";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
+import { CourseLevelIcon } from "@/components/library/course-level-icon";
 
 interface MyCoursesProps {
   courses: OwnedCourseInfo[];
@@ -202,9 +203,7 @@ function OwnedCourseCard({
     <div className="relative min-w-0 overflow-hidden rounded-xl border-2 border-lingo-border bg-white shadow-[0_2px_0_0] shadow-lingo-border hover:border-lingo-blue transition-all">
       <Link href={`/library/${course.id}`} className="block">
         <div className="flex min-w-0 items-center gap-3 p-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-lingo-blue/10 text-2xl">
-            📘
-          </div>
+          <CourseLevelIcon level={course.level} />
           <div className="flex-1 min-w-0">
             {/* Top header row with Share button on left and Remove on right */}
             <div className="flex items-center justify-between gap-2 mb-1">

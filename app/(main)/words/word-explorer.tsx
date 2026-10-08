@@ -987,7 +987,7 @@ function WordLookupCard({
               }`}
               title={`Status: ${
                 isMastered ? "Mastered (M)" : currentStatus === "learning" ? "Learning (L)" : "New (N)"
-              } — Click to clear status`}
+              } — click to reset`}
             >
               {isMastered ? "M" : currentStatus === "learning" ? "L" : "N"}
             </button>
@@ -1005,7 +1005,7 @@ function WordLookupCard({
                 ? "bg-emerald-500 text-white hover:bg-emerald-600 ring-2 ring-emerald-300"
                 : "bg-white text-lingo-text-light border-2 border-lingo-border hover:border-emerald-500 hover:text-emerald-600"
             }`}
-            title={isMastered ? "Mastered (M) — click to unmaster" : "Mark as Mastered"}
+            title={isMastered ? "Mastered (M) — click to reset" : "Mark as Mastered"}
           >
             <Check className="w-3.5 h-3.5 stroke-[3]" />
           </button>

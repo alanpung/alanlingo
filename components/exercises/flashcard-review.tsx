@@ -36,11 +36,16 @@ function cleanTextForTTS(raw: string, isTargetLanguageNonLatin: boolean): string
   text = text.replace(/^(?:definition|meaning|def|含义|意思|解释|释义|中文|翻译|translation)[:：\-–—\s]+/gi, "");
   text = text.replace(/^(?:definition|meaning|def)\b[:：\-–—\s]*/gi, "");
 
+  // Strip POS markers (e.g., "n.", "v.", "vt.", "vi.", "a.", "adj.", "adv.", "s.", "r.", "prep.", "conj.", "pron.", "det.", "num.", "int.", "abbr.") at the start or after semicolons/commas
+  const posRegex =
+    /(?:^|(?<=[;；,，]\s*))(?:n|v|vt|vi|a|s|r|adj|adv|prep|conj|pron|det|art|num|int|intj|interj|abbr|aux|modal|pl|sing|noun|verb|adjective|adverb|preposition|conjunction|pronoun|determiner|interjection)\.(?:\s*&\s*(?:n|v|vt|vi|a|adj|adv)\.)?\s*/gi;
+  text = text.replace(posRegex, "");
+
   if (
     isTargetLanguageNonLatin &&
     /[\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff\u0600-\u06ff\u0900-\u097f]/u.test(text)
   ) {
-    text = text.replace(/[a-zA-Záéíóúāēīōūǎěǐǒǔàèìòù]/g, "");
+    text = text.replace(/[a-zA-Záéíóúāēīōūǎěǐǒǔàèìòù.&]/g, "");
   }
 
   return text
@@ -365,30 +370,28 @@ export function FlashcardReview({
   // Card rotation during drag
   const cardRotate = useTransform(dragX, [-150, 0, 150], [-10, 0, 10]);
 
-  // Prefetch audio
-  useEffect(() => {
-    const toFetch: { text: string; lang: string }[] = [];
-    if (frontTTS && !exercise?.noAudio?.includes("front")) {
-      toFetch.push({ text: frontTTS, lang: language });
-    }
-    if (backTTS && !exercise?.noAudio?.includes("back")) {
-      toFetch.push({ text: backTTS, lang: "en" });
-    }
-    if (translationTTS && !exercise?.noAudio?.includes("translation")) {
-      toFetch.push({ text: translationTTS, lang: "zh" });
-    }
-    toFetch.forEach(({ text, lang }) => {
-      prefetch([text], lang);
-    });
-  }, [frontTTS, backTTS, translationTTS, exercise?.noAudio, language, prefetch]);
+  const autoplayedKeyRef = useRef<string>("");
 
-  // Autoplay front audio
+  // Prefetch front word audio only
   useEffect(() => {
-    if (autoplayAudio && frontTTS && !exercise?.noAudio?.includes("front")) {
+    if (frontTTS && !exercise?.noAudio?.includes("front")) {
+      prefetch([frontTTS], language);
+    }
+  }, [frontTTS, exercise?.noAudio, language, prefetch]);
+
+  // Autoplay front audio strictly ONCE when a new card is shown
+  useEffect(() => {
+    if (
+      autoplayAudio &&
+      frontTTS &&
+      !exercise?.noAudio?.includes("front") &&
+      autoplayedKeyRef.current !== currentKey
+    ) {
+      autoplayedKeyRef.current = currentKey;
       play(frontTTS, language);
     }
     return stop;
-  }, [exercise, autoplayAudio, frontTTS, language, play, stop]);
+  }, [currentKey, autoplayAudio, frontTTS, exercise?.noAudio, language, play, stop]);
 
   const handlePlayFront = useCallback(
     (e?: React.MouseEvent) => {

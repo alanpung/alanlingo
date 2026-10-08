@@ -2,24 +2,30 @@ import Link from "next/link";
 import type { CourseListItem } from "@/lib/content/types";
 import { getLanguageName } from "@/lib/languages";
 import { CourseLibraryButton } from "@/components/course/course-library-button";
+import { CourseLevelIcon, getCourseLevelStyle } from "@/components/library/course-level-icon";
 
 interface CourseCardProps {
   course: CourseListItem;
 }
 
 export function CourseCard({ course }: CourseCardProps) {
+  const levelStyle = getCourseLevelStyle(course.level);
+
   return (
     <Link
       href={`/units/${course.id}`}
       className="block rounded-2xl border-2 border-lingo-border bg-lingo-card p-5 transition-transform hover:scale-[1.02] active:scale-[0.98]"
     >
       <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <h3 className="text-lg font-bold text-lingo-text truncate">{course.title}</h3>
-          <p className="mt-1 text-sm text-lingo-text-light">
-            {getLanguageName(course.sourceLanguage)} →{" "}
-            {getLanguageName(course.targetLanguage)}
-          </p>
+        <div className="flex min-w-0 flex-1 items-center gap-3.5">
+          <CourseLevelIcon level={course.level} />
+          <div className="min-w-0 flex-1">
+            <h3 className="text-lg font-bold text-lingo-text truncate">{course.title}</h3>
+            <p className="mt-0.5 text-sm text-lingo-text-light">
+              {getLanguageName(course.sourceLanguage)} →{" "}
+              {getLanguageName(course.targetLanguage)}
+            </p>
+          </div>
         </div>
         <div className="shrink-0">
           {course.isOwner ? (
@@ -35,7 +41,7 @@ export function CourseCard({ course }: CourseCardProps) {
         </div>
       </div>
       <div className="mt-4 flex items-center gap-2">
-        <span className="inline-flex items-center rounded-full bg-lingo-blue px-3 py-1 text-xs font-bold text-white">
+        <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-bold ${levelStyle.pill}`}>
           {course.level}
         </span>
         <span className="text-xs text-lingo-text-light">
