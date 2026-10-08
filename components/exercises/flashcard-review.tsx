@@ -252,7 +252,6 @@ export function FlashcardReview({
 }) {
   const [rated, setRated] = useState(false);
   const [actionFeedback, setActionFeedback] = useState<"no" | "yes" | "learned" | null>(null);
-  const [isExited, setIsExited] = useState(false);
   const isHandlingRef = useRef(false);
 
   // Dynamic enrichment for word info (pos, ipa, level, meaning, translation)
@@ -272,7 +271,6 @@ export function FlashcardReview({
   useEffect(() => {
     setRated(false);
     setActionFeedback(null);
-    setIsExited(false);
     isHandlingRef.current = false;
   }, [currentKey]);
 
@@ -424,7 +422,7 @@ export function FlashcardReview({
   );
 
   // 1. NO (Left Button / Swipe Left) -> Quality = 1
-  const handleNo = useCallback(async () => {
+  const handleNo = useCallback(() => {
     if (isHandlingRef.current || rated) return;
     isHandlingRef.current = true;
     setRated(true);
@@ -433,23 +431,19 @@ export function FlashcardReview({
     const words = extractTargetWords(exercise);
     words.forEach((w) => updateLocalStorageCard(w, "new", language, activeTranslation || activeMeaning || w));
 
-    try {
-      await Promise.all(words.map((w) => reviewCard(w, language, 1)));
-    } catch (err) {
+    // Async background sync without blocking UI
+    Promise.all(words.map((w) => reviewCard(w, language, 1))).catch((err) => {
       console.error("Failed to record review:", err);
-    }
+    });
 
     onResult(false, "No");
     setTimeout(() => {
-      setIsExited(true);
-    }, 150);
-    setTimeout(() => {
       onContinue();
-    }, 320);
+    }, 120);
   }, [exercise, language, activeTranslation, activeMeaning, onResult, onContinue, rated]);
 
   // 2. LEARNED (Middle Button / Swipe Up) -> Quality = 5
-  const handleLearned = useCallback(async () => {
+  const handleLearned = useCallback(() => {
     if (isHandlingRef.current || rated) return;
     isHandlingRef.current = true;
     setRated(true);
@@ -458,32 +452,28 @@ export function FlashcardReview({
     const words = extractTargetWords(exercise);
     words.forEach((w) => updateLocalStorageCard(w, "learned", language, activeTranslation || activeMeaning || w));
 
-    try {
-      await Promise.all(
-        words.map(async (w) => {
-          await setWordStatus(w, language, "learned", {
-            cefrLevel: activeLevel || "A1",
-            translation: activeTranslation || activeMeaning,
-            pos: activePos,
-          });
-          await reviewCard(w, language, 5);
-        })
-      );
-    } catch (err) {
+    // Async background sync without blocking UI
+    Promise.all(
+      words.map(async (w) => {
+        await setWordStatus(w, language, "learned", {
+          cefrLevel: activeLevel || "A1",
+          translation: activeTranslation || activeMeaning,
+          pos: activePos,
+        });
+        await reviewCard(w, language, 5);
+      })
+    ).catch((err) => {
       console.error("Failed to mark card learned:", err);
-    }
+    });
 
     onResult(true, "Learned");
     setTimeout(() => {
-      setIsExited(true);
-    }, 150);
-    setTimeout(() => {
       onContinue();
-    }, 320);
+    }, 120);
   }, [exercise, language, activeTranslation, activeMeaning, activeLevel, activePos, onResult, onContinue, rated]);
 
   // 3. YES (Right Button / Swipe Right) -> Quality = 4
-  const handleYes = useCallback(async () => {
+  const handleYes = useCallback(() => {
     if (isHandlingRef.current || rated) return;
     isHandlingRef.current = true;
     setRated(true);
@@ -492,19 +482,15 @@ export function FlashcardReview({
     const words = extractTargetWords(exercise);
     words.forEach((w) => updateLocalStorageCard(w, "learning", language, activeTranslation || activeMeaning || w));
 
-    try {
-      await Promise.all(words.map((w) => reviewCard(w, language, 4)));
-    } catch (err) {
+    // Async background sync without blocking UI
+    Promise.all(words.map((w) => reviewCard(w, language, 4))).catch((err) => {
       console.error("Failed to record review:", err);
-    }
+    });
 
     onResult(true, "Yes");
     setTimeout(() => {
-      setIsExited(true);
-    }, 150);
-    setTimeout(() => {
       onContinue();
-    }, 320);
+    }, 120);
   }, [exercise, language, activeTranslation, activeMeaning, onResult, onContinue, rated]);
 
   // Keyboard shortcuts
@@ -550,37 +536,36 @@ export function FlashcardReview({
     <div className="w-full max-w-xl mx-auto select-none">
       {/* Card Slot Area with AnimatePresence */}
       <div className="relative min-h-[300px] sm:min-h-[340px] flex items-center justify-center">
-        <AnimatePresence mode="wait">
-          {!isExited ? (
-            <motion.div
-              key={currentKey}
-              initial={{ opacity: 0, scale: 0.92, y: 15 }}
-              animate={
-                actionFeedback === "no"
-                  ? { x: -350, opacity: 0, rotate: -15, scale: 0.85 }
-                  : actionFeedback === "yes"
-                  ? { x: 350, opacity: 0, rotate: 15, scale: 0.85 }
-                  : actionFeedback === "learned"
-                  ? { y: -250, opacity: 0, scale: 0.85 }
-                  : { opacity: 1, scale: 1, y: 0, x: 0 }
-              }
-              exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.15 } }}
-              transition={{ type: "spring", stiffness: 350, damping: 26 }}
-              drag={!rated}
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-              dragElastic={0.6}
-              onDragEnd={handleDragEnd}
-              style={{ x: dragX, y: dragY, rotate: cardRotate }}
-              className={`w-full relative rounded-2xl border-2 border-b-4 p-5 sm:p-7 text-center transition-colors shadow-sm bg-white touch-pan-y ${
-                actionFeedback === "no"
-                  ? "border-rose-500 bg-rose-50/50 dark:bg-rose-950/20"
-                  : actionFeedback === "yes"
-                  ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20"
-                  : actionFeedback === "learned"
-                  ? "border-lingo-blue bg-blue-50/50 dark:bg-blue-950/20"
-                  : "border-lingo-border"
-              }`}
-            >
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentKey}
+            initial={{ opacity: 0, scale: 0.94, y: 10 }}
+            animate={
+              actionFeedback === "no"
+                ? { x: -350, opacity: 0, rotate: -15, scale: 0.85 }
+                : actionFeedback === "yes"
+                ? { x: 350, opacity: 0, rotate: 15, scale: 0.85 }
+                : actionFeedback === "learned"
+                ? { y: -250, opacity: 0, scale: 0.85 }
+                : { opacity: 1, scale: 1, y: 0, x: 0 }
+            }
+            exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.1 } }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            drag={!rated}
+            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+            dragElastic={0.6}
+            onDragEnd={handleDragEnd}
+            style={{ x: dragX, y: dragY, rotate: cardRotate }}
+            className={`w-full relative rounded-2xl border-2 border-b-4 p-5 sm:p-7 text-center transition-colors shadow-sm bg-white touch-pan-y ${
+              actionFeedback === "no"
+                ? "border-rose-500 bg-rose-50/50 dark:bg-rose-950/20"
+                : actionFeedback === "yes"
+                ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20"
+                : actionFeedback === "learned"
+                ? "border-lingo-blue bg-blue-50/50 dark:bg-blue-950/20"
+                : "border-lingo-border"
+            }`}
+          >
               {/* Swipe Overlays / Badges */}
               <motion.div
                 style={{ opacity: noOpacity }}
@@ -683,19 +668,6 @@ export function FlashcardReview({
                 </div>
               )}
             </motion.div>
-          ) : (
-            /* Empty placeholder state during card swap */
-            <motion.div
-              key="empty-transition"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full h-[280px] sm:h-[320px] rounded-2xl border-2 border-dashed border-lingo-border/60 bg-lingo-gray/10 flex flex-col items-center justify-center gap-2 text-lingo-text-light"
-            >
-              <div className="w-8 h-8 rounded-full border-2 border-lingo-blue border-t-transparent animate-spin" />
-              <span className="text-xs font-bold text-lingo-text-light/80">Next card...</span>
-            </motion.div>
-          )}
         </AnimatePresence>
       </div>
 
