@@ -34,13 +34,14 @@ export function CourseCard({ course }: CourseCardProps) {
           )}
         </div>
       </div>
-      <div className="mt-4 flex items-center gap-2">
+      <div className="mt-4 flex flex-wrap items-center gap-2">
         <span className="inline-flex items-center rounded-full bg-lingo-blue px-3 py-1 text-xs font-bold text-white">
           {course.level}
         </span>
         <span className="text-xs text-lingo-text-light">
           {course.unitCount} {course.unitCount === 1 ? "unit" : "units"} · {course.lessonCount}{" "}
           {course.lessonCount === 1 ? "lesson" : "lessons"}
+          {course.creatorName ? ` · by ${course.creatorName}` : ""}
         </span>
       </div>
     </Link>

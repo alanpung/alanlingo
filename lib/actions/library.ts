@@ -136,7 +136,8 @@ export async function addCourseToLibrary(
     .from(course)
     .where(eq(course.id, courseId));
 
-  const isSystemCourse = ["a1-flashcard-course", "a2-flashcard-course"].includes(courseId);
+  const { SYSTEM_COURSE_IDS } = await import("@/lib/db/queries/courses");
+  const isSystemCourse = SYSTEM_COURSE_IDS.includes(courseId);
 
   if (!existingCourse && isSystemCourse) {
     existingCourse = {

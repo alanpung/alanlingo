@@ -11,6 +11,7 @@ interface UnitCardProps {
   completedLessons: number;
   language?: string;
   questionType?: QuestionTypeInfo | null;
+  creatorName?: string | null;
   onClick?: () => void;
   children?: React.ReactNode;
   action?: React.ReactNode;
@@ -25,6 +26,7 @@ export function UnitCard({
   completedLessons,
   language,
   questionType,
+  creatorName,
   onClick,
   children,
   action,
@@ -64,6 +66,9 @@ export function UnitCard({
               )}
             </div>
             <p className="text-sm text-lingo-text-light line-clamp-2">{description}</p>
+            {creatorName && (
+              <p className="mt-0.5 text-xs text-lingo-text-light">by {creatorName}</p>
+            )}
           </div>
         </div>
         <div className="mt-3 flex items-center gap-3">
@@ -103,6 +108,9 @@ export function UnitCard({
             {action && <div className="shrink-0">{action}</div>}
           </div>
           <p className="text-sm text-lingo-text-light line-clamp-2">{description}</p>
+          {creatorName && (
+            <p className="mt-0.5 text-xs text-lingo-text-light">by {creatorName}</p>
+          )}
         </div>
         <div className="text-right shrink-0">
           <span className="text-sm font-bold" style={{ color }}>

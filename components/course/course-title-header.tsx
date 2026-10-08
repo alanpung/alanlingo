@@ -11,6 +11,7 @@ interface CourseTitleHeaderProps {
   sourceLanguage: string;
   targetLanguage: string;
   canEdit: boolean;
+  creatorName?: string | null;
 }
 
 export function CourseTitleHeader({
@@ -19,6 +20,7 @@ export function CourseTitleHeader({
   sourceLanguage,
   targetLanguage,
   canEdit,
+  creatorName,
 }: CourseTitleHeaderProps) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
@@ -85,31 +87,38 @@ export function CourseTitleHeader({
           {error && <p className="text-xs font-bold text-red-500">{error}</p>}
         </form>
       ) : (
-        <div className="flex items-center justify-center gap-2 flex-wrap">
-          <h1 className="text-2xl font-black text-lingo-text">
-            <HoverableText text={title} language={targetLanguage} />
-          </h1>
-          {canEdit && (
-            <button
-              onClick={() => setIsEditing(true)}
-              className="inline-flex items-center gap-1 rounded-lg border border-lingo-border bg-white px-2 py-1 text-xs font-bold text-lingo-text-light hover:border-lingo-blue hover:text-lingo-blue hover:bg-lingo-blue/5 transition-colors"
-              title="Edit course title"
-            >
-              <svg
-                className="h-3.5 w-3.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+        <div className="flex flex-col items-center justify-center gap-1">
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            <h1 className="text-2xl font-black text-lingo-text">
+              <HoverableText text={title} language={targetLanguage} />
+            </h1>
+            {canEdit && (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="inline-flex items-center gap-1 rounded-lg border border-lingo-border bg-white px-2 py-1 text-xs font-bold text-lingo-text-light hover:border-lingo-blue hover:text-lingo-blue hover:bg-lingo-blue/5 transition-colors"
+                title="Edit course title"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                />
-              </svg>
-              <span>Edit Title</span>
-            </button>
+                <svg
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  />
+                </svg>
+                <span>Edit Title</span>
+              </button>
+            )}
+          </div>
+          {creatorName && (
+            <p className="text-xs font-semibold text-lingo-text-light">
+              by {creatorName}
+            </p>
           )}
         </div>
       )}

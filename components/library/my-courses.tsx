@@ -278,6 +278,12 @@ function OwnedCourseCard({
                   </span>
                 </>
               )}
+              {course.creatorName && (
+                <>
+                  <span>·</span>
+                  <span className="truncate">by {course.creatorName}</span>
+                </>
+              )}
             </div>
             {/* Progress bar */}
             {course.lessonCount > 0 && (

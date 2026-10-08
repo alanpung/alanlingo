@@ -36,7 +36,7 @@ export async function seedContentFromFilesystem() {
     const units = getAllUnits();
     const courseIds = courses.map((c) => c.id);
 
-    // 3. Upsert all filesystem courses as system courses with createdBy: null
+    // 3. Upsert all filesystem courses with Alan P (creatorId) as author
     for (const c of courses) {
       await db
         .insert(course)
@@ -48,7 +48,7 @@ export async function seedContentFromFilesystem() {
           level: c.level,
           visibility: "public",
           published: true,
-          createdBy: null,
+          createdBy: creatorId,
         })
         .onConflictDoUpdate({
           target: course.id,
@@ -59,14 +59,14 @@ export async function seedContentFromFilesystem() {
             level: c.level,
             visibility: "public",
             published: true,
-            createdBy: null,
+            createdBy: creatorId,
             updatedAt: new Date(),
           },
         });
     }
 
-    if (courseIds.length > 0) {
-      await db.update(course).set({ createdBy: null }).where(inArray(course.id, courseIds));
+    if (courseIds.length > 0 && creatorId) {
+      await db.update(course).set({ createdBy: creatorId }).where(inArray(course.id, courseIds));
     }
 
     // 4. Delete unwanted German / test courses and units
@@ -128,7 +128,7 @@ export async function seedContentFromFilesystem() {
           sourceLanguage: p.sourceLanguage,
           level: p.level,
           visibility: "public",
-          createdBy: null,
+          createdBy: creatorId,
         })
         .onConflictDoUpdate({
           target: unit.id,
@@ -143,14 +143,14 @@ export async function seedContentFromFilesystem() {
             sourceLanguage: p.sourceLanguage,
             level: p.level,
             visibility: "public",
-            createdBy: null,
+            createdBy: creatorId,
             updatedAt: new Date(),
           },
         });
     }
 
-    if (courseIds.length > 0) {
-      await db.update(unit).set({ createdBy: null }).where(inArray(unit.courseId, courseIds));
+    if (courseIds.length > 0 && creatorId) {
+      await db.update(unit).set({ createdBy: creatorId }).where(inArray(unit.courseId, courseIds));
     }
 
     // 6. Strict cleanup of old/ghost units in DB for known courses

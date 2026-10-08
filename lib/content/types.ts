@@ -10,6 +10,7 @@ export interface Course {
   level: string;
   visibility: string | null;
   createdBy: string | null;
+  creatorName?: string | null;
   units: Unit[];
 }
 
@@ -22,6 +23,7 @@ export interface Unit {
   lessons: UnitLesson[];
   parseError?: boolean;
   createdBy?: string | null;
+  creatorName?: string | null;
   questionType?: QuestionTypeInfo | null;
 }
 
@@ -172,6 +174,7 @@ export interface CourseListItem {
   unitCount: number;
   lessonCount: number;
   createdBy?: string | null;
+  creatorName?: string | null;
   isOwner?: boolean;
   isInLibrary?: boolean;
 }
@@ -224,6 +227,7 @@ export interface OwnedCourseInfo {
   completedLessons: number;
   createdAt: Date;
   createdBy?: string | null;
+  creatorName?: string | null;
   isOwner?: boolean;
   isInLibrary?: boolean;
   markdown?: string | null;

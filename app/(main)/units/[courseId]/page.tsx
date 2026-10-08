@@ -62,6 +62,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
         sourceLanguage={course.sourceLanguage}
         targetLanguage={course.targetLanguage}
         canEdit={canEdit}
+        creatorName={course.creatorName}
       />
       {userId && !isOwner && (
         <CourseLibraryBanner

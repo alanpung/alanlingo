@@ -587,11 +587,14 @@ export async function getUserLibraryWords(userIdParam?: string): Promise<string[
         .where(eq(userCourseEnrollment.userId, userId));
       enrollments.forEach((e) => enrolledCourseIds.add(e.courseId));
 
+      const { SYSTEM_COURSE_IDS } = await import("@/lib/db/queries/courses");
       const createdCourses = await db
         .select({ id: course.id })
         .from(course)
         .where(eq(course.createdBy, userId));
-      createdCourses.forEach((c) => enrolledCourseIds.add(c.id));
+      createdCourses.forEach((c) => {
+        if (!SYSTEM_COURSE_IDS.includes(c.id)) enrolledCourseIds.add(c.id);
+      });
     } catch {}
   }
 
@@ -1254,11 +1257,14 @@ export async function syncUserCourseWordsToSrs(userId: string, force = false, ov
             .where(eq(userCourseEnrollment.userId, userId));
           enrollments.forEach((e) => enrolledCourseIds.add(e.courseId));
 
+          const { SYSTEM_COURSE_IDS } = await import("@/lib/db/queries/courses");
           const createdCourses = await db
             .select({ id: course.id })
             .from(course)
             .where(eq(course.createdBy, userId));
-          createdCourses.forEach((c) => enrolledCourseIds.add(c.id));
+          createdCourses.forEach((c) => {
+            if (!SYSTEM_COURSE_IDS.includes(c.id)) enrolledCourseIds.add(c.id);
+          });
         } catch {}
       }
 

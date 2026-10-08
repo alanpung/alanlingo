@@ -106,6 +106,7 @@ export function LearningPath({
               completedLessons={completedLessons}
               language={course.targetLanguage}
               questionType={unit.questionType}
+              creatorName={unit.creatorName ?? course.creatorName}
               onClick={() => setSelectedUnitId(unit.id)}
             />
           );
@@ -166,6 +167,7 @@ export function LearningPath({
         completedLessons={completedLessons}
         language={course.targetLanguage}
         questionType={unit.questionType}
+        creatorName={unit.creatorName ?? course.creatorName}
       >
         {unit.lessons.map((lesson, lessonIndex) => {
           const completed = isLessonCompleted(completions, unit.id, lessonIndex);
